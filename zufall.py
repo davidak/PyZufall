@@ -57,7 +57,6 @@ def person():
 
 
 # Wort
-
 vokal = ['a', 'e', 'i', 'o', 'u', 'ei', 'au']
 konsonant = ['b', 'c', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'sch']
 konsonant2 = ['h', 'k', 'l', 'm', 'n', 's', 't']
@@ -90,8 +89,13 @@ def wort():
 	return text
 
 
-# Essen generieren
+# Datum
+def datum():
+	text = str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1950,2012))
+	return text
 
+
+# Essen generieren
 voressen = ['Brat', 'Rühr', 'Back', 'Mager', 'Soja', 'Tofu']
 
 def essen(anz):
@@ -106,7 +110,6 @@ def essen(anz):
 
 
 # Trinken generieren
-
 getraenk = ['Wasser', 'Saft', 'Tee', 'Kaffee', 'Eistee', 'Milch', 'Sirup', 'Essenz', 'Bier', 'Likör',  'Wein', 'Schnaps']
 
 def trinken():
@@ -125,7 +128,6 @@ def stadt():
 
 
 # Band
-
 gruppe = ['Menschen', 'Personen', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Unterhosen', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Alkoholiker', 'Leichen']
 
 def band():
@@ -146,8 +148,6 @@ def band():
 
 
 # Bandart
-
-
 def bandart():
 	if random.randint(0,2):
 		m = random.choice(musik)
@@ -232,7 +232,7 @@ def satz():
 		else: # weiblich
 			satz = random.choice(vornamen_w) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('die ') + random.choice(besetzung) + 'in' + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
 	if z == 7: # Band Info
-		satz = 'Die '+ bandart() + ' "' + band() + '" wurde am ' + str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1990,2012)) + fp(' in '+stadt()) + ' gegründet.'
+		satz = 'Die '+ bandart() + ' "' + band() + '" wurde am ' + datum() + ' gegründet.'
 		
 		
 	return satz
