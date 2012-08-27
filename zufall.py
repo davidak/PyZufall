@@ -18,6 +18,8 @@ verb2 = open('data/verb2', 'r').read().splitlines()
 adj = open('data/adjektiv', 'r').read().splitlines()
 ort = open('data/ort', 'r').read().splitlines()
 stadte = open('data/stadt_bundesland', 'r').read().splitlines()
+berufe = open('data/berufe', 'r').read().splitlines()
+musik = open('data/musikgenre', 'r').read().splitlines()
 
 # 50% Chance, dass das übergebene Wort angezeigt wird
 def fp(wort):
@@ -141,11 +143,28 @@ def band():
 	if z == 5:
 		band = wort()
 	return band
-		
+
+
+# Bandart
+
+
+def bandart():
+	if random.randint(0,2):
+		m = random.choice(musik)
+		if ' ' in m:
+			text = m + ' Band'
+		elif '-' in m:
+			text = m + '-Band'
+		else:
+			text = m + 'band'
+	else:
+		text = random.choice(['Band', 'Musikergruppe', 'Kapelle', 'Truppe', 'Gruppe'])
+	return text
+
 
 # Satz generieren
 
-besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger']
+besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
 	z = random.randint(0,7)
@@ -209,11 +228,11 @@ def satz():
 		satz += '.'
 	if z == 6: # Bandmitglied
 		if random.randint(0,1): # männlich
-			satz = random.choice(vornamen_m) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('der ') + random.choice(besetzung) + fp(' von') + random.choice([' der Band', ' der Musikergruppe', ' der Kapelle', ' der Truppe']) + ' "' + band() + '".'
+			satz = random.choice(vornamen_m) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('der ') + random.choice(besetzung) + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
 		else: # weiblich
-			satz = random.choice(vornamen_w) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('die ') + random.choice(besetzung) + 'in' + fp(' von') + random.choice([' der Band', ' der Musikergruppe', ' der Kapelle', ' der Truppe']) + ' "' + band() + '".'
+			satz = random.choice(vornamen_w) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('die ') + random.choice(besetzung) + 'in' + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
 	if z == 7: # Band Info
-		satz = random.choice(['Die Band', 'Die Musikergruppe', 'Die Kapelle']) + ' "' + band() + '" wurde am ' + str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1990,2012)) + fp(' in '+stadt()) + ' gegründet.'
+		satz = 'Die '+ bandart() + ' "' + band() + '" wurde am ' + str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1990,2012)) + fp(' in '+stadt()) + ' gegründet.'
 		
 		
 	return satz
