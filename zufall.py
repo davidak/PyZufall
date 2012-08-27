@@ -3,6 +3,8 @@
 
 import random
 
+random.seed() # Zufallsgenerator initialisieren
+
 # Daten aus Dateien einlesen
 vornamen_m = open('data/vornamen_m', 'r').read().splitlines()
 vornamen_w = open('data/vornamen_w', 'r').read().splitlines()
@@ -52,6 +54,40 @@ def person():
 	return person
 
 
+# Wort
+
+vokal = ['a', 'e', 'i', 'o', 'u', 'ei', 'au']
+konsonant = ['b', 'c', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'sch']
+konsonant2 = ['h', 'k', 'l', 'm', 'n', 's', 't']
+
+def wort():
+	laenge = random.randint(3,12)
+	anfaengt = random.randint(1,3)
+	text = ""
+	
+	if anfaengt == 2: # Anfang wird ein Vokal
+		text = random.choice(vokal)
+		while len(text) < laenge:
+			text += random.choice(konsonant)
+			if len(text) < laenge and random.randint(0,1):
+				text += random.choice(konsonant2)
+			if len(text) >= laenge:
+				break
+			text += random.choice(vokal)
+
+	else: # Anfang wird ein Konsonant
+		text = random.choice(konsonant)
+		while len(text) < laenge:
+			text += random.choice(vokal)
+			if len(text) >= laenge:
+				break
+			text += random.choice(konsonant)
+			if len(text) < laenge and random.randint(0,1):
+				text += random.choice(konsonant2)
+	text = text.capitalize()
+	return text
+
+
 # Essen generieren
 
 voressen = ['Brat', 'Rühr', 'Back', 'Mager', 'Soja', 'Tofu']
@@ -85,12 +121,13 @@ def stadt():
 		stadt = random.choice(stadte)
 	return stadt
 
+
 # Band
 
-gruppe = ['Menschen', 'Personen', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Leichen']
+gruppe = ['Menschen', 'Personen', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Unterhosen', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Alkoholiker', 'Leichen']
 
 def band():
-	z = random.randint(0,3)
+	z = random.randint(0,5)
 	if z == 0:
 		band = 'Die ' + random.choice(adj).capitalize() + 'en ' + random.choice(gruppe)
 	if z == 1:
@@ -99,6 +136,10 @@ def band():
 		band = random.choice(adj).capitalize() + ' ' + random.choice(ort)
 	if z == 3:
 		band = random.choice(adj).capitalize() + 'e ' + random.choice(nahrung)
+	if z == 4:
+		band = random.choice(adj).capitalize()
+	if z == 5:
+		band = wort()
 	return band
 		
 
