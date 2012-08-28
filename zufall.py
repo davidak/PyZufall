@@ -167,7 +167,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,9)
+	z = 7#random.randint(0,9)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -231,8 +231,17 @@ def satz():
 			satz = random.choice(vornamen_m) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('der ') + random.choice(besetzung) + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
 		else: # weiblich
 			satz = random.choice(vornamen_w) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('die ') + random.choice(besetzung) + 'in' + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
-	if z == 7: # Band am X gegründet.
-		satz = 'Die '+ bandart() + ' "' + band() + '" wurde am ' + datum() + ' gegründet.'
+	if z == 7: # Band gegründet
+		satz = 'Die '+ bandart() + ' "' + band() + '" wurde'
+		if random.randint(0,1): # 50% Datum oder Jahr
+			satz += ' am ' + datum()
+		else:
+			if random.randint(0,1):
+				satz += ' ' + random.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'Sylvester', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter'])
+			satz += ' ' + str(random.randint(1950, 2012))
+		if random.randint(0,1): # 50% Ort
+			satz += ' in ' + stadt()
+		satz += ' gegründet.'
 	if z == 8: # Bandmitglieder mit Nachnamen
 		satz = 'Die '+ bandart() + ' "' + band() + '" besteht aus ' + random.choice(vornamen) + ' ' + random.choice(nachnamen)
 		for i in range(0,random.randint(0,6)): # 2 bis 8 Mitglieder
