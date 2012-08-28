@@ -8,7 +8,7 @@ random.seed() # Zufallsgenerator initialisieren
 # Daten aus Dateien einlesen
 vornamen_m = open('data/vornamen_m', 'r').read().splitlines()
 vornamen_w = open('data/vornamen_w', 'r').read().splitlines()
-vornamen = vornamen_m + vornamen_m
+vornamen = vornamen_m + vornamen_w
 nachnamen = open('data/nachnamen', 'r').read().splitlines()
 geschmack = open('data/geschmack', 'r').read().splitlines()
 nahrung = open('data/nahrung', 'r').read().splitlines()
