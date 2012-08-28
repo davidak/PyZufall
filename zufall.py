@@ -18,7 +18,7 @@ verb2 = open('data/verb2', 'r').read().splitlines()
 adj = open('data/adjektiv', 'r').read().splitlines()
 ort = open('data/ort', 'r').read().splitlines()
 stadte = open('data/stadt_bundesland', 'r').read().splitlines()
-berufe = open('data/berufe', 'r').read().splitlines()
+beruf = open('data/berufe', 'r').read().splitlines()
 musik = open('data/musikgenre', 'r').read().splitlines()
 
 # ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
@@ -162,12 +162,15 @@ def bandart():
 	return text
 
 
+# Firma
+
+
 # Satz generieren
 
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 7#random.randint(0,9)
+	z = 10#random.randint(0,9)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -255,6 +258,14 @@ def satz():
 		for i in range(0,random.randint(0,6)): # 2 bis 8 Mitglieder
 			satz += ', ' + random.choice(vornamen)
 		satz += ' und ' + random.choice(vornamen) + '.'
+	if z == 10: # Arbeiter
+		if random.randint(0,1): # männlich
+			satz = random.choice(vornamen_m) + ' ist ' + e5('ein ') + random.choice(beruf)
+		else: # weiblich
+			satz = random.choice(vornamen_w) + ' ist ' + e5('eine ') + random.choice(beruf) + 'in'
+			satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
+			satz = satz.replace('fachkraftin', 'fachkraft')
+		satz += '.'
 	return satz
 
 #if random.randint(0,1) #50%
