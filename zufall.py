@@ -158,7 +158,7 @@ def bandart():
 		else:
 			text = m + 'band'
 	else:
-		text = random.choice(['Band', 'Musikergruppe', 'Kapelle', 'Truppe', 'Gruppe'])
+		text = random.choice(['Band', 'Musikergruppe'])
 	return text
 
 
@@ -232,12 +232,15 @@ def satz():
 		else: # weiblich
 			satz = random.choice(vornamen_w) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('die ') + random.choice(besetzung) + 'in' + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
 	if z == 7: # Band gegründet
-		satz = 'Die '+ bandart() + ' "' + band() + '" wurde'
+		if random.randint(0,1):
+			satz = 'Die ' + bandart() + ' ' + band() + ' wurde'
+		else:
+			satz = band() + ' (' + bandart() + ') wurde'
 		if random.randint(0,1): # 50% Datum oder Jahr
 			satz += ' am ' + datum()
 		else:
 			if random.randint(0,1):
-				satz += ' ' + random.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'Sylvester', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter'])
+				satz += ' ' + random.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter'])
 			satz += ' ' + str(random.randint(1950, 2012))
 		if random.randint(0,1): # 50% Ort
 			satz += ' in ' + stadt()
