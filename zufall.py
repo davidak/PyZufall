@@ -21,8 +21,8 @@ stadte = open('data/stadt_bundesland', 'r').read().splitlines()
 berufe = open('data/berufe', 'r').read().splitlines()
 musik = open('data/musikgenre', 'r').read().splitlines()
 
-# 50% Chance, dass das übergebene Wort angezeigt wird
-def fp(wort):
+# ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
+def e5(wort):
 	if random.randint(0,1):
 		return wort
 	else:
@@ -228,9 +228,9 @@ def satz():
 		satz += '.'
 	if z == 6: # Bandmitglied
 		if random.randint(0,1): # männlich
-			satz = random.choice(vornamen_m) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('der ') + random.choice(besetzung) + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
+			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen)) + ' ist ' + e5('der ') + random.choice(besetzung) + e5(' von') + ' der ' + bandart() + ' "' + band() + '".'
 		else: # weiblich
-			satz = random.choice(vornamen_w) + fp(' ' + random.choice(nachnamen)) + ' ist ' + fp('die ') + random.choice(besetzung) + 'in' + fp(' von') + ' der ' + bandart() + ' "' + band() + '".'
+			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen)) + ' ist ' + e5('die ') + random.choice(besetzung) + 'in' + e5(' von') + ' der ' + bandart() + ' "' + band() + '".'
 	if z == 7: # Band gegründet
 		if random.randint(0,1):
 			satz = 'Die ' + bandart() + ' ' + band() + ' wurde'
