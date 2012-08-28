@@ -119,11 +119,13 @@ def trinken():
 
 # Stadt
 def stadt():
-	if random.randint(0,2):
-		stadt = random.choice(stadte).split(' (', 1)
-		stadt = stadt[0]
-	else:
-		stadt = random.choice(stadte)
+	stadt = random.choice(stadte).split(' (', 1)
+	stadt = stadt[0]
+	return stadt
+
+# Stadt mit Bundesland
+def stadt_bl():
+	stadt = random.choice(stadte)
 	return stadt
 
 
@@ -272,21 +274,32 @@ def satz():
 			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen))
 			if random.randint(0,1): # 50% Beruf anzeigen
 				if random.randint(0,1):
-					satz += ', der ' + random.choice(beruf) + ','
+					satz += ', der ' + random.choice(beruf)
+					if random.randint(0,1):
+						satz += ' aus ' + stadt()
+					satz += ','
 				else:
 					satz += ' (' + random.choice(beruf) + ')'
 		else: # weiblich
 			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen))
 			if random.randint(0,1): # 50% Beruf anzeigen
 				if random.randint(0,1):
-					satz += ', die ' + random.choice(beruf) + 'in,'
+					satz += ', die ' + random.choice(beruf) + 'in'
+					if random.randint(0,1):
+						satz += ' aus ' + stadt()
+					satz += ','
 				else:
 					satz += ' (' + random.choice(beruf) + 'in)'
 				satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
 				satz = satz.replace('fachkraftin', 'fachkraft')
-		satz += ' ist' + e5(' gerade') + ' beruflich ' + random.choice(ort)
+		satz += ' ist' + e5(' gerade') + ' beruflich '
+		if random.randint(0,2):
+			satz += random.choice(ort)
+		else:
+			satz += 'in ' + stadt()
+		
 		if not random.randint(0,3):
-			satz += random.choice([', das darf der Chef aber nicht wissen', ', hat aber keine Lust mehr und will nach Hause', ' und hat Gummistiefel an', ' und lacht darüber', ' und ist das schrecklich peinlich', ' und setzt sich erstmal', ' und wird dafür ausgelacht', ' und ist glücklich', ' und hat sein Spaß dabei', ' und verliert die Hose'])
+			satz += random.choice([', das darf der Chef aber nicht wissen', ', hat aber keine Lust mehr und will nach Hause', ' und hat Gummistiefel an', ' und lacht darüber', ' und ist das schrecklich peinlich', ' und setzt sich erstmal', ' und wird dafür ausgelacht', ' und ist glücklich', ' und hat Spaß dabei', ' und verliert die Hose', ' und fällt hin', ', kennt sich dort aber überhaupt nicht aus'])
 		satz += '.'
 	return satz
 
