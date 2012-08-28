@@ -269,20 +269,25 @@ def satz():
 		# bei firma()
 	if z == 11: # X ist beruflich
 		if random.randint(0,1): # männlich
-			satz = random.choice(vornamen_m)
-			if random.randint(0,1):
-				satz += ', der ' + random.choice(beruf) + ','
-			else:
-				satz += ' (' + random.choice(beruf) + ')'
+			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen))
+			if random.randint(0,1): # 50% Beruf anzeigen
+				if random.randint(0,1):
+					satz += ', der ' + random.choice(beruf) + ','
+				else:
+					satz += ' (' + random.choice(beruf) + ')'
 		else: # weiblich
-			satz = random.choice(vornamen_w)
-			if random.randint(0,1):
-				satz += ', die ' + random.choice(beruf) + 'in,'
-			else:
-				satz += ' (' + random.choice(beruf) + 'in)'
-			satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
-			satz = satz.replace('fachkraftin', 'fachkraft')
-		satz += ' ist' + e5(' gerade') + ' beruflich ' + random.choice(ort) + '.'
+			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen))
+			if random.randint(0,1): # 50% Beruf anzeigen
+				if random.randint(0,1):
+					satz += ', die ' + random.choice(beruf) + 'in,'
+				else:
+					satz += ' (' + random.choice(beruf) + 'in)'
+				satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
+				satz = satz.replace('fachkraftin', 'fachkraft')
+		satz += ' ist' + e5(' gerade') + ' beruflich ' + random.choice(ort)
+		if not random.randint(0,3):
+			satz += random.choice([', das darf der Chef aber nicht wissen', ', hat aber keine Lust mehr und will nach Hause', ' und hat Gummistiefel an', ' und lacht darüber', ' und ist das schrecklich peinlich', ' und setzt sich erstmal', ' und wird dafür ausgelacht', ' und ist glücklich', ' und hat sein Spaß dabei', ' und verliert die Hose'])
+		satz += '.'
 	return satz
 
 #if random.randint(0,1) #50%
