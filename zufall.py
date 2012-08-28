@@ -170,7 +170,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 10#random.randint(0,9)
+	z = 11#random.randint(0,9)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -266,6 +266,23 @@ def satz():
 			satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
 			satz = satz.replace('fachkraftin', 'fachkraft')
 		satz += '.'
+		# bei firma()
+	if z == 11: # X ist beruflich
+		if random.randint(0,1): # männlich
+			satz = random.choice(vornamen_m)
+			if random.randint(0,1):
+				satz += ', der ' + random.choice(beruf) + ','
+			else:
+				satz += ' (' + random.choice(beruf) + ')'
+		else: # weiblich
+			satz = random.choice(vornamen_w)
+			if random.randint(0,1):
+				satz += ', die ' + random.choice(beruf) + 'in,'
+			else:
+				satz += ' (' + random.choice(beruf) + 'in)'
+			satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
+			satz = satz.replace('fachkraftin', 'fachkraft')
+		satz += ' ist' + e5(' gerade') + ' beruflich ' + random.choice(ort) + '.'
 	return satz
 
 #if random.randint(0,1) #50%
