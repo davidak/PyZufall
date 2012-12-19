@@ -181,7 +181,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,12)
+	z = 13#random.randint(0,12)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -312,7 +312,8 @@ def satz():
 		satz += '.'
 	if z == 12: # Zufälliger Satz aus Datei
 		satz = random.choice(satze)
-	
+	if z == 13: # Freunde lieben mich dafür
+		satz = 'Ich bin ' + random.choice(adj) + ', aber meine Freunde lieben mich dafür.'
 	# Das Fühl
 	return satz
 
