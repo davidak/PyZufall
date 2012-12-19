@@ -181,7 +181,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 14#random.randint(0,12)
+	z = 15#random.randint(0,12)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -329,7 +329,8 @@ def satz():
 				satz += random.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür.'
 			else:
 				satz += '.'
-			
+	if z == 15:
+		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
 	# Das Fühl
 	return satz
 
