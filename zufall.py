@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 import random
@@ -20,6 +20,9 @@ ort = open('data/ort', 'r').read().splitlines()
 stadte = open('data/stadt_bundesland', 'r').read().splitlines()
 beruf = open('data/berufe', 'r').read().splitlines()
 musik = open('data/musikgenre', 'r').read().splitlines()
+satze = open('data/satze', 'r').read().splitlines()
+sprichwoerter = open('data/sprichwoerter', 'r').read().splitlines()
+satze = satze + sprichwoerter
 
 # ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
 def e5(wort):
@@ -87,6 +90,12 @@ def wort():
 				text += random.choice(konsonant2)
 	text = text.capitalize()
 	return text
+
+
+# Zahl
+def zahl():
+	text = random.randint(0,100)
+	return str(text)
 
 
 # Datum
@@ -172,7 +181,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 11#random.randint(0,9)
+	z = random.randint(0,12)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -301,6 +310,10 @@ def satz():
 		if not random.randint(0,3):
 			satz += random.choice([', das darf der Chef aber nicht wissen', ', hat aber keine Lust mehr und will nach Hause', ' und hat Gummistiefel an', ' und lacht darüber', ' und ist das schrecklich peinlich', ' und setzt sich erstmal', ' und wird dafür ausgelacht', ' und ist glücklich', ' und hat Spaß dabei', ' und verliert die Hose', ' und fällt hin', ', kennt sich dort aber überhaupt nicht aus'])
 		satz += '.'
+	if z == 12: # Zufälliger Satz aus Datei
+		satz = random.choice(satze)
+	
+	# Das Fühl
 	return satz
 
 #if random.randint(0,1) #50%
