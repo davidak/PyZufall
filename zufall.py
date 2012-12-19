@@ -181,7 +181,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 13#random.randint(0,12)
+	z = 14#random.randint(0,12)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -313,7 +313,23 @@ def satz():
 	if z == 12: # Zufälliger Satz aus Datei
 		satz = random.choice(satze)
 	if z == 13: # Freunde lieben mich dafür
-		satz = 'Ich bin ' + random.choice(adj) + ', aber meine Freunde lieben mich dafür.'
+		satz = 'Ich bin ' + random.choice(adj) + random.choice(['. Alle', ', aber']) + ' meine Freunde lieben mich dafür.'
+	if z == 14:
+		if random.randint(0,1): # männlich
+			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen))
+			satz += ' ist ' + random.choice(adj)
+			if random.randint(0,1): #
+				satz += random.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür.'
+			else:
+				satz += '.'
+		else: # weiblich
+			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen))
+			satz += ' ist ' + random.choice(adj)
+			if random.randint(0,1): #
+				satz += random.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür.'
+			else:
+				satz += '.'
+			
 	# Das Fühl
 	return satz
 
