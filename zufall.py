@@ -211,8 +211,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,17)
-	#z = random.choice(range(2, 5))
+	z = random.randint(0,18)
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj)
@@ -373,6 +372,11 @@ def satz():
 		satz = farbe() + ' ist eine ' + e5(random.choice(adj) + 'e ') + 'Farbe.'
 	if z == 17:
 		satz = ersten_buchstaben_gross(random.choice(ort)) + ' ' + random.choice(['war', 'ist']) + ' ' + random.choice(['er', 'sie', 'es']) + ' ' + e5(random.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + random.choice(adj) + '.'
+	if z == 18: # Kloster
+		if random.randint(0,1): # männlich
+			satz = 'Bruder ' + random.choice(vornamen_m) + random.choice([' war', ' ist']) + ' der ' + random.choice(adj) + 'ste Mönch ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
+		else: # weiblich
+			satz = 'Schwester ' + random.choice(vornamen_w) + random.choice([' war', ' ist']) + ' die ' + random.choice(adj) + 'ste Nonne ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
 	# Das Fühl
 	return satz
 
