@@ -32,6 +32,9 @@ def e5(wort):
 		return ''
 
 
+def ersten_buchstaben_gross(s):
+    return s[0].upper() + s[1:]
+
 # Person generieren
 beziehung_m = ['Vater', 'Bruder', 'Mann', 'Sohn', 'Onkel', 'Opa', 'Cousin', 'Enkel', 'Chef', 'Freund', 'Partner', 'Kollege', 'Mitarbeiter', 'Mitbewohner', 'Vermieter', 'Lehrer']
 beziehung_w = ['Mutter', 'Schwester', 'Frau', 'Tochter', 'Tante', 'Oma', 'Cousine', 'Enkelin', 'Cheffin', 'Freundin', 'Partnerin', 'Kollegin', 'Mitarbeiterin', 'Mitbewohnerin', 'Vermieterin', 'Lehrerin']
@@ -166,7 +169,7 @@ def stadt_bl():
 
 
 # Band
-gruppe = ['Menschen', 'Personen', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Unterhosen', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Alkoholiker', 'Leichen']
+gruppe = ['Menschen', 'Personen', 'Kinder', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Unterhosen', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Alkoholiker', 'Leichen']
 
 def band():
 	z = random.randint(0,5)
@@ -208,7 +211,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 16#random.randint(0,15)
+	z = random.randint(0,17)
 	#z = random.choice(range(2, 5))
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
@@ -368,6 +371,8 @@ def satz():
 		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
 	if z == 16:
 		satz = farbe() + ' ist eine ' + e5(random.choice(adj) + 'e ') + 'Farbe.'
+	if z == 17:
+		satz = ersten_buchstaben_gross(random.choice(ort)) + ' ' + random.choice(['war', 'ist']) + ' ' + random.choice(['er', 'sie', 'es']) + ' ' + e5(random.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + random.choice(adj) + '.'
 	# Das Fühl
 	return satz
 
