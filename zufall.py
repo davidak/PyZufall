@@ -98,6 +98,18 @@ def zahl():
 	return str(text)
 
 
+# Farbe
+farben = ['Rot', 'Gelb', 'Blau', 'Violett', 'Türkis', 'Orange', 'Grün', 'Magenta', 'Braun', 'Grau', 'Weiß', 'Schwarz']
+def farbe():
+	farbe = random.choice(farben)
+	return farbe
+
+# Farben auf englisch
+colors = ['red', 'yellow', 'blue', 'violet', 'orange', 'green', 'magenta', 'brown', 'gray', 'white', 'black']
+def color():
+	color = random.choice(colors)
+	return color
+
 # Datum
 def datum():
 	text = str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1950,2012))
@@ -165,7 +177,7 @@ def band():
 	if z == 2:
 		band = random.choice(adj).capitalize() + ' ' + random.choice(ort)
 	if z == 3:
-		band = random.choice(adj).capitalize() + 'e ' + random.choice(nahrung)
+		band = random.choice(adj).capitalize() + 'e ' + essen(random.randint(0,2))
 	if z == 4:
 		band = random.choice(adj).capitalize()
 	if z == 5:
@@ -196,7 +208,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 1#random.randint(0,15)
+	z = 16#random.randint(0,15)
 	#z = random.choice(range(2, 5))
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
@@ -355,7 +367,7 @@ def satz():
 	if z == 15:
 		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
 	if z == 16:
-		satz = 's'
+		satz = farbe() + ' ist eine ' + e5(random.choice(adj) + 'e ') + 'Farbe.'
 	# Das Fühl
 	return satz
 
