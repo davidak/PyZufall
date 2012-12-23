@@ -196,16 +196,21 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,15)
+	z = 1#random.randint(0,15)
 	#z = random.choice(range(2, 5))
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
-		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
+		satz = person() + ' ' + v1 + ' ' + random.choice(adj)
+		if random.randint(0,2):
+			satz += ' ' + random.choice(ort)
+		satz += ' ' + v2
 		if random.randint(0,5) == 1: # Chance 1/6
 			satz += random.choice(ns)
 		satz += '.'
 	if z == 1: # Standardsatz
-		satz = person() + ' ' + random.choice(verb) + ' ' + random.choice(adj) + ' ' + random.choice(ort)
+		satz = person() + ' ' + random.choice(verb) + ' ' + random.choice(adj)
+		if random.randint(0,2):
+			satz += ' ' + random.choice(ort)
 		if random.randint(0,5) == 1: # Chance 1/6
 			satz += random.choice(ns)
 		satz += '.'
