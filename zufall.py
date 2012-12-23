@@ -104,25 +104,40 @@ def datum():
 	return text
 
 
-# Essen generieren
-voressen = ['Brat', 'Rühr', 'Back', 'Mager', 'Soja', 'Tofu']
+# Essen und Beilage generieren
+voressen = ['Brat', 'Rühr', 'Reibe', 'Brech', 'Back', 'Ofen', 'Hack', 'Mager', 'Soja', 'Tofu', 'Milch']
 
 def essen(anz):
-	if anz:
-		if random.randint(0,1):
-			essen = random.choice(voressen) + random.choice(nahrung).lower()
-		else:
+	if anz: # zusammengesetzt aus zwei Wörtern
+		if random.randint(0,2):
 			essen = random.choice(geschmack) + random.choice(nahrung).lower()
-	else:
-		essen = random.choice(geschmack)
+		else:
+			essen = random.choice(voressen) + random.choice(nahrung).lower()
+	else: # aus einem Wort bestehend
+		if random.randint(0,2):
+			essen = random.choice(geschmack)
+		else:
+			essen = random.choice(nahrung)
 	return essen
+
+beilag = ['Soße', 'Sauce', 'Brühe', 'Brei', 'Püree', 'Kartoffeln', 'Salat', 'Marmelade']
+beilag2 = ['Kroketten', 'Pommes', 'Rösti', 'Röstzwiebeln', 'Mayo', 'Mayonnaise', 'Ketchup', 'Bratkartoffeln', 'Zwiebelringen', 'Kartoffelpuffer', 'Soße', 'Nudeln', 'Gemüse', 'Knödeln', 'Salat', 'Marmelade']
+def beilage():
+	if random.randint(0,3):
+		text = random.choice(beilag2)
+	else:
+		text = random.choice(geschmack) + random.choice(beilag).lower()
+	return text
 
 
 # Trinken generieren
-getraenk = ['Wasser', 'Saft', 'Tee', 'Kaffee', 'Eistee', 'Milch', 'Sirup', 'Essenz', 'Bier', 'Likör',  'Wein', 'Schnaps']
+getraenk = ['Wasser', 'Saft', 'Tee', 'Kaffee', 'Eistee', 'Milch', 'Punsch', 'Bowle', 'Bier', 'Likör',  'Wein', 'Rum', 'Sekt', 'Schnaps', 'Cocktail']
 
 def trinken():
-	trinken = random.choice(geschmack) + random.choice(getraenk).lower()
+	if random.randint(0,2):
+		trinken = random.choice(geschmack) + random.choice(getraenk).lower()
+	else:
+		trinken = random.choice(getraenk)
 	return trinken
 
 
@@ -181,7 +196,8 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 15#random.randint(0,12)
+	z = random.randint(0,15)
+	#z = random.choice(range(2, 5))
 	if z == 0: # Standardsatz mit getrenntem Verb
 		v1, v2 = random.choice(verb2).split(",")
 		satz = person() + ' ' + v1 + ' ' + random.choice(adj) + ' ' + random.choice(ort) + ' ' + v2
@@ -195,7 +211,7 @@ def satz():
 		satz += '.'
 	if z == 2: # Essen
 		satz = person() + ' isst'
-		x = random.randint(0,8)
+		x = random.randint(0,10)
 		if x == 1:
 			satz += ' gerade'
 		elif x == 2:
@@ -207,8 +223,8 @@ def satz():
 		elif x == 5:
 			satz += ' selten'
 		satz += ' ' + essen(random.randint(0,2))
-		if random.randint(0,3) == 3:
-			satz += ' mit ' + essen(random.randint(0,2))
+		if random.randint(0,2):
+			satz += ' mit ' + e5(random.choice(['viel ', 'ganz viel ', 'ein bischen ', 'ein wenig ', 'lecker ', 'einer großen Portion '])) + beilage()
 		satz += '.'
 	if z == 3: # Trinken
 		satz = person() + ' trinkt'
@@ -225,9 +241,11 @@ def satz():
 			satz += ' selten'
 		elif x == 6:
 			satz += ' jeden Abend ein Glas'
+		elif x == 7:
+			satz += ' zu viel'
 		satz += ' ' + trinken() + '.'
 	if z == 4: # Essen und Trinken
-		satz = person() + ' isst ' + essen(random.randint(0,2)) + ' und trinkt ' + trinken() + '.'
+		satz = person() + ' isst ' + essen(random.randint(0,2)) + e5(' mit ' + beilage()) + ' und trinkt ' + e5('dazu ') + trinken() + '.'
 	if z == 5: # Essen oder Trinken am Ort
 		satz = person()
 		if random.randint(0,1):
@@ -236,7 +254,7 @@ def satz():
 			satz += ' sitzt '
 		satz += random.choice(ort) + ' und '
 		if random.randint(0,1):
-			satz += 'isst ' + essen(random.randint(0,2))
+			satz += 'isst ' + e5('dort ') + essen(random.randint(0,2)) +e5(' mit ' + beilage())
 		else:
 			satz += 'trinkt ' + trinken()
 		satz += '.'
@@ -261,12 +279,12 @@ def satz():
 		satz += ' gegründet.'
 	if z == 8: # Bandmitglieder mit Nachnamen
 		satz = 'Die '+ bandart() + ' "' + band() + '" besteht aus ' + random.choice(vornamen) + ' ' + random.choice(nachnamen)
-		for i in range(0,random.randint(0,6)): # 2 bis 8 Mitglieder
+		for i in range(0,random.randint(0,4)): # 2 bis 6 Mitglieder
 			satz += ', ' + random.choice(vornamen) + ' ' + random.choice(nachnamen)
 		satz += ' und ' + random.choice(vornamen) + ' ' + random.choice(nachnamen) + '.'
 	if z == 9: # Bandmitglieder nur mit Vorname
 		satz = 'Die '+ bandart() + ' "' + band() + '" besteht aus ' + random.choice(vornamen)
-		for i in range(0,random.randint(0,6)): # 2 bis 8 Mitglieder
+		for i in range(0,random.randint(0,4)): # 2 bis 6 Mitglieder
 			satz += ', ' + random.choice(vornamen)
 		satz += ' und ' + random.choice(vornamen) + '.'
 	if z == 10: # Arbeiter
@@ -331,6 +349,8 @@ def satz():
 				satz += '.'
 	if z == 15:
 		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
+	if z == 16:
+		satz = 's'
 	# Das Fühl
 	return satz
 
