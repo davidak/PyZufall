@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import random
+import re
 
 random.seed() # Zufallsgenerator initialisieren
 
@@ -18,7 +19,7 @@ verb2 = open('data/verb2', 'r').read().splitlines()
 adj = open('data/adjektiv', 'r').read().splitlines()
 ort = open('data/ort', 'r').read().splitlines()
 stadte = open('data/stadt_bundesland', 'r').read().splitlines()
-beruf = open('data/berufe', 'r').read().splitlines()
+berufe = open('data/berufe', 'r').read().splitlines()
 musik = open('data/musikgenre', 'r').read().splitlines()
 sprichwoerter = open('data/sprichwoerter', 'r').read().splitlines()
 
@@ -123,6 +124,26 @@ def datum():
 # Sprichwort
 def sprichwort():
 	text = random.choice(sprichwoerter)
+	return text
+
+
+# Berufsbezeichnung
+def beruf():
+	text = random.choice(berufe)
+	return text
+
+
+# Berufsbezeichnung weiblich
+def beruf_w():
+	text = beruf() + 'in'
+	text = re.sub('mannin$', 'frau', text) # Restaurantfachmannin => Restaurantfachfrau
+	text = re.sub('kraftin$', 'kraft', text) # Edv-Fachkraftin => Edv-Fachkraft
+	text = re.sub('angestellterin$', 'angestellte', text)
+	text = re.sub('Fotomodellin$', 'Fotomodell', text)
+	text = re.sub('Technischer Zeichnerin$', 'Technische Zeichnerin', text)
+	text = re.sub('arztin$', 'ärztin', text)
+	text = re.sub('beamterin$', 'beamte', text) # Polizeibeamterin => Polizeibeamte
+	text = re.sub('ein$', 'in', text) # Mikrobiologein => Mikrobiologin
 	return text
 
 
@@ -309,12 +330,9 @@ def satz():
 	
 	elif z == 9: # Arbeiter
 		if random.randint(0,1): # männlich
-			satz = random.choice(vornamen_m) + ' ist ' + e5('ein ') + random.choice(beruf)
+			satz = random.choice(vornamen_m) + ' ist ' + e5('ein ') + beruf() + e5(' aus ' + stadt()) + '.'
 		else: # weiblich
-			satz = random.choice(vornamen_w) + ' ist ' + e5('eine ') + random.choice(beruf) + 'in'
-			satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
-			satz = satz.replace('fachkraftin', 'fachkraft')
-		satz += '.'
+			satz = random.choice(vornamen_w) + ' ist ' + e5('eine ') + beruf_w() + e5(' aus ' + stadt()) + '.'
 		# bei firma()
 	
 	elif z == 10: # X ist beruflich
@@ -322,24 +340,22 @@ def satz():
 			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen))
 			if random.randint(0,1): # 50% Beruf anzeigen
 				if random.randint(0,1):
-					satz += ', der ' + random.choice(beruf)
+					satz += ', der ' + beruf()
 					if random.randint(0,1):
 						satz += ' aus ' + stadt()
 					satz += ','
 				else:
-					satz += ' (' + random.choice(beruf) + ')'
+					satz += ' (' + beruf() + ')'
 		else: # weiblich
 			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen))
 			if random.randint(0,1): # 50% Beruf anzeigen
 				if random.randint(0,1):
-					satz += ', die ' + random.choice(beruf) + 'in'
+					satz += ', die ' + beruf_w()
 					if random.randint(0,1):
 						satz += ' aus ' + stadt()
 					satz += ','
 				else:
-					satz += ' (' + random.choice(beruf) + 'in)'
-				satz = satz.replace('mannin', 'frau') # Restaurantfachmannin => Restaurantfachfrau
-				satz = satz.replace('fachkraftin', 'fachkraft')
+					satz += ' (' + beruf_w() + ')'
 		satz += ' ist' + e5(' gerade') + ' beruflich '
 		if random.randint(0,2):
 			satz += random.choice(ort)
