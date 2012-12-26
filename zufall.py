@@ -38,8 +38,8 @@ def ersten_buchstaben_gross(s):
 # Person generieren
 beziehung_m = ['Vater', 'Bruder', 'Mann', 'Sohn', 'Onkel', 'Opa', 'Cousin', 'Enkel', 'Chef', 'Freund', 'Partner', 'Kollege', 'Mitarbeiter', 'Mitbewohner', 'Vermieter', 'Lehrer']
 beziehung_w = ['Mutter', 'Schwester', 'Frau', 'Tochter', 'Tante', 'Oma', 'Cousine', 'Enkelin', 'Cheffin', 'Freundin', 'Partnerin', 'Kollegin', 'Mitarbeiterin', 'Mitbewohnerin', 'Vermieterin', 'Lehrerin']
-spezial = ['Er', 'Sie', 'Es', 'Jemand', 'Niemand', 'Ein Held', 'Ein Penner', 'Ein Verkäufer', 'Ein Zuhälter', 'Eine Prostituierte', 'Eine Nutte', 'Eine Hure', 'Eine Schlampe', 'Ein Lehrer', 'Ein Polizist', 'Ein Beamter', 'Ein Arzt', 'Hitler', 'Ein Bernd', 'Ein Schwuler', 'Ein Behinderter', 'Die Sekretärin', 'Der Affenmensch', 'Die Transe', 'Das Mannsweib', 'Das Penismädchen', 'Die Lesbe', 'Die Kampflesbe', 'Der Satanist', 'Der Alkoholiker', 'Ein normaler Mensch']
-possessivpronomen_m = ['Mein', 'Dein', 'Sein', 'Ihr']
+spezial = ['er', 'sie', 'es', 'jemand', 'niemand', 'ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'ein Lehrer', 'ein Polizist', 'ein Beamter', 'ein Arzt', 'Hitler', 'ein Bernd', 'ein Schwuler', 'ein Behinderter', 'eine Sekretärin', 'der Affenmensch', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'der Satanist', 'der Alkoholiker', 'ein normaler Mensch', 'der Pirat', 'der Hartz-IV-Empfänger', 'ein Müllmann']
+possessivpronomen_m = ['mein', 'dein', 'sein', 'ihr']
 
 def person():
 	z = random.randint(1,12)
@@ -52,9 +52,9 @@ def person():
 	elif z == 4:
 		person = random.choice(possessivpronomen_m) + 'e ' + random.choice(beziehung_w)
 	elif z == 5:
-		person = 'Der ' + random.choice(beziehung_m)
+		person = 'der ' + random.choice(beziehung_m)
 	elif z == 6:
-		person = 'Die ' + random.choice(beziehung_w)
+		person = 'die ' + random.choice(beziehung_w)
 	elif z == 7:
 		person = random.choice(spezial)
 	else:
@@ -141,8 +141,9 @@ def beruf_w():
 	text = re.sub('angestellterin$', 'angestellte', text)
 	text = re.sub('Fotomodellin$', 'Fotomodell', text)
 	text = re.sub('Technischer Zeichnerin$', 'Technische Zeichnerin', text)
+	text = re.sub('Arztin$', 'Ärztin', text)
 	text = re.sub('arztin$', 'ärztin', text)
-	text = re.sub('beamterin$', 'beamte', text) # Polizeibeamterin => Polizeibeamte
+	text = re.sub('beamterin$', 'beamtin', text) # Polizeibeamterin => Polizeibeamte
 	text = re.sub('ein$', 'in', text) # Mikrobiologein => Mikrobiologin
 	return text
 
@@ -240,7 +241,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,15)
+	z = random.randint(0,16)
 	
 	if z == 2: # Essen
 		satz = person() + ' isst'
@@ -399,7 +400,25 @@ def satz():
 			satz = 'Bruder ' + random.choice(vornamen_m) + random.choice([' war', ' ist']) + ' der ' + random.choice(adj) + 'ste Mönch ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
 		else: # weiblich
 			satz = 'Schwester ' + random.choice(vornamen_w) + random.choice([' war', ' ist']) + ' die ' + random.choice(adj) + 'ste Nonne ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
-	# Das Fühl
+	
+	elif z == 16:
+		if random.randint(0,1): # normales verb
+			if random.randint(0,1):
+				satz = random.choice(['Warum', 'Wieso', 'Weshalb'])
+				satz += ' ' + random.choice(verb)
+			else:
+				satz = random.choice(verb).capitalize()
+			satz += ' ' + person() + e5(' ' + random.choice(adj)) + e5(' ' + random.choice(ort)) + '?'
+		else: # getrenntes verb
+			v1, v2 = random.choice(verb2).split(",")
+			if random.randint(0,1):
+				satz = random.choice(['Warum', 'Wieso', 'Weshalb'])
+				satz += ' ' + v1
+			else:
+				satz = v1.capitalize()
+			satz += ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + e5(random.choice(ort) + ' ') + v2 + '?'
+		if not random.randint(0,10):
+			satz += ' ' + random.choice(['Mann weiss es nicht.', 'Denk mal drüber nach!'])
 	
 	else:
 		if random.randint(0,1): # Standardsatz mit getrenntem Verb
@@ -419,7 +438,8 @@ def satz():
 		if random.randint(0,5) == 1: # Chance 1/6
 			satz += random.choice(ns)
 		satz += '.'
-		
+	
+	satz = ersten_buchstaben_gross(satz)
 	return satz
 
 #if random.randint(0,1) #50%
