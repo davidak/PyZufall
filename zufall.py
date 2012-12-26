@@ -33,6 +33,7 @@ def e5(wort):
 def ersten_buchstaben_gross(s):
     return s[0].upper() + s[1:]
 
+
 # Person generieren
 beziehung_m = ['Vater', 'Bruder', 'Mann', 'Sohn', 'Onkel', 'Opa', 'Cousin', 'Enkel', 'Chef', 'Freund', 'Partner', 'Kollege', 'Mitarbeiter', 'Mitbewohner', 'Vermieter', 'Lehrer']
 beziehung_w = ['Mutter', 'Schwester', 'Frau', 'Tochter', 'Tante', 'Oma', 'Cousine', 'Enkelin', 'Cheffin', 'Freundin', 'Partnerin', 'Kollegin', 'Mitarbeiterin', 'Mitbewohnerin', 'Vermieterin', 'Lehrerin']
@@ -40,7 +41,7 @@ spezial = ['Er', 'Sie', 'Es', 'Jemand', 'Niemand', 'Ein Held', 'Ein Penner', 'Ei
 possessivpronomen_m = ['Mein', 'Dein', 'Sein', 'Ihr']
 
 def person():
-	z = random.randint(1,10)
+	z = random.randint(1,12)
 	if z == 1:
 		person = random.choice(vornamen) + 's ' + random.choice(beziehung_m)
 	elif z == 2:
@@ -105,11 +106,13 @@ def farbe():
 	farbe = random.choice(farben)
 	return farbe
 
+
 # Farben auf englisch
 colors = ['red', 'yellow', 'blue', 'violet', 'orange', 'green', 'magenta', 'brown', 'gray', 'white', 'black']
 def color():
 	color = random.choice(colors)
 	return color
+
 
 # Datum
 def datum():
@@ -166,6 +169,7 @@ def stadt():
 	stadt = stadt[0]
 	return stadt
 
+
 # Stadt mit Bundesland
 def stadt_bl():
 	stadt = random.choice(stadte)
@@ -215,25 +219,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,18)
-	
-	if z == 0: # Standardsatz mit getrenntem Verb
-		v1, v2 = random.choice(verb2).split(",")
-		satz = person() + ' ' + v1 + ' ' + random.choice(adj)
-		if random.randint(0,2):
-			satz += ' ' + random.choice(ort)
-		satz += ' ' + v2
-		if random.randint(0,5) == 1: # Chance 1/6
-			satz += random.choice(ns)
-		satz += '.'
-	
-	if z == 1: # Standardsatz
-		satz = person() + ' ' + random.choice(verb) + ' ' + random.choice(adj)
-		if random.randint(0,2):
-			satz += ' ' + random.choice(ort)
-		if random.randint(0,5) == 1: # Chance 1/6
-			satz += random.choice(ns)
-		satz += '.'
+	z = random.randint(0,15)
 	
 	if z == 2: # Essen
 		satz = person() + ' isst'
@@ -253,7 +239,7 @@ def satz():
 			satz += ' mit ' + e5(random.choice(['viel ', 'ganz viel ', 'ein bischen ', 'ein wenig ', 'lecker ', 'einer großen Portion '])) + beilage()
 		satz += '.'
 	
-	if z == 3: # Trinken
+	elif z == 3: # Trinken
 		satz = person() + ' trinkt'
 		x = random.randint(0,10)
 		if x == 1:
@@ -272,10 +258,10 @@ def satz():
 			satz += ' zu viel'
 		satz += ' ' + trinken() + '.'
 	
-	if z == 4: # Essen und Trinken
+	elif z == 4: # Essen und Trinken
 		satz = person() + ' isst ' + essen(random.randint(0,2)) + e5(' mit ' + beilage()) + ' und trinkt ' + e5('dazu ') + trinken() + '.'
 	
-	if z == 5: # Essen oder Trinken am Ort
+	elif z == 5: # Essen oder Trinken am Ort
 		satz = person()
 		if random.randint(0,1):
 			satz += ' ist '
@@ -288,13 +274,13 @@ def satz():
 			satz += 'trinkt ' + e5('dort ') + trinken()
 		satz += '.'
 	
-	if z == 6: # Bandmitglieder Besetzung
+	elif z == 6: # Bandmitglieder Besetzung
 		if random.randint(0,1): # männlich
 			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen)) + ' ist ' + e5('der ') + random.choice(besetzung) + e5(' von') + ' der ' + bandart() + ' "' + band() + '".'
 		else: # weiblich
 			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen)) + ' ist ' + e5('die ') + random.choice(besetzung) + 'in' + e5(' von') + ' der ' + bandart() + ' "' + band() + '".'
 	
-	if z == 7: # Band gegründet
+	elif z == 7: # Band gegründet
 		if random.randint(0,1):
 			satz = 'Die ' + bandart() + ' ' + band() + ' wurde'
 		else:
@@ -309,7 +295,7 @@ def satz():
 			satz += ' in ' + stadt()
 		satz += ' gegründet.'
 	
-	if z == 8: # Bandmitglieder mit oder ohne Nachnamen
+	elif z == 8: # Bandmitglieder mit oder ohne Nachnamen
 		if random.randint(0,2): # ohne
 			satz = 'Die '+ bandart() + ' "' + band() + '" besteht aus ' + random.choice(vornamen)
 			for i in range(0,random.randint(0,4)): # 2 bis 6 Mitglieder
@@ -321,7 +307,7 @@ def satz():
 				satz += ', ' + random.choice(vornamen) + ' ' + random.choice(nachnamen)
 			satz += ' und ' + random.choice(vornamen) + ' ' + random.choice(nachnamen) + '.'
 	
-	if z == 9: # Arbeiter
+	elif z == 9: # Arbeiter
 		if random.randint(0,1): # männlich
 			satz = random.choice(vornamen_m) + ' ist ' + e5('ein ') + random.choice(beruf)
 		else: # weiblich
@@ -331,7 +317,7 @@ def satz():
 		satz += '.'
 		# bei firma()
 	
-	if z == 10: # X ist beruflich
+	elif z == 10: # X ist beruflich
 		if random.randint(0,1): # männlich
 			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen))
 			if random.randint(0,1): # 50% Beruf anzeigen
@@ -364,7 +350,7 @@ def satz():
 			satz += random.choice([', das darf der Chef aber nicht wissen', ', hat aber keine Lust mehr und will nach Hause', ' und hat Gummistiefel an', ' und lacht darüber', ' und ist das schrecklich peinlich', ' und setzt sich erstmal', ' und wird dafür ausgelacht', ' und ist glücklich', ' und hat Spaß dabei', ' und verliert die Hose', ' und fällt hin', ', kennt sich dort aber überhaupt nicht aus'])
 		satz += '.'
 	
-	if z == 11: # Freunde lieben dafür
+	elif z == 11: # Freunde lieben dafür
 		zz = random.randint(0,2)
 		if zz == 0: # männlich
 			satz = random.choice(vornamen_m) + e5(' ' + random.choice(nachnamen))
@@ -373,7 +359,7 @@ def satz():
 				satz += random.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür.'
 			else:
 				satz += '.'
-		if zz == 1:	# weiblich
+		elif zz == 1:	# weiblich
 			satz = random.choice(vornamen_w) + e5(' ' + random.choice(nachnamen))
 			satz += ' ist ' + random.choice(adj)
 			if random.randint(0,1): #
@@ -383,21 +369,41 @@ def satz():
 		else:
 			satz = 'Ich bin ' + random.choice(adj) + random.choice(['. Alle', ', aber']) + ' meine Freunde lieben mich dafür.'
 	
-	if z == 12:
+	elif z == 12:
 		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
 	
-	if z == 13:
+	elif z == 13:
 		satz = farbe() + ' ist eine ' + random.choice(adj) + 'e ' + 'Farbe.'
 	
-	if z == 14:
+	elif z == 14:
 		satz = ersten_buchstaben_gross(random.choice(ort)) + ' ' + random.choice(['war', 'ist']) + ' ' + random.choice(['er', 'sie', 'es']) + ' ' + e5(random.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + random.choice(adj) + '.'
 	
-	if z == 15: # Kloster
+	elif z == 15: # Kloster
 		if random.randint(0,1): # männlich
 			satz = 'Bruder ' + random.choice(vornamen_m) + random.choice([' war', ' ist']) + ' der ' + random.choice(adj) + 'ste Mönch ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
 		else: # weiblich
 			satz = 'Schwester ' + random.choice(vornamen_w) + random.choice([' war', ' ist']) + ' die ' + random.choice(adj) + 'ste Nonne ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
 	# Das Fühl
+	
+	else:
+		if random.randint(0,1): # Standardsatz mit getrenntem Verb
+			v1, v2 = random.choice(verb2).split(",")
+			satz = person() + ' ' + v1
+			if random.randint(0,3):
+				satz += ' ' + random.choice(adj)
+			if random.randint(0,2):
+				satz += ' ' + random.choice(ort)
+			satz += ' ' + v2
+		else: # Standardsatz
+			satz = person() + ' ' + random.choice(verb)
+			if random.randint(0,3):
+				satz += ' ' + random.choice(adj)
+			if random.randint(0,2):
+				satz += ' ' + random.choice(ort)
+		if random.randint(0,5) == 1: # Chance 1/6
+			satz += random.choice(ns)
+		satz += '.'
+		
 	return satz
 
 #if random.randint(0,1) #50%
