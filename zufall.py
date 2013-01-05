@@ -153,11 +153,12 @@ def beruf_w():
 
 # Ortsangabe
 def ort():
-	tausende = ['500', '1.000', '2.000', '5.000', '10.000', '100.000']
+	tausende = ['500', '1000', '2000', '5000', '10000', '100000']
 	if random.randint(0,3):
 		zuschauer = random.choice(tausende)
 	else:
-		zuschauer = str(random.randint(1,10000)) # 10.000 Notation ??
+		zuschauer = str(random.randint(1,10000))
+
 	s = random.choice(ortsangabe)
 	s = re.sub('auf Gleis XX$', 'auf Gleis ' + str(random.randint(1,14)), s)
 	s = re.sub('XXZusch', zuschauer, s)
