@@ -38,31 +38,51 @@ def ersten_buchstaben_gross(s):
 # Person generieren
 beziehung_m = ['Vater', 'Bruder', 'Mann', 'Sohn', 'Onkel', 'Opa', 'Cousin', 'Enkel', 'Chef', 'Freund', 'Partner', 'Kollege', 'Mitarbeiter', 'Mitbewohner', 'Vermieter', 'Lehrer']
 beziehung_w = ['Mutter', 'Schwester', 'Frau', 'Tochter', 'Tante', 'Oma', 'Cousine', 'Enkelin', 'Cheffin', 'Freundin', 'Partnerin', 'Kollegin', 'Mitarbeiterin', 'Mitbewohnerin', 'Vermieterin', 'Lehrerin']
-personen = ['er', 'sie', 'es', 'jemand', 'niemand']
-spezial = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'ein Lehrer', 'ein Polizist', 'ein Beamter', 'ein Arzt', 'Hitler', 'ein Bernd', 'ein Schwuler', 'ein Behinderter', 'eine Sekretärin', 'der Affenmensch', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'der Satanist', 'der Alkoholiker', 'ein normaler Mensch', 'der Pirat', 'der Hartz-IV-Empfänger', 'ein Müllmann']
 possessivpronomen_m = ['mein', 'dein', 'sein', 'ihr']
 
-def person():
-	z = random.randint(1,13)
+personen = ['er', 'sie', 'es', 'jemand', 'niemand']
+
+spezial_m = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'ein Lehrer', 'ein Polizist', 'ein Beamter', 'ein Arzt', 'Hitler', 'ein Bernd', 'ein Schwuler', 'ein Behinderter', 'der Affenmensch', 'der Satanist', 'der Alkoholiker', 'ein normaler Mensch', 'ein Pirat', 'ein Hartz-IV-Empfänger', 'ein Müllmann']
+spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälterin', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'eine Lehrerin', 'eine Polizistin', 'eine Beamtin', 'eine Ärztin', 'eine Behinderte', 'eine Sekretärin', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'die Satanistin', 'die Alkoholikerin', 'die Piratin', 'die Hartz-IV-Empfängerin']
+
+def person_m():
+	z = random.randint(1,7)
 	if z == 1:
-		person = random.choice(vornamen) + 's ' + random.choice(beziehung_m)
+		s = random.choice(vornamen) + 's ' + random.choice(beziehung_m)
 	elif z == 2:
-		person = random.choice(vornamen) + 's ' + random.choice(beziehung_w)
+		s = random.choice(possessivpronomen_m) + ' ' + random.choice(beziehung_m)
 	elif z == 3:
-		person = random.choice(possessivpronomen_m) + ' ' + random.choice(beziehung_m)
+		s = 'der ' + random.choice(beziehung_m)
 	elif z == 4:
-		person = random.choice(possessivpronomen_m) + 'e ' + random.choice(beziehung_w)
+		s = random.choice(spezial_m)
 	elif z == 5:
-		person = 'der ' + random.choice(beziehung_m)
-	elif z == 6:
-		person = 'die ' + random.choice(beziehung_w)
-	elif z == 7:
-		person = random.choice(personen)
-	elif z == 8:
-		person = random.choice(spezial)
+		s = 'er'
 	else:
-		person = random.choice(vornamen)
-	return person
+		s = random.choice(vornamen_m)
+	return s
+
+def person_w():
+	z = random.randint(1,7)
+	if z == 1:
+		s = random.choice(vornamen) + 's ' + random.choice(beziehung_w)
+	elif z == 2:
+		s = random.choice(possessivpronomen_m) + 'e ' + random.choice(beziehung_w)
+	elif z == 3:
+		s = 'die ' + random.choice(beziehung_w)
+	elif z == 4:
+		s = random.choice(spezial_w)
+	elif z == 5:
+		s = 'sie'
+	else:
+		s = random.choice(vornamen_w)
+	return s
+
+def person():
+	if random.randint(0,1):
+		s = person_m()
+	else:
+		s = person_w()
+	return s
 
 
 # Wort
@@ -259,7 +279,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,17)
+	z = 17#random.randint(0,17)
 	
 	if z == 2: # Essen
 		satz = person() + ' isst'
@@ -426,9 +446,26 @@ def satz():
 		if not random.randint(0,10):
 			satz += ' ' + random.choice(['Mann weiss es nicht.', 'Denk mal drüber nach!'])
 	
-	elif z == 17:
+	elif z == 17: # Folgehandlung
 		v1, v2 = random.choice(verb2).split(",")
-		satz = random.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil']) + ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + random.choice(verb) + ', ' + v1 + ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + e5(ort() + ' ') + v2 + '.'
+		v12 = ''
+		
+		if ' ' in v1: # bildet sich => bilder ER sich
+			v1, v12 = v1.split(' ')
+			v12 += ' '
+		
+		if random.randint(0,1): # Selbst
+			if random.randint(0,1): # m
+				erste_person, zweit_person = person_m(), ' er '
+			else: # w
+				erste_person, zweit_person = person_w(), ' sie '
+		else: # Dritte
+			if random.randint(0,1): # m
+				erste_person, zweit_person = person_m(), random.choice([' sein ' + random.choice(beziehung_m), ' seine ' + random.choice(beziehung_w)]) + ' '
+			else: # w
+				erste_person, zweit_person = person_w(), random.choice([' ihr ' + random.choice(beziehung_m), ' ihre ' + random.choice(beziehung_w)]) + ' '
+		
+		satz = random.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil']) + ' ' + erste_person + ' ' + e5(ort() + ' ') + e5(random.choice(adj) + ' ') + random.choice(verb) + ', ' + v1 + zweit_person + v12 + e5(random.choice(adj) + ' ') + v2 + '.'
 	
 	else:
 		if random.randint(0,1): # Standardsatz mit getrenntem Verb
