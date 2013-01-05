@@ -17,7 +17,7 @@ ns = open('data/nebensatz', 'r').read().splitlines()
 verb = open('data/verb', 'r').read().splitlines()
 verb2 = open('data/verb2', 'r').read().splitlines()
 adj = open('data/adjektiv', 'r').read().splitlines()
-ort = open('data/ort', 'r').read().splitlines()
+ortsangabe = open('data/ort', 'r').read().splitlines()
 stadte = open('data/stadt_bundesland', 'r').read().splitlines()
 berufe = open('data/berufe', 'r').read().splitlines()
 musik = open('data/musikgenre', 'r').read().splitlines()
@@ -38,11 +38,12 @@ def ersten_buchstaben_gross(s):
 # Person generieren
 beziehung_m = ['Vater', 'Bruder', 'Mann', 'Sohn', 'Onkel', 'Opa', 'Cousin', 'Enkel', 'Chef', 'Freund', 'Partner', 'Kollege', 'Mitarbeiter', 'Mitbewohner', 'Vermieter', 'Lehrer']
 beziehung_w = ['Mutter', 'Schwester', 'Frau', 'Tochter', 'Tante', 'Oma', 'Cousine', 'Enkelin', 'Cheffin', 'Freundin', 'Partnerin', 'Kollegin', 'Mitarbeiterin', 'Mitbewohnerin', 'Vermieterin', 'Lehrerin']
-spezial = ['er', 'sie', 'es', 'jemand', 'niemand', 'ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'ein Lehrer', 'ein Polizist', 'ein Beamter', 'ein Arzt', 'Hitler', 'ein Bernd', 'ein Schwuler', 'ein Behinderter', 'eine Sekretärin', 'der Affenmensch', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'der Satanist', 'der Alkoholiker', 'ein normaler Mensch', 'der Pirat', 'der Hartz-IV-Empfänger', 'ein Müllmann']
+personen = ['er', 'sie', 'es', 'jemand', 'niemand']
+spezial = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'ein Lehrer', 'ein Polizist', 'ein Beamter', 'ein Arzt', 'Hitler', 'ein Bernd', 'ein Schwuler', 'ein Behinderter', 'eine Sekretärin', 'der Affenmensch', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'der Satanist', 'der Alkoholiker', 'ein normaler Mensch', 'der Pirat', 'der Hartz-IV-Empfänger', 'ein Müllmann']
 possessivpronomen_m = ['mein', 'dein', 'sein', 'ihr']
 
 def person():
-	z = random.randint(1,12)
+	z = random.randint(1,13)
 	if z == 1:
 		person = random.choice(vornamen) + 's ' + random.choice(beziehung_m)
 	elif z == 2:
@@ -56,6 +57,8 @@ def person():
 	elif z == 6:
 		person = 'die ' + random.choice(beziehung_w)
 	elif z == 7:
+		person = random.choice(personen)
+	elif z == 8:
 		person = random.choice(spezial)
 	else:
 		person = random.choice(vornamen)
@@ -117,7 +120,7 @@ def color():
 
 # Datum
 def datum():
-	text = str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1950,2012))
+	text = str(random.randint(1,31)) + '.' + str(random.randint(1,12)) + '.' + str(random.randint(1950,2013))
 	return text
 
 
@@ -146,6 +149,20 @@ def beruf_w():
 	text = re.sub('beamterin$', 'beamtin', text) # Polizeibeamterin => Polizeibeamte
 	text = re.sub('ein$', 'in', text) # Mikrobiologein => Mikrobiologin
 	return text
+
+
+# Ortsangabe
+def ort():
+	tausende = ['500', '1.000', '2.000', '5.000', '10.000', '100.000']
+	if random.randint(0,3):
+		zuschauer = random.choice(tausende)
+	else:
+		zuschauer = str(random.randint(1,10000)) # 10.000 Notation ??
+	s = random.choice(ortsangabe)
+	s = re.sub('auf Gleis XX$', 'auf Gleis ' + str(random.randint(1,14)), s)
+	s = re.sub('XXZusch', zuschauer, s)
+	s = re.sub('XXName', random.choice(vornamen) + 's', s)
+	return s
 
 
 # Essen und Beilage generieren
@@ -206,9 +223,9 @@ def band():
 	if z == 0:
 		band = 'Die ' + random.choice(adj).capitalize() + 'en ' + random.choice(gruppe)
 	if z == 1:
-		band = random.choice(geschmack) + ' ' + random.choice(ort)
+		band = random.choice(geschmack) + ' ' + ort()
 	if z == 2:
-		band = random.choice(adj).capitalize() + ' ' + random.choice(ort)
+		band = random.choice(adj).capitalize() + ' ' + ort()
 	if z == 3:
 		band = random.choice(adj).capitalize() + 'e ' + essen(random.randint(0,2))
 	if z == 4:
@@ -241,7 +258,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = random.randint(0,16)
+	z = random.randint(0,17)
 	
 	if z == 2: # Essen
 		satz = person() + ' isst'
@@ -284,12 +301,7 @@ def satz():
 		satz = person() + ' isst ' + essen(random.randint(0,2)) + e5(' mit ' + beilage()) + ' und trinkt ' + e5('dazu ') + trinken() + '.'
 	
 	elif z == 5: # Essen oder Trinken am Ort
-		satz = person()
-		if random.randint(0,1):
-			satz += ' ist '
-		else:
-			satz += ' sitzt '
-		satz += random.choice(ort) + ' und '
+		satz = person() + ' ' + random.choice(['ist', 'sitzt', 'befindet sich']) + ' ' + ort() + ' und '
 		if random.randint(0,1):
 			satz += 'isst ' + e5('dort ') + essen(random.randint(0,2)) +e5(' mit ' + beilage())
 		else:
@@ -312,7 +324,7 @@ def satz():
 		else:
 			if random.randint(0,1):
 				satz += ' ' + random.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter'])
-			satz += ' ' + str(random.randint(1950, 2012))
+			satz += ' ' + str(random.randint(1950, 2013))
 		if random.randint(0,1): # 50% Ort
 			satz += ' in ' + stadt()
 		satz += ' gegründet.'
@@ -359,7 +371,7 @@ def satz():
 					satz += ' (' + beruf_w() + ')'
 		satz += ' ist' + e5(' gerade') + ' beruflich '
 		if random.randint(0,2):
-			satz += random.choice(ort)
+			satz += ort()
 		else:
 			satz += 'in ' + stadt()
 		
@@ -389,11 +401,14 @@ def satz():
 	elif z == 12:
 		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
 	
-	elif z == 13:
-		satz = farbe() + ' ist eine ' + random.choice(adj) + 'e ' + 'Farbe.'
+	elif z == 13: # absurde Farbfunktion
+		if random.randint(0,1):
+			satz = farbe() + ' ist eine ' + random.choice(adj) + 'e ' + 'Farbe.'
+		else:
+			satz = farbe() + ' ist ' + random.choice([farbe().lower(), random.choice(adj)]) + 'er als ' + farbe() + '.'
 	
 	elif z == 14:
-		satz = ersten_buchstaben_gross(random.choice(ort)) + ' ' + random.choice(['war', 'ist']) + ' ' + random.choice(['er', 'sie', 'es']) + ' ' + e5(random.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + random.choice(adj) + '.'
+		satz = ort() + ' ' + random.choice(['war', 'ist']) + ' ' + random.choice(['er', 'sie', 'es']) + ' ' + e5(random.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + random.choice(adj) + '.'
 	
 	elif z == 15: # Kloster
 		if random.randint(0,1): # männlich
@@ -401,24 +416,18 @@ def satz():
 		else: # weiblich
 			satz = 'Schwester ' + random.choice(vornamen_w) + random.choice([' war', ' ist']) + ' die ' + random.choice(adj) + 'ste Nonne ' + random.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
 	
-	elif z == 16:
+	elif z == 16: # Frage
 		if random.randint(0,1): # normales verb
-			if random.randint(0,1):
-				satz = random.choice(['Warum', 'Wieso', 'Weshalb'])
-				satz += ' ' + random.choice(verb)
-			else:
-				satz = random.choice(verb).capitalize()
-			satz += ' ' + person() + e5(' ' + random.choice(adj)) + e5(' ' + random.choice(ort)) + '?'
+			satz = random.choice(['Warum ', 'Wieso ', 'Weshalb ', '']) + random.choice(verb) + ' ' + person() + e5(' ' + random.choice(adj)) + e5(' ' + ort()) + '?'
 		else: # getrenntes verb
 			v1, v2 = random.choice(verb2).split(",")
-			if random.randint(0,1):
-				satz = random.choice(['Warum', 'Wieso', 'Weshalb'])
-				satz += ' ' + v1
-			else:
-				satz = v1.capitalize()
-			satz += ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + e5(random.choice(ort) + ' ') + v2 + '?'
+			satz = random.choice(['Warum ', 'Wieso ', 'Weshalb ', '']) + v1 + ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + e5(ort() + ' ') + v2 + '?'
 		if not random.randint(0,10):
 			satz += ' ' + random.choice(['Mann weiss es nicht.', 'Denk mal drüber nach!'])
+	
+	elif z == 17:
+		v1, v2 = random.choice(verb2).split(",")
+		satz = random.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil']) + ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + random.choice(verb) + ', ' + v1 + ' ' + person() + ' ' + e5(random.choice(adj) + ' ') + e5(ort() + ' ') + v2 + '.'
 	
 	else:
 		if random.randint(0,1): # Standardsatz mit getrenntem Verb
@@ -427,14 +436,14 @@ def satz():
 			if random.randint(0,3):
 				satz += ' ' + random.choice(adj)
 			if random.randint(0,2):
-				satz += ' ' + random.choice(ort)
+				satz += ' ' + ort()
 			satz += ' ' + v2
 		else: # Standardsatz
 			satz = person() + ' ' + random.choice(verb)
 			if random.randint(0,3):
 				satz += ' ' + random.choice(adj)
 			if random.randint(0,2):
-				satz += ' ' + random.choice(ort)
+				satz += ' ' + ort()
 		if random.randint(0,5) == 1: # Chance 1/6
 			satz += random.choice(ns)
 		satz += '.'
