@@ -279,7 +279,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def satz():
-	z = 17#random.randint(0,17)
+	z = random.randint(0,17)
 	
 	if z == 2: # Essen
 		satz = person() + ' isst'
@@ -449,12 +449,17 @@ def satz():
 	elif z == 17: # Folgehandlung
 		v1, v2 = random.choice(verb2).split(",")
 		v12 = ''
-		
 		if ' ' in v1: # bildet sich => bilder ER sich
 			v1, v12 = v1.split(' ')
 			v12 += ' '
 		
-		if random.randint(0,1): # Selbst
+		verb1 = random.choice(verb)
+		verb12 = ' '
+		if ' ' in verb1:
+			verb1, verb12 = verb1.split(' ')
+			verb12 = ' ' + verb12 + ' '
+		
+		if random.randint(0,3): # Selbst
 			if random.randint(0,1): # m
 				erste_person, zweit_person = person_m(), ' er '
 			else: # w
@@ -465,7 +470,7 @@ def satz():
 			else: # w
 				erste_person, zweit_person = person_w(), random.choice([' ihr ' + random.choice(beziehung_m), ' ihre ' + random.choice(beziehung_w)]) + ' '
 		
-		satz = random.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil']) + ' ' + erste_person + ' ' + e5(ort() + ' ') + e5(random.choice(adj) + ' ') + random.choice(verb) + ', ' + v1 + zweit_person + v12 + e5(random.choice(adj) + ' ') + v2 + '.'
+		satz = random.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil', 'Gerade weil']) + random.choice([verb12 + erste_person + ' ', ' ' + erste_person + verb12]) + e5(ort() + ' ') + e5(random.choice(adj) + ' ') + verb1 + ', ' + v1 + zweit_person + v12 + e5(random.choice(adj) + ' ') + v2 + '.'
 	
 	else:
 		if random.randint(0,1): # Standardsatz mit getrenntem Verb
