@@ -420,13 +420,20 @@ def satz():
 			satz = 'Ich bin ' + random.choice(adj) + random.choice(['. Alle', ', aber']) + ' meine Freunde lieben mich dafür.'
 	
 	elif z == 12:
-		satz = 'Je ' + random.choice(adj) + 'er desto ' + random.choice(adj) + 'er.'
+		adj1 = random.choice(adj)
+		adj2 = random.choice(adj)
+		while adj1 is adj2:
+			adj2 = random.choice(adj)
+		satz = 'Je ' + adj1 + 'er desto ' + adj2 + 'er.'
 	
 	elif z == 13: # absurde Farbfunktion
 		if random.randint(0,1):
 			satz = farbe() + ' ist eine ' + random.choice(adj) + 'e ' + 'Farbe.'
 		else:
-			satz = farbe() + ' ist ' + random.choice([farbe().lower(), random.choice(adj)]) + 'er als ' + farbe() + '.'
+			farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
+			while farbe1 is farbe2 or farbe2 is farbe3 or farbe1 is farbe3:
+				farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
+			satz = farbe1 + ' ist ' + random.choice([farbe2.lower(), random.choice(adj)]) + 'er als ' + farbe3 + '.'
 	
 	elif z == 14:
 		satz = ort() + ' ' + random.choice(['war', 'ist']) + ' ' + random.choice(['er', 'sie', 'es']) + ' ' + e5(random.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + random.choice(adj) + '.'
@@ -493,6 +500,3 @@ def satz():
 	
 	satz = ersten_buchstaben_gross(satz)
 	return satz
-
-#if random.randint(0,1) #50%
-# EOF
