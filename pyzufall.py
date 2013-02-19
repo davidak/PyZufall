@@ -93,82 +93,82 @@ konsonant2 = ['h', 'k', 'l', 'm', 'n', 's', 't']
 def wort():
 	laenge = r.randint(3,12)
 	anfaengt = r.randint(1,3)
-	text = ""
+	s = ""
 	
 	if anfaengt == 2: # Anfang wird ein Vokal
-		text = r.choice(vokal)
-		while len(text) < laenge:
-			text += r.choice(konsonant)
-			if len(text) < laenge and r.randint(0,1):
-				text += r.choice(konsonant2)
-			if len(text) >= laenge:
+		s = r.choice(vokal)
+		while len(s) < laenge:
+			s += r.choice(konsonant)
+			if len(s) < laenge and r.randint(0,1):
+				s += r.choice(konsonant2)
+			if len(s) >= laenge:
 				break
-			text += r.choice(vokal)
+			s += r.choice(vokal)
 
 	else: # Anfang wird ein Konsonant
-		text = r.choice(konsonant)
-		while len(text) < laenge:
-			text += r.choice(vokal)
-			if len(text) >= laenge:
+		s = r.choice(konsonant)
+		while len(s) < laenge:
+			s += r.choice(vokal)
+			if len(s) >= laenge:
 				break
-			text += r.choice(konsonant)
-			if len(text) < laenge and r.randint(0,1):
-				text += r.choice(konsonant2)
-	text = text.capitalize()
-	return text
+			s += r.choice(konsonant)
+			if len(s) < laenge and r.randint(0,1):
+				s += r.choice(konsonant2)
+	s = s.capitalize()
+	return s
 
 
 # Zahl
 def zahl():
-	text = r.randint(0,100)
-	return str(text)
+	s = r.randint(0,100)
+	return str(s)
 
 
 # Farbe
 farben = ['Rot', 'Gelb', 'Blau', 'Violett', 'Türkis', 'Orange', 'Grün', 'Magenta', 'Braun', 'Grau', 'Weiß', 'Schwarz']
 def farbe():
-	farbe = r.choice(farben)
-	return farbe
+	s = r.choice(farben)
+	return s
 
 
 # Farben auf englisch
 colors = ['red', 'yellow', 'blue', 'violet', 'orange', 'green', 'magenta', 'brown', 'gray', 'white', 'black']
 def color():
-	color = r.choice(colors)
-	return color
+	s = r.choice(colors)
+	return s
 
 
 # Datum
 def datum():
-	text = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
-	return text
+	s = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
+	return s
 
 
 # Sprichwort
 def sprichwort():
-	text = r.choice(sprichwoerter)
-	return text
+	s = r.choice(sprichwoerter)
+	return s
 
 
 # Berufsbezeichnung
 def beruf():
-	text = r.choice(berufe)
-	return text
+	s = r.choice(berufe)
+	return s
 
 
 # Berufsbezeichnung weiblich
 def beruf_w():
-	text = beruf() + 'in'
-	text = re.sub('mannin$', 'frau', text) # Restaurantfachmannin => Restaurantfachfrau
-	text = re.sub('kraftin$', 'kraft', text) # Edv-Fachkraftin => Edv-Fachkraft
-	text = re.sub('angestellterin$', 'angestellte', text)
-	text = re.sub('Fotomodellin$', 'Fotomodell', text)
-	text = re.sub('Technischer Zeichnerin$', 'Technische Zeichnerin', text)
-	text = re.sub('Arztin$', 'Ärztin', text)
-	text = re.sub('arztin$', 'ärztin', text)
-	text = re.sub('beamterin$', 'beamtin', text) # Polizeibeamterin => Polizeibeamte
-	text = re.sub('ein$', 'in', text) # Mikrobiologein => Mikrobiologin
-	return text
+	s = beruf() + 'in'
+	s = re.sub('mannin$', 'frau', s) # Restaurantfachmannin => Restaurantfachfrau
+	s = re.sub('kraftin$', 'kraft', s) # Edv-Fachkraftin => Edv-Fachkraft
+	s = re.sub('angestellterin$', 'angestellte', s)
+	s = re.sub('Fotomodellin$', 'Fotomodell', s)
+	s = re.sub('Technischer Zeichnerin$', 'Technische Zeichnerin', s)
+	s = re.sub('Arztin$', 'Ärztin', s)
+	s = re.sub('arztin$', 'ärztin', s)
+	s = re.sub('beamterin$', 'beamtin', s) # Polizeibeamterin => Polizeibeamte
+	s = re.sub('ein$', 'in', s) # Mikrobiologein => Mikrobiologin
+	return s
 
 
 # Ortsangabe
@@ -192,24 +192,24 @@ voressen = ['Brat', 'Rühr', 'Reibe', 'Brech', 'Back', 'Ofen', 'Hack', 'Mager', 
 def essen(anz):
 	if anz: # zusammengesetzt aus zwei Wörtern
 		if r.randint(0,2):
-			essen = r.choice(geschmack) + r.choice(nahrung).lower()
+			s = r.choice(geschmack) + r.choice(nahrung).lower()
 		else:
-			essen = r.choice(voressen) + r.choice(nahrung).lower()
+			s = r.choice(voressen) + r.choice(nahrung).lower()
 	else: # aus einem Wort bestehend
 		if r.randint(0,2):
-			essen = r.choice(geschmack)
+			s = r.choice(geschmack)
 		else:
-			essen = r.choice(nahrung)
-	return essen
+			s = r.choice(nahrung)
+	return s
 
 beilag = ['Soße', 'Sauce', 'Brühe', 'Brei', 'Püree', 'Kartoffeln', 'Salat', 'Marmelade']
 beilag2 = ['Kroketten', 'Pommes', 'Rösti', 'Röstzwiebeln', 'Mayo', 'Mayonnaise', 'Ketchup', 'Bratkartoffeln', 'Zwiebelringen', 'Kartoffelpuffer', 'Soße', 'Nudeln', 'Gemüse', 'Knödeln', 'Salat', 'Marmelade']
 def beilage():
 	if r.randint(0,3):
-		text = r.choice(beilag2)
+		s = r.choice(beilag2)
 	else:
-		text = r.choice(geschmack) + r.choice(beilag).lower()
-	return text
+		s = r.choice(geschmack) + r.choice(beilag).lower()
+	return s
 
 
 # Trinken generieren
@@ -217,23 +217,23 @@ getraenk = ['Wasser', 'Saft', 'Tee', 'Kaffee', 'Eistee', 'Milch', 'Punsch', 'Bow
 
 def trinken():
 	if r.randint(0,2):
-		trinken = r.choice(geschmack) + r.choice(getraenk).lower()
+		s = r.choice(geschmack) + r.choice(getraenk).lower()
 	else:
-		trinken = r.choice(getraenk)
-	return trinken
+		s = r.choice(getraenk)
+	return s
 
 
 # Stadt
 def stadt():
-	stadt = r.choice(stadte).split(' (', 1)
-	stadt = stadt[0]
-	return stadt
+	s = r.choice(stadte).split(' (', 1)
+	s = stadt[0]
+	return s
 
 
 # Stadt mit Bundesland
 def stadt_bl():
-	stadt = r.choice(stadte)
-	return stadt
+	s = r.choice(stadte)
+	return s
 
 
 # Band
@@ -242,18 +242,18 @@ gruppe = ['Menschen', 'Personen', 'Kinder', 'Tiere', 'Gedärme', 'Kadaver', 'Nud
 def band():
 	z = r.randint(0,5)
 	if z == 0:
-		band = 'Die ' + r.choice(adj).capitalize() + 'en ' + r.choice(gruppe)
+		s = 'Die ' + r.choice(adj).capitalize() + 'en ' + r.choice(gruppe)
 	if z == 1:
-		band = r.choice(geschmack) + ' ' + ort()
+		s = r.choice(geschmack) + ' ' + ort()
 	if z == 2:
-		band = r.choice(adj).capitalize() + ' ' + ort()
+		s = r.choice(adj).capitalize() + ' ' + ort()
 	if z == 3:
-		band = r.choice(adj).capitalize() + 'e ' + essen(r.randint(0,2))
+		s = r.choice(adj).capitalize() + 'e ' + essen(r.randint(0,2))
 	if z == 4:
-		band = r.choice(adj).capitalize()
+		s = r.choice(adj).capitalize()
 	if z == 5:
-		band = wort()
-	return band
+		s = wort()
+	return s
 
 
 # Bandart
@@ -261,14 +261,14 @@ def bandart():
 	if r.randint(0,2):
 		m = r.choice(musik)
 		if ' ' in m:
-			text = m + ' Band'
+			s = m + ' Band'
 		elif '-' in m:
-			text = m + '-Band'
+			s = m + '-Band'
 		else:
-			text = m + 'band'
+			s = m + 'band'
 	else:
-		text = r.choice(['Band', 'Musikergruppe'])
-	return text
+		s = r.choice(['Band', 'Musikergruppe'])
+	return s
 
 
 # Firma
