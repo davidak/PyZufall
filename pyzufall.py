@@ -46,32 +46,36 @@ spezial_m = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'ein L
 spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälterin', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'eine Lehrerin', 'eine Polizistin', 'eine Beamtin', 'eine Ärztin', 'eine Behinderte', 'eine Sekretärin', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'die Satanistin', 'die Alkoholikerin', 'die Piratin', 'die Hartz-IV-Empfängerin']
 
 def person_m():
-	z = r.randint(1,7)
+	z = r.randint(1,8)
 	if z == 1:
-		s = r.choice(vornamen) + 's ' + r.choice(beziehung_m)
+		s = r.choice(vornamen) + 's ' + e5(r.choice(adj) + 'er ') + r.choice(beziehung_m)
 	elif z == 2:
-		s = r.choice(possessivpronomen_m) + ' ' + r.choice(beziehung_m)
+		s = r.choice(possessivpronomen_m) + ' ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_m)
 	elif z == 3:
-		s = 'der ' + r.choice(beziehung_m)
+		s = 'der ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_m)
 	elif z == 4:
-		s = r.choice(spezial_m)
+		s = 'der ' + r.choice(adj) + 'e ' + r.choice(vornamen_m)
 	elif z == 5:
+		s = r.choice(spezial_m)
+	elif z == 6:
 		s = 'er'
 	else:
 		s = r.choice(vornamen_m)
 	return s
 
 def person_w():
-	z = r.randint(1,7)
+	z = r.randint(1,8)
 	if z == 1:
-		s = r.choice(vornamen) + 's ' + r.choice(beziehung_w)
+		s = r.choice(vornamen) + 's ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_w)
 	elif z == 2:
-		s = r.choice(possessivpronomen_m) + 'e ' + r.choice(beziehung_w)
+		s = r.choice(possessivpronomen_m) + 'e ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_w)
 	elif z == 3:
-		s = 'die ' + r.choice(beziehung_w)
+		s = 'die ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_w)
 	elif z == 4:
-		s = r.choice(spezial_w)
+		s = 'die ' + r.choice(adj) + 'e ' + r.choice(vornamen_w)
 	elif z == 5:
+		s = r.choice(spezial_w)
+	elif z == 6:
 		s = 'sie'
 	else:
 		s = r.choice(vornamen_w)
