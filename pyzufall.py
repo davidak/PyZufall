@@ -225,8 +225,8 @@ def trinken():
 
 # Stadt
 def stadt():
-	s = r.choice(stadte).split(' (', 1)
-	s = stadt[0]
+	s = r.choice(stadte).split(' (', 1) # Stadt und Bundesland trennen
+	s = s[0] # Nur Stadt, nicht Bundesland
 	return s
 
 
