@@ -294,7 +294,7 @@ def objekt_m():
 def objekt_w():
 	x = 4#r.randint(1,4)
 	
-	if x == 1: # Person
+	if r.randint(1,4) == 1: # Person
 		y = r.randint(1,4)
 		if y == 1:
 			s = r.choice(vornamen_m)
@@ -306,36 +306,14 @@ def objekt_w():
 		if y == 4:
 			s = r.choice(['ihre ', 'deine ']) + e25(adj() + 'e ') + r.choice(beziehung_w)
 	
-	if x == 2: # Gegenstand
-		s = gegenstand()
-		s = re.sub('der ', 'den ', s)
-		
-		if r.randint(0,1):
-			s = re.sub('den ', r.choice(['einen ', 'seinen ', 'deinen ']), s)
-			s = re.sub('die ', r.choice(['eine ', 'seine ', 'deine ']), s)
-			s = re.sub('das ', r.choice(['ein ', 'sein ', 'dein ']), s)
-		
-		s = re.sub('seinen ', 'ihren ', s)
-	
-	if x == 3: # Tier
-		s = tier()
+	else:
+		s = r.choice([gegenstand(), tier(), pflanze()])
 		if 'der ' in s:
 			s = re.sub('e$', 'en', s) # Löwen
 		s = re.sub('Bär$', 'Bären', s)
 		s = re.sub('der ', 'den ', s)
 		
-		if r.randint(0,1):
-			s = re.sub('den ', r.choice(['einen ', 'seinen ', 'deinen ']), s)
-			s = re.sub('die ', r.choice(['eine ', 'seine ', 'deine ']), s)
-			s = re.sub('das ', r.choice(['ein ', 'sein ', 'dein ']), s)
-		
-		s = re.sub('seinen ', 'ihren ', s)
-
-	if x == 4: # Pflanze
-		s = pflanze()
-		s = re.sub('der ', 'den ', s)
-		
-		if r.randint(0,1):
+		if r.randint(0,2):
 			s = re.sub('den ', r.choice(['einen ', 'seinen ', 'deinen ']), s)
 			s = re.sub('die ', r.choice(['eine ', 'seine ', 'deine ']), s)
 			s = re.sub('das ', r.choice(['ein ', 'sein ', 'dein ']), s)
@@ -462,7 +440,7 @@ def themen_satz():
 
 
 def standard_satz():
-	x = r.randint(1,4)
+	x = 4#r.randint(1,4)
 	
 	if x == 1:
 		if r.randint(0,1):
