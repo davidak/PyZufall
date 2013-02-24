@@ -260,40 +260,6 @@ def beruf_w():
 
 # Grammatikalisches Objekt
 def objekt_m():
-	x = r.randint(1,4)
-	
-	if x == 1: # Person
-		y = r.randint(1,4)
-		if y == 1:
-			s = r.choice(vornamen_m)
-		if y == 2:
-			s = r.choice(vornamen_w)
-		if y == 3:
-			s = r.choice(['seinen ', 'deinen ']) + e25(adj() + 'en ') + r.choice(beziehung_m)
-			s = re.sub('Kollege', 'Kollegen', s)
-		if y == 4:
-			s = r.choice(['seine ', 'deine ']) + e25(adj() + 'e ') + r.choice(beziehung_w)
-	if x == 2: # Gegenstand
-		s = gegenstand()
-		s = re.sub('ein ', 'einen ', s)
-		s = r.choice(['d', 's', '']) + s
-	if x == 3: # Tier
-		s = tier()
-		if 'ein ' in s:
-			s = re.sub('ein ', 'einen ', s)
-			s = re.sub('e$', 'en', s)
-			s = re.sub('Bär$', 'Bären', s)
-		s = r.choice(['d', 's', '']) + s
-	if x == 4: # Pflanze
-		s = pflanze()
-		s = re.sub('ein ', 'einen ', s)
-		s = r.choice(['d', 's', '']) + s
-	
-	return s
-
-def objekt_w():
-	x = 4#r.randint(1,4)
-	
 	if r.randint(1,4) == 1: # Person
 		y = r.randint(1,4)
 		if y == 1:
@@ -301,12 +267,49 @@ def objekt_w():
 		if y == 2:
 			s = r.choice(vornamen_w)
 		if y == 3:
-			s = r.choice(['ihren ', 'deinen ']) + e25(adj() + 'en ') + r.choice(beziehung_m)
+			s =  e25(adj() + 'en ')
+			s = re.sub('een ', 'en ', s) # feigeen
+			s = r.choice(['seine ', 'deinen ']) + s + r.choice(beziehung_m)
 			s = re.sub('Kollege', 'Kollegen', s)
 		if y == 4:
-			s = r.choice(['ihre ', 'deine ']) + e25(adj() + 'e ') + r.choice(beziehung_w)
+			s =  e25(adj() + 'e ')
+			s = re.sub('ee ', 'e ', s) # feigee
+			s = r.choice(['seine ', 'deine ']) + s + r.choice(beziehung_w)
 	
-	else:
+	else: # Gegenstand / Tier / Pflanze
+		s = r.choice([gegenstand(), tier(), pflanze()])
+		if 'der ' in s:
+			s = re.sub('e$', 'en', s) # Löwen
+		s = re.sub('Bär$', 'Bären', s)
+		s = re.sub('der ', 'den ', s)
+		
+		if r.randint(0,2):
+			s = re.sub('den ', r.choice(['einen ', 'seinen ', 'deinen ']), s)
+			s = re.sub('die ', r.choice(['eine ', 'seine ', 'deine ']), s)
+			s = re.sub('das ', r.choice(['ein ', 'sein ', 'dein ']), s)
+		
+		s = re.sub('seinen ', 'ihren ', s)
+
+	return s
+
+def objekt_w():	
+	if r.randint(1,4) == 1: # Person
+		y = r.randint(1,4)
+		if y == 1:
+			s = r.choice(vornamen_m)
+		if y == 2:
+			s = r.choice(vornamen_w)
+		if y == 3:
+			s =  e25(adj() + 'en ')
+			s = re.sub('een ', 'en ', s) # feigeen
+			s = r.choice(['ihren ', 'deinen ']) + s + r.choice(beziehung_m)
+			s = re.sub('Kollege', 'Kollegen', s)
+		if y == 4:
+			s =  e25(adj() + 'e ')
+			s = re.sub('ee ', 'e ', s) # feigee
+			s = r.choice(['ihre ', 'deine ']) + s + r.choice(beziehung_w)
+	
+	else: # Gegenstand / Tier / Pflanze
 		s = r.choice([gegenstand(), tier(), pflanze()])
 		if 'der ' in s:
 			s = re.sub('e$', 'en', s) # Löwen
@@ -440,7 +443,7 @@ def themen_satz():
 
 
 def standard_satz():
-	x = 4#r.randint(1,4)
+	x = r.randint(1,5)
 	
 	if x == 1:
 		if r.randint(0,1):
@@ -464,6 +467,13 @@ def standard_satz():
 		s = adj() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + v2
 	
 	if x == 4:
+		if r.randint(0,1):
+			v1, v2 = verbt2().split(",")
+		else:
+			v1, v2 = verbt(), ''
+		s = person_m() + ' ' + v1 + ' ' + objekt_m() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + v2
+	
+	if x == 5:
 		if r.randint(0,1):
 			v1, v2 = verbt2().split(",")
 		else:
