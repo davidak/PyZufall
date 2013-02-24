@@ -7,33 +7,41 @@ import re
 r = random.SystemRandom() # Uses /dev/urandom or Windows CryptGenRandom for better entropy
 
 # Daten aus Dateien einlesen
-vornamen_m = open('data/vornamen_m', 'r').read().splitlines()
-vornamen_w = open('data/vornamen_w', 'r').read().splitlines()
-vornamen = vornamen_m + vornamen_w
-nachnamen = open('data/nachnamen', 'r').read().splitlines()
 
-pflanzen = open('data/pflanzen', 'r').read().splitlines()
-tiere = open('data/tiere', 'r').read().splitlines()
-gegenstaende = open('data/gegenstaende', 'r').read().splitlines()
+def einlesen(datei): # und Kommentare löschen
+	liste = open(datei, 'r').read().splitlines()
+	for i in liste:
+		if '#' in i:
+			liste.remove(i)
+	return liste
+
+vornamen_m = einlesen('data/vornamen_m')
+vornamen_w = einlesen('data/vornamen_w')
+vornamen = vornamen_m + vornamen_w
+nachnamen = einlesen('data/nachnamen')
+
+pflanzen = einlesen('data/pflanzen')
+tiere = einlesen('data/tiere')
+gegenstaende = einlesen('data/gegenstaende')
 
 # http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
-nullwertige_verben = open('data/nullwertige_verben', 'r').read().splitlines()
-intransitive_verben = open('data/intransitive_verben', 'r').read().splitlines()
-intransitive_verben_2 = open('data/intransitive_verben_2', 'r').read().splitlines()
-transitive_verben = open('data/transitive_verben', 'r').read().splitlines()
-transitive_verben_2 = open('data/transitive_verben_2', 'r').read().splitlines()
-ditransitive_verben = open('data/ditransitive_verben', 'r').read().splitlines()
+nullwertige_verben = einlesen('data/nullwertige_verben')
+intransitive_verben = einlesen('data/intransitive_verben')
+intransitive_verben_2 = einlesen('data/intransitive_verben_2')
+transitive_verben = einlesen('data/transitive_verben')
+transitive_verben_2 = einlesen('data/transitive_verben_2')
+ditransitive_verben = einlesen('data/ditransitive_verben')
 
-adjektive = open('data/adjektiv', 'r').read().splitlines()
+adjektive = einlesen('data/adjektiv')
 
-ortsangabe = open('data/ort', 'r').read().splitlines()
-stadte = open('data/stadt_bundesland', 'r').read().splitlines()
-nahrung = open('data/nahrung', 'r').read().splitlines()
-geschmack = open('data/geschmack', 'r').read().splitlines()
-berufe = open('data/berufe', 'r').read().splitlines()
-musik = open('data/musikgenre', 'r').read().splitlines()
-sprichwoerter = open('data/sprichwoerter', 'r').read().splitlines()
-ns = open('data/nebensatz', 'r').read().splitlines()
+ortsangabe = einlesen('data/ort')
+stadte = einlesen('data/stadt_bundesland')
+nahrung = einlesen('data/nahrung')
+geschmack = einlesen('data/geschmack')
+berufe = einlesen('data/berufe')
+musik = einlesen('data/musikgenre')
+sprichwoerter = einlesen('data/sprichwoerter')
+ns = einlesen('data/nebensatz')
 
 
 # ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
@@ -435,10 +443,15 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def themen_satz():
-	x = r.randint(1,10)
-	s = "Hallo "
-	s += e75("Salami")
-	return s
+	x = 1#r.randint(1,10)
+	
+	if x == 1: # Im Park schneit es. / Es stürmt.
+		if r.randint(0,2):
+			s = ort() + ' ' + verbn() + ' es' + e25(' ' + adj())
+		else:
+			s = 'Es ' + verbn() + e25(' ' + adj())
+
+	return s + '.'
 
 
 
@@ -522,5 +535,5 @@ def frage():
 
 def satz():
 	#s = ersten_buchstaben_gross(r.choice([themen_satz(), standard_satz(), frage()]))
-	s = ersten_buchstaben_gross(standard_satz())
+	s = ersten_buchstaben_gross(themen_satz())
 	return s
