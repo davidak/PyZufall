@@ -19,10 +19,11 @@ gegenstaende = open('data/gegenstaende', 'r').read().splitlines()
 # http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
 nullwertige_verben = open('data/nullwertige_verben', 'r').read().splitlines()
 intransitive_verben = open('data/intransitive_verben', 'r').read().splitlines()
+intransitive_verben_2 = open('data/intransitive_verben_2', 'r').read().splitlines()
 transitive_verben = open('data/transitive_verben', 'r').read().splitlines()
+transitive_verben_2 = open('data/transitive_verben_2', 'r').read().splitlines()
 ditransitive_verben = open('data/ditransitive_verben', 'r').read().splitlines()
 
-verb2 = open('data/verb2', 'r').read().splitlines()
 adjektive = open('data/adjektiv', 'r').read().splitlines()
 
 ortsangabe = open('data/ort', 'r').read().splitlines()
@@ -71,9 +72,15 @@ def verbn():
 
 def verbi():
 	return r.choice(intransitive_verben)
+	
+def verbi2():
+	return r.choice(intransitive_verben_2)
 
 def verbt():
 	return r.choice(transitive_verben)
+
+def verbt2():
+	return r.choice(transitive_verben_2)
 
 def verbd():
 	return r.choice(ditransitive_verben)
@@ -455,27 +462,35 @@ def themen_satz():
 
 
 def standard_satz():
-	x = 8#r.randint(1,8)
+	x = r.randint(1,4)
 	
 	if x == 1:
-		s = person() + ' ' + verbi() + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()])
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = person() + ' ' + v1 + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()]) + v2
+	
 	if x == 2:
-		v1, v2 = r.choice(verb2).split(",")
-		s = person() + ' ' + v1 + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()]) + ' ' + v2
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = ort() + ' ' + v1 + ' ' + person() + e75(' ' + adj()) + v2
+	
 	if x == 3:
-		s = ort() + ' ' + verbi() + ' ' + person() + e75(' ' + adj())
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = adj() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + v2
+	
 	if x == 4:
-		v1, v2 = r.choice(verb2).split(",")
-		s = ort() + ' ' + v1 + ' ' + person() + e75(' ' + adj()) + ' ' + v2
-	if x == 5:
-		s = adj() + ' ' + verbi() + ' ' + person() + e75(' ' + ort())
-	if x == 6:
-		v1, v2 = r.choice(verb2).split(",")
-		s = adj() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + ' ' + v2
-	if x == 7: 
-		s = person_m() + ' ' + verbt() + ' ' + objekt_m() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), ''])
-	if x == 8:
-		s = person_w() + ' ' + verbt() + ' ' + objekt_w() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), ''])
+		if r.randint(0,1):
+			v1, v2 = verbt2().split(",")
+		else:
+			v1, v2 = verbt(), ''
+		s = person_w() + ' ' + v1 + ' ' + objekt_w() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + v2
 	
 	return s + e16(r.choice(ns)) + '.'
 
@@ -484,18 +499,35 @@ def frage():
 	x = r.randint(1,6)
 	
 	if x == 1:
-		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + verbi() + ' ' + person() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), ''])
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + v2
 	if x == 2:
-		v1, v2 = r.choice(verb2).split(",")
-		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + ' ' + v2
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = 'Wer ' + v1 + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()]) +v2
 	if x == 3:
-		s = 'Wer ' + verbi() + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()])
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = 'Wo ' + v1 + ' ' + person() + e25(' ' + adj()) +v2
 	if x == 4:
-		s = 'Wo ' + verbi() + ' ' + person() + e25(' ' + adj())
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = 'Wie ' + v1 + ' ' + person() + e50(' ' + ort()) +v2
 	if x == 5:
-		s = 'Wie ' + verbi() + ' ' + person() + e50(' ' + ort())
-	if x == 6:
-		s = 'Wann ' + verbi() + ' ' + person() + e50(' endlich') + e25(' ' + ort())
+		if r.randint(0,1):
+			v1, v2 = verbi2().split(",")
+		else:
+			v1, v2 = verbi(), ''
+		s = 'Wann ' + v1 + ' ' + person() + e50(' endlich') + e25(' ' + ort()) +v2
 	
 	return s + '?'
 
