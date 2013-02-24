@@ -11,21 +11,51 @@ vornamen_m = open('data/vornamen_m', 'r').read().splitlines()
 vornamen_w = open('data/vornamen_w', 'r').read().splitlines()
 vornamen = vornamen_m + vornamen_w
 nachnamen = open('data/nachnamen', 'r').read().splitlines()
-geschmack = open('data/geschmack', 'r').read().splitlines()
-nahrung = open('data/nahrung', 'r').read().splitlines()
-ns = open('data/nebensatz', 'r').read().splitlines()
-verb = open('data/verb', 'r').read().splitlines()
+
+pflanzen = open('data/pflanzen', 'r').read().splitlines()
+tiere = open('data/tiere', 'r').read().splitlines()
+gegenstaende = open('data/gegenstaende', 'r').read().splitlines()
+
+# http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+nullwertige_verben = open('data/nullwertige_verben', 'r').read().splitlines()
+intransitive_verben = open('data/intransitive_verben', 'r').read().splitlines()
+transitive_verben = open('data/transitive_verben', 'r').read().splitlines()
+ditransitive_verben = open('data/ditransitive_verben', 'r').read().splitlines()
+
 verb2 = open('data/verb2', 'r').read().splitlines()
-adj = open('data/adjektiv', 'r').read().splitlines()
+adjektive = open('data/adjektiv', 'r').read().splitlines()
+
 ortsangabe = open('data/ort', 'r').read().splitlines()
 stadte = open('data/stadt_bundesland', 'r').read().splitlines()
+nahrung = open('data/nahrung', 'r').read().splitlines()
+geschmack = open('data/geschmack', 'r').read().splitlines()
 berufe = open('data/berufe', 'r').read().splitlines()
 musik = open('data/musikgenre', 'r').read().splitlines()
 sprichwoerter = open('data/sprichwoerter', 'r').read().splitlines()
+ns = open('data/nebensatz', 'r').read().splitlines()
+
 
 # ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
-def e5(wort):
+def e16(wort):
+	if r.randint(0,5) == 1:
+		return wort
+	else:
+		return ''
+
+def e25(wort):
+	if r.randint(1,4) == 1:
+		return wort
+	else:
+		return ''
+
+def e50(wort):
 	if r.randint(0,1):
+		return wort
+	else:
+		return ''
+
+def e75(wort):
+	if r.randint(0,3):
 		return wort
 	else:
 		return ''
@@ -33,6 +63,36 @@ def e5(wort):
 
 def ersten_buchstaben_gross(s):
     return s[0].upper() + s[1:]
+
+
+# Verben
+def verbn():
+	return r.choice(nullwertige_verben)
+
+def verbi():
+	return r.choice(intransitive_verben)
+
+def verbt():
+	return r.choice(transitive_verben)
+
+def verbd():
+	return r.choice(ditransitive_verben)
+
+# Adjektiv
+def adj():
+	return r.choice(adjektive)
+
+# Gegenstand
+def gegenstand():
+	return r.choice(gegenstaende)
+
+# Tier
+def tier():
+	return r.choice(tiere)
+
+# Pflanze
+def pflanze():
+	return r.choice(pflanzen)
 
 
 # Person generieren
@@ -48,13 +108,21 @@ spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälte
 def person_m():
 	z = r.randint(1,8)
 	if z == 1:
-		s = r.choice(vornamen) + 's ' + e5(r.choice(adj) + 'er ') + r.choice(beziehung_m)
+		s = e25(adj() + 'er ')
+		s = re.sub('eer ', 'er ', s) # feigeer
+		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_m)
 	elif z == 2:
-		s = r.choice(possessivpronomen_m) + ' ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_m)
+		s = e25(adj() + 'er ')
+		s = re.sub('eer ', 'er ', s) # feigeer
+		s = r.choice(possessivpronomen_m) + ' ' + s + r.choice(beziehung_m)
 	elif z == 3:
-		s = 'der ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_m)
+		s =  e50(adj() + 'e ')
+		s = re.sub('ee ', 'e ', s) # der feigee
+		s = 'der ' + s + r.choice(beziehung_m)
 	elif z == 4:
-		s = 'der ' + r.choice(adj) + 'e ' + r.choice(vornamen_m)
+		s = adj() + 'e '
+		s = re.sub('ee ', 'e ', s) # der feigee
+		s = 'der ' + s + r.choice(vornamen_m)
 	elif z == 5:
 		s = r.choice(spezial_m)
 	elif z == 6:
@@ -66,13 +134,21 @@ def person_m():
 def person_w():
 	z = r.randint(1,8)
 	if z == 1:
-		s = r.choice(vornamen) + 's ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_w)
+		s = e25(adj() + 'e ')
+		s = re.sub('ee ', 'e ', s) # feigee
+		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
-		s = r.choice(possessivpronomen_m) + 'e ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_w)
+		s = e25(adj() + 'e ')
+		s = re.sub('ee ', 'e ', s) # der feigee
+		s = r.choice(possessivpronomen_m) + 'e ' + s + r.choice(beziehung_w)
 	elif z == 3:
-		s = 'die ' + e5(r.choice(adj) + 'e ') + r.choice(beziehung_w)
+		s =  e50(adj() + 'e ')
+		s = re.sub('ee ', 'e ', s) # die feigee
+		s = 'die ' + s + r.choice(beziehung_w)
 	elif z == 4:
-		s = 'die ' + r.choice(adj) + 'e ' + r.choice(vornamen_w)
+		s = adj() + 'e '
+		s = re.sub('ee ', 'e ', s) # die feigee
+		s = 'die ' + s + r.choice(vornamen_w)
 	elif z == 5:
 		s = r.choice(spezial_w)
 	elif z == 6:
@@ -175,6 +251,75 @@ def beruf_w():
 	return s
 
 
+# Grammatikalisches Objekt
+def objekt_m():
+	x = r.randint(1,4)
+	
+	if x == 1: # Person
+		y = r.randint(1,4)
+		if y == 1:
+			s = r.choice(vornamen_m)
+		if y == 2:
+			s = r.choice(vornamen_w)
+		if y == 3:
+			s = r.choice(['seinen ', 'deinen ']) + e25(adj() + 'en ') + r.choice(beziehung_m)
+			s = re.sub('Kollege', 'Kollegen', s)
+		if y == 4:
+			s = r.choice(['seine ', 'deine ']) + e25(adj() + 'e ') + r.choice(beziehung_w)
+	if x == 2: # Gegenstand
+		s = gegenstand()
+		s = re.sub('ein ', 'einen ', s)
+		s = r.choice(['d', 's', '']) + s
+	if x == 3: # Tier
+		s = tier()
+		if 'ein ' in s:
+			s = re.sub('ein ', 'einen ', s)
+			s = re.sub('e$', 'en', s)
+			s = re.sub('Bär$', 'Bären', s)
+		s = r.choice(['d', 's', '']) + s
+	if x == 4: # Pflanze
+		s = pflanze()
+		s = re.sub('ein ', 'einen ', s)
+		s = r.choice(['d', 's', '']) + s
+	
+	return s
+
+def objekt_w():
+	x = r.randint(1,4)
+	
+	if x == 1: # Person
+		y = r.randint(1,4)
+		if y == 1:
+			s = r.choice(vornamen_m)
+		if y == 2:
+			s = r.choice(vornamen_w)
+		if y == 3:
+			s = r.choice(['ihren ', 'deinen ']) + e25(adj() + 'en ') + r.choice(beziehung_m)
+			s = re.sub('Kollege', 'Kollegen', s)
+		if y == 4:
+			s = r.choice(['ihre ', 'deine ']) + e25(adj() + 'e ') + r.choice(beziehung_w)
+	if x == 2: # Gegenstand
+		s = gegenstand()
+		s = re.sub('ein ', 'einen ', s)
+		s = r.choice(['d', 's', '']) + s
+		s = re.sub('seinen ', 'ihren ', s)
+	if x == 3: # Tier
+		s = tier()
+		if 'ein ' in s:
+			s = re.sub('ein ', 'einen ', s)
+			s = re.sub('e$', 'en', s)
+			s = re.sub('Bär$', 'Bären', s)
+		s = r.choice(['d', 's', '']) + s
+		s = re.sub('seinen ', 'ihren ', s)
+	if x == 4: # Pflanze
+		s = pflanze()
+		s = re.sub('ein ', 'einen ', s)
+		s = r.choice(['d', 's', '']) + s
+		s = re.sub('seinen ', 'ihren ', s)
+
+	return s
+
+
 # Ortsangabe
 def ort():
 	tausende = ['500', '1000', '2000', '5000', '10000', '100000']
@@ -246,15 +391,15 @@ gruppe = ['Menschen', 'Personen', 'Kinder', 'Tiere', 'Gedärme', 'Kadaver', 'Nud
 def band():
 	z = r.randint(0,5)
 	if z == 0:
-		s = 'Die ' + r.choice(adj).capitalize() + 'en ' + r.choice(gruppe)
+		s = 'Die ' + adj().capitalize() + 'en ' + r.choice(gruppe)
 	if z == 1:
 		s = r.choice(geschmack) + ' ' + ort()
 	if z == 2:
-		s = r.choice(adj).capitalize() + ' ' + ort()
+		s = adj().capitalize() + ' ' + ort()
 	if z == 3:
-		s = r.choice(adj).capitalize() + 'e ' + essen(r.randint(0,2))
+		s = adj().capitalize() + 'e ' + essen(r.randint(0,2))
 	if z == 4:
-		s = r.choice(adj).capitalize()
+		s = adj().capitalize()
 	if z == 5:
 		s = wort()
 	return s
@@ -280,227 +425,64 @@ def bandart():
 
 # Satz generieren
 
+# Themen-Satz
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
-def satz():
-	z = r.randint(0,17)
+def themen_satz():
+	x = r.randint(1,10)
+	s = "Hallo "
+	s += e75("Salami")
+	return s
+
+
+
+def standard_satz():
+	x = 8#r.randint(1,8)
 	
-	if z == 2: # Essen
-		satz = person() + ' isst'
-		x = r.randint(0,10)
-		if x == 1:
-			satz += ' gerade'
-		elif x == 2:
-			satz += ' gerne'
-		elif x == 3:
-			satz += ' nicht gerne'
-		elif x == 4:
-			satz += ' oft'
-		elif x == 5:
-			satz += ' selten'
-		satz += ' ' + essen(r.randint(0,2))
-		if r.randint(0,2):
-			satz += ' mit ' + e5(r.choice(['viel ', 'ganz viel ', 'ein bischen ', 'ein wenig ', 'lecker ', 'einer großen Portion '])) + beilage()
-		satz += '.'
-	
-	elif z == 3: # Trinken
-		satz = person() + ' trinkt'
-		x = r.randint(0,10)
-		if x == 1:
-			satz += ' gerade'
-		elif x == 2:
-			satz += ' gerne'
-		elif x == 3:
-			satz += ' nicht gerne'
-		elif x == 4:
-			satz += ' oft'
-		elif x == 5:
-			satz += ' selten'
-		elif x == 6:
-			satz += ' jeden Abend ein Glas'
-		elif x == 7:
-			satz += ' zu viel'
-		satz += ' ' + trinken() + '.'
-	
-	elif z == 4: # Essen und Trinken
-		satz = person() + ' isst ' + essen(r.randint(0,2)) + e5(' mit ' + beilage()) + ' und trinkt ' + e5('dazu ') + trinken() + '.'
-	
-	elif z == 5: # Essen oder Trinken am Ort
-		satz = person() + ' ' + r.choice(['ist', 'sitzt', 'befindet sich']) + ' ' + ort() + ' und '
-		if r.randint(0,1):
-			satz += 'isst ' + e5('dort ') + essen(r.randint(0,2)) +e5(' mit ' + beilage())
-		else:
-			satz += 'trinkt ' + e5('dort ') + trinken()
-		satz += '.'
-	
-	elif z == 6: # Bandmitglieder Besetzung
-		if r.randint(0,1): # männlich
-			satz = r.choice(vornamen_m) + e5(' ' + r.choice(nachnamen)) + ' ist ' + e5('der ') + r.choice(besetzung) + e5(' von') + ' der ' + bandart() + ' "' + band() + '".'
-		else: # weiblich
-			satz = r.choice(vornamen_w) + e5(' ' + r.choice(nachnamen)) + ' ist ' + e5('die ') + r.choice(besetzung) + 'in' + e5(' von') + ' der ' + bandart() + ' "' + band() + '".'
-	
-	elif z == 7: # Band gegründet
-		if r.randint(0,1):
-			satz = 'Die ' + bandart() + ' ' + band() + ' wurde'
-		else:
-			satz = band() + ' (' + bandart() + ') wurde'
-		if r.randint(0,1): # 50% Datum oder Jahr
-			satz += ' am ' + datum()
-		else:
-			if r.randint(0,1):
-				satz += ' ' + r.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter'])
-			satz += ' ' + str(r.randint(1950, 2013))
-		if r.randint(0,1): # 50% Ort
-			satz += ' in ' + stadt()
-		satz += ' gegründet.'
-	
-	elif z == 8: # Bandmitglieder mit oder ohne Nachnamen
-		if r.randint(0,2): # ohne
-			satz = 'Die '+ bandart() + ' "' + band() + '" besteht aus ' + r.choice(vornamen)
-			for i in range(0,r.randint(0,4)): # 2 bis 6 Mitglieder
-				satz += ', ' + r.choice(vornamen)
-			satz += ' und ' + r.choice(vornamen) + '.'
-		else:
-			satz = 'Die '+ bandart() + ' "' + band() + '" besteht aus ' + r.choice(vornamen) + ' ' + r.choice(nachnamen)
-			for i in range(0,r.randint(0,4)): # 2 bis 6 Mitglieder
-				satz += ', ' + r.choice(vornamen) + ' ' + r.choice(nachnamen)
-			satz += ' und ' + r.choice(vornamen) + ' ' + r.choice(nachnamen) + '.'
-	
-	elif z == 9: # Arbeiter
-		if r.randint(0,1): # männlich
-			satz = r.choice(vornamen_m) + ' ist ' + e5('ein ') + beruf() + e5(' aus ' + stadt()) + '.'
-		else: # weiblich
-			satz = r.choice(vornamen_w) + ' ist ' + e5('eine ') + beruf_w() + e5(' aus ' + stadt()) + '.'
-		# bei firma()
-	
-	elif z == 10: # X ist beruflich
-		if r.randint(0,1): # männlich
-			satz = r.choice(vornamen_m) + e5(' ' + r.choice(nachnamen))
-			if r.randint(0,1): # 50% Beruf anzeigen
-				if r.randint(0,1):
-					satz += ', der ' + beruf()
-					if r.randint(0,1):
-						satz += ' aus ' + stadt()
-					satz += ','
-				else:
-					satz += ' (' + beruf() + ')'
-		else: # weiblich
-			satz = r.choice(vornamen_w) + e5(' ' + r.choice(nachnamen))
-			if r.randint(0,1): # 50% Beruf anzeigen
-				if r.randint(0,1):
-					satz += ', die ' + beruf_w()
-					if r.randint(0,1):
-						satz += ' aus ' + stadt()
-					satz += ','
-				else:
-					satz += ' (' + beruf_w() + ')'
-		satz += ' ist' + e5(' gerade') + ' beruflich '
-		if r.randint(0,2):
-			satz += ort()
-		else:
-			satz += 'in ' + stadt()
-		
-		if not r.randint(0,3):
-			satz += r.choice([', das darf der Chef aber nicht wissen', ', hat aber keine Lust mehr und will nach Hause', ' und hat Gummistiefel an', ' und lacht darüber', ' und ist das schrecklich peinlich', ' und setzt sich erstmal', ' und wird dafür ausgelacht', ' und ist glücklich', ' und hat Spaß dabei', ' und verliert die Hose', ' und fällt hin', ', kennt sich dort aber überhaupt nicht aus'])
-		satz += '.'
-	
-	elif z == 11: # Freunde lieben dafür
-		zz = r.randint(0,2)
-		if zz == 0: # männlich
-			satz = r.choice(vornamen_m) + e5(' ' + r.choice(nachnamen))
-			satz += ' ist ' + r.choice(adj)
-			if r.randint(0,1): #
-				satz += r.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür.'
-			else:
-				satz += '.'
-		elif zz == 1:	# weiblich
-			satz = r.choice(vornamen_w) + e5(' ' + r.choice(nachnamen))
-			satz += ' ist ' + r.choice(adj)
-			if r.randint(0,1): #
-				satz += r.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür.'
-			else:
-				satz += '.'
-		else:
-			satz = 'Ich bin ' + r.choice(adj) + r.choice(['. Alle', ', aber']) + ' meine Freunde lieben mich dafür.'
-	
-	elif z == 12:
-		adj1 = r.choice(adj)
-		adj2 = r.choice(adj)
-		while adj1 is adj2:
-			adj2 = r.choice(adj)
-		satz = 'Je ' + adj1 + 'er desto ' + adj2 + 'er.'
-	
-	elif z == 13: # absurde Farbfunktion
-		if r.randint(0,1):
-			satz = farbe() + ' ist eine ' + r.choice(adj) + 'e ' + 'Farbe.'
-		else:
-			farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
-			while farbe1 is farbe2 or farbe2 is farbe3 or farbe1 is farbe3:
-				farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
-			satz = farbe1 + ' ist ' + r.choice([farbe2.lower(), r.choice(adj)]) + 'er als ' + farbe3 + '.'
-	
-	elif z == 14:
-		satz = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + r.choice(['er', 'sie', 'es']) + ' ' + e5(r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + r.choice(adj) + '.'
-	
-	elif z == 15: # Kloster
-		if r.randint(0,1): # männlich
-			satz = 'Bruder ' + r.choice(vornamen_m) + r.choice([' war', ' ist']) + ' der ' + r.choice(adj) + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
-		else: # weiblich
-			satz = 'Schwester ' + r.choice(vornamen_w) + r.choice([' war', ' ist']) + ' die ' + r.choice(adj) + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei']) + '.'
-	
-	elif z == 16: # Frage
-		if r.randint(0,1): # normales verb
-			satz = r.choice(['Warum ', 'Wieso ', 'Weshalb ', '']) + r.choice(verb) + ' ' + person() + e5(' ' + r.choice(adj)) + e5(' ' + ort()) + '?'
-		else: # getrenntes verb
-			v1, v2 = r.choice(verb2).split(",")
-			satz = r.choice(['Warum ', 'Wieso ', 'Weshalb ', '']) + v1 + ' ' + person() + ' ' + e5(r.choice(adj) + ' ') + e5(ort() + ' ') + v2 + '?'
-		if not r.randint(0,10):
-			satz += ' ' + r.choice(['Mann weiss es nicht.', 'Denk mal drüber nach!'])
-	
-	elif z == 17: # Folgehandlung
+	if x == 1:
+		s = person() + ' ' + verbi() + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()])
+	if x == 2:
 		v1, v2 = r.choice(verb2).split(",")
-		v12 = ''
-		if ' ' in v1: # bildet sich => bilder ER sich
-			v1, v12 = v1.split(' ')
-			v12 += ' '
-		
-		verb1 = r.choice(verb)
-		verb12 = ' '
-		if ' ' in verb1:
-			verb1, verb12 = verb1.split(' ')
-			verb12 = ' ' + verb12 + ' '
-		
-		if r.randint(0,3): # Selbst
-			if r.randint(0,1): # m
-				erste_person, zweit_person = person_m(), ' er '
-			else: # w
-				erste_person, zweit_person = person_w(), ' sie '
-		else: # Dritte
-			if r.randint(0,1): # m
-				erste_person, zweit_person = person_m(), r.choice([' sein ' + r.choice(beziehung_m), ' seine ' + r.choice(beziehung_w)]) + ' '
-			else: # w
-				erste_person, zweit_person = person_w(), r.choice([' ihr ' + r.choice(beziehung_m), ' ihre ' + r.choice(beziehung_w)]) + ' '
-		
-		satz = r.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil', 'Gerade weil']) + r.choice([verb12 + erste_person + ' ', ' ' + erste_person + verb12]) + e5(ort() + ' ') + e5(r.choice(adj) + ' ') + verb1 + ', ' + v1 + zweit_person + v12 + e5(r.choice(adj) + ' ') + v2 + '.'
+		s = person() + ' ' + v1 + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()]) + ' ' + v2
+	if x == 3:
+		s = ort() + ' ' + verbi() + ' ' + person() + e75(' ' + adj())
+	if x == 4:
+		v1, v2 = r.choice(verb2).split(",")
+		s = ort() + ' ' + v1 + ' ' + person() + e75(' ' + adj()) + ' ' + v2
+	if x == 5:
+		s = adj() + ' ' + verbi() + ' ' + person() + e75(' ' + ort())
+	if x == 6:
+		v1, v2 = r.choice(verb2).split(",")
+		s = adj() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + ' ' + v2
+	if x == 7: 
+		s = person_m() + ' ' + verbt() + ' ' + objekt_m() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), ''])
+	if x == 8:
+		s = person_w() + ' ' + verbt() + ' ' + objekt_w() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), ''])
 	
-	else:
-		if r.randint(0,1): # Standardsatz mit getrenntem Verb
-			v1, v2 = r.choice(verb2).split(",")
-			satz = person() + ' ' + v1
-			if r.randint(0,3):
-				satz += ' ' + r.choice(adj)
-			if r.randint(0,2):
-				satz += ' ' + ort()
-			satz += ' ' + v2
-		else: # Standardsatz
-			satz = person() + ' ' + r.choice(verb)
-			if r.randint(0,3):
-				satz += ' ' + r.choice(adj)
-			if r.randint(0,2):
-				satz += ' ' + ort()
-		if r.randint(0,5) == 1: # Chance 1/6
-			satz += r.choice(ns)
-		satz += '.'
+	return s + e16(r.choice(ns)) + '.'
+
+
+def frage():
+	x = r.randint(1,6)
 	
-	satz = ersten_buchstaben_gross(satz)
-	return satz
+	if x == 1:
+		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + verbi() + ' ' + person() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), ''])
+	if x == 2:
+		v1, v2 = r.choice(verb2).split(",")
+		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + ' ' + v2
+	if x == 3:
+		s = 'Wer ' + verbi() + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()])
+	if x == 4:
+		s = 'Wo ' + verbi() + ' ' + person() + e25(' ' + adj())
+	if x == 5:
+		s = 'Wie ' + verbi() + ' ' + person() + e50(' ' + ort())
+	if x == 6:
+		s = 'Wann ' + verbi() + ' ' + person() + e50(' endlich') + e25(' ' + ort())
+	
+	return s + '?'
+
+
+def satz():
+	#s = ersten_buchstaben_gross(r.choice([themen_satz(), standard_satz(), frage()]))
+	s = ersten_buchstaben_gross(standard_satz())
+	return s
