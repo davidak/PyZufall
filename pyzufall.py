@@ -113,52 +113,60 @@ spezial_m = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'ein L
 spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälterin', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'eine Lehrerin', 'eine Polizistin', 'eine Beamtin', 'eine Ärztin', 'eine Behinderte', 'eine Sekretärin', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'die Satanistin', 'die Alkoholikerin', 'die Piratin', 'die Hartz-IV-Empfängerin']
 
 def person_m():
-	z = r.randint(1,8)
+	z = r.randint(1,9)
 	if z == 1:
 		s = e25(adj() + 'er ')
-		s = re.sub('eer ', 'er ', s) # feigeer
+		s = re.sub('eer $', 'er ', s) # feigeer
 		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_m)
 	elif z == 2:
 		s = e25(adj() + 'er ')
-		s = re.sub('eer ', 'er ', s) # feigeer
+		s = re.sub('eer $', 'er ', s) # feigeer
 		s = r.choice(possessivpronomen_m) + ' ' + s + r.choice(beziehung_m)
 	elif z == 3:
 		s =  e50(adj() + 'e ')
-		s = re.sub('ee ', 'e ', s) # der feigee
+		s = re.sub('ee $', 'e ', s) # der feigee
 		s = 'der ' + s + r.choice(beziehung_m)
 	elif z == 4:
 		s = adj() + 'e '
-		s = re.sub('ee ', 'e ', s) # der feigee
+		s = re.sub('ee $', 'e ', s) # der feigee
 		s = 'der ' + s + r.choice(vornamen_m)
 	elif z == 5:
-		s = r.choice(spezial_m)
+		s = adj() + 'e'
+		s = re.sub('ee$', 'e', s) # der feigee
+		s = 'der ' + s.capitalize()
 	elif z == 6:
+		s = r.choice(spezial_m)
+	elif z == 7:
 		s = 'er'
 	else:
 		s = r.choice(vornamen_m)
 	return s
 
 def person_w():
-	z = r.randint(1,8)
+	z = r.randint(1,9)
 	if z == 1:
 		s = e25(adj() + 'e ')
-		s = re.sub('ee ', 'e ', s) # feigee
+		s = re.sub('ee $', 'e ', s) # feigee
 		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
 		s = e25(adj() + 'e ')
-		s = re.sub('ee ', 'e ', s) # der feigee
+		s = re.sub('ee $', 'e ', s) # der feigee
 		s = r.choice(possessivpronomen_m) + 'e ' + s + r.choice(beziehung_w)
 	elif z == 3:
 		s =  e50(adj() + 'e ')
-		s = re.sub('ee ', 'e ', s) # die feigee
+		s = re.sub('ee $', 'e ', s) # die feigee
 		s = 'die ' + s + r.choice(beziehung_w)
 	elif z == 4:
 		s = adj() + 'e '
-		s = re.sub('ee ', 'e ', s) # die feigee
+		s = re.sub('ee $', 'e ', s) # die feigee
 		s = 'die ' + s + r.choice(vornamen_w)
 	elif z == 5:
-		s = r.choice(spezial_w)
+		s = adj() + 'e'
+		s = re.sub('ee$', 'e', s) # die feigee
+		s = 'die ' + s.capitalize()
 	elif z == 6:
+		s = r.choice(spezial_w)
+	elif z == 7:
 		s = 'sie'
 	else:
 		s = r.choice(vornamen_w)
