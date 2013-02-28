@@ -13,6 +13,7 @@ vornamen = vornamen_m + vornamen_w
 nachnamen = open('data/nachnamen', 'r').read().splitlines()
 
 pflanzen = open('data/pflanzen', 'r').read().splitlines()
+baeume = open('data/baeume', 'r').read().splitlines()
 tiere = open('data/tiere', 'r').read().splitlines()
 gegenstaende = open('data/gegenstaende', 'r').read().splitlines()
 
@@ -97,6 +98,10 @@ def gegenstand():
 def tier():
 	return r.choice(tiere)
 
+# Baum
+def baum():
+	return r.choice(baeume)
+
 # Pflanze
 def pflanze():
 	return r.choice(pflanzen)
@@ -150,7 +155,7 @@ def person_w():
 		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
 		s = e25(adj() + 'e ')
-		s = re.sub('ee $', 'e ', s) # der feigee
+		s = re.sub('ee $', 'e ', s) # die feigee
 		s = r.choice(possessivpronomen_m) + 'e ' + s + r.choice(beziehung_w)
 	elif z == 3:
 		s =  e50(adj() + 'e ')
@@ -267,7 +272,7 @@ def beruf_w():
 
 # Objekt
 def objekt():
-	return r.choice([gegenstand(), tier(), pflanze()])
+	return r.choice([gegenstand(), tier(), pflanze(), baum()])
 
 # Grammatikalisches Objekt
 def objekt_m(s):
@@ -442,13 +447,19 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def themen_satz():
-	x = 1#r.randint(1,10)
+	x = 2#r.randint(1,10)
 	
 	if x == 1: # Im Park schneit es. / Es stürmt.
 		if r.randint(0,2):
 			s = ort() + ' ' + verbn() + ' es' + e25(' ' + adj())
 		else:
 			s = 'Es ' + verbn() + e25(' ' + adj())
+	
+	if x == 2: # Baum
+		if r.randint(0,1):
+			s = person_m() + ' ' + r.choice(['pflanzt', 'klettert auf', 'fällt', 'zersägt', 'stellt sich unter', 'umarmt', 'tritt gegen']) + ' ' + objekt_m(baum())
+		else:
+			s = person_w() + ' ' + r.choice(['pflanzt', 'klettert auf', 'fällt', 'zersägt', 'stellt sich unter', 'umarmt', 'tritt gegen']) + ' ' + objekt_w(baum())
 
 	return s + '.'
 
@@ -534,5 +545,5 @@ def frage():
 
 def satz():
 	#s = ersten_buchstaben_gross(r.choice([themen_satz(), standard_satz(), frage()]))
-	s = ersten_buchstaben_gross(standard_satz())
+	s = ersten_buchstaben_gross(themen_satz())
 	return s
