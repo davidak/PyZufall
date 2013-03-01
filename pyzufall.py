@@ -16,6 +16,7 @@ pflanzen = open('data/pflanzen', 'r').read().splitlines()
 baeume = open('data/baeume', 'r').read().splitlines()
 tiere = open('data/tiere', 'r').read().splitlines()
 gegenstaende = open('data/gegenstaende', 'r').read().splitlines()
+koerperteile = open('data/koerperteile', 'r').read().splitlines()
 
 # http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
 nullwertige_verben = open('data/nullwertige_verben', 'r').read().splitlines()
@@ -93,6 +94,10 @@ def adj():
 # Gegenstand
 def gegenstand():
 	return r.choice(gegenstaende)
+
+# Körperteile
+def koerperteil():
+	return r.choice(koerperteile)
 
 # Tier
 def tier():
@@ -447,7 +452,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def themen_satz():
-	x = 2#r.randint(1,10)
+	x = 3#r.randint(1,10)
 	
 	if x == 1: # Im Park schneit es. / Es stürmt.
 		if r.randint(0,2):
@@ -460,6 +465,35 @@ def themen_satz():
 			s = person_m() + ' ' + r.choice(['pflanzt', 'klettert auf', 'fällt', 'zersägt', 'stellt sich unter', 'umarmt', 'tritt gegen']) + ' ' + objekt_m(baum())
 		else:
 			s = person_w() + ' ' + r.choice(['pflanzt', 'klettert auf', 'fällt', 'zersägt', 'stellt sich unter', 'umarmt', 'tritt gegen']) + ' ' + objekt_w(baum())
+	
+	if x == 3: # Körper
+		x = 5#r.randint(1,10)
+		if x == 1:
+			s = 'Er stößt sich seinen Fuß.'
+		if x == 2: # hat Kopfschmerzen
+			s = koerperteil()
+			s = re.sub('e$', 'en', s) # Lungen
+			s = s.split()[1] # Körperteil ohne Artikel
+			s = person() + ' hat ' + e25(r.choice(['schlimme', 'ein bischen', 'brutale', 'oft', 'manchmal']) + ' ') + s + 'schmerzen'
+		if x == 3:
+			s = koerperteil()
+			s = re.sub('der ', 'am ', s)
+			s = re.sub('die ', 'an der ', s)
+			s = re.sub('das ', 'am ', s)
+			s = person() + ' hat eine ' + e25(r.choice(['schmerzhafte ', 'brutale ', 'miese ', 'kleine ', 'eiternde '])) + r.choice(['Verletzung', 'Entzündung', 'Wunde', 'Beschädigung']) + ' ' + s
+		if x == 4:
+			s = koerperteil()
+			s = re.sub('der ', 'Mein ', s)
+			s = re.sub('die ', 'Meine ', s)
+			s = re.sub('das ', 'Mein ', s)
+			s = s + ' ' + r.choice(['tut weh', 'schmerzt', 'blutet', 'juckt', 'brennt'])
+		if x == 5:
+			s = koerperteil()
+			s = re.sub('der ', 'einen ' + adj() + 'en ', s)
+			s = re.sub('die ', 'eine ' + adj() + 'e ', s)
+			s = re.sub('das ', 'ein ' + adj() + 'es ', s)
+			s = person() + ' hat ' + s
+				
 
 	return s + '.'
 
