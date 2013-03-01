@@ -467,9 +467,24 @@ def themen_satz():
 			s = person_w() + ' ' + r.choice(['pflanzt', 'klettert auf', 'fällt', 'zersägt', 'stellt sich unter', 'umarmt', 'tritt gegen']) + ' ' + objekt_w(baum())
 	
 	if x == 3: # Körper
-		x = 5#r.randint(1,10)
+		x = r.randint(1,5)
 		if x == 1:
-			s = 'Er stößt sich seinen Fuß.'
+			if r.randint(0,1): # Er
+				s = koerperteil()
+				s = re.sub('der ', 'den ', s)
+				if r.randint(0,1):
+					s = re.sub('den ', 'seinen ', s)
+					s = re.sub('die ', 'seine ', s)
+					s = re.sub('das ', 'sein ', s)
+				s = person_m() + ' ' + r.choice(['verletzt sich', 'stößt sich', 'bricht' + e50(' sich'), 'verstaucht' + e50(' sich'), 'massiert']) + ' ' + s
+			else: # Sie
+				s = koerperteil()
+				s = re.sub('der ', 'den ', s)
+				if r.randint(0,1):
+					s = re.sub('den ', 'ihren ', s)
+					s = re.sub('die ', 'ihre ', s)
+					s = re.sub('das ', 'ihr ', s)
+				s = person_w() + ' ' + r.choice(['verletzt sich', 'stößt sich', 'bricht' + e50(' sich'), 'verstaucht' + e50(' sich'), 'massiert']) + ' ' + s
 		if x == 2: # hat Kopfschmerzen
 			s = koerperteil()
 			s = re.sub('e$', 'en', s) # Lungen
@@ -493,7 +508,6 @@ def themen_satz():
 			s = re.sub('die ', 'eine ' + adj() + 'e ', s)
 			s = re.sub('das ', 'ein ' + adj() + 'es ', s)
 			s = person() + ' hat ' + s
-				
 
 	return s + '.'
 
