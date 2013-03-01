@@ -123,7 +123,7 @@ spezial_m = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'ein L
 spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälterin', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'eine Lehrerin', 'eine Polizistin', 'eine Beamtin', 'eine Ärztin', 'eine Behinderte', 'eine Sekretärin', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'die Satanistin', 'die Alkoholikerin', 'die Piratin', 'die Hartz-IV-Empfängerin']
 
 def person_m():
-	z = r.randint(1,9)
+	z = r.randint(1,10)
 	if z == 1:
 		s = e25(adj() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
@@ -145,15 +145,17 @@ def person_m():
 		s = re.sub('ee$', 'e', s) # der feigee
 		s = 'der ' + s.capitalize()
 	elif z == 6:
-		s = r.choice(spezial_m)
+		s = r.choice(['der ', 'ein ']) + beruf()
 	elif z == 7:
+		s = r.choice(spezial_m)
+	elif z == 8:
 		s = 'er'
 	else:
 		s = r.choice(vornamen_m)
 	return s
 
 def person_w():
-	z = r.randint(1,9)
+	z = r.randint(1,10)
 	if z == 1:
 		s = e25(adj() + 'e ')
 		s = re.sub('ee $', 'e ', s) # feigee
@@ -175,8 +177,10 @@ def person_w():
 		s = re.sub('ee$', 'e', s) # die feigee
 		s = 'die ' + s.capitalize()
 	elif z == 6:
-		s = r.choice(spezial_w)
+		s = r.choice(['die ', 'eine ']) + beruf_w()
 	elif z == 7:
+		s = r.choice(spezial_w)
+	elif z == 8:
 		s = 'sie'
 	else:
 		s = r.choice(vornamen_w)
