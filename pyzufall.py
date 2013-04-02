@@ -456,7 +456,7 @@ def bandart():
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
 
 def themen_satz():
-	x = 3#r.randint(1,10)
+	x = r.randint(1,6)
 	
 	if x == 1: # Im Park schneit es. / Es stürmt.
 		if r.randint(0,2):
@@ -505,13 +505,59 @@ def themen_satz():
 			s = re.sub('der ', 'Mein ', s)
 			s = re.sub('die ', 'Meine ', s)
 			s = re.sub('das ', 'Mein ', s)
-			s = s + ' ' + r.choice(['tut weh', 'schmerzt', 'blutet', 'juckt', 'brennt'])
+			s = s + ' ' + r.choice(['tut weh', 'schmerzt', 'blutet', 'juckt', 'brennt', 'stinkt'])
 		if x == 5:
 			s = koerperteil()
 			s = re.sub('der ', 'einen ' + adj() + 'en ', s)
 			s = re.sub('die ', 'eine ' + adj() + 'e ', s)
 			s = re.sub('das ', 'ein ' + adj() + 'es ', s)
 			s = person() + ' hat ' + s
+
+	if x == 4: # Essen & Trinken
+		x = r.randint(1,3)
+		if x == 1: # Essen mit Beilage
+			s = person() + e25(' ' + r.choice(['ist', 'sitzt', 'befindet sich']) + ' ' + ort() + ' und') + ' isst ' + e50(r.choice(['gerade', 'oft', 'nicht oft', 'selten', 'gerne', 'nicht gerne']) + ' ') + essen(r.randint(0,2)) + e50(' mit ' + r.choice(['viel', 'ganz viel', 'ein bischen', 'ein wenig', 'lecker', 'einer großen Portion']) + ' ' + beilage())
+		if x == 2: # Trinken
+			s = person() + ' trinkt ' + e50(r.choice(['gerade', 'oft', 'nicht oft', 'selten', 'gerne', 'nicht gerne', 'jeden Abend ein Glas', 'zu viel']) + ' ') + trinken()
+		if x == 3: # Essen und Trinken
+			s = person() + ' isst ' + essen(r.randint(0,2)) + e50(' mit ' + beilage()) + ' und trinkt ' + e50('dazu ') + trinken()
+
+	if x == 5: # Arbeit
+		x = r.randint(1,4)
+		if x == 1:
+			s = r.choice(vornamen_m) + e50(' ' + r.choice(nachnamen)) + ' ist ' + e75('ein ') + beruf() + e25(' aus ' + stadt())
+		if x == 2:
+			s = r.choice(vornamen_w) + e50(' ' + r.choice(nachnamen)) + ' ist ' + e50('eine ') + beruf_w() + e50(' aus ' + stadt())
+		if x == 3:
+			s = r.choice(vornamen_m) + e50(' ' + r.choice(nachnamen)) + e50(', der ' + beruf() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
+		if x == 4:
+			s = r.choice(vornamen_w) + e50(' ' + r.choice(nachnamen)) + e50(', die ' + beruf_w() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())])
+	
+	if x == 6: # Absurd
+		x = r.randint(1,8)
+		if x == 1:
+			s = person_m() + ' ist ' + adj() + e50(r.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür')
+		if x == 2:
+			s = person_w() + ' ist ' + adj() + e50(r.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür')
+		if x == 3:
+			adj1 = adj()
+			adj2 = adj()
+			while adj1 is adj2:
+				adj2 = adj()
+			s = 'Je ' + adj1 + 'er desto ' + adj2 + 'er'
+		if x == 4:
+			s = farbe() + ' ist eine ' + adj() + 'e ' + 'Farbe'
+		if x == 5:
+			farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
+			while farbe1 is farbe2 or farbe2 is farbe3 or farbe1 is farbe3:
+				farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
+			s = farbe1 + ' ist ' + r.choice([farbe2.lower(), adj()]) + 'er als ' + farbe3
+		if x == 6:
+			s = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + r.choice(['er', 'sie', 'es']) + ' ' + e50(r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + adj()
+		if x == 7:
+			s = 'Bruder ' + r.choice(vornamen_m) + r.choice([' war', ' ist']) + ' der ' + adj() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+		if x == 8:
+			s = 'Schwester ' + r.choice(vornamen_w) + r.choice([' war', ' ist']) + ' die ' + adj() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 
 	return s + '.'
 
@@ -596,6 +642,6 @@ def frage():
 
 
 def satz():
-	#s = ersten_buchstaben_gross(r.choice([themen_satz(), standard_satz(), frage()]))
-	s = ersten_buchstaben_gross(themen_satz())
+	s = ersten_buchstaben_gross(r.choice([themen_satz(), standard_satz(), frage()]))
+	#s = ersten_buchstaben_gross(themen_satz())
 	return s
