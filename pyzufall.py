@@ -3,39 +3,47 @@
 
 import random
 import re
+import os
+
 
 r = random.SystemRandom() # Uses /dev/urandom or Windows CryptGenRandom for better entropy
 
 # Daten aus Dateien einlesen
-vornamen_m = open('data/vornamen_m', 'r').read().splitlines()
-vornamen_w = open('data/vornamen_w', 'r').read().splitlines()
-vornamen = vornamen_m + vornamen_w
-nachnamen = open('data/nachnamen', 'r').read().splitlines()
+#
+# http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path
+# http://stackoverflow.com/questions/595305/python-path-of-script
+def lese(dateiname):
+	dateipfad = os.path.join(os.path.dirname(__file__), 'data/' + dateiname)
+	return open(dateipfad, 'r').read().splitlines()
 
-pflanzen = open('data/pflanzen', 'r').read().splitlines()
-baeume = open('data/baeume', 'r').read().splitlines()
-tiere = open('data/tiere', 'r').read().splitlines()
-gegenstaende = open('data/gegenstaende', 'r').read().splitlines()
-koerperteile = open('data/koerperteile', 'r').read().splitlines()
+vornamen_m = lese('vornamen_m')
+vornamen_w = lese('vornamen_w')
+nachnamen = lese('nachnamen')
+
+pflanzen = lese('pflanzen')
+baeume = lese('baeume')
+tiere = lese('tiere')
+gegenstaende = lese('gegenstaende')
+koerperteile = lese('koerperteile')
 
 # http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
-nullwertige_verben = open('data/nullwertige_verben', 'r').read().splitlines()
-intransitive_verben = open('data/intransitive_verben', 'r').read().splitlines()
-intransitive_verben_2 = open('data/intransitive_verben_2', 'r').read().splitlines()
-transitive_verben = open('data/transitive_verben', 'r').read().splitlines()
-transitive_verben_2 = open('data/transitive_verben_2', 'r').read().splitlines()
-ditransitive_verben = open('data/ditransitive_verben', 'r').read().splitlines()
+nullwertige_verben = lese('nullwertige_verben')
+intransitive_verben = lese('intransitive_verben')
+intransitive_verben_2 = lese('intransitive_verben_2')
+transitive_verben = lese('transitive_verben')
+transitive_verben_2 = lese('transitive_verben_2')
+ditransitive_verben = lese('ditransitive_verben')
 
-adjektive = open('data/adjektiv', 'r').read().splitlines()
+adjektive = lese('adjektiv')
 
-ortsangabe = open('data/ort', 'r').read().splitlines()
-stadte = open('data/stadt_bundesland', 'r').read().splitlines()
-nahrung = open('data/nahrung', 'r').read().splitlines()
-geschmack = open('data/geschmack', 'r').read().splitlines()
-berufe = open('data/berufe', 'r').read().splitlines()
-musik = open('data/musikgenre', 'r').read().splitlines()
-sprichwoerter = open('data/sprichwoerter', 'r').read().splitlines()
-ns = open('data/nebensatz', 'r').read().splitlines()
+ortsangabe = lese('ort')
+stadte = lese('stadt_bundesland')
+nahrung = lese('nahrung')
+geschmack = lese('geschmack')
+berufe = lese('berufe')
+musik = lese('musikgenre')
+sprichwoerter = lese('sprichwoerter')
+ns = lese('nebensatz')
 
 
 # ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
@@ -136,7 +144,7 @@ def person_m():
 	if z == 1:
 		s = e25(adj() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
-		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_m)
+		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_m)
 	elif z == 2:
 		s = e25(adj() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
@@ -160,7 +168,7 @@ def person_m():
 	elif z == 8:
 		s = 'er'
 	else:
-		s = r.choice(vornamen_m)
+		s = vorname_m()
 	return s
 
 def person_w():
@@ -168,7 +176,7 @@ def person_w():
 	if z == 1:
 		s = e25(adj() + 'e ')
 		s = re.sub('ee $', 'e ', s) # feigee
-		s = r.choice(vornamen) + 's ' + s + r.choice(beziehung_w)
+		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
 		s = e25(adj() + 'e ')
 		s = re.sub('ee $', 'e ', s) # die feigee
@@ -180,7 +188,7 @@ def person_w():
 	elif z == 4:
 		s = adj() + 'e '
 		s = re.sub('ee $', 'e ', s) # die feigee
-		s = 'die ' + s + r.choice(vornamen_w)
+		s = 'die ' + s + vorname_w()
 	elif z == 5:
 		s = adj() + 'e'
 		s = re.sub('ee$', 'e', s) # die feigee
@@ -192,7 +200,7 @@ def person_w():
 	elif z == 8:
 		s = 'sie'
 	else:
-		s = r.choice(vornamen_w)
+		s = vorname_w()
 	return s
 
 def person():
@@ -322,9 +330,9 @@ def objekt_w(s):
 def person_objekt_m():
 	y = r.randint(1,4)
 	if y == 1:
-		s = r.choice(vornamen_m)
+		s = vorname_m()
 	if y == 2:
-		s = r.choice(vornamen_w)
+		s = vorname_w()
 	if y == 3:
 		s =  e25(adj() + 'en ')
 		s = re.sub('een ', 'en ', s) # feigeen
@@ -340,9 +348,9 @@ def person_objekt_m():
 def person_objekt_w():	
 	y = r.randint(1,4)
 	if y == 1:
-		s = r.choice(vornamen_m)
+		s = vorname_m()
 	if y == 2:
-		s = r.choice(vornamen_w)
+		s = vorname_w()
 	if y == 3:
 		s =  e25(adj() + 'en ')
 		s = re.sub('een ', 'en ', s) # feigeen
@@ -367,7 +375,7 @@ def ort():
 	s = r.choice(ortsangabe)
 	s = re.sub('auf Gleis XX$', 'auf Gleis ' + str(r.randint(1,14)), s)
 	s = re.sub('XXZusch', zuschauer, s)
-	s = re.sub('XXName', r.choice(vornamen) + 's', s)
+	s = re.sub('XXName', r.choice([vorname_m(), vorname_w()]) + 's', s)
 	return s
 
 
@@ -534,13 +542,13 @@ def themen_satz():
 	if x == 5: # Arbeit
 		x = r.randint(1,4)
 		if x == 1:
-			s = r.choice(vornamen_m) + e50(' ' + r.choice(nachnamen)) + ' ist ' + e75('ein ') + beruf() + e25(' aus ' + stadt())
+			s = vorname_m() + e50(' ' + nachname()) + ' ist ' + e75('ein ') + beruf() + e25(' aus ' + stadt())
 		if x == 2:
-			s = r.choice(vornamen_w) + e50(' ' + r.choice(nachnamen)) + ' ist ' + e50('eine ') + beruf_w() + e50(' aus ' + stadt())
+			s = vorname_w() + e50(' ' + nachname()) + ' ist ' + e50('eine ') + beruf_w() + e50(' aus ' + stadt())
 		if x == 3:
-			s = r.choice(vornamen_m) + e50(' ' + r.choice(nachnamen)) + e50(', der ' + beruf() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
+			s = vorname_m() + e50(' ' + nachname()) + e50(', der ' + beruf() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
 		if x == 4:
-			s = r.choice(vornamen_w) + e50(' ' + r.choice(nachnamen)) + e50(', die ' + beruf_w() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())])
+			s = vorname_w() + e50(' ' + nachname()) + e50(', die ' + beruf_w() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())])
 	
 	if x == 6: # Absurd
 		x = r.randint(1,8)
@@ -564,9 +572,9 @@ def themen_satz():
 		if x == 6:
 			s = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + r.choice(['er', 'sie', 'es']) + ' ' + e50(r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + adj()
 		if x == 7:
-			s = 'Bruder ' + r.choice(vornamen_m) + r.choice([' war', ' ist']) + ' der ' + adj() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+			s = 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adj() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 		if x == 8:
-			s = 'Schwester ' + r.choice(vornamen_w) + r.choice([' war', ' ist']) + ' die ' + adj() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+			s = 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + adj() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 
 	return s + '.'
 
