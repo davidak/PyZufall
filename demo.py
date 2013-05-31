@@ -3,7 +3,7 @@
 
 import pyzufall as z
 
-print("\nTestscript für die Klasse PyZufall\n")
+print("\nDemoscript für die Klasse PyZufall\n")
 print("Person: "+z.person())
 print("Berufsbezeichnung: "+z.beruf())
 print("Essen: "+z.essen(0))
