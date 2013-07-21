@@ -1,5 +1,9 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+"""
+Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.
+"""
 
 import random
 import re
@@ -8,25 +12,36 @@ import os
 
 r = random.SystemRandom() # Uses /dev/urandom or Windows CryptGenRandom for better entropy
 
-# Daten aus Dateien einlesen
-#
-# http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path
-# http://stackoverflow.com/questions/595305/python-path-of-script
 def lese(dateiname):
+	"""
+	Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
+
+	http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path
+	http://stackoverflow.com/questions/595305/python-path-of-scrip
+	"""
 	dateipfad = os.path.join(os.path.dirname(__file__), 'data/' + dateiname)
 	return open(dateipfad, 'r').read().splitlines()
 
+# Namen einlesen
 vornamen_m = lese('vornamen_m')
 vornamen_w = lese('vornamen_w')
 nachnamen = lese('nachnamen')
 
+# Objekte einlesen
 pflanzen = lese('pflanzen')
 baeume = lese('baeume')
 tiere = lese('tiere')
 gegenstaende = lese('gegenstaende')
 koerperteile = lese('koerperteile')
+nahrung = lese('nahrung')
+geschmack = lese('geschmack')
+berufe = lese('berufe')
+musik = lese('musikgenre')
+stadte = lese('stadt_bundesland')
 
-# http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+# Wortarten einlesen
+
+# Verben
 nullwertige_verben = lese('nullwertige_verben')
 intransitive_verben = lese('intransitive_verben')
 intransitive_verben_2 = lese('intransitive_verben_2')
@@ -34,93 +49,160 @@ transitive_verben = lese('transitive_verben')
 transitive_verben_2 = lese('transitive_verben_2')
 ditransitive_verben = lese('ditransitive_verben')
 
+# Adjektive
 adjektive = lese('adjektiv')
 
+# Sazteile oder Sätze
 ortsangabe = lese('ort')
-stadte = lese('stadt_bundesland')
-nahrung = lese('nahrung')
-geschmack = lese('geschmack')
-berufe = lese('berufe')
-musik = lese('musikgenre')
-sprichwoerter = lese('sprichwoerter')
 ns = lese('nebensatz')
+sprichwoerter = lese('sprichwoerter')
 
 
-# ECHO50: 50% Chance, dass das übergebene Wort zurückgegeben wird
 def e16(wort):
+	"""
+	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.
+	"""
 	if r.randint(0,5) == 1:
 		return wort
 	else:
 		return ''
 
 def e25(wort):
+	"""
+	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.
+	"""
 	if r.randint(1,4) == 1:
 		return wort
 	else:
 		return ''
 
 def e50(wort):
+	"""
+	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.
+	"""
 	if r.randint(0,1):
 		return wort
 	else:
 		return ''
 
 def e75(wort):
+	"""
+	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.
+	"""
 	if r.randint(0,3):
 		return wort
 	else:
 		return ''
 
-
 def ersten_buchstaben_gross(s):
-    return s[0].upper() + s[1:]
+	"""
+	Macht den ersten Buchstaben gross.	
+	"""
+	return s[0].upper() + s[1:]
 
 
-# Verben
+def vorname_m():
+	"""
+	Gibt einen männlichen Vornamen zurück.
+	"""
+	return r.choice(vornamen_m)
+
+def vorname_w():
+	"""
+	Gibt einen weiblichen Vornamen zurück.
+	"""
+	return r.choice(vornamen_w)
+
+def nachname():
+	"""
+	Gibt einen Nachnamen zurück.
+	"""
+	return r.choice(nachnamen)
+
 def verbn():
+	"""
+	Gibt ein nullwertiges Verb zurück.
+
+	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	"""
 	return r.choice(nullwertige_verben)
 
 def verbi():
+	"""
+	Gibt ein intransitives Verb zurück.
+
+	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	"""
 	return r.choice(intransitive_verben)
 	
 def verbi2():
+	"""
+	Gibt ein intransitives, getrenntes Verb zurück.
+
+	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	"""
 	return r.choice(intransitive_verben_2)
 
 def verbt():
+	"""
+	Gibt ein transitives Verb zurück.
+
+	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	"""
 	return r.choice(transitive_verben)
 
 def verbt2():
+	"""
+	Gibt ein intransitives, getrenntes Verb zurück.
+
+	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	"""
 	return r.choice(transitive_verben_2)
 
 def verbd():
+	"""
+	Gibt ein ditransitives Verb zurück.
+
+	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	"""
 	return r.choice(ditransitive_verben)
 
-# Adjektiv
 def adj():
+	"""
+	Gibt ein Adjektiv zurück.
+	"""
 	return r.choice(adjektive)
 
-# Gegenstand
 def gegenstand():
+	"""
+	Gibt einen Gegenstand zurück.
+	"""
 	return r.choice(gegenstaende)
 
-# Körperteile
 def koerperteil():
+	"""
+	Gibt ein Körperteil zurück.
+	"""
 	return r.choice(koerperteile)
 
-# Tier
 def tier():
+	"""
+	Gibt ein Tier zurück.
+	"""
 	return r.choice(tiere)
 
-# Baum
 def baum():
+	"""
+	Gibt einen Baum zurück.
+	"""
 	return r.choice(baeume)
 
-# Pflanze
 def pflanze():
+	"""
+	Gibt eine Pflanze zurück.
+	"""
 	return r.choice(pflanzen)
 
-
-# Person generieren
 beziehung_m = ['Vater', 'Bruder', 'Mann', 'Sohn', 'Onkel', 'Opa', 'Cousin', 'Enkel', 'Chef', 'Freund', 'Partner', 'Kollege', 'Mitarbeiter', 'Mitbewohner', 'Vermieter', 'Lehrer']
 beziehung_w = ['Mutter', 'Schwester', 'Frau', 'Tochter', 'Tante', 'Oma', 'Cousine', 'Enkelin', 'Cheffin', 'Freundin', 'Partnerin', 'Kollegin', 'Mitarbeiterin', 'Mitbewohnerin', 'Vermieterin', 'Lehrerin']
 possessivpronomen_m = ['mein', 'dein', 'sein', 'ihr']
@@ -130,16 +212,10 @@ personen = ['er', 'sie', 'es', 'jemand', 'niemand']
 spezial_m = ['ein Held', 'ein Penner', 'ein Verkäufer', 'ein Zuhälter', 'ein Lehrer', 'ein Polizist', 'ein Beamter', 'ein Arzt', 'Hitler', 'ein Bernd', 'ein Schwuler', 'ein Behinderter', 'der Affenmensch', 'der Satanist', 'der Alkoholiker', 'ein normaler Mensch', 'ein Pirat', 'ein Hartz-IV-Empfänger', 'ein Müllmann']
 spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälterin', 'eine Prostituierte', 'eine Nutte', 'eine Hure', 'eine Schlampe', 'eine Lehrerin', 'eine Polizistin', 'eine Beamtin', 'eine Ärztin', 'eine Behinderte', 'eine Sekretärin', 'die Transe', 'das Mannsweib', 'das Penismädchen', 'die Lesbe', 'die Kampflesbe', 'die Satanistin', 'die Alkoholikerin', 'die Piratin', 'die Hartz-IV-Empfängerin']
 
-def vorname_m():
-	return r.choice(vornamen_m)
-
-def vorname_w():
-	return r.choice(vornamen_w)
-
-def nachname():
-	return r.choice(nachnamen)
-
 def person_m():
+	"""
+	Gibt eine männliche Person zurück.
+	"""
 	z = r.randint(1,10)
 	if z == 1:
 		s = e25(adj() + 'er ')
@@ -162,7 +238,7 @@ def person_m():
 		s = re.sub('ee$', 'e', s) # der feigee
 		s = 'der ' + s.capitalize()
 	elif z == 6:
-		s = r.choice(['der ', 'ein ']) + beruf()
+		s = r.choice(['der ', 'ein ']) + beruf_m()
 	elif z == 7:
 		s = r.choice(spezial_m)
 	elif z == 8:
@@ -172,6 +248,9 @@ def person_m():
 	return s
 
 def person_w():
+	"""
+	Gibt eine weibliche Person zurück.
+	"""
 	z = r.randint(1,10)
 	if z == 1:
 		s = e25(adj() + 'e ')
@@ -204,19 +283,21 @@ def person_w():
 	return s
 
 def person():
+	"""
+	Gibt eine Person zurück.
+	"""
 	if r.randint(0,1):
-		s = person_m()
+		return person_m()
 	else:
-		s = person_w()
-	return s
+		return person_w()
 
-
-# Wort
 vokal = ['a', 'e', 'i', 'o', 'u', 'ei', 'au']
 konsonant = ['b', 'c', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'sch']
 konsonant2 = ['h', 'k', 'l', 'm', 'n', 's', 't']
-
 def wort():
+	"""
+	Gibt ein Fantasiewort zurück.
+	"""
 	laenge = r.randint(3,12)
 	anfaengt = r.randint(1,3)
 	s = ""
@@ -244,47 +325,50 @@ def wort():
 	return s
 
 
-# Zahl
 def zahl():
+	"""
+	Gibt eine Zahl zwischen 0 und 100 zurück.
+	"""
 	s = r.randint(0,100)
 	return str(s)
 
-
-# Farbe
 farben = ['Rot', 'Gelb', 'Blau', 'Violett', 'Türkis', 'Orange', 'Grün', 'Magenta', 'Braun', 'Grau', 'Weiß', 'Schwarz']
 def farbe():
-	s = r.choice(farben)
-	return s
+	"""
+	Gibt eine Farbe zurück.
+	"""
+	return r.choice(farben)
 
-
-# Farben auf englisch
 colors = ['red', 'yellow', 'blue', 'violet', 'orange', 'green', 'magenta', 'brown', 'gray', 'white', 'black']
 def color():
-	s = r.choice(colors)
-	return s
+	"""
+	Gibt eine Farbe auf englisch zurück.
+	"""
+	return r.choice(colors)
 
-
-# Datum
 def datum():
-	s = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
-	return s
+	"""
+	Gibt ein Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
+	"""
+	return str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
 
-
-# Sprichwort
 def sprichwort():
-	s = r.choice(sprichwoerter)
-	return s
+	"""
+	Gibt ein Sprichwort zurück.
+	"""
+	return r.choice(sprichwoerter)
 
+def beruf_m():
+	"""
+	Gibt eine männliche Berufsbezeichnung zurück.
+	"""
+	return r.choice(berufe)
 
-# Berufsbezeichnung
-def beruf():
-	s = r.choice(berufe)
-	return s
-
-
-# Berufsbezeichnung weiblich
 def beruf_w():
-	s = beruf() + 'in'
+	"""
+	Gibt eine weibliche Berufsbezeichnung zurück.
+	"""
+	s = beruf_m() + 'in'
 	s = re.sub('mannin$', 'frau', s) # Restaurantfachmannin => Restaurantfachfrau
 	s = re.sub('kraftin$', 'kraft', s) # Edv-Fachkraftin => Edv-Fachkraft
 	s = re.sub('angestellterin$', 'angestellte', s)
@@ -296,12 +380,19 @@ def beruf_w():
 	s = re.sub('ein$', 'in', s) # Mikrobiologein => Mikrobiologin
 	return s
 
-# Objekt
 def objekt():
+	"""
+	Gibt ein Objekt zurück.
+	"""
 	return r.choice([gegenstand(), tier(), pflanze(), baum()])
 
-# Grammatikalisches Objekt
 def objekt_m(s):
+	"""
+	Bringt ein Objekt in Berzug zu einer männlichen Person.
+
+	Beispiel:
+	'der Bär' wird zu 'den Bären' oder 'seinen Bären'
+	"""
 	if 'der ' in s:
 		s = re.sub('e$', 'en', s) # Löwen
 	s = re.sub('Bär$', 'Bären', s)
@@ -315,6 +406,12 @@ def objekt_m(s):
 	return s
 
 def objekt_w(s):
+	"""
+	Bringt ein Objekt in Berzug zu einer weiblichen Person.
+
+	Beispiel:
+	'der Bär' wird zu 'den Bären' oder 'ihren Bären'
+	"""
 	if 'der ' in s:
 		s = re.sub('e$', 'en', s) # Löwen
 	s = re.sub('Bär$', 'Bären', s)
@@ -328,6 +425,9 @@ def objekt_w(s):
 	return s
 
 def person_objekt_m():
+	"""
+	Gibt eine Person als Objekt in Bezug auf eine männliche Person zurück.
+	"""
 	y = r.randint(1,4)
 	if y == 1:
 		s = vorname_m()
@@ -345,7 +445,10 @@ def person_objekt_m():
 		
 	return s
 
-def person_objekt_w():	
+def person_objekt_w():
+	"""
+	Gibt eine Person als Objekt in Bezug auf eine weibliche Person zurück.
+	"""
 	y = r.randint(1,4)
 	if y == 1:
 		s = vorname_m()
@@ -363,9 +466,12 @@ def person_objekt_w():
 
 	return s
 
-
-# Ortsangabe
 def ort():
+	"""
+	Gibt eine Ortsangabe zurück.
+
+	Beispiel: 'im Flur'
+	"""
 	tausende = ['500', '1000', '2000', '5000', '10000', '100000']
 	if r.randint(0,3):
 		zuschauer = r.choice(tausende)
@@ -378,11 +484,13 @@ def ort():
 	s = re.sub('XXName', r.choice([vorname_m(), vorname_w()]) + 's', s)
 	return s
 
-
-# Essen und Beilage generieren
 voressen = ['Brat', 'Rühr', 'Reibe', 'Brech', 'Back', 'Ofen', 'Hack', 'Mager', 'Frisch', 'Bio', 'Gammel', 'Soja', 'Tofu', 'Milch']
-
 def essen(anz):
+	"""
+	Gibt Essen zurück.
+
+	TODO: Sollte in zwei Funktionen aufgeteilt werden.
+	"""
 	if anz: # zusammengesetzt aus zwei Wörtern
 		if r.randint(0,2):
 			s = r.choice(geschmack) + r.choice(nahrung).lower()
@@ -398,41 +506,45 @@ def essen(anz):
 beilag = ['Soße', 'Sauce', 'Brühe', 'Brei', 'Püree', 'Kartoffeln', 'Salat', 'Marmelade']
 beilag2 = ['Kroketten', 'Pommes', 'Rösti', 'Röstzwiebeln', 'Mayo', 'Mayonnaise', 'Ketchup', 'Bratkartoffeln', 'Zwiebelringen', 'Kartoffelpuffer', 'Soße', 'Nudeln', 'Gemüse', 'Knödeln', 'Salat', 'Marmelade']
 def beilage():
+	"""
+	Gibt eine Beilage zum Essen zurück.
+	"""
 	if r.randint(0,3):
 		s = r.choice(beilag2)
 	else:
 		s = r.choice(geschmack) + r.choice(beilag).lower()
 	return s
 
-
-# Trinken generieren
 getraenk = ['Wasser', 'Saft', 'Tee', 'Kaffee', 'Eistee', 'Milch', 'Punsch', 'Bowle', 'Bier', 'Likör',  'Wein', 'Rum', 'Sekt', 'Schnaps', 'Cocktail']
-
 def trinken():
+	"""
+	Gibt ein Getränk zurück.
+	"""
 	if r.randint(0,2):
 		s = r.choice(geschmack) + r.choice(getraenk).lower()
 	else:
 		s = r.choice(getraenk)
 	return s
 
-
-# Stadt
 def stadt():
+	"""
+	Gibt eine Stadt zurück.
+	"""
 	s = r.choice(stadte).split(' (', 1) # Stadt und Bundesland trennen
 	s = s[0] # Nur Stadt, nicht Bundesland
 	return s
 
-
-# Stadt mit Bundesland
 def stadt_bl():
-	s = r.choice(stadte)
-	return s
+	"""
+	Gibt eine Stadt mit Bundesland zurück.
+	"""
+	return r.choice(stadte)
 
-
-# Band
 gruppe = ['Menschen', 'Personen', 'Kinder', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Unterhosen', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Alkoholiker', 'Leichen']
-
 def band():
+	"""
+	Gibt einen fiktiven Bandnamen zurück.
+	"""
 	z = r.randint(0,5)
 	if z == 0:
 		s = 'Die ' + adj().capitalize() + 'en ' + r.choice(gruppe)
@@ -448,9 +560,12 @@ def band():
 		s = wort()
 	return s
 
-
-# Bandart
 def bandart():
+	"""
+	Gibt eine Bandart zurück.
+
+	Beispiel: 'Gothic Metal Band'
+	"""
 	if r.randint(0,2):
 		m = r.choice(musik)
 		if ' ' in m:
@@ -463,16 +578,24 @@ def bandart():
 		s = r.choice(['Band', 'Musikergruppe'])
 	return s
 
+def firma():
+	"""
+	Gibt einen fiktiven Firmenname zurück.
 
-# Firma
+	TODO
+	"""
+	pass
 
-
-# Satz generieren
-
-# Themen-Satz
+#
+# TODO
+# Jedes Satzschema als Funktion mit Docstring und Beispiel.
+# Hirarchie erhalten in satz()
+# 
 besetzung = ['Sänger', 'Gitarrist', 'Keyboarder', 'Bassist', 'Schlagzeuger', 'Manager', 'Geiger', 'Trompeter', 'Saxophonist', 'Backgroundsänger']
-
 def themen_satz():
+	"""
+	Gibt einen Satz zu einem zufälligen Themen-Komplex zurück.
+	"""
 	x = r.randint(1,6)
 	
 	if x == 1: # Im Park schneit es. / Es stürmt.
@@ -542,11 +665,11 @@ def themen_satz():
 	if x == 5: # Arbeit
 		x = r.randint(1,4)
 		if x == 1:
-			s = vorname_m() + e50(' ' + nachname()) + ' ist ' + e75('ein ') + beruf() + e25(' aus ' + stadt())
+			s = vorname_m() + e50(' ' + nachname()) + ' ist ' + e75('ein ') + beruf_m() + e25(' aus ' + stadt())
 		if x == 2:
 			s = vorname_w() + e50(' ' + nachname()) + ' ist ' + e50('eine ') + beruf_w() + e50(' aus ' + stadt())
 		if x == 3:
-			s = vorname_m() + e50(' ' + nachname()) + e50(', der ' + beruf() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
+			s = vorname_m() + e50(' ' + nachname()) + e50(', der ' + beruf_m() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
 		if x == 4:
 			s = vorname_w() + e50(' ' + nachname()) + e50(', die ' + beruf_w() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())])
 	
@@ -578,9 +701,10 @@ def themen_satz():
 
 	return s + '.'
 
-
-# Standard-Satz
 def standard_satz():
+	"""
+	Gibt einen einfachen Satz, bestehend aus Person, Verb, Adjektiv, Ort und teilweise auch Objekt zurück.
+	"""
 	x = r.randint(1,5)
 	
 	if x == 1:
@@ -620,8 +744,10 @@ def standard_satz():
 	
 	return s + e16(r.choice(ns)) + '.'
 
-# Frage
 def frage():
+	"""
+	Gibt eine Frage zurück.
+	"""
 	x = r.randint(1,5)
 	
 	if x == 1:
@@ -659,6 +785,10 @@ def frage():
 
 
 def satz():
-	s = ersten_buchstaben_gross(r.choice([themen_satz(), standard_satz(), frage()]))
+	"""
+	Gibt einen Satz zurück.
+	"""
+	s = r.choice((themen_satz, standard_satz, frage))()
+
 	#s = ersten_buchstaben_gross(themen_satz())
 	return s

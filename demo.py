@@ -5,7 +5,8 @@ import pyzufall as z
 
 print("\nDemoscript für die Klasse PyZufall\n")
 print("Person: "+z.person())
-print("Berufsbezeichnung: "+z.beruf())
+print("Berufsbezeichnung M: "+z.beruf_m())
+print("Berufsbezeichnung W: "+z.beruf_w())
 print("Essen: "+z.essen(0))
 print("Essen2: "+z.essen(2))
 print("Beilage: "+z.beilage())
