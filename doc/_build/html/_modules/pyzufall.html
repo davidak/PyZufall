@@ -1,0 +1,887 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyzufall &mdash; pyzufall 0.8 Dokumentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="pyzufall 0.8 Dokumentation" href="../index.html" />
+    <link rel="up" title="Modul-Quellcode" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Allgemeiner Index"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python-Modulindex"
+             >Module</a> |</li>
+        <li><a href="../index.html">pyzufall 0.8 Dokumentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Modul-Quellcode</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Quellcode für pyzufall</h1><div class="highlight"><pre>
+<span class="c">#!/usr/bin/env python3</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">SystemRandom</span><span class="p">()</span> <span class="c"># Uses /dev/urandom or Windows CryptGenRandom for better entropy</span>
+
+<div class="viewcode-block" id="lese"><a class="viewcode-back" href="../funktionen.html#pyzufall.lese">[Doku]</a><span class="k">def</span> <span class="nf">lese</span><span class="p">(</span><span class="n">dateiname</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.</span>
+
+<span class="sd">	http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path</span>
+<span class="sd">	http://stackoverflow.com/questions/595305/python-path-of-scrip</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">dateipfad</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&#39;data/&#39;</span> <span class="o">+</span> <span class="n">dateiname</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateipfad</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="c"># Namen einlesen</span></div>
+<span class="n">vornamen_m</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;vornamen_m&#39;</span><span class="p">)</span>
+<span class="n">vornamen_w</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;vornamen_w&#39;</span><span class="p">)</span>
+<span class="n">nachnamen</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;nachnamen&#39;</span><span class="p">)</span>
+
+<span class="c"># Objekte einlesen</span>
+<span class="n">pflanzen</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;pflanzen&#39;</span><span class="p">)</span>
+<span class="n">baeume</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;baeume&#39;</span><span class="p">)</span>
+<span class="n">tiere</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;tiere&#39;</span><span class="p">)</span>
+<span class="n">gegenstaende</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;gegenstaende&#39;</span><span class="p">)</span>
+<span class="n">koerperteile</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;koerperteile&#39;</span><span class="p">)</span>
+<span class="n">nahrung</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;nahrung&#39;</span><span class="p">)</span>
+<span class="n">geschmack</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;geschmack&#39;</span><span class="p">)</span>
+<span class="n">berufe</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;berufe&#39;</span><span class="p">)</span>
+<span class="n">musik</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;musikgenre&#39;</span><span class="p">)</span>
+<span class="n">stadte</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;stadt_bundesland&#39;</span><span class="p">)</span>
+
+<span class="c"># Wortarten einlesen</span>
+
+<span class="c"># Verben</span>
+<span class="n">nullwertige_verben</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;nullwertige_verben&#39;</span><span class="p">)</span>
+<span class="n">intransitive_verben</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;intransitive_verben&#39;</span><span class="p">)</span>
+<span class="n">intransitive_verben_2</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;intransitive_verben_2&#39;</span><span class="p">)</span>
+<span class="n">transitive_verben</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;transitive_verben&#39;</span><span class="p">)</span>
+<span class="n">transitive_verben_2</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;transitive_verben_2&#39;</span><span class="p">)</span>
+<span class="n">ditransitive_verben</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;ditransitive_verben&#39;</span><span class="p">)</span>
+
+<span class="c"># Adjektive</span>
+<span class="n">adjektive</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;adjektiv&#39;</span><span class="p">)</span>
+
+<span class="c"># Sazteile oder Sätze</span>
+<span class="n">ortsangabe</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;ort&#39;</span><span class="p">)</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;nebensatz&#39;</span><span class="p">)</span>
+<span class="n">sprichwoerter</span> <span class="o">=</span> <span class="n">lese</span><span class="p">(</span><span class="s">&#39;sprichwoerter&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="e16"><a class="viewcode-back" href="../funktionen.html#pyzufall.e16">[Doku]</a><span class="k">def</span> <span class="nf">e16</span><span class="p">(</span><span class="n">wort</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">wort</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="s">&#39;&#39;</span>
+</div>
+<div class="viewcode-block" id="e25"><a class="viewcode-back" href="../funktionen.html#pyzufall.e25">[Doku]</a><span class="k">def</span> <span class="nf">e25</span><span class="p">(</span><span class="n">wort</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">wort</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="s">&#39;&#39;</span>
+</div>
+<div class="viewcode-block" id="e50"><a class="viewcode-back" href="../funktionen.html#pyzufall.e50">[Doku]</a><span class="k">def</span> <span class="nf">e50</span><span class="p">(</span><span class="n">wort</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">wort</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="s">&#39;&#39;</span>
+</div>
+<div class="viewcode-block" id="e75"><a class="viewcode-back" href="../funktionen.html#pyzufall.e75">[Doku]</a><span class="k">def</span> <span class="nf">e75</span><span class="p">(</span><span class="n">wort</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">wort</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="s">&#39;&#39;</span>
+</div>
+<div class="viewcode-block" id="ersten_buchstaben_gross"><a class="viewcode-back" href="../funktionen.html#pyzufall.ersten_buchstaben_gross">[Doku]</a><span class="k">def</span> <span class="nf">ersten_buchstaben_gross</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Macht den ersten Buchstaben gross.	</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+</div>
+<div class="viewcode-block" id="vorname_m"><a class="viewcode-back" href="../funktionen.html#pyzufall.vorname_m">[Doku]</a><span class="k">def</span> <span class="nf">vorname_m</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen männlichen Vornamen zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vornamen_m</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="vorname_w"><a class="viewcode-back" href="../funktionen.html#pyzufall.vorname_w">[Doku]</a><span class="k">def</span> <span class="nf">vorname_w</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen weiblichen Vornamen zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vornamen_w</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="nachname"><a class="viewcode-back" href="../funktionen.html#pyzufall.nachname">[Doku]</a><span class="k">def</span> <span class="nf">nachname</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen Nachnamen zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nachnamen</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="verbn"><a class="viewcode-back" href="../funktionen.html#pyzufall.verbn">[Doku]</a><span class="k">def</span> <span class="nf">verbn</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein nullwertiges Verb zurück.</span>
+
+<span class="sd">	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nullwertige_verben</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="verbi"><a class="viewcode-back" href="../funktionen.html#pyzufall.verbi">[Doku]</a><span class="k">def</span> <span class="nf">verbi</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein intransitives Verb zurück.</span>
+
+<span class="sd">	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">intransitive_verben</span><span class="p">)</span>
+	</div>
+<div class="viewcode-block" id="verbi2"><a class="viewcode-back" href="../funktionen.html#pyzufall.verbi2">[Doku]</a><span class="k">def</span> <span class="nf">verbi2</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein intransitives, getrenntes Verb zurück.</span>
+
+<span class="sd">	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">intransitive_verben_2</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="verbt"><a class="viewcode-back" href="../funktionen.html#pyzufall.verbt">[Doku]</a><span class="k">def</span> <span class="nf">verbt</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein transitives Verb zurück.</span>
+
+<span class="sd">	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">transitive_verben</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="verbt2"><a class="viewcode-back" href="../funktionen.html#pyzufall.verbt2">[Doku]</a><span class="k">def</span> <span class="nf">verbt2</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein intransitives, getrenntes Verb zurück.</span>
+
+<span class="sd">	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">transitive_verben_2</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="verbd"><a class="viewcode-back" href="../funktionen.html#pyzufall.verbd">[Doku]</a><span class="k">def</span> <span class="nf">verbd</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein ditransitives Verb zurück.</span>
+
+<span class="sd">	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ditransitive_verben</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="adj"><a class="viewcode-back" href="../funktionen.html#pyzufall.adj">[Doku]</a><span class="k">def</span> <span class="nf">adj</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Adjektiv zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">adjektive</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="gegenstand"><a class="viewcode-back" href="../funktionen.html#pyzufall.gegenstand">[Doku]</a><span class="k">def</span> <span class="nf">gegenstand</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen Gegenstand zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">gegenstaende</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="koerperteil"><a class="viewcode-back" href="../funktionen.html#pyzufall.koerperteil">[Doku]</a><span class="k">def</span> <span class="nf">koerperteil</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Körperteil zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">koerperteile</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="tier"><a class="viewcode-back" href="../funktionen.html#pyzufall.tier">[Doku]</a><span class="k">def</span> <span class="nf">tier</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Tier zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">tiere</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="baum"><a class="viewcode-back" href="../funktionen.html#pyzufall.baum">[Doku]</a><span class="k">def</span> <span class="nf">baum</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen Baum zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">baeume</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="pflanze"><a class="viewcode-back" href="../funktionen.html#pyzufall.pflanze">[Doku]</a><span class="k">def</span> <span class="nf">pflanze</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Pflanze zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pflanzen</span><span class="p">)</span>
+</div>
+<span class="n">beziehung_m</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Vater&#39;</span><span class="p">,</span> <span class="s">&#39;Bruder&#39;</span><span class="p">,</span> <span class="s">&#39;Mann&#39;</span><span class="p">,</span> <span class="s">&#39;Sohn&#39;</span><span class="p">,</span> <span class="s">&#39;Onkel&#39;</span><span class="p">,</span> <span class="s">&#39;Opa&#39;</span><span class="p">,</span> <span class="s">&#39;Cousin&#39;</span><span class="p">,</span> <span class="s">&#39;Enkel&#39;</span><span class="p">,</span> <span class="s">&#39;Chef&#39;</span><span class="p">,</span> <span class="s">&#39;Freund&#39;</span><span class="p">,</span> <span class="s">&#39;Partner&#39;</span><span class="p">,</span> <span class="s">&#39;Kollege&#39;</span><span class="p">,</span> <span class="s">&#39;Mitarbeiter&#39;</span><span class="p">,</span> <span class="s">&#39;Mitbewohner&#39;</span><span class="p">,</span> <span class="s">&#39;Vermieter&#39;</span><span class="p">,</span> <span class="s">&#39;Lehrer&#39;</span><span class="p">]</span>
+<span class="n">beziehung_w</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Mutter&#39;</span><span class="p">,</span> <span class="s">&#39;Schwester&#39;</span><span class="p">,</span> <span class="s">&#39;Frau&#39;</span><span class="p">,</span> <span class="s">&#39;Tochter&#39;</span><span class="p">,</span> <span class="s">&#39;Tante&#39;</span><span class="p">,</span> <span class="s">&#39;Oma&#39;</span><span class="p">,</span> <span class="s">&#39;Cousine&#39;</span><span class="p">,</span> <span class="s">&#39;Enkelin&#39;</span><span class="p">,</span> <span class="s">&#39;Cheffin&#39;</span><span class="p">,</span> <span class="s">&#39;Freundin&#39;</span><span class="p">,</span> <span class="s">&#39;Partnerin&#39;</span><span class="p">,</span> <span class="s">&#39;Kollegin&#39;</span><span class="p">,</span> <span class="s">&#39;Mitarbeiterin&#39;</span><span class="p">,</span> <span class="s">&#39;Mitbewohnerin&#39;</span><span class="p">,</span> <span class="s">&#39;Vermieterin&#39;</span><span class="p">,</span> <span class="s">&#39;Lehrerin&#39;</span><span class="p">]</span>
+<span class="n">possessivpronomen_m</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;mein&#39;</span><span class="p">,</span> <span class="s">&#39;dein&#39;</span><span class="p">,</span> <span class="s">&#39;sein&#39;</span><span class="p">,</span> <span class="s">&#39;ihr&#39;</span><span class="p">]</span>
+
+<span class="n">personen</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;er&#39;</span><span class="p">,</span> <span class="s">&#39;sie&#39;</span><span class="p">,</span> <span class="s">&#39;es&#39;</span><span class="p">,</span> <span class="s">&#39;jemand&#39;</span><span class="p">,</span> <span class="s">&#39;niemand&#39;</span><span class="p">]</span>
+
+<span class="n">spezial_m</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;ein Held&#39;</span><span class="p">,</span> <span class="s">&#39;ein Penner&#39;</span><span class="p">,</span> <span class="s">&#39;ein Verkäufer&#39;</span><span class="p">,</span> <span class="s">&#39;ein Zuhälter&#39;</span><span class="p">,</span> <span class="s">&#39;ein Lehrer&#39;</span><span class="p">,</span> <span class="s">&#39;ein Polizist&#39;</span><span class="p">,</span> <span class="s">&#39;ein Beamter&#39;</span><span class="p">,</span> <span class="s">&#39;ein Arzt&#39;</span><span class="p">,</span> <span class="s">&#39;Hitler&#39;</span><span class="p">,</span> <span class="s">&#39;ein Bernd&#39;</span><span class="p">,</span> <span class="s">&#39;ein Schwuler&#39;</span><span class="p">,</span> <span class="s">&#39;ein Behinderter&#39;</span><span class="p">,</span> <span class="s">&#39;der Affenmensch&#39;</span><span class="p">,</span> <span class="s">&#39;der Satanist&#39;</span><span class="p">,</span> <span class="s">&#39;der Alkoholiker&#39;</span><span class="p">,</span> <span class="s">&#39;ein normaler Mensch&#39;</span><span class="p">,</span> <span class="s">&#39;ein Pirat&#39;</span><span class="p">,</span> <span class="s">&#39;ein Hartz-IV-Empfänger&#39;</span><span class="p">,</span> <span class="s">&#39;ein Müllmann&#39;</span><span class="p">]</span>
+<span class="n">spezial_w</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;eine Heldin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Pennerin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Verkäuferin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Zuhälterin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Prostituierte&#39;</span><span class="p">,</span> <span class="s">&#39;eine Nutte&#39;</span><span class="p">,</span> <span class="s">&#39;eine Hure&#39;</span><span class="p">,</span> <span class="s">&#39;eine Schlampe&#39;</span><span class="p">,</span> <span class="s">&#39;eine Lehrerin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Polizistin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Beamtin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Ärztin&#39;</span><span class="p">,</span> <span class="s">&#39;eine Behinderte&#39;</span><span class="p">,</span> <span class="s">&#39;eine Sekretärin&#39;</span><span class="p">,</span> <span class="s">&#39;die Transe&#39;</span><span class="p">,</span> <span class="s">&#39;das Mannsweib&#39;</span><span class="p">,</span> <span class="s">&#39;das Penismädchen&#39;</span><span class="p">,</span> <span class="s">&#39;die Lesbe&#39;</span><span class="p">,</span> <span class="s">&#39;die Kampflesbe&#39;</span><span class="p">,</span> <span class="s">&#39;die Satanistin&#39;</span><span class="p">,</span> <span class="s">&#39;die Alkoholikerin&#39;</span><span class="p">,</span> <span class="s">&#39;die Piratin&#39;</span><span class="p">,</span> <span class="s">&#39;die Hartz-IV-Empfängerin&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="person_m"><a class="viewcode-back" href="../funktionen.html#pyzufall.person_m">[Doku]</a><span class="k">def</span> <span class="nf">person_m</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine männliche Person zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">z</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;er &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;eer $&#39;</span><span class="p">,</span> <span class="s">&#39;er &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigeer</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">vorname_m</span><span class="p">(),</span> <span class="n">vorname_w</span><span class="p">()])</span> <span class="o">+</span> <span class="s">&#39;s &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_m</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;er &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;eer $&#39;</span><span class="p">,</span> <span class="s">&#39;er &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigeer</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possessivpronomen_m</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_m</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span>  <span class="n">e50</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee $&#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># der feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;der &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_m</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee $&#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># der feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;der &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vornamen_m</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee$&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># der feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;der &#39;</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;ein &#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">beruf_m</span><span class="p">()</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">spezial_m</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;er&#39;</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_m</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="person_w"><a class="viewcode-back" href="../funktionen.html#pyzufall.person_w">[Doku]</a><span class="k">def</span> <span class="nf">person_w</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine weibliche Person zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">z</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee $&#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">vorname_m</span><span class="p">(),</span> <span class="n">vorname_w</span><span class="p">()])</span> <span class="o">+</span> <span class="s">&#39;s &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_w</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee $&#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># die feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possessivpronomen_m</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_w</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span>  <span class="n">e50</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee $&#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># die feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;die &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_w</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee $&#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># die feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;die &#39;</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">vorname_w</span><span class="p">()</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee$&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># die feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;die &#39;</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="s">&#39;eine &#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">beruf_w</span><span class="p">()</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">spezial_w</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;sie&#39;</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_w</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="person"><a class="viewcode-back" href="../funktionen.html#pyzufall.person">[Doku]</a><span class="k">def</span> <span class="nf">person</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Person zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">person_m</span><span class="p">()</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">person_w</span><span class="p">()</span>
+</div>
+<span class="n">vokal</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;ei&#39;</span><span class="p">,</span> <span class="s">&#39;au&#39;</span><span class="p">]</span>
+<span class="n">konsonant</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">,</span> <span class="s">&#39;sch&#39;</span><span class="p">]</span>
+<span class="n">konsonant2</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;t&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="wort"><a class="viewcode-back" href="../funktionen.html#pyzufall.wort">[Doku]</a><span class="k">def</span> <span class="nf">wort</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Fantasiewort zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">laenge</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+	<span class="n">anfaengt</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+	
+	<span class="k">if</span> <span class="n">anfaengt</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c"># Anfang wird ein Vokal</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vokal</span><span class="p">)</span>
+		<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">laenge</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">konsonant</span><span class="p">)</span>
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">laenge</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+				<span class="n">s</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">konsonant2</span><span class="p">)</span>
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">laenge</span><span class="p">:</span>
+				<span class="k">break</span>
+			<span class="n">s</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vokal</span><span class="p">)</span>
+
+	<span class="k">else</span><span class="p">:</span> <span class="c"># Anfang wird ein Konsonant</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">konsonant</span><span class="p">)</span>
+		<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">laenge</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">vokal</span><span class="p">)</span>
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">laenge</span><span class="p">:</span>
+				<span class="k">break</span>
+			<span class="n">s</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">konsonant</span><span class="p">)</span>
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">laenge</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+				<span class="n">s</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">konsonant2</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">s</span>
+
+</div>
+<div class="viewcode-block" id="zahl"><a class="viewcode-back" href="../funktionen.html#pyzufall.zahl">[Doku]</a><span class="k">def</span> <span class="nf">zahl</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Zahl zwischen 0 und 100 zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</div>
+<span class="n">farben</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Rot&#39;</span><span class="p">,</span> <span class="s">&#39;Gelb&#39;</span><span class="p">,</span> <span class="s">&#39;Blau&#39;</span><span class="p">,</span> <span class="s">&#39;Violett&#39;</span><span class="p">,</span> <span class="s">&#39;Türkis&#39;</span><span class="p">,</span> <span class="s">&#39;Orange&#39;</span><span class="p">,</span> <span class="s">&#39;Grün&#39;</span><span class="p">,</span> <span class="s">&#39;Magenta&#39;</span><span class="p">,</span> <span class="s">&#39;Braun&#39;</span><span class="p">,</span> <span class="s">&#39;Grau&#39;</span><span class="p">,</span> <span class="s">&#39;Weiß&#39;</span><span class="p">,</span> <span class="s">&#39;Schwarz&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="farbe"><a class="viewcode-back" href="../funktionen.html#pyzufall.farbe">[Doku]</a><span class="k">def</span> <span class="nf">farbe</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Farbe zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">farben</span><span class="p">)</span>
+</div>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;red&#39;</span><span class="p">,</span> <span class="s">&#39;yellow&#39;</span><span class="p">,</span> <span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="s">&#39;violet&#39;</span><span class="p">,</span> <span class="s">&#39;orange&#39;</span><span class="p">,</span> <span class="s">&#39;green&#39;</span><span class="p">,</span> <span class="s">&#39;magenta&#39;</span><span class="p">,</span> <span class="s">&#39;brown&#39;</span><span class="p">,</span> <span class="s">&#39;gray&#39;</span><span class="p">,</span> <span class="s">&#39;white&#39;</span><span class="p">,</span> <span class="s">&#39;black&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="color"><a class="viewcode-back" href="../funktionen.html#pyzufall.color">[Doku]</a><span class="k">def</span> <span class="nf">color</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Farbe auf englisch zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="datum"><a class="viewcode-back" href="../funktionen.html#pyzufall.datum">[Doku]</a><span class="k">def</span> <span class="nf">datum</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">))</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1950</span><span class="p">,</span><span class="mi">2012</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="sprichwort"><a class="viewcode-back" href="../funktionen.html#pyzufall.sprichwort">[Doku]</a><span class="k">def</span> <span class="nf">sprichwort</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Sprichwort zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">sprichwoerter</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="beruf_m"><a class="viewcode-back" href="../funktionen.html#pyzufall.beruf_m">[Doku]</a><span class="k">def</span> <span class="nf">beruf_m</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine männliche Berufsbezeichnung zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">berufe</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="beruf_w"><a class="viewcode-back" href="../funktionen.html#pyzufall.beruf_w">[Doku]</a><span class="k">def</span> <span class="nf">beruf_w</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine weibliche Berufsbezeichnung zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">beruf_m</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;in&#39;</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;mannin$&#39;</span><span class="p">,</span> <span class="s">&#39;frau&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Restaurantfachmannin =&gt; Restaurantfachfrau</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;kraftin$&#39;</span><span class="p">,</span> <span class="s">&#39;kraft&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Edv-Fachkraftin =&gt; Edv-Fachkraft</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;angestellterin$&#39;</span><span class="p">,</span> <span class="s">&#39;angestellte&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Fotomodellin$&#39;</span><span class="p">,</span> <span class="s">&#39;Fotomodell&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Technischer Zeichnerin$&#39;</span><span class="p">,</span> <span class="s">&#39;Technische Zeichnerin&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Arztin$&#39;</span><span class="p">,</span> <span class="s">&#39;Ärztin&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;arztin$&#39;</span><span class="p">,</span> <span class="s">&#39;ärztin&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;beamterin$&#39;</span><span class="p">,</span> <span class="s">&#39;beamtin&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Polizeibeamterin =&gt; Polizeibeamte</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ein$&#39;</span><span class="p">,</span> <span class="s">&#39;in&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Mikrobiologein =&gt; Mikrobiologin</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="objekt"><a class="viewcode-back" href="../funktionen.html#pyzufall.objekt">[Doku]</a><span class="k">def</span> <span class="nf">objekt</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Objekt zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">gegenstand</span><span class="p">(),</span> <span class="n">tier</span><span class="p">(),</span> <span class="n">pflanze</span><span class="p">(),</span> <span class="n">baum</span><span class="p">()])</span>
+</div>
+<div class="viewcode-block" id="objekt_m"><a class="viewcode-back" href="../funktionen.html#pyzufall.objekt_m">[Doku]</a><span class="k">def</span> <span class="nf">objekt_m</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Bringt ein Objekt in Berzug zu einer männlichen Person.</span>
+
+<span class="sd">	Beispiel:</span>
+<span class="sd">	&#39;der Bär&#39; wird zu &#39;den Bären&#39; oder &#39;seinen Bären&#39;</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="s">&#39;der &#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;e$&#39;</span><span class="p">,</span> <span class="s">&#39;en&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Löwen</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Bär$&#39;</span><span class="p">,</span> <span class="s">&#39;Bären&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;einen &#39;</span><span class="p">,</span> <span class="s">&#39;seinen &#39;</span><span class="p">,</span> <span class="s">&#39;deinen &#39;</span><span class="p">]),</span> <span class="n">s</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;eine &#39;</span><span class="p">,</span> <span class="s">&#39;seine &#39;</span><span class="p">,</span> <span class="s">&#39;deine &#39;</span><span class="p">]),</span> <span class="n">s</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;ein &#39;</span><span class="p">,</span> <span class="s">&#39;sein &#39;</span><span class="p">,</span> <span class="s">&#39;dein &#39;</span><span class="p">]),</span> <span class="n">s</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="objekt_w"><a class="viewcode-back" href="../funktionen.html#pyzufall.objekt_w">[Doku]</a><span class="k">def</span> <span class="nf">objekt_w</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Bringt ein Objekt in Berzug zu einer weiblichen Person.</span>
+
+<span class="sd">	Beispiel:</span>
+<span class="sd">	&#39;der Bär&#39; wird zu &#39;den Bären&#39; oder &#39;ihren Bären&#39;</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="s">&#39;der &#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;e$&#39;</span><span class="p">,</span> <span class="s">&#39;en&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Löwen</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Bär$&#39;</span><span class="p">,</span> <span class="s">&#39;Bären&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;einen &#39;</span><span class="p">,</span> <span class="s">&#39;ihren &#39;</span><span class="p">,</span> <span class="s">&#39;deinen &#39;</span><span class="p">]),</span> <span class="n">s</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;eine &#39;</span><span class="p">,</span> <span class="s">&#39;ihre &#39;</span><span class="p">,</span> <span class="s">&#39;deine &#39;</span><span class="p">]),</span> <span class="n">s</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;ein &#39;</span><span class="p">,</span> <span class="s">&#39;ihr &#39;</span><span class="p">,</span> <span class="s">&#39;dein &#39;</span><span class="p">]),</span> <span class="n">s</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="person_objekt_m"><a class="viewcode-back" href="../funktionen.html#pyzufall.person_objekt_m">[Doku]</a><span class="k">def</span> <span class="nf">person_objekt_m</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Person als Objekt in Bezug auf eine männliche Person zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">y</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_m</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_w</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span>  <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;en &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;een &#39;</span><span class="p">,</span> <span class="s">&#39;en &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigeen</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;seinen &#39;</span><span class="p">,</span> <span class="s">&#39;deinen &#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_m</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Kollege&#39;</span><span class="p">,</span> <span class="s">&#39;Kollegen&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span>  <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee &#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;seine &#39;</span><span class="p">,</span> <span class="s">&#39;deine &#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_w</span><span class="p">)</span>
+		
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="person_objekt_w"><a class="viewcode-back" href="../funktionen.html#pyzufall.person_objekt_w">[Doku]</a><span class="k">def</span> <span class="nf">person_objekt_w</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Person als Objekt in Bezug auf eine weibliche Person zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">y</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_m</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_w</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span>  <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;en &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;een &#39;</span><span class="p">,</span> <span class="s">&#39;en &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigeen</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;ihren &#39;</span><span class="p">,</span> <span class="s">&#39;deinen &#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_m</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;Kollege&#39;</span><span class="p">,</span> <span class="s">&#39;Kollegen&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span>  <span class="n">e25</span><span class="p">(</span><span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">)</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;ee &#39;</span><span class="p">,</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># feigee</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;ihre &#39;</span><span class="p">,</span> <span class="s">&#39;deine &#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beziehung_w</span><span class="p">)</span>
+
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="ort"><a class="viewcode-back" href="../funktionen.html#pyzufall.ort">[Doku]</a><span class="k">def</span> <span class="nf">ort</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Ortsangabe zurück.</span>
+
+<span class="sd">	Beispiel: &#39;im Flur&#39;</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">tausende</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;500&#39;</span><span class="p">,</span> <span class="s">&#39;1000&#39;</span><span class="p">,</span> <span class="s">&#39;2000&#39;</span><span class="p">,</span> <span class="s">&#39;5000&#39;</span><span class="p">,</span> <span class="s">&#39;10000&#39;</span><span class="p">,</span> <span class="s">&#39;100000&#39;</span><span class="p">]</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+		<span class="n">zuschauer</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">tausende</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">zuschauer</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10000</span><span class="p">))</span>
+
+	<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ortsangabe</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;auf Gleis XX$&#39;</span><span class="p">,</span> <span class="s">&#39;auf Gleis &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">14</span><span class="p">)),</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;XXZusch&#39;</span><span class="p">,</span> <span class="n">zuschauer</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;XXName&#39;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">vorname_m</span><span class="p">(),</span> <span class="n">vorname_w</span><span class="p">()])</span> <span class="o">+</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<span class="n">voressen</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Brat&#39;</span><span class="p">,</span> <span class="s">&#39;Rühr&#39;</span><span class="p">,</span> <span class="s">&#39;Reibe&#39;</span><span class="p">,</span> <span class="s">&#39;Brech&#39;</span><span class="p">,</span> <span class="s">&#39;Back&#39;</span><span class="p">,</span> <span class="s">&#39;Ofen&#39;</span><span class="p">,</span> <span class="s">&#39;Hack&#39;</span><span class="p">,</span> <span class="s">&#39;Mager&#39;</span><span class="p">,</span> <span class="s">&#39;Frisch&#39;</span><span class="p">,</span> <span class="s">&#39;Bio&#39;</span><span class="p">,</span> <span class="s">&#39;Gammel&#39;</span><span class="p">,</span> <span class="s">&#39;Soja&#39;</span><span class="p">,</span> <span class="s">&#39;Tofu&#39;</span><span class="p">,</span> <span class="s">&#39;Milch&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="essen"><a class="viewcode-back" href="../funktionen.html#pyzufall.essen">[Doku]</a><span class="k">def</span> <span class="nf">essen</span><span class="p">(</span><span class="n">anz</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt Essen zurück.</span>
+
+<span class="sd">	TODO: Sollte in zwei Funktionen aufgeteilt werden.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">anz</span><span class="p">:</span> <span class="c"># zusammengesetzt aus zwei Wörtern</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">geschmack</span><span class="p">)</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nahrung</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">voressen</span><span class="p">)</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nahrung</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+	<span class="k">else</span><span class="p">:</span> <span class="c"># aus einem Wort bestehend</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">geschmack</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nahrung</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<span class="n">beilag</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Soße&#39;</span><span class="p">,</span> <span class="s">&#39;Sauce&#39;</span><span class="p">,</span> <span class="s">&#39;Brühe&#39;</span><span class="p">,</span> <span class="s">&#39;Brei&#39;</span><span class="p">,</span> <span class="s">&#39;Püree&#39;</span><span class="p">,</span> <span class="s">&#39;Kartoffeln&#39;</span><span class="p">,</span> <span class="s">&#39;Salat&#39;</span><span class="p">,</span> <span class="s">&#39;Marmelade&#39;</span><span class="p">]</span>
+<span class="n">beilag2</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Kroketten&#39;</span><span class="p">,</span> <span class="s">&#39;Pommes&#39;</span><span class="p">,</span> <span class="s">&#39;Rösti&#39;</span><span class="p">,</span> <span class="s">&#39;Röstzwiebeln&#39;</span><span class="p">,</span> <span class="s">&#39;Mayo&#39;</span><span class="p">,</span> <span class="s">&#39;Mayonnaise&#39;</span><span class="p">,</span> <span class="s">&#39;Ketchup&#39;</span><span class="p">,</span> <span class="s">&#39;Bratkartoffeln&#39;</span><span class="p">,</span> <span class="s">&#39;Zwiebelringen&#39;</span><span class="p">,</span> <span class="s">&#39;Kartoffelpuffer&#39;</span><span class="p">,</span> <span class="s">&#39;Soße&#39;</span><span class="p">,</span> <span class="s">&#39;Nudeln&#39;</span><span class="p">,</span> <span class="s">&#39;Gemüse&#39;</span><span class="p">,</span> <span class="s">&#39;Knödeln&#39;</span><span class="p">,</span> <span class="s">&#39;Salat&#39;</span><span class="p">,</span> <span class="s">&#39;Marmelade&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="beilage"><a class="viewcode-back" href="../funktionen.html#pyzufall.beilage">[Doku]</a><span class="k">def</span> <span class="nf">beilage</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Beilage zum Essen zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beilag2</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">geschmack</span><span class="p">)</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">beilag</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<span class="n">getraenk</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Wasser&#39;</span><span class="p">,</span> <span class="s">&#39;Saft&#39;</span><span class="p">,</span> <span class="s">&#39;Tee&#39;</span><span class="p">,</span> <span class="s">&#39;Kaffee&#39;</span><span class="p">,</span> <span class="s">&#39;Eistee&#39;</span><span class="p">,</span> <span class="s">&#39;Milch&#39;</span><span class="p">,</span> <span class="s">&#39;Punsch&#39;</span><span class="p">,</span> <span class="s">&#39;Bowle&#39;</span><span class="p">,</span> <span class="s">&#39;Bier&#39;</span><span class="p">,</span> <span class="s">&#39;Likör&#39;</span><span class="p">,</span>  <span class="s">&#39;Wein&#39;</span><span class="p">,</span> <span class="s">&#39;Rum&#39;</span><span class="p">,</span> <span class="s">&#39;Sekt&#39;</span><span class="p">,</span> <span class="s">&#39;Schnaps&#39;</span><span class="p">,</span> <span class="s">&#39;Cocktail&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="trinken"><a class="viewcode-back" href="../funktionen.html#pyzufall.trinken">[Doku]</a><span class="k">def</span> <span class="nf">trinken</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt ein Getränk zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">geschmack</span><span class="p">)</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">getraenk</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">getraenk</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="stadt"><a class="viewcode-back" href="../funktionen.html#pyzufall.stadt">[Doku]</a><span class="k">def</span> <span class="nf">stadt</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Stadt zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">stadte</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; (&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># Stadt und Bundesland trennen</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Nur Stadt, nicht Bundesland</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="stadt_bl"><a class="viewcode-back" href="../funktionen.html#pyzufall.stadt_bl">[Doku]</a><span class="k">def</span> <span class="nf">stadt_bl</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Stadt mit Bundesland zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">stadte</span><span class="p">)</span>
+</div>
+<span class="n">gruppe</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Menschen&#39;</span><span class="p">,</span> <span class="s">&#39;Personen&#39;</span><span class="p">,</span> <span class="s">&#39;Kinder&#39;</span><span class="p">,</span> <span class="s">&#39;Tiere&#39;</span><span class="p">,</span> <span class="s">&#39;Gedärme&#39;</span><span class="p">,</span> <span class="s">&#39;Kadaver&#39;</span><span class="p">,</span> <span class="s">&#39;Nudeln&#39;</span><span class="p">,</span> <span class="s">&#39;Unterhosen&#39;</span><span class="p">,</span> <span class="s">&#39;Würstchen&#39;</span><span class="p">,</span> <span class="s">&#39;Bäume&#39;</span><span class="p">,</span> <span class="s">&#39;Stühle&#39;</span><span class="p">,</span> <span class="s">&#39;Schweine&#39;</span><span class="p">,</span> <span class="s">&#39;Neger&#39;</span><span class="p">,</span> <span class="s">&#39;Alkoholiker&#39;</span><span class="p">,</span> <span class="s">&#39;Leichen&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="band"><a class="viewcode-back" href="../funktionen.html#pyzufall.band">[Doku]</a><span class="k">def</span> <span class="nf">band</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen fiktiven Bandnamen zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">z</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Die &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;en &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">gruppe</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">geschmack</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span> <span class="o">+</span> <span class="n">essen</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">wort</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="bandart"><a class="viewcode-back" href="../funktionen.html#pyzufall.bandart">[Doku]</a><span class="k">def</span> <span class="nf">bandart</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Bandart zurück.</span>
+
+<span class="sd">	Beispiel: &#39;Gothic Metal Band&#39;</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+		<span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">musik</span><span class="p">)</span>
+		<span class="k">if</span> <span class="s">&#39; &#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="s">&#39; Band&#39;</span>
+		<span class="k">elif</span> <span class="s">&#39;-&#39;</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="s">&#39;-Band&#39;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="s">&#39;band&#39;</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;Band&#39;</span><span class="p">,</span> <span class="s">&#39;Musikergruppe&#39;</span><span class="p">])</span>
+	<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="firma"><a class="viewcode-back" href="../funktionen.html#pyzufall.firma">[Doku]</a><span class="k">def</span> <span class="nf">firma</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen fiktiven Firmenname zurück.</span>
+
+<span class="sd">	TODO</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">pass</span>
+
+<span class="c">#</span>
+<span class="c"># TODO</span>
+<span class="c"># Jedes Satzschema als Funktion mit Docstring und Beispiel.</span>
+<span class="c"># Hirarchie erhalten in satz()</span>
+<span class="c"># </span></div>
+<span class="n">besetzung</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Sänger&#39;</span><span class="p">,</span> <span class="s">&#39;Gitarrist&#39;</span><span class="p">,</span> <span class="s">&#39;Keyboarder&#39;</span><span class="p">,</span> <span class="s">&#39;Bassist&#39;</span><span class="p">,</span> <span class="s">&#39;Schlagzeuger&#39;</span><span class="p">,</span> <span class="s">&#39;Manager&#39;</span><span class="p">,</span> <span class="s">&#39;Geiger&#39;</span><span class="p">,</span> <span class="s">&#39;Trompeter&#39;</span><span class="p">,</span> <span class="s">&#39;Saxophonist&#39;</span><span class="p">,</span> <span class="s">&#39;Backgroundsänger&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="themen_satz"><a class="viewcode-back" href="../funktionen.html#pyzufall.themen_satz">[Doku]</a><span class="k">def</span> <span class="nf">themen_satz</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen Satz zu einem zufälligen Themen-Komplex zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c"># Im Park schneit es. / Es stürmt.</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">ort</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">verbn</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; es&#39;</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">())</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Es &#39;</span> <span class="o">+</span> <span class="n">verbn</span><span class="p">()</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">())</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c"># Baum</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person_m</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;pflanzt&#39;</span><span class="p">,</span> <span class="s">&#39;klettert auf&#39;</span><span class="p">,</span> <span class="s">&#39;fällt&#39;</span><span class="p">,</span> <span class="s">&#39;zersägt&#39;</span><span class="p">,</span> <span class="s">&#39;stellt sich unter&#39;</span><span class="p">,</span> <span class="s">&#39;umarmt&#39;</span><span class="p">,</span> <span class="s">&#39;tritt gegen&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">objekt_m</span><span class="p">(</span><span class="n">baum</span><span class="p">())</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;pflanzt&#39;</span><span class="p">,</span> <span class="s">&#39;klettert auf&#39;</span><span class="p">,</span> <span class="s">&#39;fällt&#39;</span><span class="p">,</span> <span class="s">&#39;zersägt&#39;</span><span class="p">,</span> <span class="s">&#39;stellt sich unter&#39;</span><span class="p">,</span> <span class="s">&#39;umarmt&#39;</span><span class="p">,</span> <span class="s">&#39;tritt gegen&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">objekt_w</span><span class="p">(</span><span class="n">baum</span><span class="p">())</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="c"># Körper</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span> <span class="c"># Er</span>
+				<span class="n">s</span> <span class="o">=</span> <span class="n">koerperteil</span><span class="p">()</span>
+				<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+					<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="s">&#39;seinen &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+					<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="s">&#39;seine &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+					<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="s">&#39;sein &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+				<span class="n">s</span> <span class="o">=</span> <span class="n">person_m</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;verletzt sich&#39;</span><span class="p">,</span> <span class="s">&#39;stößt sich&#39;</span><span class="p">,</span> <span class="s">&#39;bricht&#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; sich&#39;</span><span class="p">),</span> <span class="s">&#39;verstaucht&#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; sich&#39;</span><span class="p">),</span> <span class="s">&#39;massiert&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">s</span>
+			<span class="k">else</span><span class="p">:</span> <span class="c"># Sie</span>
+				<span class="n">s</span> <span class="o">=</span> <span class="n">koerperteil</span><span class="p">()</span>
+				<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+					<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;den &#39;</span><span class="p">,</span> <span class="s">&#39;ihren &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+					<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="s">&#39;ihre &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+					<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="s">&#39;ihr &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+				<span class="n">s</span> <span class="o">=</span> <span class="n">person_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;verletzt sich&#39;</span><span class="p">,</span> <span class="s">&#39;stößt sich&#39;</span><span class="p">,</span> <span class="s">&#39;bricht&#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; sich&#39;</span><span class="p">),</span> <span class="s">&#39;verstaucht&#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; sich&#39;</span><span class="p">),</span> <span class="s">&#39;massiert&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">s</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c"># hat Kopfschmerzen</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">koerperteil</span><span class="p">()</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;e$&#39;</span><span class="p">,</span> <span class="s">&#39;en&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="c"># Lungen</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="c"># Körperteil ohne Artikel</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; hat &#39;</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;schlimme&#39;</span><span class="p">,</span> <span class="s">&#39;ein bischen&#39;</span><span class="p">,</span> <span class="s">&#39;brutale&#39;</span><span class="p">,</span> <span class="s">&#39;oft&#39;</span><span class="p">,</span> <span class="s">&#39;manchmal&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&#39;schmerzen&#39;</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">koerperteil</span><span class="p">()</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;am &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="s">&#39;an der &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="s">&#39;am &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; hat eine &#39;</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;schmerzhafte &#39;</span><span class="p">,</span> <span class="s">&#39;brutale &#39;</span><span class="p">,</span> <span class="s">&#39;miese &#39;</span><span class="p">,</span> <span class="s">&#39;kleine &#39;</span><span class="p">,</span> <span class="s">&#39;eiternde &#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;Verletzung&#39;</span><span class="p">,</span> <span class="s">&#39;Entzündung&#39;</span><span class="p">,</span> <span class="s">&#39;Wunde&#39;</span><span class="p">,</span> <span class="s">&#39;Beschädigung&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">s</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">koerperteil</span><span class="p">()</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;Mein &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="s">&#39;Meine &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="s">&#39;Mein &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;tut weh&#39;</span><span class="p">,</span> <span class="s">&#39;schmerzt&#39;</span><span class="p">,</span> <span class="s">&#39;blutet&#39;</span><span class="p">,</span> <span class="s">&#39;juckt&#39;</span><span class="p">,</span> <span class="s">&#39;brennt&#39;</span><span class="p">,</span> <span class="s">&#39;stinkt&#39;</span><span class="p">])</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">koerperteil</span><span class="p">()</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;der &#39;</span><span class="p">,</span> <span class="s">&#39;einen &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;en &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;die &#39;</span><span class="p">,</span> <span class="s">&#39;eine &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;das &#39;</span><span class="p">,</span> <span class="s">&#39;ein &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;es &#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; hat &#39;</span> <span class="o">+</span> <span class="n">s</span>
+
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span> <span class="c"># Essen &amp; Trinken</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c"># Essen mit Beilage</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;ist&#39;</span><span class="p">,</span> <span class="s">&#39;sitzt&#39;</span><span class="p">,</span> <span class="s">&#39;befindet sich&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; und&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; isst &#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;gerade&#39;</span><span class="p">,</span> <span class="s">&#39;oft&#39;</span><span class="p">,</span> <span class="s">&#39;nicht oft&#39;</span><span class="p">,</span> <span class="s">&#39;selten&#39;</span><span class="p">,</span> <span class="s">&#39;gerne&#39;</span><span class="p">,</span> <span class="s">&#39;nicht gerne&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">essen</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; mit &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;viel&#39;</span><span class="p">,</span> <span class="s">&#39;ganz viel&#39;</span><span class="p">,</span> <span class="s">&#39;ein bischen&#39;</span><span class="p">,</span> <span class="s">&#39;ein wenig&#39;</span><span class="p">,</span> <span class="s">&#39;lecker&#39;</span><span class="p">,</span> <span class="s">&#39;einer großen Portion&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">beilage</span><span class="p">())</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c"># Trinken</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; trinkt &#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;gerade&#39;</span><span class="p">,</span> <span class="s">&#39;oft&#39;</span><span class="p">,</span> <span class="s">&#39;nicht oft&#39;</span><span class="p">,</span> <span class="s">&#39;selten&#39;</span><span class="p">,</span> <span class="s">&#39;gerne&#39;</span><span class="p">,</span> <span class="s">&#39;nicht gerne&#39;</span><span class="p">,</span> <span class="s">&#39;jeden Abend ein Glas&#39;</span><span class="p">,</span> <span class="s">&#39;zu viel&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">trinken</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="c"># Essen und Trinken</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; isst &#39;</span> <span class="o">+</span> <span class="n">essen</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; mit &#39;</span> <span class="o">+</span> <span class="n">beilage</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39; und trinkt &#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39;dazu &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">trinken</span><span class="p">()</span>
+
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span> <span class="c"># Arbeit</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_m</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">nachname</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39; ist &#39;</span> <span class="o">+</span> <span class="n">e75</span><span class="p">(</span><span class="s">&#39;ein &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">beruf_m</span><span class="p">()</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="s">&#39; aus &#39;</span> <span class="o">+</span> <span class="n">stadt</span><span class="p">())</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_w</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">nachname</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39; ist &#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39;eine &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">beruf_w</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; aus &#39;</span> <span class="o">+</span> <span class="n">stadt</span><span class="p">())</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_m</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">nachname</span><span class="p">())</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39;, der &#39;</span> <span class="o">+</span> <span class="n">beruf_m</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; aus &#39;</span> <span class="o">+</span> <span class="n">stadt</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39;,&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">verbt</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">person_objekt_m</span><span class="p">(),</span> <span class="n">objekt_m</span><span class="p">(</span><span class="n">objekt</span><span class="p">())])</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">vorname_w</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">nachname</span><span class="p">())</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39;, die &#39;</span> <span class="o">+</span> <span class="n">beruf_w</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; aus &#39;</span> <span class="o">+</span> <span class="n">stadt</span><span class="p">())</span> <span class="o">+</span> <span class="s">&#39;,&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">verbt</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">person_objekt_w</span><span class="p">(),</span> <span class="n">objekt_w</span><span class="p">(</span><span class="n">objekt</span><span class="p">())])</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span> <span class="c"># Absurd</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person_m</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; ist &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;. Alle&#39;</span><span class="p">,</span> <span class="s">&#39;, aber&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; seine Freunde lieben ihn dafür&#39;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">person_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; ist &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;. Alle&#39;</span><span class="p">,</span> <span class="s">&#39;, aber&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; ihre Freunde lieben sie dafür&#39;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+			<span class="n">adj1</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span>
+			<span class="n">adj2</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span>
+			<span class="k">while</span> <span class="n">adj1</span> <span class="ow">is</span> <span class="n">adj2</span><span class="p">:</span>
+				<span class="n">adj2</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Je &#39;</span> <span class="o">+</span> <span class="n">adj1</span> <span class="o">+</span> <span class="s">&#39;er desto &#39;</span> <span class="o">+</span> <span class="n">adj2</span> <span class="o">+</span> <span class="s">&#39;er&#39;</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">farbe</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; ist eine &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;e &#39;</span> <span class="o">+</span> <span class="s">&#39;Farbe&#39;</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+			<span class="n">farbe1</span><span class="p">,</span> <span class="n">farbe2</span><span class="p">,</span> <span class="n">farbe3</span> <span class="o">=</span> <span class="n">farbe</span><span class="p">(),</span> <span class="n">farbe</span><span class="p">(),</span> <span class="n">farbe</span><span class="p">()</span>
+			<span class="k">while</span> <span class="n">farbe1</span> <span class="ow">is</span> <span class="n">farbe2</span> <span class="ow">or</span> <span class="n">farbe2</span> <span class="ow">is</span> <span class="n">farbe3</span> <span class="ow">or</span> <span class="n">farbe1</span> <span class="ow">is</span> <span class="n">farbe3</span><span class="p">:</span>
+				<span class="n">farbe1</span><span class="p">,</span> <span class="n">farbe2</span><span class="p">,</span> <span class="n">farbe3</span> <span class="o">=</span> <span class="n">farbe</span><span class="p">(),</span> <span class="n">farbe</span><span class="p">(),</span> <span class="n">farbe</span><span class="p">()</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">farbe1</span> <span class="o">+</span> <span class="s">&#39; ist &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">farbe2</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">adj</span><span class="p">()])</span> <span class="o">+</span> <span class="s">&#39;er als &#39;</span> <span class="o">+</span> <span class="n">farbe3</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">ort</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;war&#39;</span><span class="p">,</span> <span class="s">&#39;ist&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;er&#39;</span><span class="p">,</span> <span class="s">&#39;sie&#39;</span><span class="p">,</span> <span class="s">&#39;es&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;sehr&#39;</span><span class="p">,</span> <span class="s">&#39;ziemlich&#39;</span><span class="p">,</span> <span class="s">&#39;ein bischen&#39;</span><span class="p">,</span> <span class="s">&#39;nicht sehr&#39;</span><span class="p">,</span> <span class="s">&#39;garnicht&#39;</span><span class="p">,</span> <span class="s">&#39;nicht&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Bruder &#39;</span> <span class="o">+</span> <span class="n">vorname_m</span><span class="p">()</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39; war&#39;</span><span class="p">,</span> <span class="s">&#39; ist&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; der &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;ste Mönch &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;im Kloster&#39;</span><span class="p">,</span> <span class="s">&#39;im Orden&#39;</span><span class="p">,</span> <span class="s">&#39;in der Abtei&#39;</span><span class="p">])</span>
+		<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Schwester &#39;</span> <span class="o">+</span> <span class="n">vorname_w</span><span class="p">()</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39; war&#39;</span><span class="p">,</span> <span class="s">&#39; ist&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s">&#39; die &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;ste Nonne &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;im Kloster&#39;</span><span class="p">,</span> <span class="s">&#39;im Orden&#39;</span><span class="p">,</span> <span class="s">&#39;in der Abtei&#39;</span><span class="p">])</span>
+
+	<span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span>
+</div>
+<div class="viewcode-block" id="standard_satz"><a class="viewcode-back" href="../funktionen.html#pyzufall.standard_satz">[Doku]</a><span class="k">def</span> <span class="nf">standard_satz</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen einfachen Satz, bestehend aus Person, Verb, Adjektiv, Ort und teilweise auch Objekt zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">adj</span><span class="p">(),</span> <span class="n">ort</span><span class="p">(),</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">()])</span> <span class="o">+</span> <span class="n">v2</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">ort</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">e75</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">())</span> <span class="o">+</span> <span class="n">v2</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">e75</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">())</span> <span class="o">+</span> <span class="n">v2</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbt2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbt</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">person_m</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">person_objekt_m</span><span class="p">(),</span> <span class="n">objekt_m</span><span class="p">(</span><span class="n">objekt</span><span class="p">())])</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">(),</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">(),</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">(),</span> <span class="s">&#39;&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">v2</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbt2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbt</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">person_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">person_objekt_w</span><span class="p">(),</span> <span class="n">objekt_w</span><span class="p">(</span><span class="n">objekt</span><span class="p">())])</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">(),</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">(),</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">(),</span> <span class="s">&#39;&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">v2</span>
+	
+	<span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="n">e16</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ns</span><span class="p">))</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span>
+</div>
+<div class="viewcode-block" id="frage"><a class="viewcode-back" href="../funktionen.html#pyzufall.frage">[Doku]</a><span class="k">def</span> <span class="nf">frage</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt eine Frage zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+	
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="n">e50</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39;Warum &#39;</span><span class="p">,</span> <span class="s">&#39;Wieso &#39;</span><span class="p">,</span> <span class="s">&#39;Weshalb &#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">(),</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">(),</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">(),</span> <span class="s">&#39;&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">v2</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Wer &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">adj</span><span class="p">(),</span> <span class="n">ort</span><span class="p">(),</span> <span class="n">adj</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">()])</span> <span class="o">+</span><span class="n">v2</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Wo &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">adj</span><span class="p">())</span> <span class="o">+</span><span class="n">v2</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Wie &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">())</span> <span class="o">+</span><span class="n">v2</span>
+	<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi2</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">verbi</span><span class="p">(),</span> <span class="s">&#39;&#39;</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Wann &#39;</span> <span class="o">+</span> <span class="n">v1</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">person</span><span class="p">()</span> <span class="o">+</span> <span class="n">e50</span><span class="p">(</span><span class="s">&#39; endlich&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">e25</span><span class="p">(</span><span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">ort</span><span class="p">())</span> <span class="o">+</span><span class="n">v2</span>
+	
+	<span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&#39;?&#39;</span>
+
+</div>
+<div class="viewcode-block" id="satz"><a class="viewcode-back" href="../funktionen.html#pyzufall.satz">[Doku]</a><span class="k">def</span> <span class="nf">satz</span><span class="p">():</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Gibt einen Satz zurück.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">choice</span><span class="p">((</span><span class="n">themen_satz</span><span class="p">,</span> <span class="n">standard_satz</span><span class="p">,</span> <span class="n">frage</span><span class="p">))()</span>
+
+	<span class="c">#s = ersten_buchstaben_gross(themen_satz())</span>
+	<span class="k">return</span> <span class="n">s</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Allgemeiner Index"
+             >Index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python-Modulindex"
+             >Module</a> |</li>
+        <li><a href="../index.html">pyzufall 0.8 Dokumentation</a> &raquo;</li>
+          <li><a href="index.html" >Modul-Quellcode</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013 davidak.
+      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1 erstellt.
+    </div>
+  </body>
+</html>

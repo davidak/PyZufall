@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dokumentation von pyzufall &mdash; pyzufall 0.8 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="pyzufall 0.8 Dokumentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Allgemeiner Index"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python-Modulindex"
+             >Module</a> |</li>
+        <li><a href="#">pyzufall 0.8 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Inhalt</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dokumentation von pyzufall</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#verwendung">Verwendung</a></li>
+<li><a class="reference internal" href="#beispiele">Beispiele</a></li>
+</ul>
+
+  <h3>Diese Seite</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Quelltext anzeigen</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dokumentation-von-pyzufall">
+<h1>Dokumentation von pyzufall<a class="headerlink" href="#dokumentation-von-pyzufall" title="Permalink zu dieser Überschrift">¶</a></h1>
+<p>Das Python-Modul <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> hat viele Funktionen, um diverse Daten zu erzeugen.</p>
+<p>Die komplexeste ist dabei <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a>, mit der sich zufällige Sätze generieren lassen.</p>
+<p>Es bildet die Grundlage für <a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a>.</p>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink zu dieser Überschrift">¶</a></h1>
+<p>Die aktuellste Version findest du auf <a class="reference external" href="https://github.com/davidak/pyzufall">github</a>. Eine stabile Version wird es auf <a class="reference external" href="https://pypi.python.org/">PyPI</a> geben.</p>
+<p>Klone das git-Repository in dein Projekt-Verzeichnis:</p>
+<div class="highlight-python"><pre>$ mkdir meinprojekt
+$ cd meinprojekt
+$ git clone https://github.com/davidak/pyzufall.git</pre>
+</div>
+</div>
+<div class="section" id="verwendung">
+<h1>Verwendung<a class="headerlink" href="#verwendung" title="Permalink zu dieser Überschrift">¶</a></h1>
+<p>Um <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> verwenden zu können, muss es importiert werden:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyzufall</span> <span class="kn">as</span> <span class="nn">z</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="beispiele">
+<h1>Beispiele<a class="headerlink" href="#beispiele" title="Permalink zu dieser Überschrift">¶</a></h1>
+<p>Einen zufälligen männlichen Vornamen erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_m</span><span class="p">())</span>
+<span class="go">Magnus</span>
+</pre></div>
+</div>
+<p>Einen zufälligen weiblichen Vorname mit Nachname erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">nachname</span><span class="p">())</span>
+<span class="go">Carmen Büchler</span>
+</pre></div>
+</div>
+<p>Eine zufällige männliche Person erzeugen.person_m`:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">person_m</span><span class="p">())</span>
+<span class="go">der verdorbene Sohn</span>
+</pre></div>
+</div>
+<p>Eine zufällige Stadt erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">stadt</span><span class="p">())</span>
+<span class="go">Lörrach</span>
+</pre></div>
+</div>
+<p>Ein Fantasiewort erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">wort</span><span class="p">())</span>
+<span class="go">Maugodno</span>
+</pre></div>
+</div>
+<p>Diese Funktion kann auch verwendet werden, um sich einen Nickname oder Künstlernamen zu erzeugen.</p>
+<p>Ein zufälliges Sprichwort erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">sprichwort</span><span class="p">())</span>
+<span class="go">Das schlägt dem Fass den Boden aus.</span>
+</pre></div>
+</div>
+<p>Ein Essen erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">essen</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">Süßholzkekse</span>
+</pre></div>
+</div>
+<p>Ein Getränk erzeugen:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">trinken</span><span class="p">())</span>
+<span class="go">Haselnusskaffee</span>
+</pre></div>
+</div>
+<p>Und schlussendlich die Funktion, welche die meisten der anderen benutzt, um ganze Sätze zu generieren.
+Dabei sind diverse Satz-Schemata hinterlegat, sodass es nicht langweilig wird.</p>
+<p>Hier einige Beispiele:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
+<span class="go">Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
+<span class="go">Die Lehrerin zersägt deine Rosskastanie.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
+<span class="go">Der Kollege programmiert deine Partnerin im Atomkraftwerk.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
+<span class="go">Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Allgemeiner Index"
+             >Index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python-Modulindex"
+             >Module</a> |</li>
+        <li><a href="#">pyzufall 0.8 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013 davidak.
+      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1 erstellt.
+    </div>
+  </body>
+</html>
