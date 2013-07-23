@@ -174,6 +174,12 @@ htmlhelp_basename = 'pyzufalldoc'
 
 # -- Options for LaTeX output --------------------------------------------------
 
+# remove blank pages
+latex_elements = {
+  'classoptions': ',openany,oneside',
+  'babel': '\\usepackage[ngerman]{babel}'
+}
+
 latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 'papersize': 'a4paper',
