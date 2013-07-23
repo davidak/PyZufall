@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dokumentation von pyzufall &mdash; pyzufall 0.8 Dokumentation</title>
+    <title>Dokumentation von pyzufall &mdash; pyzufall 0.8.0 Dokumentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.8',
+        VERSION:     '0.8.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="pyzufall 0.8 Dokumentation" href="#" /> 
+    <link rel="top" title="pyzufall 0.8.0 Dokumentation" href="#" /> 
   </head>
   <body>
     <div class="related">
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python-Modulindex"
              >Module</a> |</li>
-        <li><a href="#">pyzufall 0.8 Dokumentation</a> &raquo;</li> 
+        <li><a href="#">pyzufall 0.8.0 Dokumentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -47,6 +47,7 @@
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#verwendung">Verwendung</a></li>
 <li><a class="reference internal" href="#beispiele">Beispiele</a></li>
+<li><a class="reference internal" href="#benutzer">Benutzer</a></li>
 </ul>
 
   <h3>Diese Seite</h3>
@@ -79,7 +80,7 @@
 <h1>Dokumentation von pyzufall<a class="headerlink" href="#dokumentation-von-pyzufall" title="Permalink zu dieser Überschrift">¶</a></h1>
 <p>Das Python-Modul <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> hat viele Funktionen, um diverse Daten zu erzeugen.</p>
 <p>Die komplexeste ist dabei <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a>, mit der sich zufällige Sätze generieren lassen.</p>
-<p>Es bildet die Grundlage für <a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a>.</p>
+<p>Es wurde für <a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a> entwickelt, kann aber vielfältig eingesetzt werden.</p>
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink zu dieser Überschrift">¶</a></h1>
@@ -109,39 +110,13 @@ $ git clone https://github.com/davidak/pyzufall.git</pre>
 <span class="go">Carmen Büchler</span>
 </pre></div>
 </div>
-<p>Eine zufällige männliche Person erzeugen.person_m`:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">person_m</span><span class="p">())</span>
-<span class="go">der verdorbene Sohn</span>
-</pre></div>
-</div>
-<p>Eine zufällige Stadt erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">stadt</span><span class="p">())</span>
-<span class="go">Lörrach</span>
-</pre></div>
-</div>
-<p>Ein Fantasiewort erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">wort</span><span class="p">())</span>
-<span class="go">Maugodno</span>
-</pre></div>
-</div>
-<p>Diese Funktion kann auch verwendet werden, um sich einen Nickname oder Künstlernamen zu erzeugen.</p>
 <p>Ein zufälliges Sprichwort erzeugen:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">sprichwort</span><span class="p">())</span>
 <span class="go">Das schlägt dem Fass den Boden aus.</span>
 </pre></div>
 </div>
-<p>Ein Essen erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">essen</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="go">Süßholzkekse</span>
-</pre></div>
-</div>
-<p>Ein Getränk erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">trinken</span><span class="p">())</span>
-<span class="go">Haselnusskaffee</span>
-</pre></div>
-</div>
-<p>Und schlussendlich die Funktion, welche die meisten der anderen benutzt, um ganze Sätze zu generieren.
-Dabei sind diverse Satz-Schemata hinterlegat, sodass es nicht langweilig wird.</p>
+<p>Die Funktion <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a> benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
+Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.</p>
 <p>Hier einige Beispiele:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
 <span class="go">Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?</span>
@@ -153,6 +128,18 @@ Dabei sind diverse Satz-Schemata hinterlegat, sodass es nicht langweilig wird.</
 <span class="go">Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.</span>
 </pre></div>
 </div>
+<p>Eine Übersicht aller Funktionen findest du in der Referenz:  <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a></p>
+</div>
+<div class="section" id="benutzer">
+<h1>Benutzer<a class="headerlink" href="#benutzer" title="Permalink zu dieser Überschrift">¶</a></h1>
+<p>Hier ist eine Liste mit Projekten, die <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> verwenden:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a></li>
+<li><a class="reference external" href="https://github.com/davidak/python-random-vcard-generator">Python Random VCard-Generator</a></li>
+</ul>
+<p>Dein Projekt füge ich auch gerne hinzu.</p>
+<p>Auch über Rückmeldungen jeder Art freue ich mich.</p>
+<p>Einfach eine E-Mail an post at davidak punkt de oder das <a class="reference external" href="http://davidak.de/kontakt">Kontaktformular</a> benutzen.</p>
 </div>
 
 
@@ -170,12 +157,14 @@ Dabei sind diverse Satz-Schemata hinterlegat, sodass es nicht langweilig wird.</
         <li class="right" >
           <a href="py-modindex.html" title="Python-Modulindex"
              >Module</a> |</li>
-        <li><a href="#">pyzufall 0.8 Dokumentation</a> &raquo;</li> 
+        <li><a href="#">pyzufall 0.8.0 Dokumentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2013 davidak.
-      Mit <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1 erstellt.
-    </div>
+      <div class="footer">
+       <span class="creativecommons">
+        Diese Dokumentation steht unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.de">Creative Commons Namensnennung-Nicht-kommerziell 3.0 Unported Lizenz</a>.
+        </a>
+       </span>
+      </div>
   </body>
 </html>

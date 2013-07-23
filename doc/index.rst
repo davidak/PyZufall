@@ -10,7 +10,7 @@ Das Python-Modul :py:mod:`pyzufall` hat viele Funktionen, um diverse Daten zu er
 
 Die komplexeste ist dabei :py:func:`pyzufall.satz`, mit der sich zufällige Sätze generieren lassen.
 
-Es bildet die Grundlage für `satzgenerator.de <http://satzgenerator.de/>`_.
+Es wurde für `satzgenerator.de <http://satzgenerator.de/>`_ entwickelt, kann aber vielfältig eingesetzt werden.
 
 Installation
 ============
@@ -43,41 +43,15 @@ Einen zufälligen weiblichen Vorname mit Nachname erzeugen::
    >>> print(z.vorname_w() + ' ' + z.nachname())
    Carmen Büchler
 
-Eine zufällige männliche Person erzeugen.person_m`::
-
-    >>> print(z.person_m())
-    der verdorbene Sohn
-
-Eine zufällige Stadt erzeugen::
-
-    >>> print(z.stadt())
-    Lörrach
-
-Ein Fantasiewort erzeugen::
-
-    >>> print(z.wort())
-    Maugodno
-
-Diese Funktion kann auch verwendet werden, um sich einen Nickname oder Künstlernamen zu erzeugen.
-
 Ein zufälliges Sprichwort erzeugen::
 
     >>> print(z.sprichwort())
     Das schlägt dem Fass den Boden aus.
 
 
-Ein Essen erzeugen::
 
-    >>> print(z.essen(1))
-    Süßholzkekse
-
-Ein Getränk erzeugen::
-
-    >>> print(z.trinken())
-    Haselnusskaffee
-
-Und schlussendlich die Funktion, welche die meisten der anderen benutzt, um ganze Sätze zu generieren.
-Dabei sind diverse Satz-Schemata hinterlegat, sodass es nicht langweilig wird.
+Die Funktion :py:func:`pyzufall.satz` benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
+Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.
 
 Hier einige Beispiele::
 
@@ -89,3 +63,19 @@ Hier einige Beispiele::
     Der Kollege programmiert deine Partnerin im Atomkraftwerk.
     >>> print(z.satz())
     Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.
+
+Eine Übersicht aller Funktionen findest du in der Referenz:  :py:mod:`pyzufall`
+
+Benutzer
+========
+
+Hier ist eine Liste mit Projekten, die :py:mod:`pyzufall` verwenden:
+
+* `satzgenerator.de <http://satzgenerator.de/>`_
+* `Python Random VCard-Generator <https://github.com/davidak/python-random-vcard-generator>`_
+
+Dein Projekt füge ich auch gerne hinzu.
+
+Auch über Rückmeldungen jeder Art freue ich mich.
+
+Einfach eine E-Mail an post at davidak punkt de oder das `Kontaktformular <http://davidak.de/kontakt>`_ benutzen.
