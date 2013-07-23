@@ -13,7 +13,7 @@ Die komplexeste ist dabei :py:func:`pyzufall.satz`, mit der sich zufällige Sät
 Es wurde für `satzgenerator.de <http://satzgenerator.de/>`_ entwickelt, kann aber vielfältig eingesetzt werden.
 
 Installation
-============
+------------
 
 Die aktuellste Version findest du auf `github <https://github.com/davidak/pyzufall>`_. Eine stabile Version wird es auf `PyPI <https://pypi.python.org/>`_ geben.
 
@@ -24,14 +24,14 @@ Klone das git-Repository in dein Projekt-Verzeichnis::
     $ git clone https://github.com/davidak/pyzufall.git
 
 Verwendung
-==========
+----------
 
 Um :py:mod:`pyzufall` verwenden zu können, muss es importiert werden::
 
     >>> import pyzufall as z
 
 Beispiele
-=========
+---------
 
 Einen zufälligen männlichen Vornamen erzeugen::
 
@@ -47,8 +47,6 @@ Ein zufälliges Sprichwort erzeugen::
 
     >>> print(z.sprichwort())
     Das schlägt dem Fass den Boden aus.
-
-
 
 Die Funktion :py:func:`pyzufall.satz` benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
 Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.
@@ -66,8 +64,21 @@ Hier einige Beispiele::
 
 Eine Übersicht aller Funktionen findest du in der Referenz:  :py:mod:`pyzufall`
 
+Beitragen
+---------
+
+Du kannst bei diesem Open Source-Projekt mitwirken, indem du `Fehler berichtest <https://github.com/davidak/pyzufall/issues/>`_, neue Datensätze hinzufügst oder sogar mitprogrammierst.
+
+Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.
+
+.. todo::
+    
+    Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
+
+Pull-Requests auf github sind willkommen.
+
 Benutzer
-========
+--------
 
 Hier ist eine Liste mit Projekten, die :py:mod:`pyzufall` verwenden:
 

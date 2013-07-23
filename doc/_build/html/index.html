@@ -43,11 +43,14 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Inhalt</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Dokumentation von pyzufall</a></li>
+<li><a class="reference internal" href="#">Dokumentation von pyzufall</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#verwendung">Verwendung</a></li>
 <li><a class="reference internal" href="#beispiele">Beispiele</a></li>
+<li><a class="reference internal" href="#beitragen">Beitragen</a></li>
 <li><a class="reference internal" href="#benutzer">Benutzer</a></li>
+</ul>
+</li>
 </ul>
 
   <h3>Diese Seite</h3>
@@ -81,9 +84,8 @@
 <p>Das Python-Modul <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> hat viele Funktionen, um diverse Daten zu erzeugen.</p>
 <p>Die komplexeste ist dabei <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a>, mit der sich zufällige Sätze generieren lassen.</p>
 <p>Es wurde für <a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a> entwickelt, kann aber vielfältig eingesetzt werden.</p>
-</div>
 <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink zu dieser Überschrift">¶</a></h1>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink zu dieser Überschrift">¶</a></h2>
 <p>Die aktuellste Version findest du auf <a class="reference external" href="https://github.com/davidak/pyzufall">github</a>. Eine stabile Version wird es auf <a class="reference external" href="https://pypi.python.org/">PyPI</a> geben.</p>
 <p>Klone das git-Repository in dein Projekt-Verzeichnis:</p>
 <div class="highlight-python"><pre>$ mkdir meinprojekt
@@ -92,14 +94,14 @@ $ git clone https://github.com/davidak/pyzufall.git</pre>
 </div>
 </div>
 <div class="section" id="verwendung">
-<h1>Verwendung<a class="headerlink" href="#verwendung" title="Permalink zu dieser Überschrift">¶</a></h1>
+<h2>Verwendung<a class="headerlink" href="#verwendung" title="Permalink zu dieser Überschrift">¶</a></h2>
 <p>Um <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> verwenden zu können, muss es importiert werden:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyzufall</span> <span class="kn">as</span> <span class="nn">z</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="beispiele">
-<h1>Beispiele<a class="headerlink" href="#beispiele" title="Permalink zu dieser Überschrift">¶</a></h1>
+<h2>Beispiele<a class="headerlink" href="#beispiele" title="Permalink zu dieser Überschrift">¶</a></h2>
 <p>Einen zufälligen männlichen Vornamen erzeugen:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_m</span><span class="p">())</span>
 <span class="go">Magnus</span>
@@ -130,8 +132,18 @@ Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.</p>
 </div>
 <p>Eine Übersicht aller Funktionen findest du in der Referenz:  <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a></p>
 </div>
+<div class="section" id="beitragen">
+<h2>Beitragen<a class="headerlink" href="#beitragen" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Du kannst bei diesem Open Source-Projekt mitwirken, indem du <a class="reference external" href="https://github.com/davidak/pyzufall/issues/">Fehler berichtest</a>, neue Datensätze hinzufügst oder sogar mitprogrammierst.</p>
+<p>Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.</p>
+<div class="admonition-zu-tun admonition" id="index-0">
+<p class="first admonition-title">Zu tun</p>
+<p class="last">Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.</p>
+</div>
+<p>Pull-Requests auf github sind willkommen.</p>
+</div>
 <div class="section" id="benutzer">
-<h1>Benutzer<a class="headerlink" href="#benutzer" title="Permalink zu dieser Überschrift">¶</a></h1>
+<h2>Benutzer<a class="headerlink" href="#benutzer" title="Permalink zu dieser Überschrift">¶</a></h2>
 <p>Hier ist eine Liste mit Projekten, die <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> verwenden:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a></li>
@@ -140,6 +152,7 @@ Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.</p>
 <p>Dein Projekt füge ich auch gerne hinzu.</p>
 <p>Auch über Rückmeldungen jeder Art freue ich mich.</p>
 <p>Einfach eine E-Mail an post at davidak punkt de oder das <a class="reference external" href="http://davidak.de/kontakt">Kontaktformular</a> benutzen.</p>
+</div>
 </div>
 
 

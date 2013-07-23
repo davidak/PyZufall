@@ -489,7 +489,9 @@ def essen(anz):
 	"""
 	Gibt Essen zurück.
 
-	TODO: Sollte in zwei Funktionen aufgeteilt werden.
+	.. todo::
+	
+		Sollte in zwei Funktionen aufgeteilt werden.
 	"""
 	if anz: # zusammengesetzt aus zwei Wörtern
 		if r.randint(0,2):
