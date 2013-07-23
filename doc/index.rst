@@ -90,3 +90,10 @@ Dein Projekt füge ich auch gerne hinzu.
 Auch über Rückmeldungen jeder Art freue ich mich.
 
 Einfach eine E-Mail an post at davidak punkt de oder das `Kontaktformular <http://davidak.de/kontakt>`_ benutzen.
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    todo
+    funktionen

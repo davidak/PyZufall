@@ -1,8 +1,5 @@
-Funktionen
-==========
-
-.. toctree::
-   :maxdepth: 2
+Funktions Referenz
+==================
 
 .. automodule:: pyzufall
-   :members:
+    :members:

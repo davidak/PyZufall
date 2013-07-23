@@ -6,6 +6,13 @@
 Dokumentation von pyzufall
 ==========================
 
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    todo
+    funktionen
+
 Das Python-Modul :py:mod:`pyzufall` hat viele Funktionen, um diverse Daten zu erzeugen.
 
 Die komplexeste ist dabei :py:func:`pyzufall.satz`, mit der sich zufällige Sätze generieren lassen.
