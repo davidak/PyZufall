@@ -121,12 +121,131 @@
 \phantomsection\label{index::doc}
 
 
+Das Python-Modul {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} hat viele Funktionen, um diverse Daten zu erzeugen.
 
-\chapter{Aufgaben}
-\label{todo::doc}\label{todo:dokumentation-von-pyzufall}\label{todo:aufgaben}
+Die komplexeste ist dabei {\hyperref[funktionen:pyzufall.satz]{\code{pyzufall.satz()}}}, mit der sich zufällige Sätze generieren lassen. Sie benutzt dazu die meisten anderen Funktionen.
+
+Es wurde für \href{http://satzgenerator.de/}{satzgenerator.de} entwickelt, kann aber vielfältig eingesetzt werden.
+
+Pyzufall ist Open Source, der Quelltext kann auf \href{https://github.com/davidak/pyzufall/}{github.com} runtergeladen werden. Wie du zum Projekt beitragen kannst, steht auf der entsprechenden Seite.
+
+
+\chapter{Inhalt}
+\label{index:inhalt}\label{index:dokumentation-von-pyzufall}
+
+\section{Installation}
+\label{installation:installation}\label{installation::doc}
+Die aktuellste Version findest du auf \href{https://github.com/davidak/pyzufall}{github}. Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
+
+
+\subsection{Manuelle Installation}
+\label{installation:manuelle-installation}
+Klone das git-Repository in dein Projekt-Verzeichnis:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ mkdir meinprojekt
+\$ cd meinprojekt
+\$ git clone https://github.com/davidak/pyzufall.git
+\end{Verbatim}
+
+
+\section{Verwenden}
+\label{verwenden::doc}\label{verwenden:verwenden}
+
+\subsection{Importieren}
+\label{verwenden:importieren}
+Um {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden zu können, muss es importiert werden:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{import} \PYG{n+nn}{pyzufall} \PYG{k+kn}{as} \PYG{n+nn}{z}
+\end{Verbatim}
+
+
+\subsection{Beispiele}
+\label{verwenden:beispiele}
+Einen zufälligen männlichen Vornamen erzeugen:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{vorname\PYGZus{}m}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Magnus}
+\end{Verbatim}
+
+Einen zufälligen weiblichen Vorname mit Nachname erzeugen:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{vorname\PYGZus{}w}\PYG{p}{(}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZsq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{z}\PYG{o}{.}\PYG{n}{nachname}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Carmen Büchler}
+\end{Verbatim}
+
+Ein zufälliges Sprichwort erzeugen:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{sprichwort}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Das schlägt dem Fass den Boden aus.}
+\end{Verbatim}
+
+Die Funktion {\hyperref[funktionen:pyzufall.satz]{\code{pyzufall.satz()}}} benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
+Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.
+
+Hier einige Beispiele:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Die Lehrerin zersägt deine Rosskastanie.}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Der Kollege programmiert deine Partnerin im Atomkraftwerk.}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
+\PYG{g+go}{Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.}
+\end{Verbatim}
+
+Eine Übersicht aller Funktionen findest du in der Referenz:  {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}}
+
+
+\section{Beitragen}
+\label{beitragen:beitragen}\label{beitragen::doc}
+Du kannst bei diesem Open Source-Projekt mitwirken, indem du \href{https://github.com/davidak/pyzufall/issues/}{Fehler berichtest}, neue Datensätze hinzufügst oder sogar mitprogrammierst.
+
+Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.
+
+\begin{notice}{note}{Zu tun}
+
+Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
+\end{notice}
+
+Pull-Requests auf github sind willkommen.
+
+
+\section{Benutzer}
+\label{benutzer::doc}\label{benutzer:benutzer}
+Hier ist eine Liste mit Projekten, die {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden:
+\begin{itemize}
+\item {} 
+\href{http://satzgenerator.de/}{satzgenerator.de}
+
+\item {} 
+\href{https://github.com/davidak/python-random-vcard-generator}{Python Random VCard-Generator}
+
+\end{itemize}
+
+Dein Projekt füge ich auch gerne hinzu.
+
+Einfach eine E-Mail mit Beschreibung und Link an post at davidak punkt de oder das \href{http://davidak.de/kontakt}{Kontaktformular} benutzen.
+
+
+\section{Aufgaben}
+\label{todo::doc}\label{todo:aufgaben}
 Für Fehlerberichte und Feature-Requests wird der \href{https://github.com/davidak/pyzufall/issues}{Bugtracker auf github} benutzt.
 
 Auch im Quelltext gibt es Hinweise auf nötige Anpassungen:
+
+\begin{notice}{note}{Zu tun}
+
+Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
+\end{notice}
+
+(Der {\hyperref[beitragen:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/doc/beitragen.rst, Zeile 8.)
 
 \begin{notice}{note}{Zu tun}
 
@@ -137,14 +256,21 @@ Sollte in zwei Funktionen aufgeteilt werden.
 
 \begin{notice}{note}{Zu tun}
 
-Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
+Funktion programmieren
 \end{notice}
 
-(Der {\hyperref[index:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/doc/index.rst, Zeile 81.)
+(Der {\hyperref[funktionen:index-1]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.firma, Zeile 3.)
+
+\begin{notice}{note}{Zu tun}
+
+Jedes Satz-Schema als eigene Funktion mit Docstring und Beispiel. Klasse?
+\end{notice}
+
+(Der {\hyperref[funktionen:index-2]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.satz, Zeile 3.)
 
 
-\chapter{Funktions Referenz}
-\label{funktionen:funktions-referenz}\label{funktionen::doc}\label{funktionen:module-pyzufall}\index{pyzufall (Modul)}
+\section{Referenz aller Funktionen}
+\label{funktionen:referenz-aller-funktionen}\label{funktionen::doc}\label{funktionen:module-pyzufall}\index{pyzufall (Modul)}
 Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.
 \index{adj() (in Modul pyzufall)}
 
@@ -287,7 +413,10 @@ Gibt eine Farbe zurück.
 \phantomsection\label{funktionen:pyzufall.firma}\pysiglinewithargsret{\code{pyzufall.}\bfcode{firma}}{}{}
 Gibt einen fiktiven Firmenname zurück.
 
-TODO
+\begin{notice}{note}{Zu tun}
+
+Funktion programmieren
+\end{notice}
 
 \end{fulllineitems}
 
@@ -427,6 +556,11 @@ Gibt eine Pflanze zurück.
 \begin{fulllineitems}
 \phantomsection\label{funktionen:pyzufall.satz}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz}}{}{}
 Gibt einen Satz zurück.
+
+\begin{notice}{note}{Zu tun}
+
+Jedes Satz-Schema als eigene Funktion mit Docstring und Beispiel. Klasse?
+\end{notice}
 
 \end{fulllineitems}
 
@@ -578,109 +712,6 @@ Gibt eine Zahl zwischen 0 und 100 zurück.
 
 \end{fulllineitems}
 
-
-Das Python-Modul {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} hat viele Funktionen, um diverse Daten zu erzeugen.
-
-Die komplexeste ist dabei {\hyperref[funktionen:pyzufall.satz]{\code{pyzufall.satz()}}}, mit der sich zufällige Sätze generieren lassen.
-
-Es wurde für \href{http://satzgenerator.de/}{satzgenerator.de} entwickelt, kann aber vielfältig eingesetzt werden.
-
-
-\chapter{Installation}
-\label{index:installation}
-Die aktuellste Version findest du auf \href{https://github.com/davidak/pyzufall}{github}. Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
-
-Klone das git-Repository in dein Projekt-Verzeichnis:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\$ mkdir meinprojekt
-\$ cd meinprojekt
-\$ git clone https://github.com/davidak/pyzufall.git
-\end{Verbatim}
-
-
-\chapter{Verwendung}
-\label{index:verwendung}
-Um {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden zu können, muss es importiert werden:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{import} \PYG{n+nn}{pyzufall} \PYG{k+kn}{as} \PYG{n+nn}{z}
-\end{Verbatim}
-
-
-\chapter{Beispiele}
-\label{index:beispiele}
-Einen zufälligen männlichen Vornamen erzeugen:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{vorname\PYGZus{}m}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Magnus}
-\end{Verbatim}
-
-Einen zufälligen weiblichen Vorname mit Nachname erzeugen:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{vorname\PYGZus{}w}\PYG{p}{(}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZsq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{z}\PYG{o}{.}\PYG{n}{nachname}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Carmen Büchler}
-\end{Verbatim}
-
-Ein zufälliges Sprichwort erzeugen:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{sprichwort}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Das schlägt dem Fass den Boden aus.}
-\end{Verbatim}
-
-Die Funktion {\hyperref[funktionen:pyzufall.satz]{\code{pyzufall.satz()}}} benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
-Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.
-
-Hier einige Beispiele:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Die Lehrerin zersägt deine Rosskastanie.}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Der Kollege programmiert deine Partnerin im Atomkraftwerk.}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.}
-\end{Verbatim}
-
-Eine Übersicht aller Funktionen findest du in der Referenz:  {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}}
-
-
-\chapter{Beitragen}
-\label{index:beitragen}
-Du kannst bei diesem Open Source-Projekt mitwirken, indem du \href{https://github.com/davidak/pyzufall/issues/}{Fehler berichtest}, neue Datensätze hinzufügst oder sogar mitprogrammierst.
-
-Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.
-
-\begin{notice}{note}{Zu tun}
-
-Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
-\end{notice}
-
-Pull-Requests auf github sind willkommen.
-
-
-\chapter{Benutzer}
-\label{index:benutzer}
-Hier ist eine Liste mit Projekten, die {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden:
-\begin{itemize}
-\item {} 
-\href{http://satzgenerator.de/}{satzgenerator.de}
-
-\item {} 
-\href{https://github.com/davidak/python-random-vcard-generator}{Python Random VCard-Generator}
-
-\end{itemize}
-
-Dein Projekt füge ich auch gerne hinzu.
-
-Auch über Rückmeldungen jeder Art freue ich mich.
-
-Einfach eine E-Mail an post at davidak punkt de oder das \href{http://davidak.de/kontakt}{Kontaktformular} benutzen.
 
 
 \renewcommand{\indexname}{Python-Modulindex}

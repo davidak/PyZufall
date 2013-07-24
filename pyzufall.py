@@ -584,7 +584,9 @@ def firma():
 	"""
 	Gibt einen fiktiven Firmenname zurück.
 
-	TODO
+	.. todo::
+
+		Funktion programmieren
 	"""
 	pass
 
@@ -789,6 +791,10 @@ def frage():
 def satz():
 	"""
 	Gibt einen Satz zurück.
+
+	.. todo::
+
+		Jedes Satz-Schema als eigene Funktion mit Docstring und Beispiel. Klasse?
 	"""
 	s = r.choice((themen_satz, standard_satz, frage))()
 

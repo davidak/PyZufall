@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="pyzufall 0.8.0 Dokumentation" href="#" />
-    <link rel="next" title="Aufgaben" href="todo.html" /> 
+    <link rel="next" title="Installation" href="installation.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +38,7 @@
           <a href="py-modindex.html" title="Python-Modulindex"
              >Module</a> |</li>
         <li class="right" >
-          <a href="todo.html" title="Aufgaben"
+          <a href="installation.html" title="Installation"
              accesskey="N">weiter</a> |</li>
         <li><a href="#">pyzufall 0.8.0 Dokumentation</a> &raquo;</li> 
       </ul>
@@ -48,18 +48,16 @@
   <h3><a href="#">Inhalt</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Dokumentation von pyzufall</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#verwendung">Verwendung</a></li>
-<li><a class="reference internal" href="#beispiele">Beispiele</a></li>
-<li><a class="reference internal" href="#beitragen">Beitragen</a></li>
-<li><a class="reference internal" href="#benutzer">Benutzer</a></li>
+<li><a class="reference internal" href="#inhalt">Inhalt</a><ul>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
   <h4>Nächstes Thema</h4>
-  <p class="topless"><a href="todo.html"
-                        title="nächstes Kapitel">Aufgaben</a></p>
+  <p class="topless"><a href="installation.html"
+                        title="nächstes Kapitel">Installation</a></p>
   <h3>Diese Seite</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -88,79 +86,29 @@
             
   <div class="section" id="dokumentation-von-pyzufall">
 <h1>Dokumentation von pyzufall<a class="headerlink" href="#dokumentation-von-pyzufall" title="Permalink zu dieser Überschrift">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
 <p>Das Python-Modul <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> hat viele Funktionen, um diverse Daten zu erzeugen.</p>
-<p>Die komplexeste ist dabei <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a>, mit der sich zufällige Sätze generieren lassen.</p>
+<p>Die komplexeste ist dabei <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a>, mit der sich zufällige Sätze generieren lassen. Sie benutzt dazu die meisten anderen Funktionen.</p>
 <p>Es wurde für <a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a> entwickelt, kann aber vielfältig eingesetzt werden.</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Die aktuellste Version findest du auf <a class="reference external" href="https://github.com/davidak/pyzufall">github</a>. Eine stabile Version wird es auf <a class="reference external" href="https://pypi.python.org/">PyPI</a> geben.</p>
-<p>Klone das git-Repository in dein Projekt-Verzeichnis:</p>
-<div class="highlight-python"><pre>$ mkdir meinprojekt
-$ cd meinprojekt
-$ git clone https://github.com/davidak/pyzufall.git</pre>
-</div>
-</div>
-<div class="section" id="verwendung">
-<h2>Verwendung<a class="headerlink" href="#verwendung" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Um <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> verwenden zu können, muss es importiert werden:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyzufall</span> <span class="kn">as</span> <span class="nn">z</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="beispiele">
-<h2>Beispiele<a class="headerlink" href="#beispiele" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Einen zufälligen männlichen Vornamen erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_m</span><span class="p">())</span>
-<span class="go">Magnus</span>
-</pre></div>
-</div>
-<p>Einen zufälligen weiblichen Vorname mit Nachname erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">nachname</span><span class="p">())</span>
-<span class="go">Carmen Büchler</span>
-</pre></div>
-</div>
-<p>Ein zufälliges Sprichwort erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">sprichwort</span><span class="p">())</span>
-<span class="go">Das schlägt dem Fass den Boden aus.</span>
-</pre></div>
-</div>
-<p>Die Funktion <a class="reference internal" href="funktionen.html#pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a> benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
-Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.</p>
-<p>Hier einige Beispiele:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Die Lehrerin zersägt deine Rosskastanie.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Der Kollege programmiert deine Partnerin im Atomkraftwerk.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.</span>
-</pre></div>
-</div>
-<p>Eine Übersicht aller Funktionen findest du in der Referenz:  <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a></p>
-</div>
-<div class="section" id="beitragen">
-<h2>Beitragen<a class="headerlink" href="#beitragen" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Du kannst bei diesem Open Source-Projekt mitwirken, indem du <a class="reference external" href="https://github.com/davidak/pyzufall/issues/">Fehler berichtest</a>, neue Datensätze hinzufügst oder sogar mitprogrammierst.</p>
-<p>Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.</p>
-<div class="admonition-zu-tun admonition" id="index-0">
-<p class="first admonition-title">Zu tun</p>
-<p class="last">Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.</p>
-</div>
-<p>Pull-Requests auf github sind willkommen.</p>
-</div>
-<div class="section" id="benutzer">
-<h2>Benutzer<a class="headerlink" href="#benutzer" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Hier ist eine Liste mit Projekten, die <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> verwenden:</p>
-<ul class="simple">
-<li><a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a></li>
-<li><a class="reference external" href="https://github.com/davidak/python-random-vcard-generator">Python Random VCard-Generator</a></li>
+<p>Pyzufall ist Open Source, der Quelltext kann auf <a class="reference external" href="https://github.com/davidak/pyzufall/">github.com</a> runtergeladen werden. Wie du zum Projekt beitragen kannst, steht auf der entsprechenden Seite.</p>
+<div class="section" id="inhalt">
+<h2>Inhalt<a class="headerlink" href="#inhalt" title="Permalink zu dieser Überschrift">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#manuelle-installation">Manuelle Installation</a></li>
 </ul>
-<p>Dein Projekt füge ich auch gerne hinzu.</p>
-<p>Auch über Rückmeldungen jeder Art freue ich mich.</p>
-<p>Einfach eine E-Mail an post at davidak punkt de oder das <a class="reference external" href="http://davidak.de/kontakt">Kontaktformular</a> benutzen.</p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="verwenden.html">Verwenden</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="verwenden.html#importieren">Importieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verwenden.html#beispiele">Beispiele</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="beitragen.html">Beitragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benutzer.html">Benutzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Aufgaben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="funktionen.html">Referenz aller Funktionen</a></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -180,7 +128,7 @@ Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.</p>
           <a href="py-modindex.html" title="Python-Modulindex"
              >Module</a> |</li>
         <li class="right" >
-          <a href="todo.html" title="Aufgaben"
+          <a href="installation.html" title="Installation"
              >weiter</a> |</li>
         <li><a href="#">pyzufall 0.8.0 Dokumentation</a> &raquo;</li> 
       </ul>
