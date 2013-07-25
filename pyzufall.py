@@ -58,45 +58,45 @@ ns = lese('nebensatz')
 sprichwoerter = lese('sprichwoerter')
 
 
-def e16(wort):
+def e16(wert):
 	"""
-	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.
+	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.
 	"""
 	if r.randint(0,5) == 1:
-		return wort
+		return wert
 	else:
 		return ''
 
-def e25(wort):
+def e25(wert):
 	"""
-	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.
+	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.
 	"""
 	if r.randint(1,4) == 1:
-		return wort
+		return wert
 	else:
 		return ''
 
-def e50(wort):
+def e50(wert):
 	"""
-	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.
+	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.
 	"""
 	if r.randint(0,1):
-		return wort
+		return wert
 	else:
 		return ''
 
-def e75(wort):
+def e75(wert):
 	"""
-	Das übergebene Wort wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.
+	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.
 	"""
 	if r.randint(0,3):
-		return wort
+		return wert
 	else:
 		return ''
 
 def ersten_buchstaben_gross(s):
 	"""
-	Macht den ersten Buchstaben gross.	
+	Macht den ersten Buchstaben gross.
 	"""
 	return s[0].upper() + s[1:]
 
@@ -123,7 +123,7 @@ def verbn():
 	"""
 	Gibt ein nullwertiges Verb zurück.
 
-	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	`<http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(nullwertige_verben)
 
@@ -131,7 +131,7 @@ def verbi():
 	"""
 	Gibt ein intransitives Verb zurück.
 
-	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(intransitive_verben)
 	
@@ -139,7 +139,7 @@ def verbi2():
 	"""
 	Gibt ein intransitives, getrenntes Verb zurück.
 
-	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(intransitive_verben_2)
 
@@ -147,7 +147,7 @@ def verbt():
 	"""
 	Gibt ein transitives Verb zurück.
 
-	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(transitive_verben)
 
@@ -155,7 +155,7 @@ def verbt2():
 	"""
 	Gibt ein intransitives, getrenntes Verb zurück.
 
-	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(transitive_verben_2)
 
@@ -163,11 +163,11 @@ def verbd():
 	"""
 	Gibt ein ditransitives Verb zurück.
 
-	http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs
+	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(ditransitive_verben)
 
-def adj():
+def adjektiv():
 	"""
 	Gibt ein Adjektiv zurück.
 	"""
@@ -218,23 +218,23 @@ def person_m():
 	"""
 	z = r.randint(1,10)
 	if z == 1:
-		s = e25(adj() + 'er ')
+		s = e25(adjektiv() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
 		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_m)
 	elif z == 2:
-		s = e25(adj() + 'er ')
+		s = e25(adjektiv() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
 		s = r.choice(possessivpronomen_m) + ' ' + s + r.choice(beziehung_m)
 	elif z == 3:
-		s =  e50(adj() + 'e ')
+		s =  e50(adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # der feigee
 		s = 'der ' + s + r.choice(beziehung_m)
 	elif z == 4:
-		s = adj() + 'e '
+		s = adjektiv() + 'e '
 		s = re.sub('ee $', 'e ', s) # der feigee
 		s = 'der ' + s + r.choice(vornamen_m)
 	elif z == 5:
-		s = adj() + 'e'
+		s = adjektiv() + 'e'
 		s = re.sub('ee$', 'e', s) # der feigee
 		s = 'der ' + s.capitalize()
 	elif z == 6:
@@ -253,23 +253,23 @@ def person_w():
 	"""
 	z = r.randint(1,10)
 	if z == 1:
-		s = e25(adj() + 'e ')
+		s = e25(adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # feigee
 		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
-		s = e25(adj() + 'e ')
+		s = e25(adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # die feigee
 		s = r.choice(possessivpronomen_m) + 'e ' + s + r.choice(beziehung_w)
 	elif z == 3:
-		s =  e50(adj() + 'e ')
+		s =  e50(adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # die feigee
 		s = 'die ' + s + r.choice(beziehung_w)
 	elif z == 4:
-		s = adj() + 'e '
+		s = adjektiv() + 'e '
 		s = re.sub('ee $', 'e ', s) # die feigee
 		s = 'die ' + s + vorname_w()
 	elif z == 5:
-		s = adj() + 'e'
+		s = adjektiv() + 'e'
 		s = re.sub('ee$', 'e', s) # die feigee
 		s = 'die ' + s.capitalize()
 	elif z == 6:
@@ -434,12 +434,12 @@ def person_objekt_m():
 	if y == 2:
 		s = vorname_w()
 	if y == 3:
-		s =  e25(adj() + 'en ')
+		s =  e25(adjektiv() + 'en ')
 		s = re.sub('een ', 'en ', s) # feigeen
 		s = r.choice(['seinen ', 'deinen ']) + s + r.choice(beziehung_m)
 		s = re.sub('Kollege', 'Kollegen', s)
 	if y == 4:
-		s =  e25(adj() + 'e ')
+		s =  e25(adjektiv() + 'e ')
 		s = re.sub('ee ', 'e ', s) # feigee
 		s = r.choice(['seine ', 'deine ']) + s + r.choice(beziehung_w)
 		
@@ -455,12 +455,12 @@ def person_objekt_w():
 	if y == 2:
 		s = vorname_w()
 	if y == 3:
-		s =  e25(adj() + 'en ')
+		s =  e25(adjektiv() + 'en ')
 		s = re.sub('een ', 'en ', s) # feigeen
 		s = r.choice(['ihren ', 'deinen ']) + s + r.choice(beziehung_m)
 		s = re.sub('Kollege', 'Kollegen', s)
 	if y == 4:
-		s =  e25(adj() + 'e ')
+		s =  e25(adjektiv() + 'e ')
 		s = re.sub('ee ', 'e ', s) # feigee
 		s = r.choice(['ihre ', 'deine ']) + s + r.choice(beziehung_w)
 
@@ -549,15 +549,15 @@ def band():
 	"""
 	z = r.randint(0,5)
 	if z == 0:
-		s = 'Die ' + adj().capitalize() + 'en ' + r.choice(gruppe)
+		s = 'Die ' + adjektiv().capitalize() + 'en ' + r.choice(gruppe)
 	if z == 1:
 		s = r.choice(geschmack) + ' ' + ort()
 	if z == 2:
-		s = adj().capitalize() + ' ' + ort()
+		s = adjektiv().capitalize() + ' ' + ort()
 	if z == 3:
-		s = adj().capitalize() + 'e ' + essen(r.randint(0,2))
+		s = adjektiv().capitalize() + 'e ' + essen(r.randint(0,2))
 	if z == 4:
-		s = adj().capitalize()
+		s = adjektiv().capitalize()
 	if z == 5:
 		s = wort()
 	return s
@@ -604,9 +604,9 @@ def themen_satz():
 	
 	if x == 1: # Im Park schneit es. / Es stürmt.
 		if r.randint(0,2):
-			s = ort() + ' ' + verbn() + ' es' + e25(' ' + adj())
+			s = ort() + ' ' + verbn() + ' es' + e25(' ' + adjektiv())
 		else:
-			s = 'Es ' + verbn() + e25(' ' + adj())
+			s = 'Es ' + verbn() + e25(' ' + adjektiv())
 	
 	if x == 2: # Baum
 		if r.randint(0,1):
@@ -652,9 +652,9 @@ def themen_satz():
 			s = s + ' ' + r.choice(['tut weh', 'schmerzt', 'blutet', 'juckt', 'brennt', 'stinkt'])
 		if x == 5:
 			s = koerperteil()
-			s = re.sub('der ', 'einen ' + adj() + 'en ', s)
-			s = re.sub('die ', 'eine ' + adj() + 'e ', s)
-			s = re.sub('das ', 'ein ' + adj() + 'es ', s)
+			s = re.sub('der ', 'einen ' + adjektiv() + 'en ', s)
+			s = re.sub('die ', 'eine ' + adjektiv() + 'e ', s)
+			s = re.sub('das ', 'ein ' + adjektiv() + 'es ', s)
 			s = person() + ' hat ' + s
 
 	if x == 4: # Essen & Trinken
@@ -680,28 +680,28 @@ def themen_satz():
 	if x == 6: # Absurd
 		x = r.randint(1,8)
 		if x == 1:
-			s = person_m() + ' ist ' + adj() + e50(r.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür')
+			s = person_m() + ' ist ' + adjektiv() + e50(r.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür')
 		if x == 2:
-			s = person_w() + ' ist ' + adj() + e50(r.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür')
+			s = person_w() + ' ist ' + adjektiv() + e50(r.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür')
 		if x == 3:
-			adj1 = adj()
-			adj2 = adj()
-			while adj1 is adj2:
-				adj2 = adj()
-			s = 'Je ' + adj1 + 'er desto ' + adj2 + 'er'
+			adjektiv1 = adjektiv()
+			adjektiv2 = adjektiv()
+			while adjektiv1 is adjektiv2:
+				adjektiv2 = adjektiv()
+			s = 'Je ' + adjektiv1 + 'er desto ' + adjektiv2 + 'er'
 		if x == 4:
-			s = farbe() + ' ist eine ' + adj() + 'e ' + 'Farbe'
+			s = farbe() + ' ist eine ' + adjektiv() + 'e ' + 'Farbe'
 		if x == 5:
 			farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
 			while farbe1 is farbe2 or farbe2 is farbe3 or farbe1 is farbe3:
 				farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
-			s = farbe1 + ' ist ' + r.choice([farbe2.lower(), adj()]) + 'er als ' + farbe3
+			s = farbe1 + ' ist ' + r.choice([farbe2.lower(), adjektiv()]) + 'er als ' + farbe3
 		if x == 6:
-			s = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + r.choice(['er', 'sie', 'es']) + ' ' + e50(r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + adj()
+			s = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + r.choice(['er', 'sie', 'es']) + ' ' + e50(r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + adjektiv()
 		if x == 7:
-			s = 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adj() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+			s = 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adjektiv() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 		if x == 8:
-			s = 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + adj() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+			s = 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + adjektiv() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 
 	return s + '.'
 
@@ -716,35 +716,35 @@ def standard_satz():
 			v1, v2 = verbi2().split(",")
 		else:
 			v1, v2 = verbi(), ''
-		s = person() + ' ' + v1 + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()]) + v2
+		s = person() + ' ' + v1 + ' ' + r.choice([adjektiv(), ort(), adjektiv() + ' ' + ort()]) + v2
 	
 	if x == 2:
 		if r.randint(0,1):
 			v1, v2 = verbi2().split(",")
 		else:
 			v1, v2 = verbi(), ''
-		s = ort() + ' ' + v1 + ' ' + person() + e75(' ' + adj()) + v2
+		s = ort() + ' ' + v1 + ' ' + person() + e75(' ' + adjektiv()) + v2
 	
 	if x == 3:
 		if r.randint(0,1):
 			v1, v2 = verbi2().split(",")
 		else:
 			v1, v2 = verbi(), ''
-		s = adj() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + v2
+		s = adjektiv() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + v2
 	
 	if x == 4:
 		if r.randint(0,1):
 			v1, v2 = verbt2().split(",")
 		else:
 			v1, v2 = verbt(), ''
-		s = person_m() + ' ' + v1 + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())]) + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + v2
+		s = person_m() + ' ' + v1 + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())]) + r.choice([' ' + adjektiv(), ' ' + ort(), ' ' + adjektiv() + ' ' + ort(), '']) + v2
 	
 	if x == 5:
 		if r.randint(0,1):
 			v1, v2 = verbt2().split(",")
 		else:
 			v1, v2 = verbt(), ''
-		s = person_w() + ' ' + v1 + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())]) + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + v2
+		s = person_w() + ' ' + v1 + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())]) + r.choice([' ' + adjektiv(), ' ' + ort(), ' ' + adjektiv() + ' ' + ort(), '']) + v2
 	
 	return s + e16(r.choice(ns)) + '.'
 
@@ -759,19 +759,19 @@ def frage():
 			v1, v2 = verbi2().split(",")
 		else:
 			v1, v2 = verbi(), ''
-		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adj(), ' ' + ort(), ' ' + adj() + ' ' + ort(), '']) + v2
+		s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adjektiv(), ' ' + ort(), ' ' + adjektiv() + ' ' + ort(), '']) + v2
 	if x == 2:
 		if r.randint(0,1):
 			v1, v2 = verbi2().split(",")
 		else:
 			v1, v2 = verbi(), ''
-		s = 'Wer ' + v1 + ' ' + r.choice([adj(), ort(), adj() + ' ' + ort()]) +v2
+		s = 'Wer ' + v1 + ' ' + r.choice([adjektiv(), ort(), adjektiv() + ' ' + ort()]) +v2
 	if x == 3:
 		if r.randint(0,1):
 			v1, v2 = verbi2().split(",")
 		else:
 			v1, v2 = verbi(), ''
-		s = 'Wo ' + v1 + ' ' + person() + e25(' ' + adj()) +v2
+		s = 'Wo ' + v1 + ' ' + person() + e25(' ' + adjektiv()) +v2
 	if x == 4:
 		if r.randint(0,1):
 			v1, v2 = verbi2().split(",")
@@ -799,4 +799,4 @@ def satz():
 	s = r.choice((themen_satz, standard_satz, frage))()
 
 	#s = ersten_buchstaben_gross(themen_satz())
-	return s
+	return ersten_buchstaben_gross(s)

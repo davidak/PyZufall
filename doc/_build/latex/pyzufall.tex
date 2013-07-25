@@ -14,7 +14,7 @@
 
 
 \title{pyzufall Dokumentation}
-\date{24. 07. 2013}
+\date{25. 07. 2013}
 \release{0.8.0}
 \author{davidak}
 \newcommand{\sphinxlogo}{}
@@ -147,6 +147,26 @@ Klone das git-Repository in dein Projekt-Verzeichnis:
 \$ cd meinprojekt
 \$ git clone https://github.com/davidak/pyzufall.git
 \end{Verbatim}
+
+
+\subsection{Unittests}
+\label{installation:unittests}
+Um den Code auf deinem System zu testen, führe folgenden Befehl im Ordner von {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} aus:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ nosetests -v
+pyzufall.test.test\_satz ... ok
+pyzufall.test.test\_test ... ok
+pyzufall.test.test\_lese ... ok
+pyzufall.test.test\_ersten\_buchstaben\_gross ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.534s
+
+OK
+\end{Verbatim}
+
+Für die Unittests wird \href{https://nose.readthedocs.org/en/latest/}{nose} benutzt und muss installiert sein.
 
 
 \section{Verwenden}

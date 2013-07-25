@@ -53,6 +53,7 @@
   <ul>
 <li><a class="reference internal" href="#">Installation</a><ul>
 <li><a class="reference internal" href="#manuelle-installation">Manuelle Installation</a></li>
+<li><a class="reference internal" href="#unittests">Unittests</a></li>
 </ul>
 </li>
 </ul>
@@ -99,6 +100,22 @@
 $ cd meinprojekt
 $ git clone https://github.com/davidak/pyzufall.git</pre>
 </div>
+</div>
+<div class="section" id="unittests">
+<h2>Unittests<a class="headerlink" href="#unittests" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Um den Code auf deinem System zu testen, führe folgenden Befehl im Ordner von <a class="reference internal" href="funktionen.html#module-pyzufall" title="pyzufall"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></a> aus:</p>
+<div class="highlight-python"><pre>$ nosetests -v
+pyzufall.test.test_satz ... ok
+pyzufall.test.test_test ... ok
+pyzufall.test.test_lese ... ok
+pyzufall.test.test_ersten_buchstaben_gross ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.534s
+
+OK</pre>
+</div>
+<p>Für die Unittests wird <a class="reference external" href="https://nose.readthedocs.org/en/latest/">nose</a> benutzt und muss installiert sein.</p>
 </div>
 </div>
 
