@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Entstehung &mdash; pyzufall 0.8.0 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.8.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="pyzufall 0.8.0 Dokumentation" href="index.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Dokumentation von pyzufall" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Allgemeiner Index"
+             accesskey="I">Index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python-Modulindex"
+             >Module</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="N">weiter</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Dokumentation von pyzufall"
+             accesskey="P">zurück</a> |</li>
+        <li><a href="index.html">pyzufall 0.8.0 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Inhalt</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Entstehung</a><ul>
+<li><a class="reference internal" href="#das-spiel">Das Spiel</a></li>
+<li><a class="reference internal" href="#das-programm">Das Programm</a></li>
+<li><a class="reference internal" href="#der-satzgenerator">Der Satzgenerator</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Vorheriges Thema</h4>
+  <p class="topless"><a href="index.html"
+                        title="vorheriges Kapitel">Dokumentation von pyzufall</a></p>
+  <h4>Nächstes Thema</h4>
+  <p class="topless"><a href="installation.html"
+                        title="nächstes Kapitel">Installation</a></p>
+  <h3>Diese Seite</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/entstehung.txt"
+           rel="nofollow">Quelltext anzeigen</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="entstehung">
+<h1>Entstehung<a class="headerlink" href="#entstehung" title="Permalink zu dieser Überschrift">¶</a></h1>
+<div class="section" id="das-spiel">
+<h2>Das Spiel<a class="headerlink" href="#das-spiel" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Als Kind hatte ich bei meiner Oma öfter das Spiel <a class="reference external" href="http://www.mama-tipps.de/tipp/Opa-plaetschert-Badewanne.html">Opa plätschert lustig in der Badewanne</a> gespielt.</p>
+<p>Dabei hat jeder Spieler ein Blatt Papier, dass er quer nimmt und als erstes einen Namen oder eine Person darauf schreibt, es an der Stelle faltet, so dass man es nicht mehr lesen kann und es im Uhrzeigersinn weitergibt. Dann schreibt jeder auf das erhaltene Blatt ein Verb, gibt es weiter und schribt ein Adjektiv und nach nochmaligem Weitergeben einen Ort darauf.</p>
+<p>So entstehen absurde und zufällige Sätze. Das war immer sehr witzig.</p>
+</div>
+<div class="section" id="das-programm">
+<h2>Das Programm<a class="headerlink" href="#das-programm" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Als ich älter wurde, begann ich Programmieren zu lernen. Dabei hat mich immer begeistert, durch Zufall etwas zu generieren, was teileise einen Sinn ergibt, aber oft sehr absurd und dadurch lustig ist.</p>
+<p>So ist ein <a class="reference external" href="http://davidak.de/wiki/perl/personendatengenerator">Personendatengenerator</a> entstanden, mit dem eine <a class="reference external" href="http://davidak.de/personen/">Personendatenbank</a> befüllt wurde.</p>
+<p>Auch hab ich ein Script geschrieben, dass Sätze nach dem Muster des Spiels generiert. Erst in Perl und dann in Python. Diese Sätze werden natürlich auf Dauer langweilig.</p>
+<p>Da mittlerweile Python die Programmiersprache meiner Wahl ist, habe ich das Script darin weiterentwickelt, mit diversen Satz-Schemata und anderen tollen Funktionen.</p>
+</div>
+<div class="section" id="der-satzgenerator">
+<h2>Der Satzgenerator<a class="headerlink" href="#der-satzgenerator" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Inzwischen gibt es <a class="reference external" href="http://satzgenerator.de/">satzgenerator.de</a>. Auf dieser Webseite werden zufällige Sätze generiert, die bewertet und geteilt werden können.</p>
+<p>Für die Generierung der Sätze wird das Python-Modul <a class="reference external" href="https://github.com/davidak/pyzufall">pyzufall</a> genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework <a class="reference external" href="http://bottlepy.org/">Bottle</a> und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.</p>
+<p>Pyzufall ist Open Source und wird bereits für <a class="reference internal" href="benutzer.html"><em>andere Projekte</em></a> benutzt.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Allgemeiner Index"
+             >Index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python-Modulindex"
+             >Module</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >weiter</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Dokumentation von pyzufall"
+             >zurück</a> |</li>
+        <li><a href="index.html">pyzufall 0.8.0 Dokumentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="footer">
+       <span class="creativecommons">
+        Diese Dokumentation steht unter einer <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.de">Creative Commons Namensnennung-Nicht-kommerziell 3.0 Unported Lizenz</a>.
+        </a>
+       </span>
+      </div>
+  </body>
+</html>

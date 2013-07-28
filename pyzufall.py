@@ -16,8 +16,7 @@ def lese(dateiname):
 	"""
 	Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
 
-	http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path
-	http://stackoverflow.com/questions/595305/python-path-of-scrip
+	`<http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path>`_
 	"""
 	dateipfad = os.path.join(os.path.dirname(__file__), 'data/' + dateiname)
 	return open(dateipfad, 'r').read().splitlines()
@@ -123,7 +122,7 @@ def verbn():
 	"""
 	Gibt ein nullwertiges Verb zurück.
 
-	`<http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
 	"""
 	return r.choice(nullwertige_verben)
 

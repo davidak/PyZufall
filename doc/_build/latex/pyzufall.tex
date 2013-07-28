@@ -14,7 +14,7 @@
 
 
 \title{pyzufall Dokumentation}
-\date{25. 07. 2013}
+\date{28. 07. 2013}
 \release{0.8.0}
 \author{davidak}
 \newcommand{\sphinxlogo}{}
@@ -127,18 +127,47 @@ Die komplexeste ist dabei {\hyperref[funktionen:pyzufall.satz]{\code{pyzufall.sa
 
 Es wurde für \href{http://satzgenerator.de/}{satzgenerator.de} entwickelt, kann aber vielfältig eingesetzt werden.
 
-Pyzufall ist Open Source, der Quelltext kann auf \href{https://github.com/davidak/pyzufall/}{github.com} runtergeladen werden. Wie du zum Projekt beitragen kannst, steht auf der entsprechenden Seite.
+Pyzufall ist Open Source, der Quelltext kann auf \href{https://github.com/davidak/pyzufall/}{github.com} runtergeladen werden.
 
 
-\chapter{Inhalt}
-\label{index:inhalt}\label{index:dokumentation-von-pyzufall}
+\chapter{Entstehung}
+\label{entstehung::doc}\label{entstehung:entstehung}\label{entstehung:dokumentation-von-pyzufall}
 
-\section{Installation}
+\section{Das Spiel}
+\label{entstehung:das-spiel}
+Als Kind hatte ich bei meiner Oma öfter das Spiel \href{http://www.mama-tipps.de/tipp/Opa-plaetschert-Badewanne.html}{Opa plätschert lustig in der Badewanne} gespielt.
+
+Dabei hat jeder Spieler ein Blatt Papier, dass er quer nimmt und als erstes einen Namen oder eine Person darauf schreibt, es an der Stelle faltet, so dass man es nicht mehr lesen kann und es im Uhrzeigersinn weitergibt. Dann schreibt jeder auf das erhaltene Blatt ein Verb, gibt es weiter und schribt ein Adjektiv und nach nochmaligem Weitergeben einen Ort darauf.
+
+So entstehen absurde und zufällige Sätze. Das war immer sehr witzig.
+
+
+\section{Das Programm}
+\label{entstehung:das-programm}
+Als ich älter wurde, begann ich Programmieren zu lernen. Dabei hat mich immer begeistert, durch Zufall etwas zu generieren, was teileise einen Sinn ergibt, aber oft sehr absurd und dadurch lustig ist.
+
+So ist ein \href{http://davidak.de/wiki/perl/personendatengenerator}{Personendatengenerator} entstanden, mit dem eine \href{http://davidak.de/personen/}{Personendatenbank} befüllt wurde.
+
+Auch hab ich ein Script geschrieben, dass Sätze nach dem Muster des Spiels generiert. Erst in Perl und dann in Python. Diese Sätze werden natürlich auf Dauer langweilig.
+
+Da mittlerweile Python die Programmiersprache meiner Wahl ist, habe ich das Script darin weiterentwickelt, mit diversen Satz-Schemata und anderen tollen Funktionen.
+
+
+\section{Der Satzgenerator}
+\label{entstehung:der-satzgenerator}
+Inzwischen gibt es \href{http://satzgenerator.de/}{satzgenerator.de}. Auf dieser Webseite werden zufällige Sätze generiert, die bewertet und geteilt werden können.
+
+Für die Generierung der Sätze wird das Python-Modul \href{https://github.com/davidak/pyzufall}{pyzufall} genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework \href{http://bottlepy.org/}{Bottle} und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
+
+Pyzufall ist Open Source und wird bereits für {\hyperref[benutzer::doc]{\emph{andere Projekte}}} benutzt.
+
+
+\chapter{Installation}
 \label{installation:installation}\label{installation::doc}
 Die aktuellste Version findest du auf \href{https://github.com/davidak/pyzufall}{github}. Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
 
 
-\subsection{Manuelle Installation}
+\section{Manuelle Installation}
 \label{installation:manuelle-installation}
 Klone das git-Repository in dein Projekt-Verzeichnis:
 
@@ -149,7 +178,7 @@ Klone das git-Repository in dein Projekt-Verzeichnis:
 \end{Verbatim}
 
 
-\subsection{Unittests}
+\section{Unittests}
 \label{installation:unittests}
 Um den Code auf deinem System zu testen, führe folgenden Befehl im Ordner von {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} aus:
 
@@ -169,10 +198,10 @@ OK
 Für die Unittests wird \href{https://nose.readthedocs.org/en/latest/}{nose} benutzt und muss installiert sein.
 
 
-\section{Verwenden}
+\chapter{Verwenden}
 \label{verwenden::doc}\label{verwenden:verwenden}
 
-\subsection{Importieren}
+\section{Importieren}
 \label{verwenden:importieren}
 Um {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden zu können, muss es importiert werden:
 
@@ -181,7 +210,7 @@ Um {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden zu können
 \end{Verbatim}
 
 
-\subsection{Beispiele}
+\section{Beispiele}
 \label{verwenden:beispiele}
 Einen zufälligen männlichen Vornamen erzeugen:
 
@@ -223,7 +252,7 @@ Hier einige Beispiele:
 Eine Übersicht aller Funktionen findest du in der Referenz:  {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}}
 
 
-\section{Beitragen}
+\chapter{Beitragen}
 \label{beitragen:beitragen}\label{beitragen::doc}
 Du kannst bei diesem Open Source-Projekt mitwirken, indem du \href{https://github.com/davidak/pyzufall/issues/}{Fehler berichtest}, neue Datensätze hinzufügst oder sogar mitprogrammierst.
 
@@ -237,7 +266,7 @@ Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Be
 Pull-Requests auf github sind willkommen.
 
 
-\section{Benutzer}
+\chapter{Benutzer}
 \label{benutzer::doc}\label{benutzer:benutzer}
 Hier ist eine Liste mit Projekten, die {\hyperref[funktionen:module-pyzufall]{\code{pyzufall}}} verwenden:
 \begin{itemize}
@@ -254,7 +283,7 @@ Dein Projekt füge ich auch gerne hinzu.
 Einfach eine E-Mail mit Beschreibung und Link an post at davidak punkt de oder das \href{http://davidak.de/kontakt}{Kontaktformular} benutzen.
 
 
-\section{Aufgaben}
+\chapter{Aufgaben}
 \label{todo::doc}\label{todo:aufgaben}
 Für Fehlerberichte und Feature-Requests wird der \href{https://github.com/davidak/pyzufall/issues}{Bugtracker auf github} benutzt.
 
@@ -289,13 +318,13 @@ Jedes Satz-Schema als eigene Funktion mit Docstring und Beispiel. Klasse?
 (Der {\hyperref[funktionen:index-2]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.satz, Zeile 3.)
 
 
-\section{Referenz aller Funktionen}
+\chapter{Referenz aller Funktionen}
 \label{funktionen:referenz-aller-funktionen}\label{funktionen::doc}\label{funktionen:module-pyzufall}\index{pyzufall (Modul)}
 Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.
-\index{adj() (in Modul pyzufall)}
+\index{adjektiv() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.adj}\pysiglinewithargsret{\code{pyzufall.}\bfcode{adj}}{}{}
+\phantomsection\label{funktionen:pyzufall.adjektiv}\pysiglinewithargsret{\code{pyzufall.}\bfcode{adjektiv}}{}{}
 Gibt ein Adjektiv zurück.
 
 \end{fulllineitems}
@@ -369,32 +398,32 @@ Gibt ein Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
 \index{e16() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.e16}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e16}}{\emph{wort}}{}
-Das übergebene Wort wird mit einer Wahrscheinlichkeit von 16\% zurückgegeben.
+\phantomsection\label{funktionen:pyzufall.e16}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e16}}{\emph{wert}}{}
+Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16\% zurückgegeben.
 
 \end{fulllineitems}
 
 \index{e25() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.e25}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e25}}{\emph{wort}}{}
-Das übergebene Wort wird mit einer Wahrscheinlichkeit von 25\% zurückgegeben.
+\phantomsection\label{funktionen:pyzufall.e25}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e25}}{\emph{wert}}{}
+Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25\% zurückgegeben.
 
 \end{fulllineitems}
 
 \index{e50() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.e50}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e50}}{\emph{wort}}{}
-Das übergebene Wort wird mit einer Wahrscheinlichkeit von 50\% zurückgegeben.
+\phantomsection\label{funktionen:pyzufall.e50}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e50}}{\emph{wert}}{}
+Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50\% zurückgegeben.
 
 \end{fulllineitems}
 
 \index{e75() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.e75}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e75}}{\emph{wort}}{}
-Das übergebene Wort wird mit einer Wahrscheinlichkeit von 75\% zurückgegeben.
+\phantomsection\label{funktionen:pyzufall.e75}\pysiglinewithargsret{\code{pyzufall.}\bfcode{e75}}{\emph{wert}}{}
+Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75\% zurückgegeben.
 
 \end{fulllineitems}
 
@@ -471,7 +500,6 @@ Gibt ein Körperteil zurück.
 Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
 
 \href{http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path}{http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path}
-\href{http://stackoverflow.com/questions/595305/python-path-of-scrip}{http://stackoverflow.com/questions/595305/python-path-of-scrip}
 
 \end{fulllineitems}
 
@@ -646,7 +674,7 @@ Gibt ein Getränk zurück.
 \phantomsection\label{funktionen:pyzufall.verbd}\pysiglinewithargsret{\code{pyzufall.}\bfcode{verbd}}{}{}
 Gibt ein ditransitives Verb zurück.
 
-\href{http://de.wikipedia.org/wiki}{http://de.wikipedia.org/wiki}/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs
+\href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
 
 \end{fulllineitems}
 
@@ -656,7 +684,7 @@ Gibt ein ditransitives Verb zurück.
 \phantomsection\label{funktionen:pyzufall.verbi}\pysiglinewithargsret{\code{pyzufall.}\bfcode{verbi}}{}{}
 Gibt ein intransitives Verb zurück.
 
-\href{http://de.wikipedia.org/wiki}{http://de.wikipedia.org/wiki}/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs
+\href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
 
 \end{fulllineitems}
 
@@ -666,7 +694,7 @@ Gibt ein intransitives Verb zurück.
 \phantomsection\label{funktionen:pyzufall.verbi2}\pysiglinewithargsret{\code{pyzufall.}\bfcode{verbi2}}{}{}
 Gibt ein intransitives, getrenntes Verb zurück.
 
-\href{http://de.wikipedia.org/wiki}{http://de.wikipedia.org/wiki}/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs
+\href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
 
 \end{fulllineitems}
 
@@ -676,7 +704,7 @@ Gibt ein intransitives, getrenntes Verb zurück.
 \phantomsection\label{funktionen:pyzufall.verbn}\pysiglinewithargsret{\code{pyzufall.}\bfcode{verbn}}{}{}
 Gibt ein nullwertiges Verb zurück.
 
-\href{http://de.wikipedia.org/wiki}{http://de.wikipedia.org/wiki}/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs
+\href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
 
 \end{fulllineitems}
 
@@ -686,7 +714,7 @@ Gibt ein nullwertiges Verb zurück.
 \phantomsection\label{funktionen:pyzufall.verbt}\pysiglinewithargsret{\code{pyzufall.}\bfcode{verbt}}{}{}
 Gibt ein transitives Verb zurück.
 
-\href{http://de.wikipedia.org/wiki}{http://de.wikipedia.org/wiki}/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs
+\href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
 
 \end{fulllineitems}
 
@@ -696,7 +724,7 @@ Gibt ein transitives Verb zurück.
 \phantomsection\label{funktionen:pyzufall.verbt2}\pysiglinewithargsret{\code{pyzufall.}\bfcode{verbt2}}{}{}
 Gibt ein intransitives, getrenntes Verb zurück.
 
-\href{http://de.wikipedia.org/wiki}{http://de.wikipedia.org/wiki}/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs
+\href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
 
 \end{fulllineitems}
 
