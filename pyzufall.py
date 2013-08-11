@@ -817,11 +817,12 @@ def satz_kloster():
 
 	.. todo::
 
-		"..."ste nicht immer richtig
-		Bruder Dennis war der monströsste Mönch im Kloster.
-		Schwester Lara ist die diskretste Nonne in der Abtei.
-		Bruder Marcel war der gerechtste Mönch im Orden.
-		Bruder Nicolaus ist der falschste Mönch im Kloster.
+		"..."ste nicht immer richtig:
+
+		- Bruder Dennis war der monströsste Mönch im Kloster.
+		- Schwester Lara ist die diskretste Nonne in der Abtei.
+		- Bruder Marcel war der gerechtste Mönch im Orden.
+		- Bruder Nicolaus ist der falschste Mönch im Kloster.
 	"""
 	if r.randint(0,1): # männlich
 		s = e25('Der ') + 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adjektiv() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])

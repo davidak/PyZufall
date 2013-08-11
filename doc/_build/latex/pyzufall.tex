@@ -14,7 +14,7 @@
 
 
 \title{pyzufall Dokumentation}
-\date{28. 07. 2013}
+\date{11. 08. 2013}
 \release{0.8.0}
 \author{davidak}
 \newcommand{\sphinxlogo}{}
@@ -298,24 +298,31 @@ Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Be
 
 \begin{notice}{note}{Zu tun}
 
-Sollte in zwei Funktionen aufgeteilt werden.
-\end{notice}
-
-(Der {\hyperref[funktionen:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.essen, Zeile 3.)
-
-\begin{notice}{note}{Zu tun}
-
 Funktion programmieren
 \end{notice}
 
-(Der {\hyperref[funktionen:index-1]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.firma, Zeile 3.)
+(Der {\hyperref[funktionen:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.firma, Zeile 3.)
 
 \begin{notice}{note}{Zu tun}
 
-Jedes Satz-Schema als eigene Funktion mit Docstring und Beispiel. Klasse?
+''...''ste nicht immer richtig:
+\begin{itemize}
+\item {} 
+Bruder Dennis war der monströsste Mönch im Kloster.
+
+\item {} 
+Schwester Lara ist die diskretste Nonne in der Abtei.
+
+\item {} 
+Bruder Marcel war der gerechtste Mönch im Orden.
+
+\item {} 
+Bruder Nicolaus ist der falschste Mönch im Kloster.
+
+\end{itemize}
 \end{notice}
 
-(Der {\hyperref[funktionen:index-2]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.satz, Zeile 3.)
+(Der {\hyperref[funktionen:index-1]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall.py:docstring of pyzufall.satz\_kloster, Zeile 5.)
 
 
 \chapter{Referenz aller Funktionen}
@@ -427,10 +434,10 @@ Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75\% zurückgegeben.
 
 \end{fulllineitems}
 
-\index{ersten\_buchstaben\_gross() (in Modul pyzufall)}
+\index{erste\_gross() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.ersten_buchstaben_gross}\pysiglinewithargsret{\code{pyzufall.}\bfcode{ersten\_buchstaben\_gross}}{\emph{s}}{}
+\phantomsection\label{funktionen:pyzufall.erste_gross}\pysiglinewithargsret{\code{pyzufall.}\bfcode{erste\_gross}}{\emph{s}}{}
 Macht den ersten Buchstaben gross.
 
 \end{fulllineitems}
@@ -438,13 +445,8 @@ Macht den ersten Buchstaben gross.
 \index{essen() (in Modul pyzufall)}
 
 \begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.essen}\pysiglinewithargsret{\code{pyzufall.}\bfcode{essen}}{\emph{anz}}{}
-Gibt Essen zurück.
-
-\begin{notice}{note}{Zu tun}
-
-Sollte in zwei Funktionen aufgeteilt werden.
-\end{notice}
+\phantomsection\label{funktionen:pyzufall.essen}\pysiglinewithargsret{\code{pyzufall.}\bfcode{essen}}{}{}
+Gibt ein Gericht zurück.
 
 \end{fulllineitems}
 
@@ -466,14 +468,6 @@ Gibt einen fiktiven Firmenname zurück.
 
 Funktion programmieren
 \end{notice}
-
-\end{fulllineitems}
-
-\index{frage() (in Modul pyzufall)}
-
-\begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.frage}\pysiglinewithargsret{\code{pyzufall.}\bfcode{frage}}{}{}
-Gibt eine Frage zurück.
 
 \end{fulllineitems}
 
@@ -555,7 +549,7 @@ Beispiel: `im Flur'
 
 \begin{fulllineitems}
 \phantomsection\label{funktionen:pyzufall.person}\pysiglinewithargsret{\code{pyzufall.}\bfcode{person}}{}{}
-Gibt eine Person zurück.
+Gibt eine zufällige Person zurück.
 
 \end{fulllineitems}
 
@@ -573,6 +567,8 @@ Gibt eine männliche Person zurück.
 \phantomsection\label{funktionen:pyzufall.person_objekt_m}\pysiglinewithargsret{\code{pyzufall.}\bfcode{person\_objekt\_m}}{}{}
 Gibt eine Person als Objekt in Bezug auf eine männliche Person zurück.
 
+Beispiel: seine Mitarbeiterin
+
 \end{fulllineitems}
 
 \index{person\_objekt\_w() (in Modul pyzufall)}
@@ -580,6 +576,8 @@ Gibt eine Person als Objekt in Bezug auf eine männliche Person zurück.
 \begin{fulllineitems}
 \phantomsection\label{funktionen:pyzufall.person_objekt_w}\pysiglinewithargsret{\code{pyzufall.}\bfcode{person\_objekt\_w}}{}{}
 Gibt eine Person als Objekt in Bezug auf eine weibliche Person zurück.
+
+Beispiel: ihre Mutter
 
 \end{fulllineitems}
 
@@ -603,12 +601,294 @@ Gibt eine Pflanze zurück.
 
 \begin{fulllineitems}
 \phantomsection\label{funktionen:pyzufall.satz}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz}}{}{}
-Gibt einen Satz zurück.
+Generiert einen zufälligen Satz.
+
+20\% Standard-Sätze, 20\% Fragen und 60\% Themen-Sätze
+
+\end{fulllineitems}
+
+\index{satz\_absurde\_farbfunktion() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_absurde_farbfunktion}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_absurde\_farbfunktion}}{}{}
+Generiert einen Satz nach folgendem Muster: Gelb ist brauner als Türkis.
+
+\end{fulllineitems}
+
+\index{satz\_adjektiv\_am\_ort() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_adjektiv_am_ort}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_adjektiv\_am\_ort}}{}{}
+Generiert einen Satz nach dem Muster: \textless{}Ort\textgreater{} \textless{}Verb\textgreater{} \textless{}Person\textgreater{} \textless{}Adjektiv\textgreater{}.
+
+Beispiel: Auf dem Spielplatz ist die Freundin hilfsbereit.
+
+\end{fulllineitems}
+
+\index{satz\_adjektiv\_sprichwort() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_adjektiv_sprichwort}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_adjektiv\_sprichwort}}{}{}
+Generiert einen Satz nach dem Muster: Je untrainierter desto lächerlicher.
+
+\end{fulllineitems}
+
+\index{satz\_arbeit() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_arbeit}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_arbeit}}{}{}
+Generiert einen Satz über eine berufstätige Person.
+
+Beispiel: Achmed, der Grafiker aus Waldheim, spielt den Nasenbär.
+
+\end{fulllineitems}
+
+\index{satz\_band() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_band}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_band}}{}{}
+Generiert einen Satz zum Thema Band.
+
+\end{fulllineitems}
+
+\index{satz\_band\_besetzung() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_band_besetzung}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_band\_besetzung}}{}{}
+Generiert einen Satz mit den Mitgliedern einer Band.
+
+Beispiel: Die Black Metal Band ``Die Oralen Nudeln'' besteht aus Marlene, Gert, Stefanie, Timm, Andrej, Friederike und Dorothea.
+
+\end{fulllineitems}
+
+\index{satz\_band\_gegruendet() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_band_gegruendet}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_band\_gegruendet}}{}{}
+Generiert einen Satz, der den Zeitpunkt einer Bandgründung zum Thema hat.
+
+Beispiel: Die Electroband ``Kartoffel auf dem Klo'' wurde am 26.10.2009 in Selb gegründet.
+
+\end{fulllineitems}
+
+\index{satz\_band\_mitglied() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_band_mitglied}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_band\_mitglied}}{}{}
+Generiert einen Satz, in dem ein Bandmitglied vorgestellt wird.
+
+Beispiel: Annelise ist Gitarristin von der Gothicband ``Kräuter in der Innenstadt''.
+
+\end{fulllineitems}
+
+\index{satz\_baum() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_baum}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_baum}}{}{}
+Generiert einen Satz mit dem Thema Baum.
+
+Beispiel: Die gnadenlose Kerstin tritt gegen den Apfelbaum.
+
+\end{fulllineitems}
+
+\index{satz\_essen() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_essen}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_essen}}{}{}
+Generiert einen Satz mit Essen und/oder Trinken.
+
+Beispiel: Die Wärterin isst Orangen mit Mayonnaise und trinkt dazu Milch.
+
+\end{fulllineitems}
+
+\index{satz\_farbe() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_farbe}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_farbe}}{}{}
+Generiert einen Satz nach dem Muster: Braun ist eine unsittliche Farbe.
+
+\end{fulllineitems}
+
+\index{satz\_folgehandlung() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_folgehandlung}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_folgehandlung}}{}{}
+Generiert einen Satz, der eine Folgehandlung beschreibt.
+
+Beispiel: Ohne dass Irmgard überlebt, bricht sie aggressiv ein.
+
+\end{fulllineitems}
+
+\index{satz\_frage() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_frage}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_frage}}{}{}
+Generiert eine zufällige Frage.
+
+\end{fulllineitems}
+
+\index{satz\_frage\_1() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_frage_1}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_frage\_1}}{}{}
+Generiert eine Frage nach dem Grund, aus dem eine Person eine Tätigkeit ausführt
+
+Beispiel: Wieso fällt dein Partner in Gedanken hin?
+
+\end{fulllineitems}
+
+\index{satz\_frage\_2() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_frage_2}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_frage\_2}}{}{}
+Generiert eine Frage nach der Person, die eine Tätigkeit ausführt.
+
+Beispiel: Wer telefoniert bewusstlos in der Abtei?
+
+\end{fulllineitems}
+
+\index{satz\_frage\_3() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_frage_3}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_frage\_3}}{}{}
+Generiert eine Frage nach dem Ort, an dem eine Person eine Tätigkeit ausführt.
+
+Beispiel: Wo singt ein Siebdrucker?
+
+\end{fulllineitems}
+
+\index{satz\_frage\_4() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_frage_4}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_frage\_4}}{}{}
+Generiert eine Frage nach der Art, wie eine Person eine Tätigkeit ausführt.
+
+Beispiel: Wie wird sie beim ersten Date angefasst?
+
+\end{fulllineitems}
+
+\index{satz\_frage\_5() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_frage_5}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_frage\_5}}{}{}
+Generiert eine Frage nach dem Zeitpunkt, an dem eine Person eine Tätigkeit ausführt.
+
+Beispiel: Wann säuft eine Hure?
+
+\end{fulllineitems}
+
+\index{satz\_freunde\_lieben() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_freunde_lieben}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_freunde\_lieben}}{}{}
+Generiert einen Satz über eine Person mit Eigenschaften.
+
+Beispiel: In der Garage ist das Mannsweib lesbisch.
+
+\end{fulllineitems}
+
+\index{satz\_kloster() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_kloster}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_kloster}}{}{}
+Generiert einen Satz über eine Person in einem Kloster.
+
+Beispiel: Der Bruder Florian ist der debilste Mönch in der Abtei.
 
 \begin{notice}{note}{Zu tun}
 
-Jedes Satz-Schema als eigene Funktion mit Docstring und Beispiel. Klasse?
+''...''ste nicht immer richtig:
+\begin{itemize}
+\item {} 
+Bruder Dennis war der monströsste Mönch im Kloster.
+
+\item {} 
+Schwester Lara ist die diskretste Nonne in der Abtei.
+
+\item {} 
+Bruder Marcel war der gerechtste Mönch im Orden.
+
+\item {} 
+Bruder Nicolaus ist der falschste Mönch im Kloster.
+
+\end{itemize}
 \end{notice}
+
+\end{fulllineitems}
+
+\index{satz\_koerperteil() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_koerperteil}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_koerperteil}}{}{}
+Generiert einen Satz zum Thema Körperteile.
+
+Beispiel: Die ekelhafte Oma massiert ihren Fuß.
+
+\end{fulllineitems}
+
+\index{satz\_nulltransitiv() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_nulltransitiv}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_nulltransitiv}}{}{}
+Generiert einen Satz mit einem nulltransitiven Verb.
+
+Beispiel: Im Park schneit es.
+
+\end{fulllineitems}
+
+\index{satz\_standard() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_standard}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_standard}}{}{}
+Generiert einen zufälligen Standard-Satz.
+
+\end{fulllineitems}
+
+\index{satz\_standard\_1() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_standard_1}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_standard\_1}}{}{}
+Generiert einen einfachen Satz nach dem Muster: \textless{}Person\textgreater{} \textless{}Verb\textgreater{} \textless{}Adjektiv\textgreater{} \textless{}Ort\textgreater{}.
+
+Beispiel: Die Geschmacklose bepisst sich cool in der Kirche.
+
+\end{fulllineitems}
+
+\index{satz\_standard\_2() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_standard_2}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_standard\_2}}{}{}
+Generiert einen einfachen Satz nach dem Muster: \textless{}Ort\textgreater{} \textless{}Verb\textgreater{} \textless{}Person\textgreater{} \textless{}Adjektiv\textgreater{}.
+
+Beispiel: Beim ersten Date flieht er.
+
+\end{fulllineitems}
+
+\index{satz\_standard\_3() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_standard_3}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_standard\_3}}{}{}
+Generiert einen einfachen Satz nach dem Muster: \textless{}Adjektiv\textgreater{} \textless{}Verb\textgreater{} \textless{}Person\textgreater{} \textless{}Ort\textgreater{}.
+
+Beispiel: Gehirntot weint die Schädlingsbekämpferin in der Psychiatrie.
+
+\end{fulllineitems}
+
+\index{satz\_standard\_4() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_standard_4}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_standard\_4}}{}{}
+Generiert einen einfachen Satz nach dem Muster: \textless{}Person\textgreater{} \textless{}Verb\textgreater{} \textless{}Person/Objekt\textgreater{} \textless{}Adjektiv\textgreater{} \textless{}Ort\textgreater{}.
+
+Beispiel: Der Ruhige raubt ein Schaf aus.
+
+\end{fulllineitems}
+
+\index{satz\_thema() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.satz_thema}\pysiglinewithargsret{\code{pyzufall.}\bfcode{satz\_thema}}{}{}
+Generiert einen Satz zu einem zufälligen Thema.
 
 \end{fulllineitems}
 
@@ -633,22 +913,6 @@ Gibt eine Stadt zurück.
 \begin{fulllineitems}
 \phantomsection\label{funktionen:pyzufall.stadt_bl}\pysiglinewithargsret{\code{pyzufall.}\bfcode{stadt\_bl}}{}{}
 Gibt eine Stadt mit Bundesland zurück.
-
-\end{fulllineitems}
-
-\index{standard\_satz() (in Modul pyzufall)}
-
-\begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.standard_satz}\pysiglinewithargsret{\code{pyzufall.}\bfcode{standard\_satz}}{}{}
-Gibt einen einfachen Satz, bestehend aus Person, Verb, Adjektiv, Ort und teilweise auch Objekt zurück.
-
-\end{fulllineitems}
-
-\index{themen\_satz() (in Modul pyzufall)}
-
-\begin{fulllineitems}
-\phantomsection\label{funktionen:pyzufall.themen_satz}\pysiglinewithargsret{\code{pyzufall.}\bfcode{themen\_satz}}{}{}
-Gibt einen Satz zu einem zufälligen Themen-Komplex zurück.
 
 \end{fulllineitems}
 
@@ -725,6 +989,14 @@ Gibt ein transitives Verb zurück.
 Gibt ein intransitives, getrenntes Verb zurück.
 
 \href{http://de.wikipedia.org/wiki/Transitivität\_(Grammatik)\#Festlegung\_der\_Transitivit.C3.A4t\_eines\_Verbs/}{Beschreibung auf Wikipedia}
+
+\end{fulllineitems}
+
+\index{vorname() (in Modul pyzufall)}
+
+\begin{fulllineitems}
+\phantomsection\label{funktionen:pyzufall.vorname}\pysiglinewithargsret{\code{pyzufall.}\bfcode{vorname}}{}{}
+Gibt einen zufälligen Vornamen zurück.
 
 \end{fulllineitems}
 
