@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -6,6 +6,7 @@ Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letz
 """
 
 import random
+import datetime
 import re
 import os
 
@@ -37,6 +38,7 @@ geschmack = lese('geschmack')
 berufe = lese('berufe')
 musik = lese('musikgenre')
 stadte = lese('stadt_bundesland')
+interessen = lese('interessen.txt')
 
 # Wortarten einlesen
 
@@ -102,6 +104,22 @@ def erste_gross(s):
 	Macht den ersten Buchstaben gross.
 	"""
 	return s[0].upper() + s[1:]
+
+
+def geschlecht():
+	"""
+	Gibt ein zufälliges Geschlecht zurück.
+
+	1 = männlich
+	0 = weiblich
+
+	2011 gibt es laut Statistik 51,18% weibliche Personen in Deutschland:
+	https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Tabellen/Zensus_Geschlecht_Staatsangehoerigkeit.html
+	"""
+	if r.randint(0, 100) <= 51:
+		return 0
+	else:
+		return 1
 
 
 def vorname_m():
@@ -205,6 +223,13 @@ def koerperteil():
 	Gibt ein Körperteil zurück.
 	"""
 	return r.choice(koerperteile)
+
+
+def interesse():
+	"""
+	Gibt ein zufälliges Interesse bzw Hobby zurück.
+	"""
+	return r.choice(interessen)
 
 
 def tier():
@@ -371,11 +396,30 @@ def color():
 	return r.choice(colors)
 
 
+def geburtsdatum():
+	"""
+	Gibt ein gültiges Datum zwischen dem 01.01.1910 und 31.12.2012 zurück.
+	"""
+	while(True):
+		try:
+			_s = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1910,2012))
+			_dateobj = datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
+			return _s
+		except:
+			print(_s + " ist kein gültiges Datum!")
+
+
 def datum():
 	"""
-	Gibt ein Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
+	Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
 	"""
-	return str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
+	while(True):
+		try:
+			_s = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
+			_dateobj = datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
+			return _s
+		except:
+			print(_s + " ist kein gültiges Datum!")
 
 
 def sprichwort():
