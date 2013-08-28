@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.
-"""
+from .version import __version__
 
 import random
 import datetime
 import re
 import os
-
 
 r = random.SystemRandom() # Uses /dev/urandom or Windows CryptGenRandom for better entropy
 
@@ -402,7 +399,7 @@ def geburtsdatum():
 	"""
 	while(True):
 		try:
-			_s = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1910,2012))
+			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1910,2012))
 			_dateobj = datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
@@ -415,7 +412,7 @@ def datum():
 	"""
 	while(True):
 		try:
-			_s = str(r.randint(1,31)) + '.' + str(r.randint(1,12)) + '.' + str(r.randint(1950,2012))
+			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1950,2012))
 			_dateobj = datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:

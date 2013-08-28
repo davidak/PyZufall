@@ -18,4 +18,4 @@ Pyzufall ist Open Source, der Quelltext kann auf `github.com <https://github.com
     beitragen
     benutzer
     todo
-    funktionen
+    pyzufall

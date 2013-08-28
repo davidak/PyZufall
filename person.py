@@ -9,23 +9,25 @@
 # Geschlechterverteilung:
 # https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Tabellen/Zensus_Geschlecht_Staatsangehoerigkeit.html
 
+from .version import __version__
 
 import random as r
 import datetime
-import pyzufall as z
+from . import pyzufall as z
 
 class Person(object):
 	"""
 	Generiert Daten einer zufälligen, fiktiven, aber plausiblen Person.
 	"""
 	anzahl = 0
+	debug = 0 # extern auf 1 setzen
 
 	def __init__(self):
 		self.geschlecht = z.geschlecht()
 		if self.geschlecht:
-			self.vorname = z.vorname_m()
+			self.vorname = z.vorname_m() #+ z.e16("-" + z.vorname_m()) #zu 16% ein Doppelname
 		else:
-			self.vorname = z.vorname_w()
+			self.vorname = z.vorname_w() #+ z.e16("-" + z.vorname_w()) #zu 16% ein Doppelname
 
 		self.nachname = z.nachname()
 		self.name = self.vorname + " " + self.nachname
@@ -40,10 +42,10 @@ class Person(object):
 		self.motto = z.sprichwort()
 
 		Person.anzahl += 1
-		print("Neue Person generiert: " + self.name)
+		if Person.debug: print("Neue Person generiert: " + self.name)
 	def __del__(self):
 		Person.anzahl -= 1
-		print("Person '" + self.name + "' wurde gelöscht.")
+		if Person.debug: print("Person '" + self.name + "' wurde gelöscht.")
 
 	def __str__(self):
 		s = "*" * 80 + "\n"
@@ -117,22 +119,18 @@ class Person(object):
 
 		return s
 
-print("Anzahl: " + str(Person.anzahl))
-p1 = Person()
-print(p1)
-print("Anzahl: " + str(Person.anzahl))
-p2 = Person()
-print(p2)
-print("Anzahl: " + str(Person.anzahl))
+if __name__ == "__main__":
+	print("Anzahl: " + str(Person.anzahl))
+	p1 = Person()
+	print(p1)
+	print("Anzahl: " + str(Person.anzahl))
+	p2 = Person()
+	print(p2)
+	print("Anzahl: " + str(Person.anzahl))
 
-print(p1.vorname + " und " + p2.vorname + " sitzen auf einer Bank im Park.\n")
+	print(p1.vorname + " und " + p2.vorname + " sitzen auf einer Bank im Park.\n")
 
-del p1
-print("Anzahl: " + str(Person.anzahl))
-del p2
-print("Anzahl: " + str(Person.anzahl))
-
-# Bugs
-# Etagenaufsichtin
-
-# Funktion um Liste mit ungleichen Teilen zu erzeugen?
+	del p1
+	print("Anzahl: " + str(Person.anzahl))
+	del p2
+	print("Anzahl: " + str(Person.anzahl))

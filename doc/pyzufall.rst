@@ -1,4 +1,4 @@
-Referenz aller Funktionen
+Funktionen von pyzufall
 =========================
 
 .. automodule:: pyzufall
