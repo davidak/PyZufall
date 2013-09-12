@@ -18,7 +18,14 @@ import sys, os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
 
-from version import __version__
+from pyzufall.version import __version__
+
+from pyzufall import generator
+from pyzufall import helfer
+from pyzufall import satz
+from pyzufall import person
+
+#import pyzufall.generator
 
 # -- General configuration -----------------------------------------------------
 

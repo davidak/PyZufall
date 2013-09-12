@@ -1,6 +1,14 @@
 Verwenden
 =========
 
+.. warning::
+    
+    Beschreibt noch die Version 0.9 von pyzufall!
+
+    Die Dokumentation wird bald aktualisiert.
+
+    pyzufall befindet sich unter aktiver Entwicklung.
+
 Importieren
 -----------
 

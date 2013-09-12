@@ -1,8 +1,9 @@
 pyzufall
 ========
 
-Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.
+Generiert zufällige Daten wie Namen, Fantasieworte, Personen oder Sätze.
 
+Es wurde für den http://satzgenerator.de/ entwickelt, kann aber vielfältig eingesetzt werden.
 
 Dokumentation
 -------------
