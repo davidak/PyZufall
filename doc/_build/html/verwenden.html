@@ -52,8 +52,9 @@
   <h3><a href="index.html">Inhalt</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Verwenden</a><ul>
-<li><a class="reference internal" href="#importieren">Importieren</a></li>
-<li><a class="reference internal" href="#beispiele">Beispiele</a></li>
+<li><a class="reference internal" href="#name-generieren">Name generieren</a></li>
+<li><a class="reference internal" href="#satz-generieren">Satz generieren</a></li>
+<li><a class="reference internal" href="#person-generieren">Person generieren</a></li>
 </ul>
 </li>
 </ul>
@@ -92,50 +93,58 @@
             
   <div class="section" id="verwenden">
 <h1>Verwenden<a class="headerlink" href="#verwenden" title="Permalink zu dieser Überschrift">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warnung</p>
-<p>Beschreibt noch die Version 0.9 von pyzufall!</p>
-<p>Die Dokumentation wird bald aktualisiert.</p>
-<p class="last">pyzufall befindet sich unter aktiver Entwicklung.</p>
+<p>Anhand von Beispielen werden die verschiedenen Module von <strong>pyzufall</strong> vorgestellt.</p>
+<div class="section" id="name-generieren">
+<h2>Name generieren<a class="headerlink" href="#name-generieren" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Um einen Namen zu generieren wird das Modul <a class="reference internal" href="module.html#module-pyzufall.generator" title="pyzufall.generator"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall.generator</span></tt></a> verwendet, dass eine Vielzahl von Funktionen für das generieren von Daten bereitstellt.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyzufall.generator</span> <span class="kn">import</span> <span class="n">vorname_m</span><span class="p">,</span> <span class="n">nachname</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">vorname_m</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">nachname</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="importieren">
-<h2>Importieren<a class="headerlink" href="#importieren" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Um <tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt> verwenden zu können, muss es importiert werden:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pyzufall</span> <span class="kn">as</span> <span class="nn">z</span>
+<div class="admonition seealso">
+<p class="first admonition-title">Siehe auch</p>
+<p class="last">Eine Übersicht aller Funktionen findest du in der <a class="reference internal" href="module.html"><em>Referenz</em></a>.</p>
+</div>
+</div>
+<div class="section" id="satz-generieren">
+<h2>Satz generieren<a class="headerlink" href="#satz-generieren" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Das Modul <a class="reference internal" href="module.html#module-pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall.satz</span></tt></a> generiert zufällige Sätze nach diversen Schemata.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyzufall.satz</span> <span class="kn">import</span> <span class="n">satz</span>
+<span class="n">satz</span> <span class="o">=</span> <span class="n">satz</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">satz</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="beispiele">
-<h2>Beispiele<a class="headerlink" href="#beispiele" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Einen zufälligen männlichen Vornamen erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_m</span><span class="p">())</span>
-<span class="go">Magnus</span>
+<div class="section" id="person-generieren">
+<h2>Person generieren<a class="headerlink" href="#person-generieren" title="Permalink zu dieser Überschrift">¶</a></h2>
+<p>Die Klasse <a class="reference internal" href="module.html#pyzufall.person.Person" title="pyzufall.person.Person"><tt class="xref py py-class docutils literal"><span class="pre">Person</span></tt></a> des Moduls <a class="reference internal" href="module.html#module-pyzufall.person" title="pyzufall.person"><tt class="xref py py-mod docutils literal"><span class="pre">pyzufall.person</span></tt></a> generiert eine Person mit diversen Daten. Es können alle Daten aufeinmal ausgegeben werden oder einzeln auf diese zugegriffen werden.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyzufall.person</span> <span class="kn">import</span> <span class="n">Person</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">vorname</span> <span class="o">+</span> <span class="s">&quot; und &quot;</span> <span class="o">+</span> <span class="n">p2</span><span class="o">.</span><span class="n">vorname</span> <span class="o">+</span> <span class="s">&quot; sitzen auf einer Bank im Park.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">p2</span><span class="o">.</span><span class="n">vorname</span> <span class="o">+</span> <span class="s">&quot; (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p2</span><span class="o">.</span><span class="n">alter</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;) wohnt in &quot;</span> <span class="o">+</span> <span class="n">p2</span><span class="o">.</span><span class="n">wohnort</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Einen zufälligen weiblichen Vorname mit Nachname erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">vorname_w</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39; &#39;</span> <span class="o">+</span> <span class="n">z</span><span class="o">.</span><span class="n">nachname</span><span class="p">())</span>
-<span class="go">Carmen Büchler</span>
+<div class="highlight-none"><div class="highlight"><pre>********************************************************************************
+Name: Kornelia Eismann
+Geschlecht: weiblich
+Geburtsdatum: 27.04.1974 (39)
+Geburtsort: Geesthacht
+Wohnort: Halle
+Beruf: Technische Zeichnerin
+Interessen: Würfelspiele
+Lieblingsfarbe: Weiß
+Lieblingsessen: Steak
+Motto: Augen auf beim Eierkauf.
+********************************************************************************
+
+Kornelia und Thorge sitzen auf einer Bank im Park.
+
+Thorge (58) wohnt in Stadthagen.
 </pre></div>
 </div>
-<p>Ein zufälliges Sprichwort erzeugen:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">sprichwort</span><span class="p">())</span>
-<span class="go">Das schlägt dem Fass den Boden aus.</span>
-</pre></div>
-</div>
-<p>Die Funktion <a class="reference internal" href="module.html#module-pyzufall.satz" title="pyzufall.satz"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.satz()</span></tt></a> benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
-Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.</p>
-<p>Hier einige Beispiele:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Die Lehrerin zersägt deine Rosskastanie.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Der Kollege programmiert deine Partnerin im Atomkraftwerk.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">satz</span><span class="p">())</span>
-<span class="go">Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.</span>
-</pre></div>
-</div>
-<p>Eine Übersicht aller Funktionen findest du in der Referenz:  <tt class="xref py py-mod docutils literal"><span class="pre">pyzufall</span></tt></p>
 </div>
 </div>
 

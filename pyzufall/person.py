@@ -20,6 +20,8 @@ from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname,
 class Person(object):
 	"""
 	Generiert Daten einer zufälligen und fiktiven Person.
+
+	.. versionadded:: 0.9
 	"""
 	anzahl = 0
 	debug = 0 # extern auf 1 setzen
@@ -38,7 +40,7 @@ class Person(object):
 		self.alter = Person.alter(self)
 		self.wohnort = stadt()
 		self.beruf = Person._gen_beruf(self)
-		self.interessen = Person._gen_interessen()
+		self.interessen = Person._gen_interessen(self)
 		self.lieblingsfarbe = farbe()
 		self.lieblingsessen = essen() + e50(" mit " + beilage())
 		self.motto = sprichwort()
@@ -113,7 +115,7 @@ class Person(object):
 			else:
 				return "arbeitslos"
 
-	def _gen_interessen():
+	def _gen_interessen(self):
 		_anzahl = r.randint(1,3)
 		if r.randint(0,1): # 50% haben mehr als 3 Interessen, maximal 8
 			_anzahl + r.randint(1, 5)

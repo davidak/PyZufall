@@ -15,17 +15,18 @@ Klone das git-Repository in dein Projekt-Verzeichnis::
 Unittests
 ---------
 
-Um den Code auf deinem System zu testen, führe folgenden Befehl im Ordner von :py:mod:`pyzufall` aus::
+Um den Code auf deinem System zu testen, führe folgenden Befehl im Projekt-Verzeichnis aus::
 
     $ nosetests -v
-    pyzufall.test.test_satz ... ok
-    pyzufall.test.test_test ... ok
-    pyzufall.test.test_lese ... ok
-    pyzufall.test.test_ersten_buchstaben_gross ... ok
+    test.test_satz ... ok
+    test.test_satz_frage ... ok
+    test.test_test ... ok
+    test.test_lese ... ok
+    test.test_erste_gross ... ok
     
     ----------------------------------------------------------------------
-    Ran 4 tests in 0.534s
+    Ran 5 tests in 0.807s
     
     OK
 
-Für die Unittests wird `nose <https://nose.readthedocs.org/en/latest/>`_ benutzt und muss installiert sein.
+Für die Unittests wird `nose <https://nose.readthedocs.org/en/latest/>`_ verwendet und muss installiert sein.

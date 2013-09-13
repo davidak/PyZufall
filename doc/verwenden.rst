@@ -1,51 +1,63 @@
 Verwenden
 =========
 
-.. warning::
+Anhand von Beispielen werden die verschiedenen Module von **pyzufall** vorgestellt.
+
+Name generieren
+---------------
+
+Um einen Namen zu generieren wird das Modul :py:mod:`pyzufall.generator` verwendet, dass eine Vielzahl von Funktionen für das generieren von Daten bereitstellt.
+
+::
+
+    from pyzufall.generator import vorname_m, nachname
+    name = vorname_m() + ' ' + nachname()
+    print(name)
+
+.. seealso::
+
+    Eine Übersicht aller Funktionen findest du in der :doc:`Referenz <module>`.
+
+Satz generieren
+---------------
+
+Das Modul :py:mod:`pyzufall.satz` generiert zufällige Sätze nach diversen Schemata.
+
+::
+
+    from pyzufall.satz import satz
+    satz = satz()
+    print(satz)
+
+Person generieren
+-----------------
+
+Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzufall.person` generiert eine Person mit diversen Daten. Es können alle Daten aufeinmal ausgegeben werden oder einzeln auf diese zugegriffen werden.
+
+::
+
+    from pyzufall.person import Person
+    p1 = Person()
+    p2 = Person()
+    print(p1)
+    print(p1.vorname + " und " + p2.vorname + " sitzen auf einer Bank im Park.\n")
+    print(p2.vorname + " (" + str(p2.alter) + ") wohnt in " + p2.wohnort + ".")
+
+.. code-block:: none
+
+    ********************************************************************************
+    Name: Kornelia Eismann
+    Geschlecht: weiblich
+    Geburtsdatum: 27.04.1974 (39)
+    Geburtsort: Geesthacht
+    Wohnort: Halle
+    Beruf: Technische Zeichnerin
+    Interessen: Würfelspiele
+    Lieblingsfarbe: Weiß
+    Lieblingsessen: Steak
+    Motto: Augen auf beim Eierkauf.
+    ********************************************************************************
     
-    Beschreibt noch die Version 0.9 von pyzufall!
-
-    Die Dokumentation wird bald aktualisiert.
-
-    pyzufall befindet sich unter aktiver Entwicklung.
-
-Importieren
------------
-
-Um :py:mod:`pyzufall` verwenden zu können, muss es importiert werden::
-
-    >>> import pyzufall as z
-
-Beispiele
----------
-
-Einen zufälligen männlichen Vornamen erzeugen::
-
-    >>> print(z.vorname_m())
-    Magnus
-
-Einen zufälligen weiblichen Vorname mit Nachname erzeugen::
-
-   >>> print(z.vorname_w() + ' ' + z.nachname())
-   Carmen Büchler
-
-Ein zufälliges Sprichwort erzeugen::
-
-    >>> print(z.sprichwort())
-    Das schlägt dem Fass den Boden aus.
-
-Die Funktion :py:func:`pyzufall.satz` benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
-Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.
-
-Hier einige Beispiele::
-
-    >>> print(z.satz())
-    Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?
-    >>> print(z.satz())
-    Die Lehrerin zersägt deine Rosskastanie.
-    >>> print(z.satz())
-    Der Kollege programmiert deine Partnerin im Atomkraftwerk.
-    >>> print(z.satz())
-    Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.
-
-Eine Übersicht aller Funktionen findest du in der Referenz:  :py:mod:`pyzufall`
+    Kornelia und Thorge sitzen auf einer Bank im Park.
+    
+    Thorge (58) wohnt in Stadthagen.

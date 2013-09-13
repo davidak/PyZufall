@@ -1,9 +1,7 @@
 Dokumentation von pyzufall
 ==========================
 
-Das Python-Modul :py:mod:`pyzufall` hat viele Funktionen, um diverse Daten zu erzeugen.
-
-Die komplexeste ist dabei :py:func:`pyzufall.satz`, mit der sich zufällige Sätze generieren lassen. Sie benutzt dazu die meisten anderen Funktionen.
+Das Python-Paket **pyzufall** generiert zufällige Daten wie Namen, Fantasieworte, Personen oder Sätze.
 
 Es wurde für `satzgenerator.de <http://satzgenerator.de/>`_ entwickelt, kann aber vielfältig eingesetzt werden.
 

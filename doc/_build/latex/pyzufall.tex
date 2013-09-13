@@ -121,9 +121,7 @@
 \phantomsection\label{index::doc}
 
 
-Das Python-Modul \code{pyzufall} hat viele Funktionen, um diverse Daten zu erzeugen.
-
-Die komplexeste ist dabei {\hyperref[module:module-pyzufall.satz]{\code{pyzufall.satz()}}}, mit der sich zufällige Sätze generieren lassen. Sie benutzt dazu die meisten anderen Funktionen.
+Das Python-Paket \textbf{pyzufall} generiert zufällige Daten wie Namen, Fantasieworte, Personen oder Sätze.
 
 Es wurde für \href{http://satzgenerator.de/}{satzgenerator.de} entwickelt, kann aber vielfältig eingesetzt werden.
 
@@ -180,84 +178,91 @@ Klone das git-Repository in dein Projekt-Verzeichnis:
 
 \section{Unittests}
 \label{installation:unittests}
-Um den Code auf deinem System zu testen, führe folgenden Befehl im Ordner von \code{pyzufall} aus:
+Um den Code auf deinem System zu testen, führe folgenden Befehl im Projekt-Verzeichnis aus:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ nosetests -v
-pyzufall.test.test\_satz ... ok
-pyzufall.test.test\_test ... ok
-pyzufall.test.test\_lese ... ok
-pyzufall.test.test\_ersten\_buchstaben\_gross ... ok
+test.test\_satz ... ok
+test.test\_satz\_frage ... ok
+test.test\_test ... ok
+test.test\_lese ... ok
+test.test\_erste\_gross ... ok
 
 ----------------------------------------------------------------------
-Ran 4 tests in 0.534s
+Ran 5 tests in 0.807s
 
 OK
 \end{Verbatim}
 
-Für die Unittests wird \href{https://nose.readthedocs.org/en/latest/}{nose} benutzt und muss installiert sein.
+Für die Unittests wird \href{https://nose.readthedocs.org/en/latest/}{nose} verwendet und muss installiert sein.
 
 
 \chapter{Verwenden}
 \label{verwenden::doc}\label{verwenden:verwenden}
-\begin{notice}{warning}{Warnung:}
-Beschreibt noch die Version 0.9 von pyzufall!
-
-Die Dokumentation wird bald aktualisiert.
-
-pyzufall befindet sich unter aktiver Entwicklung.
-\end{notice}
+Anhand von Beispielen werden die verschiedenen Module von \textbf{pyzufall} vorgestellt.
 
 
-\section{Importieren}
-\label{verwenden:importieren}
-Um \code{pyzufall} verwenden zu können, muss es importiert werden:
+\section{Name generieren}
+\label{verwenden:name-generieren}
+Um einen Namen zu generieren wird das Modul {\hyperref[module:module-pyzufall.generator]{\code{pyzufall.generator}}} verwendet, dass eine Vielzahl von Funktionen für das generieren von Daten bereitstellt.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k+kn}{import} \PYG{n+nn}{pyzufall} \PYG{k+kn}{as} \PYG{n+nn}{z}
+\PYG{k+kn}{from} \PYG{n+nn}{pyzufall.generator} \PYG{k+kn}{import} \PYG{n}{vorname\PYGZus{}m}\PYG{p}{,} \PYG{n}{nachname}
+\PYG{n}{name} \PYG{o}{=} \PYG{n}{vorname\PYGZus{}m}\PYG{p}{(}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZsq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{nachname}\PYG{p}{(}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{name}\PYG{p}{)}
 \end{Verbatim}
 
 
-\section{Beispiele}
-\label{verwenden:beispiele}
-Einen zufälligen männlichen Vornamen erzeugen:
+\strong{Siehe auch:}
+
+
+Eine Übersicht aller Funktionen findest du in der {\hyperref[module::doc]{\emph{Referenz}}}.
+
+
+
+
+\section{Satz generieren}
+\label{verwenden:satz-generieren}
+Das Modul {\hyperref[module:module-pyzufall.satz]{\code{pyzufall.satz}}} generiert zufällige Sätze nach diversen Schemata.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{vorname\PYGZus{}m}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Magnus}
+\PYG{k+kn}{from} \PYG{n+nn}{pyzufall.satz} \PYG{k+kn}{import} \PYG{n}{satz}
+\PYG{n}{satz} \PYG{o}{=} \PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{satz}\PYG{p}{)}
 \end{Verbatim}
 
-Einen zufälligen weiblichen Vorname mit Nachname erzeugen:
+
+\section{Person generieren}
+\label{verwenden:person-generieren}
+Die Klasse {\hyperref[module:pyzufall.person.Person]{\code{Person}}} des Moduls {\hyperref[module:module-pyzufall.person]{\code{pyzufall.person}}} generiert eine Person mit diversen Daten. Es können alle Daten aufeinmal ausgegeben werden oder einzeln auf diese zugegriffen werden.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{vorname\PYGZus{}w}\PYG{p}{(}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZsq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZsq{}} \PYG{o}{+} \PYG{n}{z}\PYG{o}{.}\PYG{n}{nachname}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Carmen Büchler}
+\PYG{k+kn}{from} \PYG{n+nn}{pyzufall.person} \PYG{k+kn}{import} \PYG{n}{Person}
+\PYG{n}{p1} \PYG{o}{=} \PYG{n}{Person}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{p2} \PYG{o}{=} \PYG{n}{Person}\PYG{p}{(}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{p1}\PYG{o}{.}\PYG{n}{vorname} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ und }\PYG{l+s}{\PYGZdq{}} \PYG{o}{+} \PYG{n}{p2}\PYG{o}{.}\PYG{n}{vorname} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ sitzen auf einer Bank im Park.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{p2}\PYG{o}{.}\PYG{n}{vorname} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ (}\PYG{l+s}{\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{p2}\PYG{o}{.}\PYG{n}{alter}\PYG{p}{)} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{) wohnt in }\PYG{l+s}{\PYGZdq{}} \PYG{o}{+} \PYG{n}{p2}\PYG{o}{.}\PYG{n}{wohnort} \PYG{o}{+} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{.}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}
 \end{Verbatim}
-
-Ein zufälliges Sprichwort erzeugen:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{sprichwort}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Das schlägt dem Fass den Boden aus.}
+********************************************************************************
+Name: Kornelia Eismann
+Geschlecht: weiblich
+Geburtsdatum: 27.04.1974 (39)
+Geburtsort: Geesthacht
+Wohnort: Halle
+Beruf: Technische Zeichnerin
+Interessen: Würfelspiele
+Lieblingsfarbe: Weiß
+Lieblingsessen: Steak
+Motto: Augen auf beim Eierkauf.
+********************************************************************************
+
+Kornelia und Thorge sitzen auf einer Bank im Park.
+
+Thorge (58) wohnt in Stadthagen.
 \end{Verbatim}
-
-Die Funktion {\hyperref[module:module-pyzufall.satz]{\code{pyzufall.satz()}}} benutzt die meisten anderen Funktionen, um ganze Sätze zu generieren.
-Es sind viele Satz-Schemata hinterlegt für abwechlungsreiche Ergebnisse.
-
-Hier einige Beispiele:
-
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Weshalb katasysiert der witzige Wolfram fantasielos unter der Brücke?}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Die Lehrerin zersägt deine Rosskastanie.}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Der Kollege programmiert deine Partnerin im Atomkraftwerk.}
-\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{k}{print}\PYG{p}{(}\PYG{n}{z}\PYG{o}{.}\PYG{n}{satz}\PYG{p}{(}\PYG{p}{)}\PYG{p}{)}
-\PYG{g+go}{Heinrich gewinnt den Ahorn heimtückisch auf einer Hochzeit.}
-\end{Verbatim}
-
-Eine Übersicht aller Funktionen findest du in der Referenz:  \code{pyzufall}
 
 
 \chapter{Beitragen}
@@ -276,7 +281,7 @@ Pull-Requests auf github sind willkommen.
 
 \chapter{Benutzer}
 \label{benutzer::doc}\label{benutzer:benutzer}
-Hier ist eine Liste mit Projekten, die \code{pyzufall} verwenden:
+Hier ist eine Liste mit Projekten, die pyzufall verwenden:
 \begin{itemize}
 \item {} 
 \href{http://satzgenerator.de/}{satzgenerator.de}
@@ -302,14 +307,14 @@ Auch im Quelltext gibt es Hinweise auf nötige Anpassungen:
 Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
 \end{notice}
 
-(Der {\hyperref[beitragen:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/pyzufall/doc/beitragen.rst, Zeile 8.)
+(Der {\hyperref[beitragen:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/doc/beitragen.rst, Zeile 8.)
 
 \begin{notice}{note}{Zu tun}
 
 Funktion programmieren
 \end{notice}
 
-(Der {\hyperref[module:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/pyzufall/pyzufall/generator.py:docstring of pyzufall.generator.firma, Zeile 3.)
+(Der {\hyperref[module:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall/generator.py:docstring of pyzufall.generator.firma, Zeile 3.)
 
 \begin{notice}{note}{Zu tun}
 
@@ -330,7 +335,7 @@ Bruder Nicolaus ist der falschste Mönch im Kloster.
 \end{itemize}
 \end{notice}
 
-(Der {\hyperref[module:index-1]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/pyzufall/pyzufall/satz.py:docstring of pyzufall.satz.satz\_kloster, Zeile 5.)
+(Der {\hyperref[module:index-1]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall/satz.py:docstring of pyzufall.satz.satz\_kloster, Zeile 5.)
 
 
 \chapter{Referenz der Module und ihrer Funktionen}
@@ -789,6 +794,8 @@ Gibt eine Zahl zwischen 0 und 100 zurück.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.person.Person}\pysigline{\strong{class }\code{pyzufall.person.}\bfcode{Person}}
 Generiert Daten einer zufälligen und fiktiven Person.
+
+\DUspan{}{Neu in Version 0.9.}
 
 \end{fulllineitems}
 
