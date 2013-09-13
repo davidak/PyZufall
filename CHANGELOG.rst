@@ -1,7 +1,7 @@
 Changelog
 =========
 
-Hier sind die Änderungen jeder Version dokumentiert.
+Hier sind die Änderungen in jeder Version dokumentiert.
 
 Version 0.10.2
 --------------
@@ -47,4 +47,7 @@ Veröffentlicht am 23.07.2013
 - Docstring für jede Funktion hinzugefügt
 
 Vor der Version 0.8 gab es keine Versionsnummern, sie wurde als gefühlter Entwicklungsstand vergeben.
+
 Alle Änderungen können den Kommentaren der `Commits im Repository <https://github.com/davidak/pyzufall/commits/>`_ entnommen werden.
+
+Der erste Commit war am 27.08.2012.

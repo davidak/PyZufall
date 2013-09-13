@@ -17,3 +17,4 @@ Pyzufall ist Open Source, der Quelltext kann auf `github.com <https://github.com
     benutzer
     todo
     module
+    changelog

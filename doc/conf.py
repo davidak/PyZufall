@@ -25,8 +25,6 @@ from pyzufall import helfer
 from pyzufall import satz
 from pyzufall import person
 
-#import pyzufall.generator
-
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -161,10 +159,10 @@ html_static_path = ['_static']
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-#html_show_sphinx = True
+html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
@@ -195,7 +193,7 @@ latex_elements = {
 'pointsize': '12pt',
 
 # Additional stuff for the LaTeX preamble.
-#'preamble': 'Generiert unter anderem Namen, Orte, Fantasieworte, Berufsbezeichnungen und letztendlich ganze Sätze.'
+#'preamble': u'Generiert zufällige Daten wie Namen, Fantasieworte, Personen oder Sätze.'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
