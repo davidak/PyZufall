@@ -12,40 +12,40 @@ from .helfer import lese, e16, e25, e50, e75
 r = random.SystemRandom() # Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
 
 # Namen einlesen
-vornamen_m = lese('vornamen_m')
-vornamen_w = lese('vornamen_w')
-nachnamen = lese('nachnamen')
+vornamen_m = lese('vornamen_m.txt')
+vornamen_w = lese('vornamen_w.txt')
+nachnamen = lese('nachnamen.txt')
 
 # Objekte einlesen
-pflanzen = lese('pflanzen')
-baeume = lese('baeume')
-tiere = lese('tiere')
-gegenstaende = lese('gegenstaende')
-koerperteile = lese('koerperteile')
-nahrung = lese('nahrung')
-geschmack = lese('geschmack')
-berufe = lese('berufe')
-musik = lese('musikgenre')
-stadte = lese('stadt_bundesland')
+pflanzen = lese('pflanzen.txt')
+baeume = lese('baeume.txt')
+tiere = lese('tiere.txt')
+gegenstaende = lese('gegenstaende.txt')
+koerperteile = lese('koerperteile.txt')
+nahrung = lese('nahrung.txt')
+geschmack = lese('geschmack.txt')
+berufe = lese('berufe.txt')
+musik = lese('musikgenre.txt')
+stadte = lese('stadt_bundesland.txt')
 interessen = lese('interessen.txt')
 
 # Wortarten einlesen
 
 # Verben
-nullwertige_verben = lese('nullwertige_verben')
-intransitive_verben = lese('intransitive_verben')
-intransitive_verben_2 = lese('intransitive_verben_2')
-transitive_verben = lese('transitive_verben')
-transitive_verben_2 = lese('transitive_verben_2')
-ditransitive_verben = lese('ditransitive_verben')
+nullwertige_verben = lese('nullwertige_verben.txt')
+intransitive_verben = lese('intransitive_verben.txt')
+intransitive_verben_2 = lese('intransitive_verben_2.txt')
+transitive_verben = lese('transitive_verben.txt')
+transitive_verben_2 = lese('transitive_verben_2.txt')
+ditransitive_verben = lese('ditransitive_verben.txt')
 
 # Adjektive
-adjektive = lese('adjektiv')
+adjektive = lese('adjektiv.txt')
 
 # Sazteile oder Sätze
-ortsangabe = lese('ort')
-ns = lese('nebensatz')
-sprichwoerter = lese('sprichwoerter')
+ortsangabe = lese('ort.txt')
+ns = lese('nebensatz.txt')
+sprichwoerter = lese('sprichwoerter.txt')
 
 
 def geschlecht():
