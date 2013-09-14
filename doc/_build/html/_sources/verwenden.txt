@@ -32,7 +32,7 @@ Das Modul :py:mod:`pyzufall.satz` generiert zufällige Sätze nach diversen Sche
 Person generieren
 -----------------
 
-Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzufall.person` generiert eine Person mit diversen Daten. Es können alle Daten aufeinmal ausgegeben werden oder einzeln auf diese zugegriffen werden.
+Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzufall.person` generiert eine Person mit diversen Daten. Du kannst alle Daten der Person aufeinmal ausgeben oder direkt auf jede einzelne Variable zugreifen.
 
 ::
 
@@ -61,3 +61,5 @@ Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzuf
     Kornelia und Thorge sitzen auf einer Bank im Park.
     
     Thorge (58) wohnt in Stadthagen.
+
+Ein praktischer Einsatszweck dafür ist der `Python Random VCard-Generator <https://github.com/davidak/python-random-vcard-generator>`_.

@@ -13,7 +13,7 @@ So entstehen absurde und zufällige Sätze. Das war immer sehr witzig.
 Das Programm
 ------------
 
-Als ich älter wurde, begann ich Programmieren zu lernen. Dabei hat mich immer begeistert, durch Zufall etwas zu generieren, was teileise einen Sinn ergibt, aber oft sehr absurd und dadurch lustig ist.
+Als ich älter wurde, begann ich Programmieren zu lernen. Dabei hat mich immer begeistert, durch Zufall etwas zu generieren, was teilweise einen Sinn ergibt, aber oft sehr absurd und dadurch lustig ist.
 
 So ist ein `Personendatengenerator <http://davidak.de/wiki/perl/personendatengenerator>`_ entstanden, mit dem eine `Personendatenbank <http://davidak.de/personen/>`_ befüllt wurde.
 
@@ -26,6 +26,6 @@ Der Satzgenerator
 
 Inzwischen gibt es `satzgenerator.de <http://satzgenerator.de/>`_. Auf dieser Webseite werden zufällige Sätze generiert, die bewertet und geteilt werden können.
 
-Für die Generierung der Sätze wird das Python-Modul `pyzufall <https://github.com/davidak/pyzufall>`_ genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework `Bottle <http://bottlepy.org/>`_ und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
+Für die Generierung der Sätze wird `pyzufall <https://github.com/davidak/pyzufall>`_ genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework `Bottle <http://bottlepy.org/>`_ und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
 
 Pyzufall ist Open Source und wird bereits für :doc:`andere Projekte <benutzer>` benutzt.

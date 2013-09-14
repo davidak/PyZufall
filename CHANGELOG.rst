@@ -6,7 +6,11 @@ Hier sind die Änderungen in jeder Version dokumentiert.
 Version 0.10.2
 --------------
 
+Veröffentlicht am 15.09.2013
+
 - Changelog hinzugefügt und in Dokumentation eingebunden
+- Dokumentation erweitert
+- README und LICENSE auch mit `reStructuredText <http://de.wikipedia.org/wiki/ReStructuredText>`_ formatiert anstatt `Markdown <http://de.wikipedia.org/wiki/Markdown>`_, um einheitlich mit der Dokumentation zu sein
 
 Version 0.10.1
 --------------

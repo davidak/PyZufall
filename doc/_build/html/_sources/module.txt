@@ -1,5 +1,5 @@
-Referenz der Module und ihrer Funktionen
-========================================
+Referenz der Module
+===================
 
 Die Module und ihre Funktionen.
 

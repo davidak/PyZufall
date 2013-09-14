@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; pyzufall 0.10.1 Dokumentation</title>
+    <title>Installation &mdash; pyzufall 0.10.2 Dokumentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.10.1',
+        VERSION:     '0.10.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="pyzufall 0.10.1 Dokumentation" href="index.html" />
+    <link rel="top" title="pyzufall 0.10.2 Dokumentation" href="index.html" />
     <link rel="next" title="Verwenden" href="verwenden.html" />
     <link rel="prev" title="Entstehung" href="entstehung.html" /> 
   </head>
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="entstehung.html" title="Entstehung"
              accesskey="P">zurück</a> |</li>
-        <li><a href="index.html">pyzufall 0.10.1 Dokumentation</a> &raquo;</li> 
+        <li><a href="index.html">pyzufall 0.10.2 Dokumentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -92,18 +92,25 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink zu dieser Überschrift">¶</a></h1>
-<p>Die aktuellste Version findest du auf <a class="reference external" href="https://github.com/davidak/pyzufall">github</a>. Eine stabile Version wird es auf <a class="reference external" href="https://pypi.python.org/">PyPI</a> geben.</p>
+<p>Die aktuellste Version von <strong>pyzufall</strong> findest du auf <a class="reference external" href="https://github.com/davidak/pyzufall">github</a>. Eine stabile Version wird es auf <a class="reference external" href="https://pypi.python.org/">PyPI</a> geben.</p>
 <div class="section" id="manuelle-installation">
 <h2>Manuelle Installation<a class="headerlink" href="#manuelle-installation" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Klone das git-Repository in dein Projekt-Verzeichnis:</p>
+<p>Klone das git-Repository:</p>
+<div class="highlight-python"><pre>$ git clone https://github.com/davidak/pyzufall.git</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Bemerkung</p>
+<p class="last">Dafür muss <a class="reference external" href="http://git-scm.com/">git</a> installiert sein.</p>
+</div>
+<p>Danach kopierst du das Paket <strong>pyzufall</strong> in dein Projekt-Verzeichnis:</p>
 <div class="highlight-python"><pre>$ mkdir meinprojekt
-$ cd meinprojekt
-$ git clone https://github.com/davidak/pyzufall.git</pre>
+$ mv pyzufall/pyzufall meinprojekt
+$ cd meinprojekt</pre>
 </div>
 </div>
 <div class="section" id="unittests">
 <h2>Unittests<a class="headerlink" href="#unittests" title="Permalink zu dieser Überschrift">¶</a></h2>
-<p>Um den Code auf deinem System zu testen, führe folgenden Befehl im Projekt-Verzeichnis aus:</p>
+<p>Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus:</p>
 <div class="highlight-python"><pre>$ nosetests -v
 test.test_satz ... ok
 test.test_satz_frage ... ok
@@ -116,7 +123,10 @@ Ran 5 tests in 0.807s
 
 OK</pre>
 </div>
-<p>Für die Unittests wird <a class="reference external" href="https://nose.readthedocs.org/en/latest/">nose</a> verwendet und muss installiert sein.</p>
+<div class="admonition note">
+<p class="first admonition-title">Bemerkung</p>
+<p class="last">Für die Unittests wird <a class="reference external" href="https://nose.readthedocs.org/en/latest/">nose</a> verwendet und muss installiert sein.</p>
+</div>
 </div>
 </div>
 
@@ -141,7 +151,7 @@ OK</pre>
         <li class="right" >
           <a href="entstehung.html" title="Entstehung"
              >zurück</a> |</li>
-        <li><a href="index.html">pyzufall 0.10.1 Dokumentation</a> &raquo;</li> 
+        <li><a href="index.html">pyzufall 0.10.2 Dokumentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="footer">

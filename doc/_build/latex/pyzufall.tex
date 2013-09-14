@@ -14,8 +14,8 @@
 
 
 \title{pyzufall Dokumentation}
-\date{14. 09. 2013}
-\release{0.10.1}
+\date{15. 09. 2013}
+\release{0.10.2}
 \author{davidak}
 \newcommand{\sphinxlogo}{}
 \renewcommand{\releasename}{Release}
@@ -142,7 +142,7 @@ So entstehen absurde und zufällige Sätze. Das war immer sehr witzig.
 
 \section{Das Programm}
 \label{entstehung:das-programm}
-Als ich älter wurde, begann ich Programmieren zu lernen. Dabei hat mich immer begeistert, durch Zufall etwas zu generieren, was teileise einen Sinn ergibt, aber oft sehr absurd und dadurch lustig ist.
+Als ich älter wurde, begann ich Programmieren zu lernen. Dabei hat mich immer begeistert, durch Zufall etwas zu generieren, was teilweise einen Sinn ergibt, aber oft sehr absurd und dadurch lustig ist.
 
 So ist ein \href{http://davidak.de/wiki/perl/personendatengenerator}{Personendatengenerator} entstanden, mit dem eine \href{http://davidak.de/personen/}{Personendatenbank} befüllt wurde.
 
@@ -155,30 +155,40 @@ Da mittlerweile Python die Programmiersprache meiner Wahl ist, habe ich das Scri
 \label{entstehung:der-satzgenerator}
 Inzwischen gibt es \href{http://satzgenerator.de/}{satzgenerator.de}. Auf dieser Webseite werden zufällige Sätze generiert, die bewertet und geteilt werden können.
 
-Für die Generierung der Sätze wird das Python-Modul \href{https://github.com/davidak/pyzufall}{pyzufall} genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework \href{http://bottlepy.org/}{Bottle} und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
+Für die Generierung der Sätze wird \href{https://github.com/davidak/pyzufall}{pyzufall} genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework \href{http://bottlepy.org/}{Bottle} und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
 
 Pyzufall ist Open Source und wird bereits für {\hyperref[benutzer::doc]{\emph{andere Projekte}}} benutzt.
 
 
 \chapter{Installation}
 \label{installation:installation}\label{installation::doc}
-Die aktuellste Version findest du auf \href{https://github.com/davidak/pyzufall}{github}. Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
+Die aktuellste Version von \textbf{pyzufall} findest du auf \href{https://github.com/davidak/pyzufall}{github}. Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
 
 
 \section{Manuelle Installation}
 \label{installation:manuelle-installation}
-Klone das git-Repository in dein Projekt-Verzeichnis:
+Klone das git-Repository:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ git clone https://github.com/davidak/pyzufall.git
+\end{Verbatim}
+
+\begin{notice}{note}{Bemerkung:}
+Dafür muss \href{http://git-scm.com/}{git} installiert sein.
+\end{notice}
+
+Danach kopierst du das Paket \textbf{pyzufall} in dein Projekt-Verzeichnis:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ mkdir meinprojekt
+\$ mv pyzufall/pyzufall meinprojekt
 \$ cd meinprojekt
-\$ git clone https://github.com/davidak/pyzufall.git
 \end{Verbatim}
 
 
 \section{Unittests}
 \label{installation:unittests}
-Um den Code auf deinem System zu testen, führe folgenden Befehl im Projekt-Verzeichnis aus:
+Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus:
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \$ nosetests -v
@@ -194,7 +204,9 @@ Ran 5 tests in 0.807s
 OK
 \end{Verbatim}
 
+\begin{notice}{note}{Bemerkung:}
 Für die Unittests wird \href{https://nose.readthedocs.org/en/latest/}{nose} verwendet und muss installiert sein.
+\end{notice}
 
 
 \chapter{Verwenden}
@@ -234,7 +246,7 @@ Das Modul {\hyperref[module:module-pyzufall.satz]{\code{pyzufall.satz}}} generie
 
 \section{Person generieren}
 \label{verwenden:person-generieren}
-Die Klasse {\hyperref[module:pyzufall.person.Person]{\code{Person}}} des Moduls {\hyperref[module:module-pyzufall.person]{\code{pyzufall.person}}} generiert eine Person mit diversen Daten. Es können alle Daten aufeinmal ausgegeben werden oder einzeln auf diese zugegriffen werden.
+Die Klasse {\hyperref[module:pyzufall.person.Person]{\code{Person}}} des Moduls {\hyperref[module:module-pyzufall.person]{\code{pyzufall.person}}} generiert eine Person mit diversen Daten. Du kannst alle Daten der Person aufeinmal ausgeben oder direkt auf jede einzelne Variable zugreifen.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{from} \PYG{n+nn}{pyzufall.person} \PYG{k+kn}{import} \PYG{n}{Person}
@@ -264,24 +276,41 @@ Kornelia und Thorge sitzen auf einer Bank im Park.
 Thorge (58) wohnt in Stadthagen.
 \end{Verbatim}
 
+Ein praktischer Einsatszweck dafür ist der \href{https://github.com/davidak/python-random-vcard-generator}{Python Random VCard-Generator}.
+
 
 \chapter{Beitragen}
 \label{beitragen:beitragen}\label{beitragen::doc}
-Du kannst bei diesem Open Source-Projekt mitwirken, indem du \href{https://github.com/davidak/pyzufall/issues/}{Fehler berichtest}, neue Datensätze hinzufügst oder sogar mitprogrammierst.
 
-Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.
+\section{Datensätze bzw. Worte hinzufügen}
+\label{beitragen:datensatze-bzw-worte-hinzufugen}
+Die Vielfalt und Anzahl der möglichen Sätze steigt mit den Datensätzen. Es ist einfach neue Worte oder Satzteile beizutragen und hilft enorm die Sätze noch abwechslungsreicher zu machen.
+
+\begin{notice}{note}{Bemerkung:}
+An einer einfachen Möglichkeit, Daten hinzuzufügen, wird gearbeitet.
+\end{notice}
 
 \begin{notice}{note}{Zu tun}
 
 Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
 \end{notice}
 
-Pull-Requests auf github sind willkommen.
+
+\section{Fehler berichten}
+\label{beitragen:fehler-berichten}
+Das Projekt verwendet den \href{https://github.com/davidak/pyzufall/issues/}{Bugtracker auf github} um Fehler und Verbesserungsvorschläge zu sammeln.
+
+
+\section{Programmieren}
+\label{beitragen:programmieren}
+Wenn du auf github angemeldet bist, kannst du \textbf{pyzufall} \href{https://help.github.com/articles/fork-a-repo}{forken}, das Repository runterladen und anfangen neue Funktionen zu programmieren oder den bestehenden Code zu verbessern.
+
+Dann stellst du einen \href{https://help.github.com/articles/creating-a-pull-request}{Pull-Request} mit deinen Änderungen.
 
 
 \chapter{Benutzer}
 \label{benutzer::doc}\label{benutzer:benutzer}
-Hier ist eine Liste mit Projekten, die pyzufall verwenden:
+Hier ist eine Liste mit Projekten, die \textbf{pyzufall} verwenden:
 \begin{itemize}
 \item {} 
 \href{http://satzgenerator.de/}{satzgenerator.de}
@@ -296,50 +325,8 @@ Dein Projekt füge ich auch gerne hinzu.
 Einfach eine E-Mail mit Beschreibung und Link an post at davidak punkt de oder das \href{http://davidak.de/kontakt}{Kontaktformular} benutzen.
 
 
-\chapter{Aufgaben}
-\label{todo::doc}\label{todo:aufgaben}
-Für Fehlerberichte und Feature-Requests wird der \href{https://github.com/davidak/pyzufall/issues}{Bugtracker auf github} benutzt.
-
-Auch im Quelltext gibt es Hinweise auf nötige Anpassungen:
-
-\begin{notice}{note}{Zu tun}
-
-Dokuwiki auf satzgenerator.de/beitragen einrichten mit Kopie der Datensätze. Bearbeiten nach Registrierung möglich.
-\end{notice}
-
-(Der {\hyperref[beitragen:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/doc/beitragen.rst, Zeile 8.)
-
-\begin{notice}{note}{Zu tun}
-
-Funktion programmieren
-\end{notice}
-
-(Der {\hyperref[module:index-0]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall/generator.py:docstring of pyzufall.generator.firma, Zeile 3.)
-
-\begin{notice}{note}{Zu tun}
-
-''...''ste nicht immer richtig:
-\begin{itemize}
-\item {} 
-Bruder Dennis war der monströsste Mönch im Kloster.
-
-\item {} 
-Schwester Lara ist die diskretste Nonne in der Abtei.
-
-\item {} 
-Bruder Marcel war der gerechtste Mönch im Orden.
-
-\item {} 
-Bruder Nicolaus ist der falschste Mönch im Kloster.
-
-\end{itemize}
-\end{notice}
-
-(Der {\hyperref[module:index-1]{\emph{ursprüngliche Eintrag}}} steht in /Users/davidak/BTSync/code/pyzufall/pyzufall/satz.py:docstring of pyzufall.satz.satz\_kloster, Zeile 5.)
-
-
-\chapter{Referenz der Module und ihrer Funktionen}
-\label{module::doc}\label{module:referenz-der-module-und-ihrer-funktionen}
+\chapter{Referenz der Module}
+\label{module:referenz-der-module}\label{module::doc}
 Die Module und ihre Funktionen.
 
 
@@ -1105,9 +1092,17 @@ Hier sind die Änderungen in jeder Version dokumentiert.
 
 
 \section{Version 0.10.2}
-\label{changelog:version-0-10-2}\begin{itemize}
+\label{changelog:version-0-10-2}
+Veröffentlicht am 15.09.2013
+\begin{itemize}
 \item {} 
 Changelog hinzugefügt und in Dokumentation eingebunden
+
+\item {} 
+Dokumentation erweitert
+
+\item {} 
+README und LICENSE auch mit \href{http://de.wikipedia.org/wiki/ReStructuredText}{reStructuredText} formatiert anstatt \href{http://de.wikipedia.org/wiki/Markdown}{Markdown}, um einheitlich mit der Dokumentation zu sein
 
 \end{itemize}
 
