@@ -3,6 +3,14 @@ Changelog
 
 Hier sind die Änderungen in jeder Version dokumentiert.
 
+Version 0.10.3
+--------------
+
+Veröffentlicht am 15.09.2013
+
+- Dateien mit Datensätzen die Endung .txt gegeben, um deren Erweiterbarkeit hervorzuheben und spätere Bearbeitung zu vereinfachen
+- LICENSE wieder ohne .rst, weil es nicht in `reStructuredText <http://de.wikipedia.org/wiki/ReStructuredText>`_ formatiert ist
+
 Version 0.10.2
 --------------
 
