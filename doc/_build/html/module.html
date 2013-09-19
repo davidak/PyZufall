@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,15 +8,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Referenz der Module &mdash; pyzufall 0.10.3 Dokumentation</title>
+    <title>Referenz der Module &mdash; pyzufall 0.11 Dokumentation</title>
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.10.3',
+        URL_ROOT:    '',
+        VERSION:     '0.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/translations.js"></script>
-    <link rel="top" title="pyzufall 0.10.3 Dokumentation" href="index.html" />
+    <link rel="top" title="pyzufall 0.11 Dokumentation" href="index.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
     <link rel="prev" title="Benutzer" href="benutzer.html" /> 
   </head>
@@ -44,7 +46,7 @@
         <li class="right" >
           <a href="benutzer.html" title="Benutzer"
              accesskey="P">zurück</a> |</li>
-        <li><a href="index.html">pyzufall 0.10.3 Dokumentation</a> &raquo;</li> 
+        <li><a href="index.html">pyzufall 0.11 Dokumentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -94,37 +96,47 @@
             
   <div class="section" id="referenz-der-module">
 <h1>Referenz der Module<a class="headerlink" href="#referenz-der-module" title="Permalink zu dieser Überschrift">¶</a></h1>
-<p>Die Module und ihre Funktionen.</p>
+<p>Die Module mit ihren Klassen und Funktionen.</p>
 <div class="section" id="module-pyzufall.helfer">
 <span id="pyzufall-helfer"></span><h2>pyzufall.helfer<a class="headerlink" href="#module-pyzufall.helfer" title="Permalink zu dieser Überschrift">¶</a></h2>
 <dl class="function">
 <dt id="pyzufall.helfer.chance">
-<tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">chance</tt><big>(</big><em>wahrscheinlichkeit</em>, <em>wert</em><big>)</big><a class="headerlink" href="#pyzufall.helfer.chance" title="Permalink zu dieser Definition">¶</a></dt>
+<tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">chance</tt><big>(</big><em>wahrscheinlichkeit</em>, <em>wert</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#chance"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.chance" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Der übergebene Wert wird mit der gewählten Wahrscheinlichkeit zurückgegeben.</p>
+<p class="versionadded">
+<span class="versionmodified">Neu in Version 0.11.</span></p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pyzufall.helfer.e16">
 <tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">e16</tt><big>(</big><em>wert</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#e16"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.e16" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.</p>
+<p class="deprecated">
+<span class="versionmodified">Veraltet ab Version 0.11: </span>Wird durch <a class="reference internal" href="#pyzufall.helfer.chance" title="pyzufall.helfer.chance"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.helfer.chance()</span></tt></a> ersetzt.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pyzufall.helfer.e25">
 <tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">e25</tt><big>(</big><em>wert</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#e25"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.e25" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.</p>
+<p class="deprecated">
+<span class="versionmodified">Veraltet ab Version 0.11: </span>Wird durch <a class="reference internal" href="#pyzufall.helfer.chance" title="pyzufall.helfer.chance"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.helfer.chance()</span></tt></a> ersetzt.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pyzufall.helfer.e50">
 <tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">e50</tt><big>(</big><em>wert</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#e50"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.e50" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.</p>
+<p class="deprecated">
+<span class="versionmodified">Veraltet ab Version 0.11: </span>Wird durch <a class="reference internal" href="#pyzufall.helfer.chance" title="pyzufall.helfer.chance"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.helfer.chance()</span></tt></a> ersetzt.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pyzufall.helfer.e75">
 <tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">e75</tt><big>(</big><em>wert</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#e75"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.e75" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.</p>
+<p class="deprecated">
+<span class="versionmodified">Veraltet ab Version 0.11: </span>Wird durch <a class="reference internal" href="#pyzufall.helfer.chance" title="pyzufall.helfer.chance"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.helfer.chance()</span></tt></a> ersetzt.</p>
 </dd></dl>
 
 <dl class="function">
@@ -201,7 +213,7 @@
 <dl class="function">
 <dt id="pyzufall.generator.essen">
 <tt class="descclassname">pyzufall.generator.</tt><tt class="descname">essen</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pyzufall/generator.html#essen"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.generator.essen" title="Permalink zu dieser Definition">¶</a></dt>
-<dd><p>Gibt ein Gericht zurück.</p>
+<dd><p>Gibt ein Essen zurück.</p>
 </dd></dl>
 
 <dl class="function">
@@ -246,6 +258,17 @@
 <dt id="pyzufall.generator.interesse">
 <tt class="descclassname">pyzufall.generator.</tt><tt class="descname">interesse</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pyzufall/generator.html#interesse"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.generator.interesse" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Gibt ein zufälliges Interesse bzw Hobby zurück.</p>
+<p class="deprecated">
+<span class="versionmodified">Veraltet ab Version 0.11: </span>Wird durch <a class="reference internal" href="#pyzufall.generator.interessen_liste" title="pyzufall.generator.interessen_liste"><tt class="xref py py-func docutils literal"><span class="pre">pyzufall.generator.interessen_liste()</span></tt></a> ersetzt.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyzufall.generator.interessen_liste">
+<tt class="descclassname">pyzufall.generator.</tt><tt class="descname">interessen_liste</tt><big>(</big><em>anzahl=1</em><big>)</big><a class="reference internal" href="_modules/pyzufall/generator.html#interessen_liste"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.generator.interessen_liste" title="Permalink zu dieser Definition">¶</a></dt>
+<dd><p>Gibt eine Liste von Interessen als String zurück.</p>
+<p>Ohne Angabe der Anzahl wird ein Interesse zurückgegeben.</p>
+<p class="versionadded">
+<span class="versionmodified">Neu in Version 0.11.</span></p>
 </dd></dl>
 
 <dl class="function">
@@ -436,9 +459,8 @@
 <dt id="pyzufall.person.Person">
 <em class="property">class </em><tt class="descclassname">pyzufall.person.</tt><tt class="descname">Person</tt><a class="reference internal" href="_modules/pyzufall/person.html#Person"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.person.Person" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Generiert Daten einer zufälligen und fiktiven Person.</p>
-<div class="versionadded">
-<p><span>Neu in Version 0.9.</span></p>
-</div>
+<p class="versionadded">
+<span class="versionmodified">Neu in Version 0.9.</span></p>
 </dd></dl>
 
 </div>
@@ -674,7 +696,7 @@
         <li class="right" >
           <a href="benutzer.html" title="Benutzer"
              >zurück</a> |</li>
-        <li><a href="index.html">pyzufall 0.10.3 Dokumentation</a> &raquo;</li> 
+        <li><a href="index.html">pyzufall 0.11 Dokumentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="footer">

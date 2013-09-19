@@ -6,7 +6,7 @@ Anhand von Beispielen werden die verschiedenen Module von **pyzufall** vorgestel
 Name generieren
 ---------------
 
-Um einen Namen zu generieren wird das Modul :py:mod:`pyzufall.generator` verwendet, dass eine Vielzahl von Funktionen für das generieren von Daten bereitstellt.
+Um einen Namen zu generieren wird das Modul :py:mod:`pyzufall.generator` verwendet, dass eine Vielzahl von Funktionen für das Generieren von Daten bereitstellt.
 
 ::
 

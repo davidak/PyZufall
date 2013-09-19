@@ -3,6 +3,17 @@ Changelog
 
 Hier sind die Änderungen in jeder Version dokumentiert.
 
+Version 0.11
+------------
+
+Veröffentlicht am
+
+- Funktion :py:func:`pyzufall.helfer.chance` hinzugefügt und :py:func:`pyzufall.helfer.e25` etc ersetzt
+- Funktion :py:func:`pyzufall.generator.interessen_liste` hinzugefügt. Sie ersetzt :py:func:`pyzufall.generator.interesse`.
+- Ungleiche Elemente aus Listen werden jetzt mit der Funktion :py:func:`random.sample()` generiert.
+- viele kleine Änderungen
+- Dokumentation und README angepasst
+
 Version 0.10.3
 --------------
 

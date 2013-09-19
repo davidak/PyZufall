@@ -1,7 +1,11 @@
 Installation
 ============
 
-Die aktuellste Version von **pyzufall** findest du auf `github <https://github.com/davidak/pyzufall>`_. Eine stabile Version wird es auf `PyPI <https://pypi.python.org/>`_ geben.
+Die aktuellste Version von **pyzufall** findest du auf `github <https://github.com/davidak/pyzufall>`_.
+
+Eine stabile Version wird es auf `PyPI <https://pypi.python.org/>`_ geben.
+
+.. note:: Derzeit befindet sich **pyzufall** in aktiver Entwicklung. Daher kann sich die Struktur oder Funktionsnamen noch ändern.
 
 Manuelle Installation
 ---------------------

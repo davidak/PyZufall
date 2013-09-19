@@ -1,13 +1,9 @@
-pyzufall
-========
+Das Python-Paket **pyzufall** generiert zufällige Daten wie Namen, Berufe, Bandnamen, ein Datum, Sätze oder den Datensatz einer Personen.
 
-Generiert zufällige Daten wie Namen, Fantasieworte, Personen oder Sätze.
+Es wurde ursprünglich für `satzgenerator.de <http://satzgenerator.de/>`_ entwickelt, kann aber vielfältig eingesetzt werden.
 
-Es wurde für http://satzgenerator.de/ entwickelt, kann aber vielfältig eingesetzt werden.
+Pyzufall ist Open Source.
 
-Pyzufall ist in Python programmiert und steht unter der GPLv3 (Open Source).
+Die Dokumentation findest du auf: https://pyzufall.readthedocs.org/
 
-Dokumentation
--------------
-
-Hier findest du die Dokumentation: https://pyzufall.readthedocs.org/de/latest/
+Sie kann dort auch `in verschiedenen Formaten runtergeladen <https://readthedocs.org/projects/pyzufall/downloads/>`_ werden, z.B. `PDF <https://media.readthedocs.org/pdf/pyzufall/latest/pyzufall.pdf>`_, `HTML <https://media.readthedocs.org/htmlzip/pyzufall/latest/pyzufall.zip>`_ (zip) oder `Epub <https://media.readthedocs.org/epub/pyzufall/latest/pyzufall.epub>`_.

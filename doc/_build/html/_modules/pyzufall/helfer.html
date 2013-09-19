@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>pyzufall.helfer &mdash; pyzufall 0.10.3 Dokumentation</title>
+    <title>pyzufall.helfer &mdash; pyzufall 0.11 Dokumentation</title>
     
     <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -14,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.10.3',
+        VERSION:     '0.11',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +26,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/translations.js"></script>
-    <link rel="top" title="pyzufall 0.10.3 Dokumentation" href="../../index.html" />
+    <link rel="top" title="pyzufall 0.11 Dokumentation" href="../../index.html" />
     <link rel="up" title="Modul-Quellcode" href="../index.html" /> 
   </head>
   <body>
@@ -37,7 +39,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python-Modulindex"
              >Module</a> |</li>
-        <li><a href="../../index.html">pyzufall 0.10.3 Dokumentation</a> &raquo;</li>
+        <li><a href="../../index.html">pyzufall 0.11 Dokumentation</a> &raquo;</li>
           <li><a href="../index.html" accesskey="U">Modul-Quellcode</a> &raquo;</li> 
       </ul>
     </div>
@@ -82,9 +84,24 @@
 	<span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateipfad</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
 
 </div>
+<div class="viewcode-block" id="chance"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.chance">[Doku]</a><span class="k">def</span> <span class="nf">chance</span><span class="p">(</span><span class="n">wahrscheinlichkeit</span><span class="p">,</span> <span class="n">wert</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Der übergebene Wert wird mit der gewählten Wahrscheinlichkeit zurückgegeben.</span>
+
+<span class="sd">	.. versionadded:: 0.11</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">wahrscheinlichkeit</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">wert</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+</div>
 <div class="viewcode-block" id="e16"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.e16">[Doku]</a><span class="k">def</span> <span class="nf">e16</span><span class="p">(</span><span class="n">wert</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.</span>
+
+<span class="sd">	.. deprecated:: 0.11</span>
+<span class="sd">		Wird durch :func:`pyzufall.helfer.chance` ersetzt.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 		<span class="k">return</span> <span class="n">wert</span>
@@ -95,6 +112,9 @@
 <div class="viewcode-block" id="e25"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.e25">[Doku]</a><span class="k">def</span> <span class="nf">e25</span><span class="p">(</span><span class="n">wert</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.</span>
+
+<span class="sd">	.. deprecated:: 0.11</span>
+<span class="sd">		Wird durch :func:`pyzufall.helfer.chance` ersetzt.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 		<span class="k">return</span> <span class="n">wert</span>
@@ -105,6 +125,9 @@
 <div class="viewcode-block" id="e50"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.e50">[Doku]</a><span class="k">def</span> <span class="nf">e50</span><span class="p">(</span><span class="n">wert</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.</span>
+
+<span class="sd">	.. deprecated:: 0.11</span>
+<span class="sd">		Wird durch :func:`pyzufall.helfer.chance` ersetzt.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
 		<span class="k">return</span> <span class="n">wert</span>
@@ -115,6 +138,9 @@
 <div class="viewcode-block" id="e75"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.e75">[Doku]</a><span class="k">def</span> <span class="nf">e75</span><span class="p">(</span><span class="n">wert</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.</span>
+
+<span class="sd">	.. deprecated:: 0.11</span>
+<span class="sd">		Wird durch :func:`pyzufall.helfer.chance` ersetzt.</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
 		<span class="k">return</span> <span class="n">wert</span>
@@ -143,7 +169,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python-Modulindex"
              >Module</a> |</li>
-        <li><a href="../../index.html">pyzufall 0.10.3 Dokumentation</a> &raquo;</li>
+        <li><a href="../../index.html">pyzufall 0.11 Dokumentation</a> &raquo;</li>
           <li><a href="../index.html" >Modul-Quellcode</a> &raquo;</li> 
       </ul>
     </div>

@@ -1,7 +1,7 @@
 Referenz der Module
 ===================
 
-Die Module und ihre Funktionen.
+Die Module mit ihren Klassen und Funktionen.
 
 pyzufall.helfer
 ---------------
