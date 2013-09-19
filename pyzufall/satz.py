@@ -5,7 +5,7 @@ import os
 import re
 import random as r
 
-from .helfer import erste_gross, e16, e25, e50, e75
+from .helfer import erste_gross, chance
 from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
 
 
@@ -18,9 +18,9 @@ def satz_nulltransitiv():
 	Beispiel: Im Park schneit es.
 	"""
 	if r.randint(0,1):
-		s = ort() + ' ' + verbn() + ' es' + e25(' ' + adjektiv()) + '.'
+		s = ort() + ' ' + verbn() + ' es' + chance(25, ' ' + adjektiv()) + '.'
 	else:
-		s = 'Es ' + verbn() + e25(' ' + adjektiv()) + '.'
+		s = 'Es ' + verbn() + chance(25, ' ' + adjektiv()) + '.'
 	return erste_gross(s)
 
 
@@ -48,9 +48,9 @@ def satz_band_mitglied():
 	Beispiel: Annelise ist Gitarristin von der Gothicband "Kräuter in der Innenstadt".
 	"""
 	if r.randint(0,1): # männlich
-		s = vorname_m() + e50(' ' + nachname()) + ' ist ' + e50('der ') + r.choice(besetzung) + e50(' von') + ' der ' + bandart() + ' "' + band() + '".'
+		s = vorname_m() + chance(50, ' ' + nachname()) + ' ist ' + chance(50, 'der ') + r.choice(besetzung) + chance(50, ' von') + ' der ' + bandart() + ' "' + band() + '".'
 	else: # weiblich
-		s = vorname_w() + e50(' ' + nachname()) + ' ist ' + e50('die ') + r.choice(besetzung) + 'in' + e50(' von') + ' der ' + bandart() + ' "' + band() + '".'
+		s = vorname_w() + chance(50, ' ' + nachname()) + ' ist ' + chance(50, 'die ') + r.choice(besetzung) + 'in' + chance(50, ' von') + ' der ' + bandart() + ' "' + band() + '".'
 	return erste_gross(s)
 
 
@@ -68,9 +68,9 @@ def satz_band_gegruendet():
 	if r.randint(0,1): # 50% Datum oder Jahr
 		s += 'am ' + datum()
 	else:
-		s += e75(r.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter', 'im Jahr'])) + ' ' + str(r.randint(1950, 2013))
+		s += chance(75, r.choice(['Anfang', 'Mitte', 'Mitte des Jahres', 'Ende', 'im Frühling', 'im Sommer', 'im Herbst', 'im Winter', 'im Jahr'])) + ' ' + str(r.randint(1950, 2013))
 
-	s += e50(' in ' + stadt()) + ' gegründet.'
+	s += chance(50, ' in ' + stadt()) + ' gegründet.'
 	return erste_gross(s)
 
 
@@ -109,13 +109,13 @@ def satz_arbeit():
 	"""
 	x = r.randint(1,4)
 	if x == 1:
-		s = vorname_m() + e50(' ' + nachname()) + ' ist ' + e75('ein ') + beruf_m() + e25(' aus ' + stadt())
+		s = vorname_m() + chance(50, ' ' + nachname()) + ' ist ' + chance(50, 'ein ') + beruf_m() + chance(50, ' aus ' + stadt())
 	if x == 2:
-		s = vorname_w() + e50(' ' + nachname()) + ' ist ' + e75('eine ') + beruf_w() + e25(' aus ' + stadt())
+		s = vorname_w() + chance(50, ' ' + nachname()) + ' ist ' + chance(75, 'eine ') + beruf_w() + chance(50, ' aus ' + stadt())
 	if x == 3:
-		s = vorname_m() + e50(' ' + nachname()) + e50(', der ' + beruf_m() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
+		s = vorname_m() + chance(50, ' ' + nachname()) + chance(50, ', der ' + beruf_m() + chance(50, ' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_m(), objekt_m(objekt())])
 	if x == 4:
-		s = vorname_w() + e50(' ' + nachname()) + e50(', die ' + beruf_w() + e50(' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())])
+		s = vorname_w() + chance(50, ' ' + nachname()) + chance(50, ', die ' + beruf_w() + chance(50, ' aus ' + stadt()) + ',') + ' ' + verbt() + ' ' + r.choice([person_objekt_w(), objekt_w(objekt())])
 	return erste_gross(s) + '.'
 
 
@@ -127,11 +127,11 @@ def satz_essen():
 	"""
 	x = r.randint(1,3)
 	if x == 1: # Essen mit Beilage
-		s = person() + e25(' ' + r.choice(['ist', 'sitzt', 'befindet sich']) + ' ' + ort() + ' und') + ' isst ' + e50(r.choice(['gerade', 'oft', 'nicht oft', 'selten', 'gerne', 'nicht gerne']) + ' ') + essen() + e50(' mit ' + r.choice(['viel', 'ganz viel', 'ein bischen', 'ein wenig', 'lecker', 'einer großen Portion']) + ' ' + beilage())
+		s = person() + chance(25, ' ' + r.choice(['ist', 'sitzt', 'befindet sich']) + ' ' + ort() + ' und') + ' isst ' + chance(50, r.choice(['gerade', 'oft', 'nicht oft', 'selten', 'gerne', 'nicht gerne']) + ' ') + essen() + chance(50, ' mit ' + r.choice(['viel', 'ganz viel', 'ein bischen', 'ein wenig', 'lecker', 'einer großen Portion']) + ' ' + beilage())
 	if x == 2: # Trinken
-		s = person() + ' trinkt ' + e50(r.choice(['gerade', 'oft', 'nicht oft', 'selten', 'gerne', 'nicht gerne', 'jeden Abend ein Glas', 'zu viel']) + ' ') + trinken()
+		s = person() + ' trinkt ' + chance(50, r.choice(['gerade', 'oft', 'nicht oft', 'selten', 'gerne', 'nicht gerne', 'jeden Abend ein Glas', 'zu viel']) + ' ') + trinken()
 	if x == 3: # Essen und Trinken
-		s = person() + ' isst ' + essen() + e50(' mit ' + beilage()) + ' und trinkt ' + e50('dazu ') + trinken()
+		s = person() + ' isst ' + essen() + chance(50, ' mit ' + beilage()) + ' und trinkt ' + chance(50, 'dazu ') + trinken()
 	return erste_gross(s) + '.'
 
 
@@ -150,7 +150,7 @@ def satz_koerperteil():
 				s = re.sub('den ', 'seinen ', s)
 				s = re.sub('die ', 'seine ', s)
 				s = re.sub('das ', 'sein ', s)
-			s = person_m() + ' ' + r.choice(['verletzt sich', 'stößt sich', 'bricht' + e50(' sich'), 'verstaucht' + e50(' sich'), 'massiert']) + ' ' + s
+			s = person_m() + ' ' + r.choice(['verletzt sich', 'stößt sich', 'bricht' + chance(50, ' sich'), 'verstaucht' + chance(50, ' sich'), 'massiert']) + ' ' + s
 		else: # Sie
 			s = koerperteil()
 			s = re.sub('der ', 'den ', s)
@@ -158,18 +158,18 @@ def satz_koerperteil():
 				s = re.sub('den ', 'ihren ', s)
 				s = re.sub('die ', 'ihre ', s)
 				s = re.sub('das ', 'ihr ', s)
-			s = person_w() + ' ' + r.choice(['verletzt sich', 'stößt sich', 'bricht' + e50(' sich'), 'verstaucht' + e50(' sich'), 'massiert']) + ' ' + s
+			s = person_w() + ' ' + r.choice(['verletzt sich', 'stößt sich', 'bricht' + chance(50, ' sich'), 'verstaucht' + chance(50, ' sich'), 'massiert']) + ' ' + s
 	if x == 2: # hat Kopfschmerzen
 		s = koerperteil()
 		s = re.sub('e$', 'en', s) # Lungen
 		s = s.split()[1] # Körperteil ohne Artikel
-		s = person() + ' hat ' + e25(r.choice(['schlimme', 'ein bischen', 'brutale', 'oft', 'manchmal']) + ' ') + s + 'schmerzen'
+		s = person() + ' hat ' + chance(50, r.choice(['schlimme', 'ein bischen', 'brutale', 'oft', 'manchmal']) + ' ') + s + 'schmerzen'
 	if x == 3:
 		s = koerperteil()
 		s = re.sub('der ', 'am ', s)
 		s = re.sub('die ', 'an der ', s)
 		s = re.sub('das ', 'am ', s)
-		s = person() + ' hat eine ' + e25(r.choice(['schmerzhafte ', 'brutale ', 'miese ', 'kleine ', 'eiternde '])) + r.choice(['Verletzung', 'Entzündung', 'Wunde', 'Beschädigung']) + ' ' + s
+		s = person() + ' hat eine ' + chance(25, r.choice(['schmerzhafte ', 'brutale ', 'miese ', 'kleine ', 'eiternde '])) + r.choice(['Verletzung', 'Entzündung', 'Wunde', 'Beschädigung']) + ' ' + s
 	if x == 4:
 		s = koerperteil()
 		s = re.sub('der ', 'Mein ', s)
@@ -201,9 +201,9 @@ def satz_kloster():
 		- Bruder Nicolaus ist der falschste Mönch im Kloster.
 	"""
 	if r.randint(0,1): # männlich
-		s = e25('Der ') + 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adjektiv() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+		s = chance(25, 'Der ') + 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adjektiv() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 	else: # weiblich
-		s = e25('Die ') + 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + adjektiv() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+		s = chance(25, 'Die ') + 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + adjektiv() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 	return erste_gross(s) + '.'
 
 
@@ -236,13 +236,17 @@ def satz_folgehandlung():
 		else: # w
 			erste_person, zweit_person = person_w(), r.choice([' ihr ' + r.choice(beziehung_m), ' ihre ' + r.choice(beziehung_w)]) + ' '
 	
-	s = r.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil', 'Gerade weil']) + r.choice([verb22 + erste_person + ' ', ' ' + erste_person + verb22]) + e50(ort() + ' ') + e50(adjektiv() + ' ') + verb2 + ', ' + v1 + zweit_person + v12 + e50(adjektiv() + ' ') + v2 + '.'
+	s = r.choice(['Weil', 'Während', 'Obwohl', 'Ohne dass', 'Nur weil', 'Gerade weil']) + r.choice([verb22 + erste_person + ' ', ' ' + erste_person + verb22]) + chance(50, ort() + ' ') + chance(50, adjektiv() + ' ') + verb2 + ', ' + v1 + zweit_person + v12 + chance(50, adjektiv() + ' ') + v2 + '.'
 	return erste_gross(s)
 
 
 def satz_absurde_farbfunktion():
 	"""
 	Generiert einen Satz nach folgendem Muster: Gelb ist brauner als Türkis.
+
+	.. todo::
+
+		r.sample(farben, 3) benutzen
 	"""
 	farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
 	while farbe1 is farbe2 or farbe2 is farbe3 or farbe1 is farbe3:
@@ -258,9 +262,9 @@ def satz_freunde_lieben():
 	Beispiel: In der Garage ist das Mannsweib lesbisch.
 	"""
 	if r.randint(0,1): #männlich
-		s = person_m() + ' ist ' + adjektiv() + e50(r.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür') + '.'
+		s = person_m() + ' ist ' + adjektiv() + chance(50, r.choice(['. Alle', ', aber']) + ' seine Freunde lieben ihn dafür') + '.'
 	else: #weiblich
-		s = person_w() + ' ist ' + adjektiv() + e50(r.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür') + '.'
+		s = person_w() + ' ist ' + adjektiv() + chance(50, r.choice(['. Alle', ', aber']) + ' ihre Freunde lieben sie dafür') + '.'
 	return erste_gross(s)
 
 
@@ -275,6 +279,10 @@ def satz_farbe():
 def satz_adjektiv_sprichwort():
 	"""
 	Generiert einen Satz nach dem Muster: Je untrainierter desto lächerlicher.
+
+	.. todo::
+
+		r.sample
 	"""
 	adjektiv1, adjektiv2 = adjektiv(), adjektiv()
 	while adjektiv1 is adjektiv2:
@@ -289,7 +297,7 @@ def satz_adjektiv_am_ort():
 
 	Beispiel: Auf dem Spielplatz ist die Freundin hilfsbereit.
 	"""
-	s = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + person() + ' ' + e50(r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + adjektiv() + '.'
+	s = ort() + ' ' + r.choice(['war', 'ist']) + ' ' + person() + ' ' + chance(50, r.choice(['sehr', 'ziemlich', 'ein bischen', 'nicht sehr', 'garnicht', 'nicht']) + ' ') + adjektiv() + '.'
 	return erste_gross(s)
 
 
@@ -324,7 +332,7 @@ def satz_standard_2():
 		v1, v2 = verbi2().split(",")
 	else:
 		v1, v2 = verbi(), ''
-	s = ort() + ' ' + v1 + ' ' + person() + e75(' ' + adjektiv()) + v2 + '.'
+	s = ort() + ' ' + v1 + ' ' + person() + chance(75, ' ' + adjektiv()) + v2 + '.'
 	return erste_gross(s)
 
 
@@ -338,7 +346,7 @@ def satz_standard_3():
 		v1, v2 = verbi2().split(",")
 	else:
 		v1, v2 = verbi(), ''
-	s = adjektiv() + ' ' + v1 + ' ' + person() + e75(' ' + ort()) + v2 + '.'
+	s = adjektiv() + ' ' + v1 + ' ' + person() + chance(75, ' ' + ort()) + v2 + '.'
 	return erste_gross(s)
 
 
@@ -382,7 +390,7 @@ def satz_frage_1():
 		v1, v2 = verbi2().split(",")
 	else:
 		v1, v2 = verbi(), ''
-	s = e50(r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adjektiv(), ' ' + ort(), ' ' + adjektiv() + ' ' + ort(), '']) + v2 + '?'
+	s = chance(50, r.choice(['Warum ', 'Wieso ', 'Weshalb '])) + v1 + ' ' + person() + r.choice([' ' + adjektiv(), ' ' + ort(), ' ' + adjektiv() + ' ' + ort(), '']) + v2 + '?'
 	return erste_gross(s)
 
 
@@ -410,7 +418,7 @@ def satz_frage_3():
 		v1, v2 = verbi2().split(",")
 	else:
 		v1, v2 = verbi(), ''
-	s = 'Wo ' + v1 + ' ' + person() + e25(' ' + adjektiv()) + v2 + '?'
+	s = 'Wo ' + v1 + ' ' + person() + chance(25, ' ' + adjektiv()) + v2 + '?'
 	return erste_gross(s)
 
 
@@ -424,7 +432,7 @@ def satz_frage_4():
 		v1, v2 = verbi2().split(",")
 	else:
 		v1, v2 = verbi(), ''
-	s = 'Wie ' + v1 + ' ' + person() + e50(' ' + ort()) + v2 + '?'
+	s = 'Wie ' + v1 + ' ' + person() + chance(50, ' ' + ort()) + v2 + '?'
 	return erste_gross(s)
 
 
@@ -438,7 +446,7 @@ def satz_frage_5():
 		v1, v2 = verbi2().split(",")
 	else:
 		v1, v2 = verbi(), ''
-	s = 'Wann ' + v1 + ' ' + person() + e50(' endlich') + e25(' ' + ort()) + v2 + '?'
+	s = 'Wann ' + v1 + ' ' + person() + chance(50, ' endlich') + chance(25, ' ' + ort()) + v2 + '?'
 	return erste_gross(s)
 
 

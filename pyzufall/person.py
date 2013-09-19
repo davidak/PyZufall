@@ -13,8 +13,8 @@ import random as r
 import datetime
 
 from .version import __version__
-from .helfer import e50
-from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w, interesse
+from .helfer import chance
+from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w, interessen_liste
 
 
 class Person(object):
@@ -42,7 +42,7 @@ class Person(object):
 		self.beruf = Person._gen_beruf(self)
 		self.interessen = Person._gen_interessen(self)
 		self.lieblingsfarbe = farbe()
-		self.lieblingsessen = essen() + e50(" mit " + beilage())
+		self.lieblingsessen = essen() + chance(50, " mit " + beilage())
 		self.motto = sprichwort()
 
 		Person.anzahl += 1
@@ -119,6 +119,5 @@ class Person(object):
 		_anzahl = r.randint(1,3)
 		if r.randint(0,1): # 50% haben mehr als 3 Interessen, maximal 8
 			_anzahl + r.randint(1, 5)
-		s = interesse()
-
-		return s
+		_s = interessen_liste(_anzahl)
+		return _s

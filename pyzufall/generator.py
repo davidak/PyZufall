@@ -6,7 +6,7 @@ import re
 import random
 import datetime
 
-from .helfer import lese, e16, e25, e50, e75
+from .helfer import lese, chance
 
 
 r = random.SystemRandom() # Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
@@ -58,7 +58,7 @@ def geschlecht():
 	2011 gibt es laut Statistik 51,18% weibliche Personen in Deutschland:
 	https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Tabellen/Zensus_Geschlecht_Staatsangehoerigkeit.html
 	"""
-	if r.randint(0, 100) <= 51:
+	if r.randint(0, 100) < 51:
 		return 0
 	else:
 		return 1
@@ -170,8 +170,23 @@ def koerperteil():
 def interesse():
 	"""
 	Gibt ein zufälliges Interesse bzw Hobby zurück.
+
+	.. deprecated:: 0.11
+		Wird durch :func:`pyzufall.generator.interessen_liste` ersetzt.
 	"""
 	return r.choice(interessen)
+
+
+def interessen_liste(anzahl=1):
+	"""
+	Gibt eine Liste von Interessen als String zurück.
+
+	Ohne Angabe der Anzahl wird ein Interesse zurückgegeben.
+
+	.. versionadded:: 0.11
+	"""
+	_liste = r.sample(interessen, anzahl)
+	return ', '.join(_liste)
 
 
 def tier():
@@ -207,15 +222,15 @@ def person_m():
 	"""
 	z = r.randint(1,10)
 	if z == 1:
-		s = e25(adjektiv() + 'er ')
+		s = chance(25, adjektiv() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
 		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_m)
 	elif z == 2:
-		s = e25(adjektiv() + 'er ')
+		s = chance(25, adjektiv() + 'er ')
 		s = re.sub('eer $', 'er ', s) # feigeer
 		s = r.choice(possessivpronomen_m) + ' ' + s + r.choice(beziehung_m)
 	elif z == 3:
-		s =  e50(adjektiv() + 'e ')
+		s =  chance(50, adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # der feigee
 		s = 'der ' + s + r.choice(beziehung_m)
 	elif z == 4:
@@ -243,15 +258,15 @@ def person_w():
 	"""
 	z = r.randint(1,10)
 	if z == 1:
-		s = e25(adjektiv() + 'e ')
+		s = chance(25, adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # feigee
 		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
-		s = e25(adjektiv() + 'e ')
+		s = chance(25, adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # die feigee
 		s = r.choice(possessivpronomen_m) + 'e ' + s + r.choice(beziehung_w)
 	elif z == 3:
-		s =  e50(adjektiv() + 'e ')
+		s =  chance(50, adjektiv() + 'e ')
 		s = re.sub('ee $', 'e ', s) # die feigee
 		s = 'die ' + s + r.choice(beziehung_w)
 	elif z == 4:
@@ -454,12 +469,12 @@ def person_objekt_m():
 	if y == 2:
 		s = vorname_w()
 	if y == 3:
-		s =  e25(adjektiv() + 'en ')
+		s =  chance(25, adjektiv() + 'en ')
 		s = re.sub('een ', 'en ', s) # feigeen
 		s = r.choice(['seinen ', 'deinen ']) + s + r.choice(beziehung_m)
 		s = re.sub('Kollege', 'Kollegen', s)
 	if y == 4:
-		s =  e25(adjektiv() + 'e ')
+		s =  chance(25, adjektiv() + 'e ')
 		s = re.sub('ee ', 'e ', s) # feigee
 		s = r.choice(['seine ', 'deine ']) + s + r.choice(beziehung_w)
 		
@@ -478,12 +493,12 @@ def person_objekt_w():
 	if y == 2:
 		s = vorname_w()
 	if y == 3:
-		s =  e25(adjektiv() + 'en ')
+		s =  chance(25, adjektiv() + 'en ')
 		s = re.sub('een ', 'en ', s) # feigeen
 		s = r.choice(['ihren ', 'deinen ']) + s + r.choice(beziehung_m)
 		s = re.sub('Kollege', 'Kollegen', s)
 	if y == 4:
-		s =  e25(adjektiv() + 'e ')
+		s =  chance(25, adjektiv() + 'e ')
 		s = re.sub('ee ', 'e ', s) # feigee
 		s = r.choice(['ihre ', 'deine ']) + s + r.choice(beziehung_w)
 
@@ -512,7 +527,7 @@ def ort():
 voressen = ['Brat', 'Rühr', 'Reibe', 'Brech', 'Back', 'Ofen', 'Hack', 'Mager', 'Frisch', 'Bio', 'Gammel', 'Soja', 'Tofu', 'Milch']
 def essen():
 	"""
-	Gibt ein Gericht zurück.
+	Gibt ein Essen zurück.
 	"""
 	if r.randint(0,2): # zusammengesetzt aus zwei Wörtern
 		if r.randint(0,2):

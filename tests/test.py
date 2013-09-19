@@ -31,7 +31,7 @@ def test_test():
 	assert True
 
 def test_lese():
-	liste = lese('baeume')
+	liste = lese('baeume.txt')
 	assert liste
 
 @multi

@@ -15,9 +15,24 @@ def lese(dateiname):
 	return open(dateipfad, 'r').read().splitlines()
 
 
+def chance(wahrscheinlichkeit, wert):
+	"""
+	Der übergebene Wert wird mit der gewählten Wahrscheinlichkeit zurückgegeben.
+
+	.. versionadded:: 0.11
+	"""
+	if r.randint(0,100) < wahrscheinlichkeit:
+		return wert
+	else:
+		return ''
+
+
 def e16(wert):
 	"""
 	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.
+
+	.. deprecated:: 0.11
+		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
 	"""
 	if r.randint(0,5) == 1:
 		return wert
@@ -28,6 +43,9 @@ def e16(wert):
 def e25(wert):
 	"""
 	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.
+
+	.. deprecated:: 0.11
+		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
 	"""
 	if r.randint(1,4) == 1:
 		return wert
@@ -38,6 +56,9 @@ def e25(wert):
 def e50(wert):
 	"""
 	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.
+
+	.. deprecated:: 0.11
+		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
 	"""
 	if r.randint(0,1):
 		return wert
@@ -48,6 +69,9 @@ def e50(wert):
 def e75(wert):
 	"""
 	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.
+
+	.. deprecated:: 0.11
+		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
 	"""
 	if r.randint(0,3):
 		return wert
