@@ -8,6 +8,7 @@ import random as r
 from .helfer import erste_gross, chance
 from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
 
+from .generator import adjektive, farben
 
 # Satz-Schemata
 
@@ -243,14 +244,8 @@ def satz_folgehandlung():
 def satz_absurde_farbfunktion():
 	"""
 	Generiert einen Satz nach folgendem Muster: Gelb ist brauner als Türkis.
-
-	.. todo::
-
-		r.sample(farben, 3) benutzen
 	"""
-	farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
-	while farbe1 is farbe2 or farbe2 is farbe3 or farbe1 is farbe3:
-		farbe1, farbe2, farbe3 = farbe(), farbe(), farbe()
+	farbe1, farbe2, farbe3 = r.sample(farben, 3)
 	s = farbe1 + ' ist ' + r.choice([farbe2.lower(), adjektiv()]) + 'er als ' + farbe3 + '.'
 	return erste_gross(s)
 
@@ -279,16 +274,10 @@ def satz_farbe():
 def satz_adjektiv_sprichwort():
 	"""
 	Generiert einen Satz nach dem Muster: Je untrainierter desto lächerlicher.
-
-	.. todo::
-
-		r.sample
 	"""
-	adjektiv1, adjektiv2 = adjektiv(), adjektiv()
-	while adjektiv1 is adjektiv2:
-		adjektiv2 = adjektiv()
-	s = 'Je ' + adjektiv1 + 'er desto ' + adjektiv2 + 'er.'
-	return erste_gross(s)
+	_adj1, _adj2 = r.sample(adjektive, 2)
+	_s = 'Je ' + _adj1 + 'er desto ' + _adj2 + 'er.'
+	return erste_gross(_s)
 
 
 def satz_adjektiv_am_ort():
