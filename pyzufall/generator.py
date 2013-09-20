@@ -406,6 +406,7 @@ def beruf_w():
 	s = re.sub('Arztin$', 'Ärztin', s)
 	s = re.sub('arztin$', 'ärztin', s)
 	s = re.sub('beamterin$', 'beamtin', s) # Polizeibeamterin => Polizeibeamte
+	s = re.sub('stewardin$', 'stewardess', s)
 	s = re.sub('ein$', 'in', s) # Mikrobiologein => Mikrobiologin
 	return s
 
@@ -414,7 +415,7 @@ def objekt():
 	"""
 	Gibt ein Objekt zurück.
 	"""
-	return r.choice([gegenstand(), tier(), pflanze(), baum()])
+	return r.choice([gegenstand, tier, pflanze, baum])()
 
 
 def objekt_m(s):

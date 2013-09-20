@@ -7,9 +7,14 @@ import random as r
 
 def lese(dateiname):
 	"""
-	Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
+	Liest die Textdatei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
 
 	`<http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path>`_
+
+	:param dateiname: Dateiname inklusive Endung, z.B. `vornamen.txt`
+	:type dateiname: string
+	:return: eine Liste, die den Zeilen der Textdatei entspricht
+	:rtype: list
 	"""
 	dateipfad = os.path.join(os.path.dirname(__file__), 'data/' + dateiname)
 	return open(dateipfad, 'r').read().splitlines()
