@@ -5,7 +5,7 @@ import re
 import random
 import datetime
 
-from .helfer import lese, chance
+from .helfer import lese, chance, str_add
 
 
 r = random.SystemRandom() # Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
@@ -221,24 +221,19 @@ def person_m():
 	"""
 	z = r.randint(1,10)
 	if z == 1:
-		s = chance(25, adjektiv() + 'er ')
-		s = re.sub('eer $', 'er ', s) # feigeer
+		s = chance(25, str_add(adjektiv(), 'er '))
 		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_m)
 	elif z == 2:
-		s = chance(25, adjektiv() + 'er ')
-		s = re.sub('eer $', 'er ', s) # feigeer
+		s = chance(25, str_add(adjektiv(), 'er '))
 		s = r.choice(possessivpronomen_m) + ' ' + s + r.choice(beziehung_m)
 	elif z == 3:
-		s =  chance(50, adjektiv() + 'e ')
-		s = re.sub('ee $', 'e ', s) # der feigee
+		s =  chance(50, str_add(adjektiv(), 'e '))
 		s = 'der ' + s + r.choice(beziehung_m)
 	elif z == 4:
-		s = adjektiv() + 'e '
-		s = re.sub('ee $', 'e ', s) # der feigee
+		s = str_add(adjektiv(), 'e ')
 		s = 'der ' + s + r.choice(vornamen_m)
 	elif z == 5:
-		s = adjektiv() + 'e'
-		s = re.sub('ee$', 'e', s) # der feigee
+		s = str_add(adjektiv(), 'e')
 		s = 'der ' + s.capitalize()
 	elif z == 6:
 		s = r.choice(['der ', 'ein ']) + beruf_m()
@@ -257,24 +252,19 @@ def person_w():
 	"""
 	z = r.randint(1,10)
 	if z == 1:
-		s = chance(25, adjektiv() + 'e ')
-		s = re.sub('ee $', 'e ', s) # feigee
+		s = chance(25, str_add(adjektiv(), 'e '))
 		s = r.choice([vorname_m(), vorname_w()]) + 's ' + s + r.choice(beziehung_w)
 	elif z == 2:
-		s = chance(25, adjektiv() + 'e ')
-		s = re.sub('ee $', 'e ', s) # die feigee
+		s = chance(25, str_add(adjektiv(), 'e '))
 		s = r.choice(possessivpronomen_m) + 'e ' + s + r.choice(beziehung_w)
 	elif z == 3:
-		s =  chance(50, adjektiv() + 'e ')
-		s = re.sub('ee $', 'e ', s) # die feigee
+		s =  chance(50, str_add(adjektiv(), 'e '))
 		s = 'die ' + s + r.choice(beziehung_w)
 	elif z == 4:
-		s = adjektiv() + 'e '
-		s = re.sub('ee $', 'e ', s) # die feigee
+		s = str_add(adjektiv(), 'e ')
 		s = 'die ' + s + vorname_w()
 	elif z == 5:
-		s = adjektiv() + 'e'
-		s = re.sub('ee$', 'e', s) # die feigee
+		s = str_add(adjektiv(), 'e')
 		s = 'die ' + s.capitalize()
 	elif z == 6:
 		s = r.choice(['die ', 'eine ']) + beruf_w()
@@ -470,13 +460,11 @@ def person_objekt_m():
 	if y == 2:
 		s = vorname_w()
 	if y == 3:
-		s =  chance(25, adjektiv() + 'en ')
-		s = re.sub('een ', 'en ', s) # feigeen
+		s =  chance(25, str_add(adjektiv(), 'en '))
 		s = r.choice(['seinen ', 'deinen ']) + s + r.choice(beziehung_m)
 		s = re.sub('Kollege', 'Kollegen', s)
 	if y == 4:
-		s =  chance(25, adjektiv() + 'e ')
-		s = re.sub('ee ', 'e ', s) # feigee
+		s =  chance(25, str_add(adjektiv(), 'e '))
 		s = r.choice(['seine ', 'deine ']) + s + r.choice(beziehung_w)
 		
 	return s
@@ -494,13 +482,11 @@ def person_objekt_w():
 	if y == 2:
 		s = vorname_w()
 	if y == 3:
-		s =  chance(25, adjektiv() + 'en ')
-		s = re.sub('een ', 'en ', s) # feigeen
+		s =  chance(25, str_add(adjektiv(), 'en '))
 		s = r.choice(['ihren ', 'deinen ']) + s + r.choice(beziehung_m)
 		s = re.sub('Kollege', 'Kollegen', s)
 	if y == 4:
-		s =  chance(25, adjektiv() + 'e ')
-		s = re.sub('ee ', 'e ', s) # feigee
+		s =  chance(25, str_add(adjektiv(), 'e '))
 		s = r.choice(['ihre ', 'deine ']) + s + r.choice(beziehung_w)
 
 	return s
@@ -511,6 +497,10 @@ def ort():
 	Gibt eine Ortsangabe zurück.
 
 	Beispiel: 'im Flur'
+
+	.. todo::
+
+		aufteilen in generator und zufällige aus liste
 	"""
 	tausende = ['500', '1000', '2000', '5000', '10000', '100000']
 	if r.randint(0,3):
@@ -591,13 +581,13 @@ def band():
 	"""
 	z = r.randint(0,5)
 	if z == 0:
-		s = 'Die ' + adjektiv().capitalize() + 'en ' + r.choice(gruppe)
+		s = 'Die ' + str_add(adjektiv().capitalize(), 'en ') + r.choice(gruppe)
 	if z == 1:
 		s = r.choice(geschmack) + ' ' + ort()
 	if z == 2:
 		s = adjektiv().capitalize() + ' ' + ort()
 	if z == 3:
-		s = adjektiv().capitalize() + 'e ' + essen()
+		s = str_add(adjektiv().capitalize(), 'e ') + essen()
 	if z == 4:
 		s = adjektiv().capitalize()
 	if z == 5:

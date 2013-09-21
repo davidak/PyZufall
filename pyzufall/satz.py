@@ -4,7 +4,7 @@
 import re
 import random as r
 
-from .helfer import erste_gross, chance
+from .helfer import erste_gross, chance, str_add
 from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
 
 from .generator import adjektive, farben
@@ -178,9 +178,9 @@ def satz_koerperteil():
 		s = s + ' ' + r.choice(['tut weh', 'schmerzt', 'blutet', 'juckt', 'brennt', 'stinkt'])
 	if x == 5:
 		s = koerperteil()
-		s = re.sub('der ', 'einen ' + adjektiv() + 'en ', s)
-		s = re.sub('die ', 'eine ' + adjektiv() + 'e ', s)
-		s = re.sub('das ', 'ein ' + adjektiv() + 'es ', s)
+		s = re.sub('der ', 'einen ' + str_add(adjektiv(), 'en '), s)
+		s = re.sub('die ', 'eine ' + str_add(adjektiv(), 'e '), s)
+		s = re.sub('das ', 'ein ' + str_add(adjektiv(), 'es '), s)
 		s = person() + ' hat ' + s
 	return erste_gross(s) + '.'
 
@@ -189,21 +189,18 @@ def satz_kloster():
 	"""
 	Generiert einen Satz über eine Person in einem Kloster.
 
-	Beispiel: Der Bruder Florian ist der debilste Mönch in der Abtei.
-
-	.. todo::
-
-		"..."ste nicht immer richtig:
-
-		- Bruder Dennis war der monströsste Mönch im Kloster.
-		- Schwester Lara ist die diskretste Nonne in der Abtei.
-		- Bruder Marcel war der gerechtste Mönch im Orden.
-		- Bruder Nicolaus ist der falschste Mönch im Kloster.
+	Beispiel: Bruder Ludwig ist der böseste Mönch im Kloster.
 	"""
+	_adj = adjektiv()
+	# verhindert 'monströsste' und 'gerechtste'
+	if _adj[-1] == 's' or _adj[-1] == 't':
+		_adj += 'este'
+	else:
+		_adj += 'ste'
 	if r.randint(0,1): # männlich
-		s = chance(25, 'Der ') + 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + adjektiv() + 'ste Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+		s = chance(25, 'Der ') + 'Bruder ' + vorname_m() + r.choice([' war', ' ist']) + ' der ' + _adj + ' Mönch ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 	else: # weiblich
-		s = chance(25, 'Die ') + 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + adjektiv() + 'ste Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
+		s = chance(25, 'Die ') + 'Schwester ' + vorname_w() + r.choice([' war', ' ist']) + ' die ' + _adj + ' Nonne ' + r.choice(['im Kloster', 'im Orden', 'in der Abtei'])
 	return erste_gross(s) + '.'
 
 
@@ -245,7 +242,7 @@ def satz_absurde_farbfunktion():
 	Generiert einen Satz nach folgendem Muster: Gelb ist brauner als Türkis.
 	"""
 	farbe1, farbe2, farbe3 = r.sample(farben, 3)
-	s = farbe1 + ' ist ' + r.choice([farbe2.lower(), adjektiv()]) + 'er als ' + farbe3 + '.'
+	s = farbe1 + ' ist ' + str_add(r.choice([farbe2.lower, adjektiv])(), 'er') + ' als ' + farbe3 + '.'
 	return erste_gross(s)
 
 
@@ -266,7 +263,7 @@ def satz_farbe():
 	"""
 	Generiert einen Satz nach dem Muster: Braun ist eine unsittliche Farbe.
 	"""
-	s = farbe() + ' ist eine ' + adjektiv() + 'e ' + 'Farbe.'
+	s = farbe() + ' ist eine ' + str_add(adjektiv(), 'e ') + 'Farbe.'
 	return erste_gross(s)
 
 
@@ -275,7 +272,7 @@ def satz_adjektiv_sprichwort():
 	Generiert einen Satz nach dem Muster: Je untrainierter desto lächerlicher.
 	"""
 	_adj1, _adj2 = r.sample(adjektive, 2)
-	_s = 'Je ' + _adj1 + 'er desto ' + _adj2 + 'er.'
+	_s = 'Je ' + str_add(_adj1, 'er') + ' desto ' + str_add(_adj2, 'er.')
 	return erste_gross(_s)
 
 
