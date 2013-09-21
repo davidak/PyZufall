@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+pyzufall.satz
+-------------
+
+Stellt Funktionen zur verfügung, die Sätze nach diversen Satz-Schemata generieren.
+
+Die Funktion satz() beinhaltet alle.
+"""
+
 import re
 import random as r
 

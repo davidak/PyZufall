@@ -32,7 +32,7 @@ Auge um Auge, Zahn um Zahn.
 Aus dem Stein der Weisen macht ein Dummer Schotter.
 Aus den Augen, aus dem Sinn.
 Außen hui und innen pfui.
-Begib´dich nicht in die Höhle des Löwen.
+Begib dich nicht in die Höhle des Löwen.
 Beinahe ist noch lange nicht halb.
 Beiß nicht in die Hand, die dich füttert.
 Bellende Hunde beißen nicht!
@@ -68,9 +68,9 @@ Der Teufel scheißt immer auf den größten Haufen.
 Der Mensch sah in den Spiegel und erkannte sich.
 Der Ton macht die Musik.
 Der Zweck heiligt die Mittel.
-Des einen Leid ist des anderen Freud'.
+Des einen Leid ist des anderen Freud.
 Knapp daneben ist auch vorbei.
-Die Hoffnung stirbt zuletzt
+Die Hoffnung stirbt zuletzt.
 Die Hälfte seines Lebens, wartet der Soldat vergebens.
 Die Lage ist ernst, aber nicht hoffnungslos.
 Die Letzten werden die Ersten sein!
@@ -105,6 +105,6 @@ Säge nicht an dem Ast, auf dem du sitzt.
 Scherben bringen Glück.
 Stille Wasser sind tief.
 Übermut tut selten gut.
-Unkraut vergeht nicht
+Unkraut vergeht nicht.
 Übung macht den Meister.
 Zusammen ist man stark.

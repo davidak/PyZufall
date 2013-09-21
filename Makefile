@@ -8,7 +8,7 @@ all: test
 docs: html pdf
 
 test:
-	@(nosetests -v --with-coverage --cover-package=pyzufall)
+	@(nosetests -v --with-coverage --cover-package=pyzufall --with-doctest)
 
 html:
 	@(cd doc; make html)

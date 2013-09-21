@@ -1,20 +1,43 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+pyzufall.helfer
+---------------
+
+Stellt diverse Hilfs-Funktionen zur Verfügung.
+"""
+
 import os
 import random as r
+
+# Regex Pattern
+re_wort = r'^[A-Za-zäÄöÖüÜß-]+$'
+re_worte = r'^[A-Za-zäÄöÖüÜß -]+$'
+re_liste = r'^[A-Za-zäÄöÖüÜß -]+,[A-Za-zäÄöÖüÜß, -]+'
+re_datum = r'^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[0-2]).(19|20)[0-9]{2}$'
+re_satz = r'^[A-ZÄÖÜ]{1}[a-zA-Z0-9éäÄöÖüÜß ,-/.?"()]+[.!?]{1}$'
+re_frage = r'^[A-ZÄÖÜ]{1}[a-zA-Z0-9éäÄöÖüÜß ,-/"()]+[?]{1}$'
 
 
 def lese(dateiname):
 	"""
 	Liest die Textdatei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
 
+	Beispiel:
+
+	>>> liste = lese('baeume.txt')
+
 	`<http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path>`_
 
 	:param dateiname: Dateiname inklusive Endung, z.B. *vornamen.txt*
 	:type dateiname: string
-	:return: eine Liste, die den Zeilen der Textdatei entspricht
 	:rtype: list
+
+	.. only:: doctest
+
+		# überprüfe ob liste eine liste ist
+		>>> assert isinstance(liste, list)
 	"""
 	dateipfad = os.path.join(os.path.dirname(__file__), 'data/' + dateiname)
 	return open(dateipfad, 'r').read().splitlines()
@@ -35,6 +58,17 @@ def chance(wahrscheinlichkeit, wert):
 def erste_gross(s):
 	"""
 	Macht den ersten Buchstaben gross.
+
+	Beispiele:
+
+	>>> erste_gross('das ist ein Beispiel?')
+	'Das ist ein Beispiel?'
+
+	>>> erste_gross('über Stock und Stein.')
+	'Über Stock und Stein.'
+
+	>>> erste_gross('älter als das Internet!')
+	'Älter als das Internet!'
 	"""
 	return s[0].upper() + s[1:]
 
@@ -45,9 +79,14 @@ def str_add(wort, string):
 
 	Beispiele:
 
-	- blöd + e = blöde
-	- feige + e = feige
-	- feige + er = feiger
+	>>> str_add('feige', 'er')
+	'feiger'
+
+	>>> str_add('feige', 'e')
+	'feige'
+
+	>>> str_add('blöd', 'e')
+	'blöde'
 
 	.. versionadded:: 0.11
 	"""

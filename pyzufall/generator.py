@@ -1,12 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+pyzufall.generator
+------------------
+
+Stellt diverse Generator-Funktionen zur Verfügung.
+"""
+
 import re
 import random
 import datetime
 
 from .helfer import lese, chance, str_add
 
+# Regex Pattern für Doctests
+from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum
 
 r = random.SystemRandom() # Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
 
@@ -58,6 +67,12 @@ def geschlecht():
 	https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Tabellen/Zensus_Geschlecht_Staatsangehoerigkeit.html
 
 	:rtype: int
+
+	.. only:: doctest
+
+		>>> s = geschlecht()
+
+		>>> assert s is 0 or s is 1
 	"""
 	if r.randint(0, 100) < 51:
 		return 0
@@ -68,6 +83,16 @@ def geschlecht():
 def vorname_m():
 	"""
 	Gibt einen männlichen Vornamen zurück.
+
+	.. only:: doctest
+
+		>>> s = vorname_m()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in vornamen_m
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(vornamen_m)
 
@@ -75,6 +100,16 @@ def vorname_m():
 def vorname_w():
 	"""
 	Gibt einen weiblichen Vornamen zurück.
+
+	.. only:: doctest
+
+		>>> s = vorname_w()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in vornamen_w
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(vornamen_w)
 
@@ -89,6 +124,16 @@ def vorname():
 def nachname():
 	"""
 	Gibt einen Nachnamen zurück.
+
+	.. only:: doctest
+
+		>>> s = nachname()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in nachnamen
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(nachnamen)
 
@@ -98,6 +143,16 @@ def verbn():
 	Gibt ein nullwertiges Verb zurück.
 
 	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+
+	.. only:: doctest
+
+		>>> s = verbn()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in nullwertige_verben
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(nullwertige_verben)
 
@@ -107,6 +162,16 @@ def verbi():
 	Gibt ein intransitives Verb zurück.
 
 	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+
+	.. only:: doctest
+
+		>>> s = verbi()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in intransitive_verben
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(intransitive_verben)
 
@@ -116,6 +181,15 @@ def verbi2():
 	Gibt ein intransitives, getrenntes Verb zurück.
 
 	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+
+	.. only:: doctest
+
+		>>> s = verbi2()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in intransitive_verben_2
+		
+		>>> assert re.match(re_liste, s)
 	"""
 	return r.choice(intransitive_verben_2)
 
@@ -125,6 +199,16 @@ def verbt():
 	Gibt ein transitives Verb zurück.
 
 	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+
+	.. only:: doctest
+
+		>>> s = verbt()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in transitive_verben
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(transitive_verben)
 
@@ -134,6 +218,15 @@ def verbt2():
 	Gibt ein intransitives, getrenntes Verb zurück.
 
 	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+
+	.. only:: doctest
+
+		>>> s = verbt2()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in transitive_verben_2
+		
+		>>> assert re.match(re_liste, s)
 	"""
 	return r.choice(transitive_verben_2)
 
@@ -143,6 +236,16 @@ def verbd():
 	Gibt ein ditransitives Verb zurück.
 
 	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+
+	.. only:: doctest
+
+		>>> s = verbd()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in ditransitive_verben
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(ditransitive_verben)
 
@@ -150,6 +253,16 @@ def verbd():
 def adjektiv():
 	"""
 	Gibt ein Adjektiv zurück.
+
+	.. only:: doctest
+
+		>>> s = adjektiv()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in adjektive
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(adjektive)
 
@@ -157,6 +270,16 @@ def adjektiv():
 def gegenstand():
 	"""
 	Gibt einen Gegenstand zurück.
+
+	.. only:: doctest
+
+		>>> s = gegenstand()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in gegenstaende
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(gegenstaende)
 
@@ -164,6 +287,16 @@ def gegenstand():
 def koerperteil():
 	"""
 	Gibt ein Körperteil zurück.
+
+	.. only:: doctest
+
+		>>> s = koerperteil()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in koerperteile
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(koerperteile)
 
@@ -174,6 +307,16 @@ def interesse():
 
 	.. deprecated:: 0.11
 		Wird durch :func:`pyzufall.generator.interessen_liste` ersetzt.
+
+	.. only:: doctest
+
+		>>> s = interesse()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in interessen
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(interessen)
 
@@ -182,9 +325,23 @@ def interessen_liste(anzahl=1):
 	"""
 	Gibt eine Liste von Interessen als String zurück.
 
-	Ohne Angabe der Anzahl wird ein Interesse zurückgegeben.
+	Ohne Angabe der Anzahl wird 1 Interesse zurückgegeben.
 
 	.. versionadded:: 0.11
+
+	.. only:: doctest
+
+		>>> s = interessen_liste()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in interessen
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
+
+		>>> s = interessen_liste(5)
+
+		>>> assert re.match(re_liste, s)
 	"""
 	_liste = r.sample(interessen, anzahl)
 	return ', '.join(_liste)
@@ -193,6 +350,16 @@ def interessen_liste(anzahl=1):
 def tier():
 	"""
 	Gibt ein Tier zurück.
+
+	.. only:: doctest
+
+		>>> s = tier()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in tiere
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(tiere)
 
@@ -200,6 +367,16 @@ def tier():
 def baum():
 	"""
 	Gibt einen Baum zurück.
+
+	.. only:: doctest
+
+		>>> s = baum()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in baeume
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(baeume)
 
@@ -207,6 +384,16 @@ def baum():
 def pflanze():
 	"""
 	Gibt eine Pflanze zurück.
+
+	.. only:: doctest
+
+		>>> s = pflanze()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in pflanzen
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(pflanzen)
 
@@ -220,6 +407,12 @@ spezial_w = ['eine Heldin', 'eine Pennerin', 'eine Verkäuferin', 'eine Zuhälte
 def person_m():
 	"""
 	Gibt eine männliche Person zurück.
+
+	.. only:: doctest
+
+		>>> s = person_m()
+
+		>>> assert re.match(re_worte, s)
 	"""
 	z = r.randint(1,10)
 	if z == 1:
@@ -251,6 +444,12 @@ def person_m():
 def person_w():
 	"""
 	Gibt eine weibliche Person zurück.
+
+	.. only:: doctest
+
+		>>> s = person_w()
+
+		>>> assert re.match(re_worte, s)
 	"""
 	z = r.randint(1,10)
 	if z == 1:
@@ -292,6 +491,12 @@ konsonant2 = ['h', 'k', 'l', 'm', 'n', 's', 't']
 def wort():
 	"""
 	Gibt ein Fantasiewort zurück.
+
+	.. only:: doctest
+
+		>>> s = wort()
+
+		>>> assert re.match(re_wort, s)
 	"""
 	laenge = r.randint(3,12)
 	anfaengt = r.randint(1,3)
@@ -325,6 +530,12 @@ def zahl():
 	Gibt eine Zahl zwischen 0 und 100 zurück.
 
 	:rtype: string
+
+	.. only:: doctest
+
+		>>> s = zahl()
+
+		>>> assert s.isdigit()
 	"""
 	s = r.randint(0,100)
 	return str(s)
@@ -334,6 +545,16 @@ farben = ['Rot', 'Gelb', 'Blau', 'Violett', 'Türkis', 'Orange', 'Grün', 'Magen
 def farbe():
 	"""
 	Gibt eine Farbe zurück.
+
+	.. only:: doctest
+
+		>>> s = farbe()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in farben
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(farben)
 
@@ -342,6 +563,16 @@ colors = ['red', 'yellow', 'blue', 'violet', 'orange', 'green', 'magenta', 'brow
 def color():
 	"""
 	Gibt eine Farbe auf englisch zurück.
+
+	.. only:: doctest
+
+		>>> s = color()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in colors
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(colors)
 
@@ -351,6 +582,12 @@ def geburtsdatum():
 	Gibt ein gültiges Datum zwischen dem 01.01.1910 und 31.12.2012 zurück.
 
 	:rtype: string
+
+	.. only:: doctest
+
+		>>> s = geburtsdatum()
+
+		>>> assert re.match(re_datum, s)
 	"""
 	while(True):
 		try:
@@ -366,6 +603,12 @@ def datum():
 	Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
 
 	:rtype: string
+
+	.. only:: doctest
+
+		>>> s = datum()
+
+		>>> assert re.match(re_datum, s)
 	"""
 	while(True):
 		try:
@@ -379,6 +622,13 @@ def datum():
 def sprichwort():
 	"""
 	Gibt ein Sprichwort zurück.
+
+	.. only:: doctest
+
+		>>> s = sprichwort()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in sprichwoerter
 	"""
 	return r.choice(sprichwoerter)
 
@@ -386,6 +636,16 @@ def sprichwort():
 def beruf_m():
 	"""
 	Gibt eine männliche Berufsbezeichnung zurück.
+
+	.. only:: doctest
+
+		>>> s = beruf_m()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in berufe
+		
+		testet ob ergebnis aus buchstaben besteht
+		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(berufe)
 
@@ -393,6 +653,12 @@ def beruf_m():
 def beruf_w():
 	"""
 	Gibt eine weibliche Berufsbezeichnung zurück.
+
+	.. only:: doctest
+
+		>>> s = beruf_w()
+		
+		>>> assert re.match(re_worte, s)
 	"""
 	s = beruf_m() + 'in'
 	s = re.sub('mannin$', 'frau', s) # Restaurantfachmannin => Restaurantfachfrau
@@ -461,6 +727,12 @@ def person_objekt_m():
 	Gibt eine Person als Objekt in Bezug auf eine männliche Person zurück.
 
 	Beispiel: seine Mitarbeiterin
+
+	.. only:: doctest
+
+		>>> s = person_objekt_m()
+		
+		>>> assert re.match(re_worte, s)
 	"""
 	y = r.randint(1,4)
 	if y == 1:
@@ -483,6 +755,12 @@ def person_objekt_w():
 	Gibt eine Person als Objekt in Bezug auf eine weibliche Person zurück.
 
 	Beispiel: ihre Mutter
+
+	.. only:: doctest
+
+		>>> s = person_objekt_w()
+		
+		>>> assert re.match(re_worte, s)
 	"""
 	y = r.randint(1,4)
 	if y == 1:
@@ -509,6 +787,12 @@ def ort():
 	.. todo::
 
 		aufteilen in generator und zufällige aus liste
+
+	.. only:: doctest
+
+		>>> s = ort()
+		
+		>>> assert re.match(r'^[A-Za-z0-9äÄöÖüÜß -]+$', s)
 	"""
 	tausende = ['500', '1000', '2000', '5000', '10000', '100000']
 	if r.randint(0,3):
@@ -527,6 +811,12 @@ voressen = ['Brat', 'Rühr', 'Reibe', 'Brech', 'Back', 'Ofen', 'Hack', 'Mager', 
 def essen():
 	"""
 	Gibt ein Essen zurück.
+
+	.. only:: doctest
+
+		>>> s = essen()
+		
+		>>> assert re.match(re_wort, s)
 	"""
 	if r.randint(0,2): # zusammengesetzt aus zwei Wörtern
 		if r.randint(0,2):
@@ -546,6 +836,12 @@ beilag2 = ['Kroketten', 'Pommes', 'Rösti', 'Röstzwiebeln', 'Mayo', 'Mayonnaise
 def beilage():
 	"""
 	Gibt eine Beilage zum Essen zurück.
+
+	.. only:: doctest
+
+		>>> s = beilage()
+		
+		>>> assert re.match(re_wort, s)
 	"""
 	if r.randint(0,2):
 		s = r.choice(beilag2)
@@ -558,6 +854,12 @@ getraenk = ['Wasser', 'Saft', 'Tee', 'Kaffee', 'Eistee', 'Milch', 'Punsch', 'Bow
 def trinken():
 	"""
 	Gibt ein Getränk zurück.
+
+	.. only:: doctest
+
+		>>> s = trinken()
+		
+		>>> assert re.match(re_wort, s)
 	"""
 	if r.randint(0,2):
 		s = r.choice(geschmack) + r.choice(getraenk).lower()
@@ -569,6 +871,12 @@ def trinken():
 def stadt():
 	"""
 	Gibt eine Stadt zurück.
+
+	.. only:: doctest
+
+		>>> s = stadt()
+		
+		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß/ -]+$', s)
 	"""
 	return r.choice(stadte).split(' (', 1)[0] # Stadt von Bundesland trennen
 
@@ -576,6 +884,15 @@ def stadt():
 def stadt_bl():
 	"""
 	Gibt eine Stadt mit Bundesland zurück.
+
+	.. only:: doctest
+
+		>>> s = stadt_bl()
+
+		testst ob ergebnis in liste ist
+		>>> assert s in stadte
+		
+		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß/.() -]+$', s)
 	"""
 	return r.choice(stadte)
 
@@ -584,6 +901,12 @@ gruppe = ['Menschen', 'Personen', 'Kinder', 'Tiere', 'Gedärme', 'Kadaver', 'Nud
 def band():
 	"""
 	Gibt einen fiktiven Bandnamen zurück.
+
+	.. only:: doctest
+
+		>>> s = band()
+		
+		>>> assert re.match(r'^[A-Za-z0-9äÄöÖüÜß -]+$', s)
 	"""
 	z = r.randint(0,5)
 	if z == 0:
@@ -606,17 +929,20 @@ def bandart():
 	Gibt eine Bandart zurück.
 
 	Beispiel: 'Gothic Metal Band'
+
+	.. only:: doctest
+
+		>>> s = bandart()
+		
+		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß -]+[Bb]and$', s)
 	"""
-	if r.randint(0,2):
-		m = r.choice(musik)
-		if ' ' in m:
-			s = m + ' Band'
-		elif '-' in m:
-			s = m + '-Band'
-		else:
-			s = m + 'band'
+	m = r.choice(musik)
+	if ' ' in m:
+		s = m + ' Band'
+	elif '-' in m:
+		s = m + '-Band'
 	else:
-		s = r.choice(['Band', 'Musikergruppe'])
+		s = m + 'band'
 	return s
 
 

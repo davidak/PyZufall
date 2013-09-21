@@ -1,13 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
-# https://www.destatis.de/DE/Startseite.html
-# http://de.statista.com/
-# https://www.zensus2011.de/DE/Home/home_node.html
-# http://www.statistik2013.de/de/
+"""
+pyzufall.person
+---------------
 
-# Geschlechterverteilung:
-# https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Tabellen/Zensus_Geschlecht_Staatsangehoerigkeit.html
+Stellt die Klasse Person zur Verfügung. Mit ihr kann man ein Objekt erzeugen, dass eine Person mit zufällig generierten Daten darstellt.
+
+Es kann auf jedes Attribut einzeln zugegriffen werden oder mit print(person) alle aufeinmal ausgeben werden.
+
+Die generierten Daten basieren teilweise auf statistischen Werten und versuchen möglichst authentisch zu sein.
+
+Quellen für Statistiken:
+- https://www.destatis.de/
+- http://de.statista.com/
+- https://www.zensus2011.de/
+- http://www.statistik2013.de/
+"""
 
 import random as r
 import datetime
