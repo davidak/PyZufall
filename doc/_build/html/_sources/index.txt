@@ -15,5 +15,6 @@ Pyzufall ist Open Source, der Quelltext kann auf `github.com <https://github.com
     verwenden
     beitragen
     benutzer
+    entwicklung
     module
     changelog

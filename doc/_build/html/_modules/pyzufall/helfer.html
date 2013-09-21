@@ -12,6 +12,7 @@
     
     <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/issuetracker.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -76,9 +77,14 @@
 
 <div class="viewcode-block" id="lese"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.lese">[Doku]</a><span class="k">def</span> <span class="nf">lese</span><span class="p">(</span><span class="n">dateiname</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.</span>
+<span class="sd">	Liest die Textdatei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.</span>
 
 <span class="sd">	`&lt;http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path&gt;`_</span>
+
+<span class="sd">	:param dateiname: Dateiname inklusive Endung, z.B. *vornamen.txt*</span>
+<span class="sd">	:type dateiname: string</span>
+<span class="sd">	:return: eine Liste, die den Zeilen der Textdatei entspricht</span>
+<span class="sd">	:rtype: list</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="n">dateipfad</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s">&#39;data/&#39;</span> <span class="o">+</span> <span class="n">dateiname</span><span class="p">)</span>
 	<span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateipfad</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
@@ -94,6 +100,33 @@
 		<span class="k">return</span> <span class="n">wert</span>
 	<span class="k">else</span><span class="p">:</span>
 		<span class="k">return</span> <span class="s">&#39;&#39;</span>
+
+</div>
+<div class="viewcode-block" id="erste_gross"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.erste_gross">[Doku]</a><span class="k">def</span> <span class="nf">erste_gross</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Macht den ersten Buchstaben gross.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+</div>
+<div class="viewcode-block" id="str_add"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.str_add">[Doku]</a><span class="k">def</span> <span class="nf">str_add</span><span class="p">(</span><span class="n">wort</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Fügt einen String ans Ende eines Wortes an, ohne doppelte Buchstaben zu erzeugen.</span>
+
+<span class="sd">	Beispiele:</span>
+
+<span class="sd">	- blöd + e = blöde</span>
+<span class="sd">	- feige + e = feige</span>
+<span class="sd">	- feige + er = feiger</span>
+
+<span class="sd">	.. versionadded:: 0.11</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="c"># wenn der letzte Buchstabe des wortes ist gleich der erste des strings</span>
+	<span class="k">if</span> <span class="n">wort</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">string</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+		<span class="c"># gebe wort + alles ohne den ersten des strings zurück</span>
+		<span class="k">return</span> <span class="n">wort</span> <span class="o">+</span> <span class="n">string</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">wort</span> <span class="o">+</span> <span class="n">string</span>
 
 </div>
 <div class="viewcode-block" id="e16"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.e16">[Doku]</a><span class="k">def</span> <span class="nf">e16</span><span class="p">(</span><span class="n">wert</span><span class="p">):</span>
@@ -145,15 +178,8 @@
 	<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
 		<span class="k">return</span> <span class="n">wert</span>
 	<span class="k">else</span><span class="p">:</span>
-		<span class="k">return</span> <span class="s">&#39;&#39;</span>
-
-</div>
-<div class="viewcode-block" id="erste_gross"><a class="viewcode-back" href="../../module.html#pyzufall.helfer.erste_gross">[Doku]</a><span class="k">def</span> <span class="nf">erste_gross</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-	<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">	Macht den ersten Buchstaben gross.</span>
-<span class="sd">	&quot;&quot;&quot;</span>
-	<span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-</pre></div></div>
+		<span class="k">return</span> <span class="s">&#39;&#39;</span></div>
+</pre></div>
 
           </div>
         </div>

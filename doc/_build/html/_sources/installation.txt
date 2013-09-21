@@ -29,15 +29,15 @@ Unittests
 
 Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus::
 
-    $ nosetests -v
-    test.test_satz ... ok
-    test.test_satz_frage ... ok
+    imac:pyzufall davidak$ nosetests -v
     test.test_test ... ok
-    test.test_lese ... ok
-    test.test_erste_gross ... ok
+    test_helfer.test_lese ... ok
+    test_helfer.test_erste_gross ... ok
+    test_satz.test_satz ... ok
+    test_satz.test_satz_frage ... ok
     
     ----------------------------------------------------------------------
-    Ran 5 tests in 0.807s
+    Ran 5 tests in 0.822s
     
     OK
 

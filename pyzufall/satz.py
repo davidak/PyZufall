@@ -96,7 +96,7 @@ def satz_band_besetzung():
 
 def satz_band():
 	"""
-	Generiert einen Satz zum Thema Band.
+	Generiert einen zufälligen Satz zum Thema Band.
 	"""
 	return r.choice([satz_band_mitglied, satz_band_gegruendet, satz_band_besetzung])()
 

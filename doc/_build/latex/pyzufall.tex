@@ -3,7 +3,6 @@
 \documentclass[a4paper,12pt,oneside]{sphinxmanual}
 \usepackage[utf8]{inputenc}
 \DeclareUnicodeCharacter{00A0}{\nobreakspace}
-\usepackage{cmap}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{times}
@@ -14,8 +13,8 @@
 
 
 \title{pyzufall Dokumentation}
-\date{15. 09. 2013}
-\release{0.10.3}
+\date{21. 09. 2013}
+\release{0.11}
 \author{davidak}
 \newcommand{\sphinxlogo}{}
 \renewcommand{\releasename}{Release}
@@ -115,15 +114,15 @@
 \makeatother
 
 \begin{document}
-\shorthandoff{"}
+
 \maketitle
 \tableofcontents
 \phantomsection\label{index::doc}
 
 
-Das Python-Paket \textbf{pyzufall} generiert zufällige Daten wie Namen, Fantasieworte, Personen oder Sätze.
+Das Python-Paket \textbf{pyzufall} generiert zufällige Daten wie Namen, Berufe, Bandnamen, ein Datum, Sätze oder den Datensatz einer Personen.
 
-Es wurde für \href{http://satzgenerator.de/}{satzgenerator.de} entwickelt, kann aber vielfältig eingesetzt werden.
+Es wurde ursprünglich für \href{http://satzgenerator.de/}{satzgenerator.de} entwickelt, kann aber vielfältig eingesetzt werden.
 
 Pyzufall ist Open Source, der Quelltext kann auf \href{https://github.com/davidak/pyzufall/}{github.com} runtergeladen werden.
 
@@ -162,7 +161,13 @@ Pyzufall ist Open Source und wird bereits für {\hyperref[benutzer::doc]{\emph{a
 
 \chapter{Installation}
 \label{installation:installation}\label{installation::doc}
-Die aktuellste Version von \textbf{pyzufall} findest du auf \href{https://github.com/davidak/pyzufall}{github}. Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
+Die aktuellste Version von \textbf{pyzufall} findest du auf \href{https://github.com/davidak/pyzufall}{github}.
+
+Eine stabile Version wird es auf \href{https://pypi.python.org/}{PyPI} geben.
+
+\begin{notice}{note}{Bemerkung:}
+Derzeit befindet sich \textbf{pyzufall} in aktiver Entwicklung. Daher kann sich die Struktur oder Funktionsnamen noch ändern.
+\end{notice}
 
 
 \section{Manuelle Installation}
@@ -191,15 +196,15 @@ Danach kopierst du das Paket \textbf{pyzufall} in dein Projekt-Verzeichnis:
 Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\$ nosetests -v
-test.test\_satz ... ok
-test.test\_satz\_frage ... ok
+imac:pyzufall davidak\$ nosetests -v
 test.test\_test ... ok
-test.test\_lese ... ok
-test.test\_erste\_gross ... ok
+test\_helfer.test\_lese ... ok
+test\_helfer.test\_erste\_gross ... ok
+test\_satz.test\_satz ... ok
+test\_satz.test\_satz\_frage ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.807s
+Ran 5 tests in 0.822s
 
 OK
 \end{Verbatim}
@@ -216,7 +221,7 @@ Anhand von Beispielen werden die verschiedenen Module von \textbf{pyzufall} vorg
 
 \section{Name generieren}
 \label{verwenden:name-generieren}
-Um einen Namen zu generieren wird das Modul {\hyperref[module:module-pyzufall.generator]{\code{pyzufall.generator}}} verwendet, dass eine Vielzahl von Funktionen für das generieren von Daten bereitstellt.
+Um einen Namen zu generieren wird das Modul {\hyperref[module:module-pyzufall.generator]{\code{pyzufall.generator}}} verwendet, dass eine Vielzahl von Funktionen für das Generieren von Daten bereitstellt.
 
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kn}{from} \PYG{n+nn}{pyzufall.generator} \PYG{k+kn}{import} \PYG{n}{vorname\PYGZus{}m}\PYG{p}{,} \PYG{n}{nachname}
@@ -325,9 +330,78 @@ Dein Projekt füge ich auch gerne hinzu.
 Einfach eine E-Mail mit Beschreibung und Link an post at davidak punkt de oder das \href{http://davidak.de/kontakt}{Kontaktformular} benutzen.
 
 
+\chapter{Entwicklung}
+\label{entwicklung::doc}\label{entwicklung:entwicklung}
+Bei der Entwicklung von \textbf{pyzufall} wird \href{http://git-scm.com/}{git} für die Versionierung eingesetzt.
+
+Die Dokumentation wird mit \href{http://sphinx-doc.org/}{Sphinx} erzeugt und die Unittests durch \href{http://nose.readthedocs.org/}{nose} ausgeführt.
+
+
+\section{Repository}
+\label{entwicklung:repository}
+\href{https://github.com/davidak/pyzufall}{https://github.com/davidak/pyzufall}
+
+
+\section{Vor dem Release}
+\label{entwicklung:vor-dem-release}\begin{itemize}
+\item {} 
+Versionsnummer in \code{version.py} überprüfen
+
+\item {} 
+{\hyperref[changelog::doc]{\emph{Changelog}}} aktualisieren, Versionsnummer und Datum überprüfen
+
+\item {} 
+Unittests ausführen:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ make test
+\end{Verbatim}
+
+\item {} 
+Dokumentation bauen:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ make docs
+\end{Verbatim}
+
+\end{itemize}
+
+
+\section{Release}
+\label{entwicklung:release}\begin{itemize}
+\item {} 
+letzte Änderungen in git einchecken
+
+\item {} 
+git tag mit Versionsnummer setzen
+
+\item {} 
+push auf github
+
+\item {} 
+auf PyPI veröffentlichen:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\$ python setup.py sdist upload
+\end{Verbatim}
+
+\end{itemize}
+
+
+\section{Nach dem Release}
+\label{entwicklung:nach-dem-release}\begin{itemize}
+\item {} 
+Versionsnummer inkrementieren
+
+\item {} 
+am nächsten Release arbeiten :)
+
+\end{itemize}
+
+
 \chapter{Referenz der Module}
 \label{module:referenz-der-module}\label{module::doc}
-Die Module und ihre Funktionen.
+Die Module mit ihren Klassen und Funktionen.
 
 
 \section{pyzufall.helfer}
@@ -336,7 +410,7 @@ Die Module und ihre Funktionen.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.helfer.chance}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{chance}}{\emph{wahrscheinlichkeit}, \emph{wert}}{}
 Der übergebene Wert wird mit der gewählten Wahrscheinlichkeit zurückgegeben.
-
+Neu in Version 0.11.
 \end{fulllineitems}
 
 \index{e16() (in Modul pyzufall.helfer)}
@@ -344,7 +418,7 @@ Der übergebene Wert wird mit der gewählten Wahrscheinlichkeit zurückgegeben.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.helfer.e16}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{e16}}{\emph{wert}}{}
 Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16\% zurückgegeben.
-
+Veraltet ab Version 0.11: Wird durch {\hyperref[module:pyzufall.helfer.chance]{\code{pyzufall.helfer.chance()}}} ersetzt.
 \end{fulllineitems}
 
 \index{e25() (in Modul pyzufall.helfer)}
@@ -352,7 +426,7 @@ Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16\% zurückgegeben.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.helfer.e25}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{e25}}{\emph{wert}}{}
 Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25\% zurückgegeben.
-
+Veraltet ab Version 0.11: Wird durch {\hyperref[module:pyzufall.helfer.chance]{\code{pyzufall.helfer.chance()}}} ersetzt.
 \end{fulllineitems}
 
 \index{e50() (in Modul pyzufall.helfer)}
@@ -360,7 +434,7 @@ Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25\% zurückgegeben.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.helfer.e50}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{e50}}{\emph{wert}}{}
 Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50\% zurückgegeben.
-
+Veraltet ab Version 0.11: Wird durch {\hyperref[module:pyzufall.helfer.chance]{\code{pyzufall.helfer.chance()}}} ersetzt.
 \end{fulllineitems}
 
 \index{e75() (in Modul pyzufall.helfer)}
@@ -368,7 +442,7 @@ Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50\% zurückgegeben.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.helfer.e75}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{e75}}{\emph{wert}}{}
 Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75\% zurückgegeben.
-
+Veraltet ab Version 0.11: Wird durch {\hyperref[module:pyzufall.helfer.chance]{\code{pyzufall.helfer.chance()}}} ersetzt.
 \end{fulllineitems}
 
 \index{erste\_gross() (in Modul pyzufall.helfer)}
@@ -383,10 +457,42 @@ Macht den ersten Buchstaben gross.
 
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.helfer.lese}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{lese}}{\emph{dateiname}}{}
-Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
+Liest die Textdatei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.
 
 \href{http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path}{http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path}
+\begin{quote}\begin{description}
+\item[{Parameter}] \leavevmode
+\textbf{dateiname} (\href{http://docs.python.org/library/string.html\#string}{\emph{string}}) -- Dateiname inklusive Endung, z.B. \emph{vornamen.txt}
 
+\item[{Rückgabe}] \leavevmode
+eine Liste, die den Zeilen der Textdatei entspricht
+
+\item[{Rückgabetyp}] \leavevmode
+list
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{str\_add() (in Modul pyzufall.helfer)}
+
+\begin{fulllineitems}
+\phantomsection\label{module:pyzufall.helfer.str_add}\pysiglinewithargsret{\code{pyzufall.helfer.}\bfcode{str\_add}}{\emph{wort}, \emph{string}}{}
+Fügt einen String ans Ende eines Wortes an, ohne doppelte Buchstaben zu erzeugen.
+
+Beispiele:
+\begin{itemize}
+\item {} 
+blöd + e = blöde
+
+\item {} 
+feige + e = feige
+
+\item {} 
+feige + er = feiger
+
+\end{itemize}
+Neu in Version 0.11.
 \end{fulllineitems}
 
 
@@ -470,7 +576,7 @@ Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
 
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.generator.essen}\pysiglinewithargsret{\code{pyzufall.generator.}\bfcode{essen}}{}{}
-Gibt ein Gericht zurück.
+Gibt ein Essen zurück.
 
 \end{fulllineitems}
 
@@ -530,7 +636,17 @@ Gibt ein zufälliges Geschlecht zurück.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.generator.interesse}\pysiglinewithargsret{\code{pyzufall.generator.}\bfcode{interesse}}{}{}
 Gibt ein zufälliges Interesse bzw Hobby zurück.
+Veraltet ab Version 0.11: Wird durch {\hyperref[module:pyzufall.generator.interessen_liste]{\code{pyzufall.generator.interessen\_liste()}}} ersetzt.
+\end{fulllineitems}
 
+\index{interessen\_liste() (in Modul pyzufall.generator)}
+
+\begin{fulllineitems}
+\phantomsection\label{module:pyzufall.generator.interessen_liste}\pysiglinewithargsret{\code{pyzufall.generator.}\bfcode{interessen\_liste}}{\emph{anzahl=1}}{}
+Gibt eine Liste von Interessen als String zurück.
+
+Ohne Angabe der Anzahl wird ein Interesse zurückgegeben.
+Neu in Version 0.11.
 \end{fulllineitems}
 
 \index{koerperteil() (in Modul pyzufall.generator)}
@@ -586,6 +702,11 @@ Beispiel:
 Gibt eine Ortsangabe zurück.
 
 Beispiel: `im Flur'
+
+\begin{notice}{note}{Zu tun}
+
+aufteilen in generator und zufällige aus liste
+\end{notice}
 
 \end{fulllineitems}
 
@@ -789,9 +910,7 @@ Gibt eine Zahl zwischen 0 und 100 zurück.
 \begin{fulllineitems}
 \phantomsection\label{module:pyzufall.person.Person}\pysigline{\strong{class }\code{pyzufall.person.}\bfcode{Person}}
 Generiert Daten einer zufälligen und fiktiven Person.
-
-\DUspan{}{Neu in Version 0.9.}
-
+Neu in Version 0.9.
 \end{fulllineitems}
 
 
@@ -993,26 +1112,7 @@ Beispiel: In der Garage ist das Mannsweib lesbisch.
 \phantomsection\label{module:pyzufall.satz.satz_kloster}\pysiglinewithargsret{\code{pyzufall.satz.}\bfcode{satz\_kloster}}{}{}
 Generiert einen Satz über eine Person in einem Kloster.
 
-Beispiel: Der Bruder Florian ist der debilste Mönch in der Abtei.
-
-\begin{notice}{note}{Zu tun}
-
-''...''ste nicht immer richtig:
-\begin{itemize}
-\item {} 
-Bruder Dennis war der monströsste Mönch im Kloster.
-
-\item {} 
-Schwester Lara ist die diskretste Nonne in der Abtei.
-
-\item {} 
-Bruder Marcel war der gerechtste Mönch im Orden.
-
-\item {} 
-Bruder Nicolaus ist der falschste Mönch im Kloster.
-
-\end{itemize}
-\end{notice}
+Beispiel: Bruder Ludwig ist der böseste Mönch im Kloster.
 
 \end{fulllineitems}
 
@@ -1097,6 +1197,43 @@ Generiert einen Satz zu einem zufälligen Thema.
 \chapter{Changelog}
 \label{changelog::doc}\label{changelog:changelog}
 Hier sind die Änderungen in jeder Version dokumentiert.
+
+
+\section{Version 0.11}
+\label{changelog:version-0-11}
+Veröffentlicht am
+\begin{itemize}
+\item {} 
+Funktion {\hyperref[module:pyzufall.helfer.chance]{\code{pyzufall.helfer.chance()}}} hinzugefügt und {\hyperref[module:pyzufall.helfer.e25]{\code{pyzufall.helfer.e25()}}} etc dadurch ersetzt
+
+\item {} 
+Funktion {\hyperref[module:pyzufall.generator.interessen_liste]{\code{pyzufall.generator.interessen\_liste()}}} hinzugefügt. Sie ersetzt {\hyperref[module:pyzufall.generator.interesse]{\code{pyzufall.generator.interesse()}}}.
+
+\item {} 
+Funktion {\hyperref[module:pyzufall.helfer.str_add]{\code{pyzufall.helfer.str\_add()}}} mit Unittests hinzugefügt \href{https://github.com/davidak/pyzufall/issues/14}{\DUspan{xref,issue,closed}{\#14}}
+
+\item {} 
+Ungleiche Elemente aus Listen werden jetzt mit der Funktion \href{http://docs.python.org/library/random.html\#random.sample}{\code{random.sample()}} generiert.
+
+\item {} 
+Unittests aufgeteilt
+
+\item {} 
+viele kleine Fehlerbehebungen und Verbesserungen
+
+\item {} 
+Dokumentation und README angepasst
+
+\item {} 
+Seite {\hyperref[entwicklung::doc]{\emph{Entwicklung}}} zur Dokumentation hinzugefügt
+
+\item {} 
+Mit der Sphinx-Erweiterung \href{https://github.com/lunaryorn/sphinxcontrib-issuetracker}{sphinxcontrib-issuetracker} können jetzt Issues von github in der Dokumentation verlinkt werden
+
+\item {} 
+Makefile erstellt \href{https://github.com/davidak/pyzufall/issues/3}{\DUspan{xref,issue,closed}{\#3}}
+
+\end{itemize}
 
 
 \section{Version 0.10.3}

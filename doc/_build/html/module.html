@@ -12,6 +12,7 @@
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/issuetracker.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="top" title="pyzufall 0.11 Dokumentation" href="index.html" />
     <link rel="next" title="Changelog" href="changelog.html" />
-    <link rel="prev" title="Benutzer" href="benutzer.html" /> 
+    <link rel="prev" title="Entwicklung" href="entwicklung.html" /> 
   </head>
   <body>
     <div class="related">
@@ -44,7 +45,7 @@
           <a href="changelog.html" title="Changelog"
              accesskey="N">weiter</a> |</li>
         <li class="right" >
-          <a href="benutzer.html" title="Benutzer"
+          <a href="entwicklung.html" title="Entwicklung"
              accesskey="P">zurück</a> |</li>
         <li><a href="index.html">pyzufall 0.11 Dokumentation</a> &raquo;</li> 
       </ul>
@@ -63,8 +64,8 @@
 </ul>
 
   <h4>Vorheriges Thema</h4>
-  <p class="topless"><a href="benutzer.html"
-                        title="vorheriges Kapitel">Benutzer</a></p>
+  <p class="topless"><a href="entwicklung.html"
+                        title="vorheriges Kapitel">Entwicklung</a></p>
   <h4>Nächstes Thema</h4>
   <p class="topless"><a href="changelog.html"
                         title="nächstes Kapitel">Changelog</a></p>
@@ -148,8 +149,34 @@
 <dl class="function">
 <dt id="pyzufall.helfer.lese">
 <tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">lese</tt><big>(</big><em>dateiname</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#lese"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.lese" title="Permalink zu dieser Definition">¶</a></dt>
-<dd><p>Liest die Datei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.</p>
+<dd><p>Liest die Textdatei mit dem übergebenen Namen aus data/ zeilenweise ein und gib eine Liste zurück.</p>
 <p><a class="reference external" href="http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path">http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><strong>dateiname</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#string" title="(in Python v2.7)"><em>string</em></a>) &#8211; Dateiname inklusive Endung, z.B. <em>vornamen.txt</em></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Rückgabe:</th><td class="field-body">eine Liste, die den Zeilen der Textdatei entspricht</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Rückgabetyp:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyzufall.helfer.str_add">
+<tt class="descclassname">pyzufall.helfer.</tt><tt class="descname">str_add</tt><big>(</big><em>wort</em>, <em>string</em><big>)</big><a class="reference internal" href="_modules/pyzufall/helfer.html#str_add"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.helfer.str_add" title="Permalink zu dieser Definition">¶</a></dt>
+<dd><p>Fügt einen String ans Ende eines Wortes an, ohne doppelte Buchstaben zu erzeugen.</p>
+<p>Beispiele:</p>
+<ul class="simple">
+<li>blöd + e = blöde</li>
+<li>feige + e = feige</li>
+<li>feige + er = feiger</li>
+</ul>
+<p class="versionadded">
+<span class="versionmodified">Neu in Version 0.11.</span></p>
 </dd></dl>
 
 </div>
@@ -310,6 +337,10 @@
 <tt class="descclassname">pyzufall.generator.</tt><tt class="descname">ort</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pyzufall/generator.html#ort"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.generator.ort" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Gibt eine Ortsangabe zurück.</p>
 <p>Beispiel: &#8216;im Flur&#8217;</p>
+<div class="admonition-zu-tun admonition" id="index-1">
+<p class="first admonition-title">Zu tun</p>
+<p class="last">aufteilen in generator und zufällige aus liste</p>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -605,17 +636,7 @@
 <dt id="pyzufall.satz.satz_kloster">
 <tt class="descclassname">pyzufall.satz.</tt><tt class="descname">satz_kloster</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/pyzufall/satz.html#satz_kloster"><span class="viewcode-link">[Quelle]</span></a><a class="headerlink" href="#pyzufall.satz.satz_kloster" title="Permalink zu dieser Definition">¶</a></dt>
 <dd><p>Generiert einen Satz über eine Person in einem Kloster.</p>
-<p>Beispiel: Der Bruder Florian ist der debilste Mönch in der Abtei.</p>
-<div class="admonition-zu-tun admonition" id="index-1">
-<p class="first admonition-title">Zu tun</p>
-<p>&#8221;...&#8221;ste nicht immer richtig:</p>
-<ul class="last simple">
-<li>Bruder Dennis war der monströsste Mönch im Kloster.</li>
-<li>Schwester Lara ist die diskretste Nonne in der Abtei.</li>
-<li>Bruder Marcel war der gerechtste Mönch im Orden.</li>
-<li>Bruder Nicolaus ist der falschste Mönch im Kloster.</li>
-</ul>
-</div>
+<p>Beispiel: Bruder Ludwig ist der böseste Mönch im Kloster.</p>
 </dd></dl>
 
 <dl class="function">
@@ -694,7 +715,7 @@
           <a href="changelog.html" title="Changelog"
              >weiter</a> |</li>
         <li class="right" >
-          <a href="benutzer.html" title="Benutzer"
+          <a href="entwicklung.html" title="Entwicklung"
              >zurück</a> |</li>
         <li><a href="index.html">pyzufall 0.11 Dokumentation</a> &raquo;</li> 
       </ul>

@@ -70,6 +70,11 @@ class Person(object):
 		return s
 
 	def alter(self):
+		"""
+		Berechnet das Alter der übergebenen Person.
+
+		:rtype: int
+		"""
 		_heute = datetime.date.today()
 		_geburtstag = datetime.datetime.strptime(self.geburtsdatum, "%d.%m.%Y").date()
 		_alter = int((_heute - _geburtstag).days / 365.2425)
@@ -115,6 +120,9 @@ class Person(object):
 				return "arbeitslos"
 
 	def _gen_interessen(self):
+		"""
+		Gibt eine Liste mit Interessen zurück.
+		"""
 		_anzahl = r.randint(1,3)
 		if r.randint(0,1): # 50% haben mehr als 3 Interessen, maximal 8
 			_anzahl + r.randint(1, 5)

@@ -12,6 +12,7 @@
     
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/issuetracker.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -118,15 +119,15 @@ $ cd meinprojekt</pre>
 <div class="section" id="unittests">
 <h2>Unittests<a class="headerlink" href="#unittests" title="Permalink zu dieser Überschrift">¶</a></h2>
 <p>Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus:</p>
-<div class="highlight-python"><pre>$ nosetests -v
-test.test_satz ... ok
-test.test_satz_frage ... ok
+<div class="highlight-python"><pre>imac:pyzufall davidak$ nosetests -v
 test.test_test ... ok
-test.test_lese ... ok
-test.test_erste_gross ... ok
+test_helfer.test_lese ... ok
+test_helfer.test_erste_gross ... ok
+test_satz.test_satz ... ok
+test_satz.test_satz_frage ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.807s
+Ran 5 tests in 0.822s
 
 OK</pre>
 </div>

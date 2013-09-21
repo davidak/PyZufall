@@ -56,6 +56,8 @@ def geschlecht():
 
 	2011 gibt es laut Statistik 51,18% weibliche Personen in Deutschland:
 	https://www.destatis.de/DE/ZahlenFakten/GesellschaftStaat/Bevoelkerung/Bevoelkerungsstand/Tabellen/Zensus_Geschlecht_Staatsangehoerigkeit.html
+
+	:rtype: int
 	"""
 	if r.randint(0, 100) < 51:
 		return 0
@@ -321,6 +323,8 @@ def wort():
 def zahl():
 	"""
 	Gibt eine Zahl zwischen 0 und 100 zurück.
+
+	:rtype: string
 	"""
 	s = r.randint(0,100)
 	return str(s)
@@ -345,6 +349,8 @@ def color():
 def geburtsdatum():
 	"""
 	Gibt ein gültiges Datum zwischen dem 01.01.1910 und 31.12.2012 zurück.
+
+	:rtype: string
 	"""
 	while(True):
 		try:
@@ -358,6 +364,8 @@ def geburtsdatum():
 def datum():
 	"""
 	Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
+
+	:rtype: string
 	"""
 	while(True):
 		try:
@@ -562,9 +570,7 @@ def stadt():
 	"""
 	Gibt eine Stadt zurück.
 	"""
-	s = r.choice(stadte).split(' (', 1) # Stadt und Bundesland trennen
-	s = s[0] # Nur Stadt, nicht Bundesland
-	return s
+	return r.choice(stadte).split(' (', 1)[0] # Stadt von Bundesland trennen
 
 
 def stadt_bl():

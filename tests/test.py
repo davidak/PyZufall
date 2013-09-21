@@ -4,7 +4,13 @@
 """
 Unittests für pyzufall.
 
-nosetests -v --with-coverage
+Ausführen mit::
+
+	nosetests -v --with-coverage
+
+oder::
+
+	make test
 """
 
 def test_test():

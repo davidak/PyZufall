@@ -43,10 +43,11 @@ def str_add(wort, string):
 	"""
 	Fügt einen String ans Ende eines Wortes an, ohne doppelte Buchstaben zu erzeugen.
 
-	Beispiel:
-	blöd + e = blöde
-	feige + e = feige
-	feige + er = feiger
+	Beispiele:
+
+	- blöd + e = blöde
+	- feige + e = feige
+	- feige + er = feiger
 
 	.. versionadded:: 0.11
 	"""

@@ -14,15 +14,14 @@ Vor dem Release
 ---------------
 
 - Versionsnummer in :mod:`version.py` überprüfen
-- :doc:`changelog` aktualisieren, Versionsnummer und Datum
+- :doc:`changelog` aktualisieren, Versionsnummer und Datum überprüfen
 - Unittests ausführen::
 
-	$ nosetests -v
+	$ make test
 
 - Dokumentation bauen::
 
-	$ make html
-	$ make latexpdf
+	$ make docs
 
 Release
 -------
