@@ -10,13 +10,14 @@ Veröffentlicht am
 
 - Funktion :py:func:`pyzufall.helfer.chance` hinzugefügt und :py:func:`pyzufall.helfer.e25` etc ersetzt
 - Funktion :py:func:`pyzufall.generator.interessen_liste` hinzugefügt. Sie ersetzt :py:func:`pyzufall.generator.interesse`.
+- Funktion :py:func:`pyzufall.helfer.str_add` mit Unittests hinzugefügt #14
 - Ungleiche Elemente aus Listen werden jetzt mit der Funktion :py:func:`random.sample()` generiert.
 - Unittests aufgeteilt
 - viele kleine Änderungen
 - Dokumentation und README angepasst
 - Seite :doc:`entwicklung` zur Dokumentation hinzugefügt
 - Mit der Sphinx-Erweiterung `sphinxcontrib-issuetracker <https://github.com/lunaryorn/sphinxcontrib-issuetracker>`_ können jetzt Issues von github in der Dokumentation verlinkt werden
-- Makefile erstellt
+- Makefile erstellt #3
 
 Version 0.10.3
 --------------

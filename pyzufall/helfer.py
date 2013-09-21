@@ -11,7 +11,7 @@ def lese(dateiname):
 
 	`<http://stackoverflow.com/questions/10174211/make-an-always-relative-to-current-module-file-path>`_
 
-	:param dateiname: Dateiname inklusive Endung, z.B. `vornamen.txt`
+	:param dateiname: Dateiname inklusive Endung, z.B. *vornamen.txt*
 	:type dateiname: string
 	:return: eine Liste, die den Zeilen der Textdatei entspricht
 	:rtype: list
@@ -30,6 +30,32 @@ def chance(wahrscheinlichkeit, wert):
 		return wert
 	else:
 		return ''
+
+
+def erste_gross(s):
+	"""
+	Macht den ersten Buchstaben gross.
+	"""
+	return s[0].upper() + s[1:]
+
+
+def str_add(wort, string):
+	"""
+	Fügt einen String ans Ende eines Wortes an, ohne doppelte Buchstaben zu erzeugen.
+
+	Beispiel:
+	blöd + e = blöde
+	feige + e = feige
+	feige + er = feiger
+
+	.. versionadded:: 0.11
+	"""
+	# wenn der letzte Buchstabe des wortes ist gleich der erste des strings
+	if wort[-1] == string[0]:
+		# gebe wort + alles ohne den ersten des strings zurück
+		return wort + string[1:]
+	else:
+		return wort + string
 
 
 def e16(wert):
@@ -82,11 +108,3 @@ def e75(wert):
 		return wert
 	else:
 		return ''
-
-
-def erste_gross(s):
-	"""
-	Macht den ersten Buchstaben gross.
-	"""
-	return s[0].upper() + s[1:]
-
