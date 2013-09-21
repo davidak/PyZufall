@@ -16,6 +16,7 @@ Veröffentlicht am
 - Dokumentation und README angepasst
 - Seite :doc:`entwicklung` zur Dokumentation hinzugefügt
 - Mit der Sphinx-Erweiterung `sphinxcontrib-issuetracker <https://github.com/lunaryorn/sphinxcontrib-issuetracker>`_ können jetzt Issues von github in der Dokumentation verlinkt werden
+- Makefile erstellt
 
 Version 0.10.3
 --------------

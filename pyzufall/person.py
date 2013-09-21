@@ -12,7 +12,6 @@
 import random as r
 import datetime
 
-from .version import __version__
 from .helfer import chance
 from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w, interessen_liste
 

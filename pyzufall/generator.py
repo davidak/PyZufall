@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import re
 import random
 import datetime
@@ -360,7 +359,7 @@ def geburtsdatum():
 	while(True):
 		try:
 			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1910,2012))
-			_dateobj = datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
+			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
 			print(_s + " ist kein gültiges Datum!")
@@ -373,7 +372,7 @@ def datum():
 	while(True):
 		try:
 			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1950,2012))
-			_dateobj = datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
+			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
 			print(_s + " ist kein gültiges Datum!")
@@ -407,6 +406,7 @@ def beruf_w():
 	s = re.sub('arztin$', 'ärztin', s)
 	s = re.sub('beamterin$', 'beamtin', s) # Polizeibeamterin => Polizeibeamte
 	s = re.sub('stewardin$', 'stewardess', s)
+	s = re.sub('Etagenaufsichtin$', 'Etagenaufsicht', s)
 	s = re.sub('ein$', 'in', s) # Mikrobiologein => Mikrobiologin
 	return s
 

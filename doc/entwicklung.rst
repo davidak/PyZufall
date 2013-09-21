@@ -13,8 +13,8 @@ https://github.com/davidak/pyzufall
 Vor dem Release
 ---------------
 
-- :doc:`changelog` aktualisieren
 - Versionsnummer in :mod:`version.py` überprüfen
+- :doc:`changelog` aktualisieren, Versionsnummer und Datum
 - Unittests ausführen::
 
 	$ nosetests -v
