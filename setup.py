@@ -17,6 +17,8 @@ setup(
     author='davidak',
     author_email='post@davidak.de',
     packages=['pyzufall'],
+    package_dir={'pyzufall': 'pyzufall'},
+    package_data={'pyzufall': ['data/*.txt']},
     platforms='any',
     description=__doc__,
     long_description=open('README.rst').read(),
