@@ -6,20 +6,20 @@ Hier sind die Änderungen in jeder Version dokumentiert.
 Version 0.11
 ------------
 
-Veröffentlicht am
+Veröffentlicht am 22.09.2013
 
 - Funktion :py:func:`pyzufall.helfer.chance` hinzugefügt und :py:func:`pyzufall.helfer.e25` etc dadurch ersetzt
 - Funktion :py:func:`pyzufall.generator.interessen_liste` hinzugefügt. Sie ersetzt :py:func:`pyzufall.generator.interesse`.
 - Funktion :py:func:`pyzufall.helfer.str_add` mit Unittests hinzugefügt #14
 - Ungleiche Elemente aus Listen werden jetzt mit der Funktion :py:func:`random.sample()` generiert.
-- Unittests aufgeteilt
-- viele kleine Fehlerbehebungen und Verbesserungen
+- Doctests in Modulen hinzugefügt #15
+- *Makefile* erstellt #3
+- *setup.py* und *MANIFEST.in* hinzugefügt #2
 - Dokumentation und README angepasst
 - Seite :doc:`entwicklung` zur Dokumentation hinzugefügt
 - Mit der Sphinx-Erweiterung `sphinxcontrib-issuetracker <https://github.com/lunaryorn/sphinxcontrib-issuetracker>`_ können jetzt Issues von github in der Dokumentation verlinkt werden
-- Makefile erstellt #3
 - Sphinx Parameter zu Docstrings hinzufügen #1
-- Doctests in Modulen hinzugefügt und restliche Unittests wieder in *test.py* #15
+- viele kleine Fehlerbehebungen und Verbesserungen
 
 Version 0.10.3
 --------------
@@ -44,14 +44,14 @@ Version 0.10.1
 Veröffentlicht am 13.09.2013
 
 - Dokumentation an die neue Struktur angepasst
-- Fehler in person._gen_interessen behoben
+- Fehler in :py:func:`pyzufall.person._gen_interessen` behoben
 
 Version 0.10
 ------------
 
 Veröffentlicht am 13.09.2013
 
-- Projekt umstrukturiert: pyzufall als Paket in mehrere Module aufgeteilt
+- Projekt umstrukturiert: **pyzufall** als Paket in mehrere Module aufgeteilt
 
 Version 0.9
 -----------

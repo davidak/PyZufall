@@ -7,7 +7,7 @@ pyzufall.satz
 
 Stellt Funktionen zur verfügung, die Sätze nach diversen Satz-Schemata generieren.
 
-Die Funktion satz() beinhaltet alle.
+Die Funktion :py:func:`pyzufall.satz.satz()` beinhaltet alle.
 """
 
 import re
