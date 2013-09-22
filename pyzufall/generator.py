@@ -876,7 +876,7 @@ def stadt():
 
 		>>> s = stadt()
 		
-		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß/ -]+$', s)
+		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß/. -]+$', s)
 	"""
 	return r.choice(stadte).split(' (', 1)[0] # Stadt von Bundesland trennen
 

@@ -6,6 +6,10 @@ Unittests für pyzufall.
 
 Ausführen mit::
 
+	nosetests -v --with-doctest
+
+oder mit coverage::
+
 	nosetests -v --with-coverage --cover-package=pyzufall --with-doctest
 
 oder einfach::
@@ -15,12 +19,9 @@ oder einfach::
 
 import re
 from functools import wraps
-from nose.plugins.multiprocess import MultiProcess
 from pyzufall.helfer import re_satz, re_frage
 from pyzufall.satz import satz, satz_frage
 from pyzufall.generator import sprichwort
-
-_multiprocess_can_split_ = True
 
 
 def multi(fn):
@@ -39,7 +40,6 @@ def test_satz():
 	s = satz()
 	print(s)
 	assert re.match(re_satz, s)
-
 
 @multi
 def test_satz_frage():

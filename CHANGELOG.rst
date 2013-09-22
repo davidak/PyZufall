@@ -19,7 +19,7 @@ Veröffentlicht am
 - Mit der Sphinx-Erweiterung `sphinxcontrib-issuetracker <https://github.com/lunaryorn/sphinxcontrib-issuetracker>`_ können jetzt Issues von github in der Dokumentation verlinkt werden
 - Makefile erstellt #3
 - Sphinx Parameter zu Docstrings hinzufügen #1
-- Doctests in Modulen und restliche Unittests wieder in *test.py* #15
+- Doctests in Modulen hinzugefügt und restliche Unittests wieder in *test.py* #15
 
 Version 0.10.3
 --------------

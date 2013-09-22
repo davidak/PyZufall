@@ -1,0 +1,5 @@
+include setup.py
+include README.rst
+include CHANGELOG.rst
+include LICENSE.txt
+include pyzufall/data/*.txt
