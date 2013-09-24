@@ -6,15 +6,11 @@ Unittests für pyzufall.
 
 Ausführen mit::
 
-	nosetests -v --with-doctest
+	make test
 
 oder mit coverage::
 
 	nosetests -v --with-coverage --cover-package=pyzufall --with-doctest
-
-oder einfach::
-
-	make test
 """
 
 import re
@@ -51,3 +47,10 @@ def test_sprichwort():
 	s = sprichwort()
 	print(s)
 	assert re.match(re_satz, s)
+
+def main():
+	import nose
+	nose.main()
+
+if __name__ == "__main__":
+	main()

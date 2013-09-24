@@ -8,7 +8,7 @@ all: test
 docs: html pdf
 
 test:
-	@(nosetests -v --with-doctest)
+	@(nosetests)
 
 html:
 	@(cd doc; make html)
