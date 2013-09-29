@@ -1,7 +1,7 @@
 Verwenden
 =========
 
-Anhand von Beispielen werden die verschiedenen Module von **pyzufall** vorgestellt.
+Anhand von Beispielen werden die verschiedenen Module von **PyZufall** vorgestellt.
 
 Name generieren
 ---------------

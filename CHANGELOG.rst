@@ -10,15 +10,14 @@ Veröffentlicht am 22.09.2013
 
 - Funktion :py:func:`pyzufall.helfer.chance` hinzugefügt und :py:func:`pyzufall.helfer.e25` etc dadurch ersetzt
 - Funktion :py:func:`pyzufall.generator.interessen_liste` hinzugefügt. Sie ersetzt :py:func:`pyzufall.generator.interesse`.
-- Funktion :py:func:`pyzufall.helfer.str_add` mit Unittests hinzugefügt #14
+- Funktion :py:func:`pyzufall.helfer.str_add` mit Unittests hinzugefügt
 - Ungleiche Elemente aus Listen werden jetzt mit der Funktion :py:func:`random.sample()` generiert.
-- Doctests in Modulen hinzugefügt #15
-- *Makefile* erstellt #3
-- *setup.py* und *MANIFEST.in* hinzugefügt #2
+- Doctests in Modulen hinzugefügt
+- *Makefile* erstellt
+- *setup.py* und *MANIFEST.in* hinzugefügt
 - Dokumentation und README angepasst
 - Seite :doc:`entwicklung` zur Dokumentation hinzugefügt
-- Mit der Sphinx-Erweiterung `sphinxcontrib-issuetracker <https://github.com/lunaryorn/sphinxcontrib-issuetracker>`_ können jetzt Issues von github in der Dokumentation verlinkt werden
-- Sphinx Parameter zu Docstrings hinzufügen #1
+- Sphinx Parameter zu Docstrings hinzufügen
 - viele kleine Fehlerbehebungen und Verbesserungen
 
 Version 0.10.3

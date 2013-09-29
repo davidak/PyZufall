@@ -1,7 +1,7 @@
 Entwicklung
 ===========
 
-Bei der Entwicklung von **pyzufall** wird `git <http://git-scm.com/>`_ für die Versionierung eingesetzt.
+Bei der Entwicklung von **PyZufall** wird `git <http://git-scm.com/>`_ für die Versionierung eingesetzt.
 
 Die Dokumentation wird mit `Sphinx <http://sphinx-doc.org/>`_ erzeugt und die Unittests durch `nose <http://nose.readthedocs.org/>`_ ausgeführt.
 
@@ -11,12 +11,20 @@ Repository runterladen
 
 	$ git clone https://github.com/davidak/pyzufall.git
 
-.. note::
+Dokumentation erzeugen
+----------------------
 
-    Dafür muss `git <http://git-scm.com/>`_ installiert sein.
+Mit folgendem Befehl wird die HTML-Version sowie LaTeX samt PDF erzeugt.::
 
-Unittests
----------
+	$ make docs
+
+Einzeln geht das mit::
+
+	$ make html
+	$ make pdf
+
+Unittests ausführen
+-------------------
 
 Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus::
 
@@ -72,25 +80,10 @@ Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergela
 	
 	OK
 
-.. note::
-
-    Für die Unittests wird `nose <https://nose.readthedocs.org/en/latest/>`_ verwendet und muss installiert sein.
-
-Entwicklerversion installieren
-------------------------------
-::
-
-	$ sudo python3 setup.py install
-
-.. warning::
-
-	Diese Version ist nicht für den produktiven Einsatz gedacht.
-	Sie sollte nur zum Entwickeln oder zu Testzwecken eingesetzt werden.
-
 Vor dem Release
 ---------------
 
-- Versionsnummer in :mod:`version.py` überprüfen
+- Versionsnummer in :mod:`version.py` überprüfen, niemals 'dev' auf PyPI laden
 - :doc:`changelog` aktualisieren, Versionsnummer und Datum überprüfen
 - Unittests ausführen::
 

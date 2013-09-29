@@ -26,6 +26,6 @@ Der Satzgenerator
 
 Inzwischen gibt es `satzgenerator.de <http://satzgenerator.de/>`_. Auf dieser Webseite werden zufällige Sätze generiert, die bewertet und geteilt werden können.
 
-Für die Generierung der Sätze wird `pyzufall <https://github.com/davidak/pyzufall>`_ genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework `Bottle <http://bottlepy.org/>`_ und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
+Für die Generierung der Sätze wird `PyZufall <https://github.com/davidak/pyzufall>`_ genutzt. Die Seite ist auch in Python programmiert, benutzt das Web-Framework `Bottle <http://bottlepy.org/>`_ und eine MySQL-Datenbank für die Speicherung der Sätze und Bewertungen.
 
-Pyzufall ist Open Source und wird bereits für :doc:`andere Projekte <benutzer>` benutzt.
+PyZufall ist Open Source und wird bereits für :doc:`andere Projekte <benutzer>` benutzt.

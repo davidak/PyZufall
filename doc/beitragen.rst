@@ -22,6 +22,6 @@ Das Projekt verwendet den `Bugtracker auf github <https://github.com/davidak/pyz
 Programmieren
 -------------
 
-Wenn du auf github angemeldet bist, kannst du **pyzufall** `forken <https://help.github.com/articles/fork-a-repo>`_, das Repository runterladen und anfangen neue Funktionen zu programmieren oder den bestehenden Code zu verbessern.
+Wenn du auf github angemeldet bist, kannst du **PyZufall** `forken <https://help.github.com/articles/fork-a-repo>`_, das Repository runterladen und anfangen neue Funktionen zu programmieren oder den bestehenden Code zu verbessern.
 
 Dann stellst du einen `Pull-Request <https://help.github.com/articles/creating-a-pull-request>`_ mit deinen Änderungen.

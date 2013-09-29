@@ -49,8 +49,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'pyzufall'
-copyright = u'2013 davidak'
+project = u'PyZufall'
+copyright = u'2012, 2013 davidak'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -199,7 +199,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'pyzufall.tex', u'pyzufall Dokumentation',
+  ('index', 'PyZufall.tex', u'PyZufall Dokumentation',
    u'davidak', 'manual'),
 ]
 
@@ -229,7 +229,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'pyzufall', u'pyzufall Dokumentation',
+    ('index', 'PyZufall', u'PyZufall Dokumentation',
      [u'davidak'], 1)
 ]
 
@@ -243,8 +243,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'pyzufall', u'pyzufall Documentation',
-   u'davidak', 'pyzufall', 'One line description of project.',
+  ('index', 'PyZufall', u'PyZufall Documentation',
+   u'davidak', 'PyZufall', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -264,7 +264,7 @@ texinfo_show_urls = 'footnote'
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'pyzufall'
+epub_title = u'PyZufall'
 epub_author = u'davidak'
 epub_publisher = u'davidak'
 epub_copyright = u'2013 davidak'
