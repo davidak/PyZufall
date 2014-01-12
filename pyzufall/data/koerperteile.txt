@@ -38,8 +38,6 @@ der Rachen
 der Rücken
 das Rückgrat
 der Schädel
-der Schlund
-der Schoß
 die Schulter
 die Sehne
 die Stirn
@@ -52,5 +50,6 @@ der Hodensack
 der Hoden
 der Penis
 der Schwanz
+die Scheide
 der Darm
 der Anus
