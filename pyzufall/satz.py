@@ -14,7 +14,7 @@ import re
 import random as r
 
 from .helfer import erste_gross, chance, str_add
-from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
+from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, interessen_liste, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
 
 from .generator import adjektive, farben
 
@@ -295,11 +295,22 @@ def satz_adjektiv_am_ort():
 	return erste_gross(s)
 
 
+def satz_interessen():
+	"""
+	Generiert einen Satz über die Interessen einer Person.
+	"""
+	if r.randint(0,1):
+		_s = "{}s Interessen sind {}.".format(vorname(), interessen_liste(r.randint(2, 6)))
+	else:
+		_s = "{} zählt zu {}s Interessen.".format(interesse(), vorname())
+	return erste_gross(_s)
+
+
 def satz_thema():
 	"""
 	Generiert einen Satz zu einem zufälligen Thema.
 	"""
-	return r.choice([satz_nulltransitiv, satz_baum, satz_band, satz_kloster, satz_folgehandlung, satz_freunde_lieben, satz_adjektiv_am_ort, satz_absurde_farbfunktion, satz_farbe, satz_adjektiv_sprichwort, satz_arbeit, satz_essen, satz_koerperteil])()
+	return r.choice([satz_nulltransitiv, satz_baum, satz_band, satz_kloster, satz_folgehandlung, satz_freunde_lieben, satz_adjektiv_am_ort, satz_absurde_farbfunktion, satz_farbe, satz_adjektiv_sprichwort, satz_arbeit, satz_essen, satz_koerperteil, satz_interessen])()
 
 
 def satz_standard_1():

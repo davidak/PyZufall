@@ -321,19 +321,19 @@ def interesse():
 	return r.choice(interessen)
 
 
-def interessen_liste(anzahl=1):
+def interessen_liste(anzahl=2):
 	"""
 	Gibt eine Liste von Interessen als String zurück.
 
-	Ohne Angabe der Anzahl wird 1 Interesse zurückgegeben.
+	Ohne Angabe der Anzahl werden 2 Interessen zurückgegeben.
 
 	.. versionadded:: 0.11
 
 	.. only:: doctest
 
-		>>> s = interessen_liste()
+		>>> s = interessen_liste(1)
 
-		testst ob ergebnis in liste ist
+		testst ob ergebnis aus liste ist
 		>>> assert s in interessen
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -344,7 +344,7 @@ def interessen_liste(anzahl=1):
 		>>> assert re.match(re_liste, s)
 	"""
 	_liste = r.sample(interessen, anzahl)
-	return ', '.join(_liste)
+	return "{}{}".format(', '.join(_liste[:-2]) + ', ' if anzahl > 2 else '', ' und '.join(_liste[-2:]))
 
 
 def tier():
