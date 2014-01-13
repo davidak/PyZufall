@@ -328,7 +328,7 @@ def interessen_liste(anzahl=2):
 	Ohne Angabe der Anzahl werden 2 Interessen zurückgegeben.
 
 	.. versionadded:: 0.11
-	... deprecated:: 0.12
+	.. deprecated:: 0.12
 
 	.. only:: doctest
 

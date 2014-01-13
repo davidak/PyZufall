@@ -39,27 +39,30 @@ Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzuf
     from pyzufall.person import Person
     p1 = Person()
     p2 = Person()
+    
     print(p1)
-    print(p1.vorname + " und " + p2.vorname + " sitzen auf einer Bank im Park.\n")
-    print(p2.vorname + " (" + str(p2.alter) + ") wohnt in " + p2.wohnort + ".")
+    
+    print("{} und {} sitzen auf einer Bank im Park.".format(p1.vorname, p2.vorname))
+    print("{} ({}) wohnt in {} und isst gerne {}.".format(p1.vorname, p1.alter, p1.wohnort, p1.lieblingsessen))
+    
+    del p1, p2
 
 .. code-block:: none
 
     ********************************************************************************
-    Name: Kornelia Eismann
-    Geschlecht: weiblich
-    Geburtsdatum: 27.04.1974 (39)
-    Geburtsort: Geesthacht
-    Wohnort: Halle
-    Beruf: Technische Zeichnerin
-    Interessen: Würfelspiele
-    Lieblingsfarbe: Weiß
-    Lieblingsessen: Steak
-    Motto: Augen auf beim Eierkauf.
+    Name: Tilmann Ried
+    Geschlecht: männlich
+    Geburtsdatum: 19.04.1981 (32)
+    Geburtsort: Schwelm
+    Wohnort: Starnberg
+    Beruf: arbeitslos
+    Interessen: Sonnenstudio, Mofatuning
+    Lieblingsfarbe: Grün
+    Lieblingsessen: Schokoladen
+    Motto: Du sollst den Tag nicht vor dem Abend loben.
     ********************************************************************************
     
-    Kornelia und Thorge sitzen auf einer Bank im Park.
-    
-    Thorge (58) wohnt in Stadthagen.
+    Tilmann und Emre sitzen auf einer Bank im Park.
+    Tilmann (32) wohnt in Starnberg und isst gerne Schokoladen.
 
-Ein praktischer Einsatszweck dafür ist der `Python Random VCard-Generator <https://github.com/davidak/python-random-vcard-generator>`_.
+Ein praktischer Einsatszweck dafür ist der `Random VCard-Generator <https://github.com/davidak/random-vcard-generator>`_.

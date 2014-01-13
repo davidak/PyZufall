@@ -39,5 +39,4 @@ print(p2)
 
 print("{} und {} sitzen auf einer Bank im Park.\n".format(p1.vorname, p2.vorname))
 
-del p1
-del p2
+del p1, p2

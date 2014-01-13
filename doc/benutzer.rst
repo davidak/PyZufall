@@ -4,7 +4,7 @@ Benutzer
 Hier ist eine Liste mit Projekten, die **PyZufall** verwenden:
 
 * `satzgenerator.de <http://satzgenerator.de/>`_
-* `Python Random VCard-Generator <https://github.com/davidak/python-random-vcard-generator>`_
+* `Random VCard-Generator <https://github.com/davidak/random-vcard-generator>`_
 
 Dein Projekt füge ich auch gerne hinzu.
 

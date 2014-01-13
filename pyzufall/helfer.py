@@ -121,6 +121,7 @@ def aufzaehlung(liste):
 		>>> aufzaehlung(c)
 		'schlafen'
 
+	:param liste: Eine Liste von Strings.
 	:type liste: list
 	:rtype: string
 
