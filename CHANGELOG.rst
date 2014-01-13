@@ -1,7 +1,19 @@
 Changelog
 =========
 
-Hier sind die Änderungen in jeder Version dokumentiert.
+Hier sind die Änderungen jeder Version dokumentiert.
+
+Version 0.12
+------------
+
+Veröffentlicht am 14.01.2014
+
+- :py:func:`pyzufall.satz.satz_interessen` hinzugefügt
+- :py:func:`pyzufall.helfer.aufzaehlung` ersetzt :py:func:`pyzufall.generator.interessen_liste`
+- Keine Vergewaltigungen mehr. Das ist nicht witzig! Es braucht auch nicht über 20 Synonyme für Geschlechtsverkehr und Selbstbefriedigung. Durch diese Änderungen wird die Seriosität deutlich gesteigert!
+- Dokumentation verbessert und aktualisiert
+- Viele Verbesserungen am Code
+- Viele kleine Fehler behoben
 
 Version 0.11
 ------------
