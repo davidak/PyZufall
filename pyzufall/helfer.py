@@ -5,7 +5,7 @@
 pyzufall.helfer
 ---------------
 
-Stellt diverse Hilfs-Funktionen zur Verfügung.
+Stellt diverse Hilfsfunktionen bereit.
 """
 
 import os
@@ -98,6 +98,35 @@ def str_add(wort, string):
 		return wort + string[1:]
 	else:
 		return wort + string
+
+
+def aufzaehlung(liste):
+	"""
+	Erzeugt eine grammatikalisch korrekte Aufzählung aus einer Liste.
+
+	Beispiel:
+
+		>>> a = ['lesen', 'reiten', 'Freunde treffen']
+
+		>>> aufzaehlung(a)
+		'lesen, reiten und Freunde treffen'
+
+		>>> b = ['Überwachen', 'Strafen']
+
+		>>> aufzaehlung(b)
+		'Überwachen und Strafen'
+
+		>>> c = ['schlafen']
+
+		>>> aufzaehlung(c)
+		'schlafen'
+
+	:type liste: list
+	:rtype: string
+
+	.. versionadded:: 0.12
+	"""
+	return "{}{}".format(', '.join(liste[:-2]) + ', ' if len(liste) > 2 else '', ' und '.join(liste[-2:]))
 
 
 def e16(wert):

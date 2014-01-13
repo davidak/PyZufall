@@ -12,7 +12,7 @@ import re
 import random
 import datetime
 
-from .helfer import lese, chance, str_add
+from .helfer import lese, chance, str_add, aufzaehlung
 
 # Regex Pattern für Doctests
 from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum
@@ -328,6 +328,7 @@ def interessen_liste(anzahl=2):
 	Ohne Angabe der Anzahl werden 2 Interessen zurückgegeben.
 
 	.. versionadded:: 0.11
+	... deprecated:: 0.12
 
 	.. only:: doctest
 
@@ -344,7 +345,7 @@ def interessen_liste(anzahl=2):
 		>>> assert re.match(re_liste, s)
 	"""
 	_liste = r.sample(interessen, anzahl)
-	return "{}{}".format(', '.join(_liste[:-2]) + ', ' if anzahl > 2 else '', ' und '.join(_liste[-2:]))
+	return aufzaehlung(_liste)
 
 
 def tier():

@@ -23,8 +23,10 @@ import random as r
 import datetime
 
 from .helfer import chance
-from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w, interessen_liste
+from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w
 
+# Daten
+from .generator import interessen
 
 class Person(object):
 	"""
@@ -136,5 +138,5 @@ class Person(object):
 		_anzahl = r.randint(1,3)
 		if r.randint(0,1): # 50% haben mehr als 3 Interessen, maximal 8
 			_anzahl + r.randint(1, 5)
-		_s = interessen_liste(_anzahl)
+		_s = ', '.join(r.sample(interessen, _anzahl))
 		return _s

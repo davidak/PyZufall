@@ -5,7 +5,7 @@
 pyzufall.satz
 -------------
 
-Stellt Funktionen zur verfügung, die Sätze nach diversen Satz-Schemata generieren.
+Stellt Funktionen bereit, die Sätze nach diversen Satz-Schemata generieren.
 
 Die Funktion :py:func:`pyzufall.satz.satz()` beinhaltet alle.
 """
@@ -13,12 +13,12 @@ Die Funktion :py:func:`pyzufall.satz.satz()` beinhaltet alle.
 import re
 import random as r
 
-from .helfer import erste_gross, chance, str_add
-from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, interessen_liste, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
+from .helfer import erste_gross, chance, str_add, aufzaehlung
+from .generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, beziehung_m, beziehung_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
 
-from .generator import adjektive, farben
+# Daten
+from .generator import adjektive, farben, interessen
 
-# Satz-Schemata
 
 def satz_nulltransitiv():
 	"""
@@ -300,9 +300,9 @@ def satz_interessen():
 	Generiert einen Satz über die Interessen einer Person.
 	"""
 	if r.randint(0,1):
-		_s = "{}s Interessen sind {}.".format(vorname(), interessen_liste(r.randint(2, 6)))
+		_s = "{} Interessen sind {}.".format(str_add(vorname(), 's'), aufzaehlung(r.sample(interessen, r.randint(2,6))))
 	else:
-		_s = "{} zählt zu {}s Interessen.".format(interesse(), vorname())
+		_s = "{} zählt zu {} Interessen.".format(interesse(), str_add(vorname(), 's'))
 	return erste_gross(_s)
 
 
