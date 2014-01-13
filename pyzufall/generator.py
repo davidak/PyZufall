@@ -595,7 +595,7 @@ def geburtsdatum():
 			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
-			print(_s + " ist kein gültiges Datum!")
+			continue
 
 
 def datum():
@@ -616,7 +616,7 @@ def datum():
 			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
-			print(_s + " ist kein gültiges Datum!")
+			continue
 
 
 def sprichwort():
