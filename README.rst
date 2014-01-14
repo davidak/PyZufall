@@ -2,13 +2,13 @@ Die Python-Bibliothek **PyZufall** beinhaltet diverse Funktionen für das **Gene
 
 Die Entwicklung begann als Satzgenerator für http://satzgenerator.de/ und wird noch in diese Richtung weitergeführt.
 Sie soll aber auch eine generelle Sammlung von Funktionen zur Generierung zufälliger Daten darstellen.
-So wird sie schon von `anderen Projekten <https://pyzufall.readthedocs.org/de/latest/benutzer.html>`_ verwendet, wie dem `Python Random VCard-Generator <https://github.com/davidak/python-random-vcard-generator>`_.
+So wird sie schon von `anderen Projekten <https://pyzufall.readthedocs.org/de/latest/benutzer.html>`_ verwendet, wie dem `Random VCard-Generator <https://github.com/davidak/random-vcard-generator>`_.
 
 **PyZufall** ist `freie und Open Source Software <http://www.gnu.org/philosophy/free-sw.de.html>`_. Es steht unter der `GPL Version 3 <http://www.gnu.org/licenses/gpl-3.0.html>`_.
 
 Den Quelltext findest du im `Repository <https://github.com/davidak/pyzufall>`_ und Fehler sowie Verbesserungsvorschläge werden im `Bugtracker <https://github.com/davidak/pyzufall/issues>`_ gesammelt.
 
-Jeder ist dazu eingeladen zum Projekt beizutragen!
+Jeder ist eingeladen zum Projekt beizutragen!
 
 Ausführliche Informationen sind in der `Dokumentation <https://pyzufall.readthedocs.org/>`_ zu finden.
 
@@ -21,7 +21,7 @@ Mit `pip <http://www.pip-installer.org/en/latest/installing.html>`_ kannst du di
 
 Meist ruft der Befehl pip für Python 2.x auf. PyZufall wird hauptsächlich für Python 3 entwickelt, bei einem schnellen Test mit Python 2.6.x und 2.7.x sind allerdings keine Fehler aufgefallen.
 
-Pip für **Python 3** wird auf vielen System (z.B Ubuntu) wie folgt ausgeführt::
+Pip für **Python 3** wird auf vielen System (z.B OS X oder Ubuntu) wie folgt ausgeführt::
 
 	$ sudo pip-3.2 install pyzufall
 
