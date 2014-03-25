@@ -41,4 +41,4 @@ Hier ein einfaches Beispiel, wie du mit PyZufall einen zufälligen Namen generie
 	name = vorname_m() + ' ' + nachname()
 	print(name)
 
-Mehr zur Verwendung der einzelnen Module und deren Funktionen erfährst du in der `Dokumentation <https://pyzufall.readthedocs.org/de/latest/verwenden.html>`_.
+Mehr zur Verwendung der einzelnen Module und deren Funktionen erfährst du in der `Dokumentation <https://pyzufall.readthedocs.org/>`_.

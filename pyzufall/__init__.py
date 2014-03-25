@@ -2,5 +2,3 @@
 """
 Generiert zufällige Daten wie Namen, Berufe, Bandnamen, ein Datum, Sätze oder den Datensatz einer Personen.
 """
-
-from .version import __version__

@@ -6,7 +6,7 @@ Bei der Entwicklung von **PyZufall** wird `git <http://git-scm.com/>`_ für die 
 Die Dokumentation wird mit `Sphinx <http://sphinx-doc.org/>`_ erzeugt und die Unittests durch `nose <http://nose.readthedocs.org/>`_ ausgeführt.
 
 Repository runterladen
-----------
+----------------------
 ::
 
 	$ git clone https://github.com/davidak/pyzufall.git
@@ -92,6 +92,16 @@ Vor dem Release
 - Dokumentation bauen und überprüfen::
 
 	$ make docs
+
+- Installation von PyPI mit pip testen::
+
+	# upload package to pypitest
+	python3 setup.py upload -r https://testpypi.python.org/pypi
+
+	# Install with pip from testpypi
+	pip-3.2 install -i https://testpypi.python.org/pypi <package name>
+
+getestet werden sollte auf debian stable, ubuntu LTS, Windows XP / 7, OS X 10.6.8 (ich hab kein aktuelleres) mit Python 2.7 und 3.2 bzw 3.3
 
 Release
 -------
