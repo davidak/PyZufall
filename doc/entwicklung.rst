@@ -83,25 +83,31 @@ Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergela
 Vor dem Release
 ---------------
 
-- Versionsnummer in :mod:`version.py` überprüfen, niemals 'dev' auf PyPI laden
+- Versionsnummer in :mod:`version.py` überprüfen, niemals 'dev' auf PyPI laden!
 - :doc:`changelog` aktualisieren, Versionsnummer und Datum überprüfen
 - Unittests ausführen::
 
 	$ make test
 
+- RST-Syntax von README etc. prüfen, z.B. durch `<http://rst.ninjs.org/>`_
+
 - Dokumentation bauen und überprüfen::
 
 	$ make docs
 
-- Installation von PyPI mit pip testen::
+- Installation von PyPI mit pip testen: `<https://wiki.python.org/moin/TestPyPI>`_
 
-	# upload package to pypitest
-	python3 setup.py upload -r https://testpypi.python.org/pypi
+  Paket nach testpypi hochladen:
+  ::
 
-	# Install with pip from testpypi
-	pip-3.2 install -i https://testpypi.python.org/pypi <package name>
+	$ python3 setup.py sdist upload -r https://testpypi.python.org/pypi
 
-getestet werden sollte auf debian stable, ubuntu LTS, Windows XP / 7, OS X 10.6.8 (ich hab kein aktuelleres) mit Python 2.7 und 3.2 bzw 3.3
+  Auf verschiedenen Betriebssystemen testweise installieren:
+  ::
+
+	$ pip-3.2 install -i https://testpypi.python.org/pypi <package name>
+
+  Getestet werden sollte auf debian stable, Ubuntu LTS, Windows XP / 7, OS X 10.6.8 (ich hab kein neueres) mit aktueller Python 2.x und 3.x Version.
 
 Release
 -------
