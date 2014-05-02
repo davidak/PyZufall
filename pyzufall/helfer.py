@@ -10,6 +10,7 @@ Stellt diverse Hilfsfunktionen bereit.
 
 import os
 import random as r
+from datetime import datetime, date
 
 # Regex Pattern
 re_wort = r'^[A-Za-zäÄöÖüÜß-]+$'
@@ -129,3 +130,20 @@ def aufzaehlung(liste):
 	"""
 	return "{}{}".format(', '.join(liste[:-2]) + ', ' if len(liste) > 2 else '', ' und '.join(liste[-2:]))
 
+
+def alter(geburtsdatum):
+	"""
+	Berechnet das Alter in Jahren anhand des Geburtsdatums.
+
+	:rtype: int
+
+	.. only:: doctest
+
+	>>> s = alter("27.10.1988")
+
+	>>> assert s > 24
+	"""
+	_heute = date.today()
+	_geburtstag = datetime.strptime(geburtsdatum, "%d.%m.%Y").date()
+	_alter = int((_heute - _geburtstag).days / 365.2425)
+	return _alter

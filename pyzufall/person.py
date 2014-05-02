@@ -20,9 +20,8 @@ Quellen für Statistiken:
 """
 
 import random as r
-import datetime
 
-from .helfer import chance
+from .helfer import chance, alter
 from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w
 
 # Daten
@@ -48,7 +47,7 @@ class Person(object):
 		self.name = self.vorname + " " + self.nachname
 		self.geburtsdatum = geburtsdatum()
 		self.geburtsort = stadt()
-		self.alter = Person.alter(self)
+		self.alter = alter(self.geburtsdatum)
 		self.wohnort = stadt()
 		self.beruf = Person._gen_beruf(self)
 		self.interessen = Person._gen_interessen(self)
@@ -80,17 +79,6 @@ class Person(object):
 		s += "Motto: " + self.motto + "\n"
 		s += "*" * 80 + "\n"
 		return s
-
-	def alter(self):
-		"""
-		Berechnet das Alter der übergebenen Person.
-
-		:rtype: int
-		"""
-		_heute = datetime.date.today()
-		_geburtstag = datetime.datetime.strptime(self.geburtsdatum, "%d.%m.%Y").date()
-		_alter = int((_heute - _geburtstag).days / 365.2425)
-		return _alter
 
 	def _gen_beruf(self):
 		"""
