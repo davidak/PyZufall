@@ -10,7 +10,7 @@ Stellt diverse Generator-Funktionen zur Verfügung.
 
 import re
 import random
-import datetime
+from datetime import timedelta, date
 
 from .helfer import lese, chance, str_add, aufzaehlung
 
@@ -552,11 +552,39 @@ def color():
 	return r.choice(colors)
 
 
+def zeitpunkt(start, ende):
+	"""
+	Gibt einen zufälligen Zeitpunkt (datetime.date) zwischen zwei Zeitpunkten zurück.
+	Es handelt sich dabei um ein gültiges Datum.
+
+	.. versionadded:: 0.13
+
+	:param: start, ende: datetime
+	:rtype: datetime
+
+	.. only:: doctest
+
+	>>> _heute = date.today()
+
+	>>> _datum = date(2000, 3, 27)
+
+	>>> s = zeitpunkt(_datum, _heute)
+
+	>>> assert re.match(re_datum, s.strftime("%d.%m.%Y"))
+	"""
+	for arg in [start, ende]:
+		if type(arg) is not date:
+			raise TypeError("Es muss ein datetime.date Objekt übergeben werden, nicht " + str(type(arg)))
+
+	delta = ende - start
+	int_delta = (delta.days * 24 * 60 * 60) + delta.seconds
+	rand_second = random.randrange(int_delta)
+	return start + timedelta(seconds=rand_second)
+
+
 def geburtsdatum():
 	"""
-	Gibt ein gültiges Datum zwischen dem 01.01.1910 und 31.12.2013 zurück.
-
-	.. todo:: dynamisch zwischen -110 Jahre bis heute
+	Gibt ein gültiges Datum zwischen <vor 110 Jahren> und <heute> zurück.
 
 	:rtype: string
 
@@ -566,20 +594,14 @@ def geburtsdatum():
 
 		>>> assert re.match(re_datum, s)
 	"""
-	while(True):
-		try:
-			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1910,2013))
-			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
-			return _s
-		except:
-			continue
+	_vor_110_jahren = date.today() - timedelta(days=(110 * 365.24))
+	_datum = zeitpunkt(_vor_110_jahren, date.today())
+	return _datum.strftime("%d.%m.%Y")
 
 
 def datum():
 	"""
-	Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2013 zurück.
-
-	.. todo:: dynamisch zwischen -50 Jahre bis heute
+	Gibt ein gültiges Datum zwischen <vor 50 Jahren> und <heute> zurück.
 
 	:rtype: string
 
@@ -589,13 +611,9 @@ def datum():
 
 		>>> assert re.match(re_datum, s)
 	"""
-	while(True):
-		try:
-			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1950,2013))
-			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
-			return _s
-		except:
-			continue
+	_vor_50_jahren = date.today() - timedelta(days=(50 * 365.24))
+	_datum = zeitpunkt(_vor_50_jahren, date.today())
+	return _datum.strftime("%d.%m.%Y")
 
 
 def sprichwort():

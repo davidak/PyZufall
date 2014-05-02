@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from pyzufall import __version__
+from pyzufall.version import __version__
 from pyzufall.generator import adjektiv, band, bandart, baum, beilage, beruf_m, beruf_w, color, datum, essen, farbe, firma, geburtsdatum, gegenstand, interesse, koerperteil, nachname, objekt, objekt_m, objekt_w, ort, person, person_m, person_objekt_m, person_objekt_w, person_w, pflanze, sprichwort, stadt, stadt_bl, tier, trinken, verbd, verbi, verbi2, verbn, verbt, verbt2, vorname, vorname_m, vorname_w, wort, zahl
 from pyzufall.satz import satz
 from pyzufall.person import Person
