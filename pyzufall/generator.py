@@ -17,7 +17,8 @@ from .helfer import lese, chance, str_add, aufzaehlung
 # Regex Pattern für Doctests
 from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum
 
-r = random.SystemRandom() # Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
+# Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
+r = random.SystemRandom()
 
 # Namen einlesen
 vornamen_m = lese('vornamen_m.txt')
@@ -72,9 +73,9 @@ def geschlecht():
 
 		>>> s = geschlecht()
 
-		>>> assert s is 0 or s is 1
+		>>> assert s is 0 or 1
 	"""
-	if r.randint(0, 100) < 51:
+	if r.randint(1, 100) <= 51:
 		return 0
 	else:
 		return 1
@@ -88,7 +89,7 @@ def vorname_m():
 
 		>>> s = vorname_m()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in vornamen_m
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -105,7 +106,7 @@ def vorname_w():
 
 		>>> s = vorname_w()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in vornamen_w
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -116,7 +117,7 @@ def vorname_w():
 
 def vorname():
 	"""
-	Gibt einen zufälligen Vornamen zurück.
+	Gibt einen Vornamen zurück.
 	"""
 	return r.choice([vorname_m, vorname_w])()
 
@@ -129,7 +130,7 @@ def nachname():
 
 		>>> s = nachname()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in nachnamen
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -167,7 +168,7 @@ def verbi():
 
 		>>> s = verbi()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in intransitive_verben
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -186,7 +187,7 @@ def verbi2():
 
 		>>> s = verbi2()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in intransitive_verben_2
 		
 		>>> assert re.match(re_liste, s)
@@ -204,7 +205,7 @@ def verbt():
 
 		>>> s = verbt()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in transitive_verben
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -223,7 +224,7 @@ def verbt2():
 
 		>>> s = verbt2()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in transitive_verben_2
 		
 		>>> assert re.match(re_liste, s)
@@ -241,7 +242,7 @@ def verbd():
 
 		>>> s = verbd()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in ditransitive_verben
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -258,7 +259,7 @@ def adjektiv():
 
 		>>> s = adjektiv()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in adjektive
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -275,7 +276,7 @@ def gegenstand():
 
 		>>> s = gegenstand()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in gegenstaende
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -292,7 +293,7 @@ def koerperteil():
 
 		>>> s = koerperteil()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in koerperteile
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -312,40 +313,13 @@ def interesse():
 
 		>>> s = interesse()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in interessen
 		
 		testet ob ergebnis aus buchstaben besteht
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(interessen)
-
-
-def interessen_liste(anzahl=2):
-	"""
-	Gibt eine Liste von Interessen als String zurück.
-
-	Ohne Angabe der Anzahl werden 2 Interessen zurückgegeben.
-
-	.. versionadded:: 0.11
-	.. deprecated:: 0.12
-
-	.. only:: doctest
-
-		>>> s = interessen_liste(1)
-
-		testst ob ergebnis aus liste ist
-		>>> assert s in interessen
-		
-		testet ob ergebnis aus buchstaben besteht
-		>>> assert re.match(re_worte, s)
-
-		>>> s = interessen_liste(5)
-
-		>>> assert re.match(re_liste, s)
-	"""
-	_liste = r.sample(interessen, anzahl)
-	return aufzaehlung(_liste)
 
 
 def tier():
@@ -356,7 +330,7 @@ def tier():
 
 		>>> s = tier()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in tiere
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -373,7 +347,7 @@ def baum():
 
 		>>> s = baum()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in baeume
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -390,7 +364,7 @@ def pflanze():
 
 		>>> s = pflanze()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in pflanzen
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -551,7 +525,7 @@ def farbe():
 
 		>>> s = farbe()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in farben
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -569,7 +543,7 @@ def color():
 
 		>>> s = color()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in colors
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -580,7 +554,9 @@ def color():
 
 def geburtsdatum():
 	"""
-	Gibt ein gültiges Datum zwischen dem 01.01.1910 und 31.12.2012 zurück.
+	Gibt ein gültiges Datum zwischen dem 01.01.1910 und 31.12.2013 zurück.
+
+	.. todo:: dynamisch zwischen -110 Jahre bis heute
 
 	:rtype: string
 
@@ -592,7 +568,7 @@ def geburtsdatum():
 	"""
 	while(True):
 		try:
-			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1910,2012))
+			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1910,2013))
 			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
@@ -601,7 +577,9 @@ def geburtsdatum():
 
 def datum():
 	"""
-	Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2012 zurück.
+	Gibt ein gültiges Datum zwischen dem 01.01.1950 und 31.12.2013 zurück.
+
+	.. todo:: dynamisch zwischen -50 Jahre bis heute
 
 	:rtype: string
 
@@ -613,7 +591,7 @@ def datum():
 	"""
 	while(True):
 		try:
-			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1950,2012))
+			_s = str(r.randint(1,31)).zfill(2) + '.' + str(r.randint(1,12)).zfill(2) + '.' + str(r.randint(1950,2013))
 			datetime.datetime.strptime(_s, "%d.%m.%Y").date() # kann der String in ein gültiges Datum umgewandelt werden?
 			return _s
 		except:
@@ -628,7 +606,7 @@ def sprichwort():
 
 		>>> s = sprichwort()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in sprichwoerter
 	"""
 	return r.choice(sprichwoerter)
@@ -642,7 +620,7 @@ def beruf_m():
 
 		>>> s = beruf_m()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in berufe
 		
 		testet ob ergebnis aus buchstaben besteht
@@ -890,7 +868,7 @@ def stadt_bl():
 
 		>>> s = stadt_bl()
 
-		testst ob ergebnis in liste ist
+		testet ob ergebnis in liste ist
 		>>> assert s in stadte
 		
 		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß/.() -]+$', s)

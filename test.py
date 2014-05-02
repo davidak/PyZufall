@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Unittests für pyzufall.
+Unittests für PyZufall.
 
 Ausführen mit::
 

@@ -51,7 +51,7 @@ def chance(wahrscheinlichkeit, wert):
 	:param wahrscheinlichkeit: int zwischen 1 und 100
 	:param wert: string
 	"""
-	if r.randint(0,99) < wahrscheinlichkeit:
+	if r.randint(1, 100) <= wahrscheinlichkeit:
 		return wert
 	else:
 		return ''
@@ -129,54 +129,3 @@ def aufzaehlung(liste):
 	"""
 	return "{}{}".format(', '.join(liste[:-2]) + ', ' if len(liste) > 2 else '', ' und '.join(liste[-2:]))
 
-
-def e16(wert):
-	"""
-	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 16% zurückgegeben.
-
-	.. deprecated:: 0.11
-		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
-	"""
-	if r.randint(0,5) == 1:
-		return wert
-	else:
-		return ''
-
-
-def e25(wert):
-	"""
-	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 25% zurückgegeben.
-
-	.. deprecated:: 0.11
-		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
-	"""
-	if r.randint(1,4) == 1:
-		return wert
-	else:
-		return ''
-
-
-def e50(wert):
-	"""
-	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 50% zurückgegeben.
-
-	.. deprecated:: 0.11
-		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
-	"""
-	if r.randint(0,1):
-		return wert
-	else:
-		return ''
-
-
-def e75(wert):
-	"""
-	Der übergebene Wert wird mit einer Wahrscheinlichkeit von 75% zurückgegeben.
-
-	.. deprecated:: 0.11
-		Wird durch :func:`pyzufall.helfer.chance` ersetzt.
-	"""
-	if r.randint(0,3):
-		return wert
-	else:
-		return ''
