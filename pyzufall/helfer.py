@@ -91,14 +91,31 @@ def str_add(wort, string):
 	>>> str_add('blöd', 'e')
 	'blöde'
 
+	.. only:: docstest
+
+		>>> str_add('unflexibel', 'e')
+		'unflexible'
+		>>> str_add('unflexibel', 'er')
+		'unflexibler'
+
 	.. versionadded:: 0.11
 	"""
 	# wenn der letzte Buchstabe des wortes ist gleich der erste des strings
 	if wort[-1] == string[0]:
 		# gebe wort + alles ohne den ersten des strings zurück
-		return wort + string[1:]
+		s = wort + string[1:]
 	else:
-		return wort + string
+		s = wort + string
+
+	# behebt Fehler: unflexibele -> unflexible
+	if s[-3:] == 'ele':
+		s = s[:-3] + 'le'
+
+	# behebt Fehler: unflexibeler -> unflexibler
+	if s[-4:] == 'eler':
+		s = s[:-4] + 'ler'
+
+	return s
 
 
 def aufzaehlung(liste):
