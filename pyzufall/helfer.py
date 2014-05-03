@@ -164,3 +164,22 @@ def alter(geburtsdatum):
 	_geburtstag = datetime.strptime(geburtsdatum, "%d.%m.%Y").date()
 	_alter = int((_heute - _geburtstag).days / 365.2425)
 	return _alter
+
+def uml(s):
+	"""
+	Ersetzt Umlaute durch die entsprechenden 2 Buchstaben.
+
+	Beispiel:
+
+	>>> uml('Käse')
+	'Kaese'
+	>>> uml('Brötchen')
+	'Broetchen'
+	>>> uml('Gefühl')
+	'Gefuehl'
+	"""
+	s = s.replace('ä', 'ae')
+	s = s.replace('ü', 'ue')
+	s = s.replace('ö', 'oe')
+	s = s.replace('ß', 'ss')
+	return s

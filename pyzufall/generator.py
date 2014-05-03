@@ -12,7 +12,7 @@ import re
 import random
 from datetime import timedelta, date
 
-from .helfer import lese, chance, str_add, aufzaehlung
+from .helfer import lese, chance, str_add, uml, aufzaehlung
 
 # Regex Pattern für Doctests
 from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum
@@ -167,6 +167,7 @@ def nickname(vorname='', nachname=''):
 			s = s.replace('-', '_')
 		elif x == 5:
 			s = vorname + verbi()
+			s = s.replace(' ', '')
 	else:
 		x =  r.randint(1, 2)
 		if x == 1:
@@ -181,6 +182,45 @@ def nickname(vorname='', nachname=''):
 			s = s.replace('-', '_')
 
 	return s.lower() + chance(20, str(r.randint(1,99)))
+
+
+def homepage(vorname, nachname, nick=''):
+	"""
+	Gibt die Domain einer persönlichen Homepage zurück.
+
+	Beispiel: lilim.eu, der-klotz.net, damian-schuett.org
+	"""
+	x = r.randint(1, 8)
+	if x == 1:
+		s = vorname + '-' + nachname
+	elif x == 2:
+		s = vorname + '.' + nachname
+	elif x == 3:
+		s = vorname[0] + nachname
+	elif x == 4:
+		s = vorname + nachname[0]
+	elif x == 5:
+		s = nachname
+	else:
+		if nick == '':
+			s = nickname(vorname, nachname)
+		else:
+			s = nick
+		s = s.replace('_', '-')
+
+	return uml(s.lower()) + '.' + r.choice(['de', 'net', 'org', 'eu', 'com', 'me'])
+
+
+def url(domain):
+	"""
+	>>> url('davidak.de')
+	'http://davidak.de/'
+	"""
+	return 'http://{}/'.format(domain)
+
+
+def email():
+	pass
 
 
 def verbn():
