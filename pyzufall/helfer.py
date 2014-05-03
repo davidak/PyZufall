@@ -107,20 +107,20 @@ def aufzaehlung(liste):
 
 	Beispiel:
 
-		>>> a = ['lesen', 'reiten', 'Freunde treffen']
+	>>> a = ['lesen', 'reiten', 'Freunde treffen']
 
-		>>> aufzaehlung(a)
-		'lesen, reiten und Freunde treffen'
+	>>> aufzaehlung(a)
+	'lesen, reiten und Freunde treffen'
 
-		>>> b = ['Überwachen', 'Strafen']
+	>>> b = ['Überwachen', 'Strafen']
 
-		>>> aufzaehlung(b)
-		'Überwachen und Strafen'
+	>>> aufzaehlung(b)
+	'Überwachen und Strafen'
 
-		>>> c = ['schlafen']
+	>>> c = ['schlafen']
 
-		>>> aufzaehlung(c)
-		'schlafen'
+	>>> aufzaehlung(c)
+	'schlafen'
 
 	:param liste: Eine Liste von Strings.
 	:type liste: list
@@ -139,9 +139,9 @@ def alter(geburtsdatum):
 
 	.. only:: doctest
 
-	>>> s = alter("27.10.1988")
+		>>> s = alter("27.10.1988")
 
-	>>> assert s > 24
+		>>> assert s > 24
 	"""
 	_heute = date.today()
 	_geburtstag = datetime.strptime(geburtsdatum, "%d.%m.%Y").date()

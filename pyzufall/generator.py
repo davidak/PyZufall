@@ -564,13 +564,13 @@ def zeitpunkt(start, ende):
 
 	.. only:: doctest
 
-	>>> _heute = date.today()
+		>>> _heute = date.today()
 
-	>>> _datum = date(2000, 3, 27)
+		>>> _datum = date(2000, 3, 27)
 
-	>>> s = zeitpunkt(_datum, _heute)
+		>>> s = zeitpunkt(_datum, _heute)
 
-	>>> assert re.match(re_datum, s.strftime("%d.%m.%Y"))
+		>>> assert re.match(re_datum, s.strftime("%d.%m.%Y"))
 	"""
 	for arg in [start, ende]:
 		if type(arg) is not date:
