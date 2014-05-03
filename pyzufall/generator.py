@@ -139,6 +139,50 @@ def nachname():
 	return r.choice(nachnamen)
 
 
+def nickname(vorname='', nachname=''):
+	"""
+	Generiert einen Nickname, Angabe von Vor- und Nachname optional.
+
+	Beispiel: dicker_falke, beate_brutal85, stinkender_panda24
+	"""
+	if vorname and nachname and r.randint(1,100) <= 60:
+		x =  5 #r.randint(1, 10)
+		if x == 1:
+			s = vorname[0] + nachname[:2]
+		elif x == 2:
+			s = vorname[:r.randint(2, len(vorname))] + nachname[:r.randint(2, len(nachname))]
+		elif x == 3:
+			s = vorname[:r.randint(3, len(vorname))] + wort(r.randint(3, 5))
+		elif x == 4:
+			s = vorname
+			y = objekt().split(' ', 1)[1]
+			i = 0
+			while ( y[0].lower() != s[0].lower() and i < 250 ):
+				if i % 2 == 0:
+					y = objekt().split(' ', 1)[1]
+				else:
+					y = adjektiv()
+				i += 1
+			s = s + '_' + y
+			s = s.replace('-', '_')
+		elif x == 5:
+			s = vorname + verbi()
+	else:
+		x =  r.randint(1, 2)
+		if x == 1:
+			s = objekt().replace(' ', '_')
+			s = s.replace('-', '_')
+		elif x == 2:
+			s = objekt()
+			if s.split(' ', 1)[0] == 'der':
+				s = str_add(adjektiv(), 'er') + '_' + s.split(' ', 1)[1]
+			else:
+				s = str_add(adjektiv(), 'e') + '_' + s.split(' ', 1)[1]
+			s = s.replace('-', '_')
+
+	return s.lower() + chance(20, str(r.randint(1,99)))
+
+
 def verbn():
 	"""
 	Gibt ein nullwertiges Verb zurück.
@@ -463,9 +507,11 @@ def person():
 vokal = ['a', 'e', 'i', 'o', 'u', 'ei', 'au']
 konsonant = ['b', 'c', 'd', 'f', 'g', 'h', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'sch']
 konsonant2 = ['h', 'k', 'l', 'm', 'n', 's', 't']
-def wort():
+def wort(laenge=r.randint(3,12)):
 	"""
 	Gibt ein Fantasiewort zurück.
+
+	:param laenge: int
 
 	.. only:: doctest
 
@@ -473,7 +519,6 @@ def wort():
 
 		>>> assert re.match(re_wort, s)
 	"""
-	laenge = r.randint(3,12)
 	anfaengt = r.randint(1,3)
 	s = ""
 	
