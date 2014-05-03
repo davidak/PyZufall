@@ -25,7 +25,7 @@ Andrei
 Andrej
 Andrey
 Andrzej
-André
+Andre
 Andy
 Anthony
 Anton
@@ -259,7 +259,7 @@ Joschua
 Josef
 Joseph
 Joshua
-José
+Jose
 Julian
 Julien
 Julius
@@ -447,7 +447,7 @@ Reiner
 Reinhard
 Reinhardt
 Reinhold
-René
+Rene
 Ricardo
 Riccardo
 Richard

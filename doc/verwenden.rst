@@ -50,19 +50,21 @@ Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzuf
 .. code-block:: none
 
     ********************************************************************************
-    Name: Tilmann Ried
+    Name: Bernhard Steingass (bernhstein19)
     Geschlecht: männlich
-    Geburtsdatum: 19.04.1981 (32)
-    Geburtsort: Schwelm
-    Wohnort: Starnberg
-    Beruf: arbeitslos
-    Interessen: Sonnenstudio, Mofatuning
-    Lieblingsfarbe: Grün
-    Lieblingsessen: Schokoladen
-    Motto: Du sollst den Tag nicht vor dem Abend loben.
+    Geburtsdatum: 24.09.1916 (97)
+    Geburtsort: Homberg
+    Wohnort: Döbern
+    Beruf: Rentner
+    E-Mail: bernhard@mynetaddress.com
+    Homepage: bernhard-steingass.de
+    Interessen: Basteln, Geocaching, Fahrzeugtuning
+    Lieblingsfarbe: Blau
+    Lieblingsessen: Lauch
+    Motto: Ärzte sind des Herrgotts Menschenflicker.
     ********************************************************************************
-    
-    Tilmann und Emre sitzen auf einer Bank im Park.
-    Tilmann (32) wohnt in Starnberg und isst gerne Schokoladen.
+
+    Bernhard und Liv sitzen auf einer Bank im Park.
+    Bernhard (97) wohnt in Döbern und isst gerne Lauch.
 
 Ein praktischer Einsatszweck dafür ist der `Random VCard-Generator <https://github.com/davidak/random-vcard-generator>`_.

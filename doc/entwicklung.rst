@@ -14,7 +14,8 @@ Repository runterladen
 Dokumentation erzeugen
 ----------------------
 
-Mit folgendem Befehl wird die HTML-Version sowie LaTeX samt PDF erzeugt.::
+Mit folgendem Befehl wird die HTML-Version sowie LaTeX samt PDF erzeugt.
+::
 
 	$ make docs
 
@@ -38,13 +39,13 @@ Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergela
 	Doctest: pyzufall.generator.beruf_w ... ok
 	Doctest: pyzufall.generator.color ... ok
 	Doctest: pyzufall.generator.datum ... ok
+	Doctest: pyzufall.generator.email ... ok
 	Doctest: pyzufall.generator.essen ... ok
 	Doctest: pyzufall.generator.farbe ... ok
 	Doctest: pyzufall.generator.geburtsdatum ... ok
 	Doctest: pyzufall.generator.gegenstand ... ok
 	Doctest: pyzufall.generator.geschlecht ... ok
 	Doctest: pyzufall.generator.interesse ... ok
-	Doctest: pyzufall.generator.interessen_liste ... ok
 	Doctest: pyzufall.generator.koerperteil ... ok
 	Doctest: pyzufall.generator.nachname ... ok
 	Doctest: pyzufall.generator.ort ... ok
@@ -58,6 +59,7 @@ Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergela
 	Doctest: pyzufall.generator.stadt_bl ... ok
 	Doctest: pyzufall.generator.tier ... ok
 	Doctest: pyzufall.generator.trinken ... ok
+	Doctest: pyzufall.generator.url ... ok
 	Doctest: pyzufall.generator.verbd ... ok
 	Doctest: pyzufall.generator.verbi ... ok
 	Doctest: pyzufall.generator.verbi2 ... ok
@@ -68,16 +70,20 @@ Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergela
 	Doctest: pyzufall.generator.vorname_w ... ok
 	Doctest: pyzufall.generator.wort ... ok
 	Doctest: pyzufall.generator.zahl ... ok
+	Doctest: pyzufall.generator.zeitpunkt ... ok
+	Doctest: pyzufall.helfer.alter ... ok
+	Doctest: pyzufall.helfer.aufzaehlung ... ok
 	Doctest: pyzufall.helfer.erste_gross ... ok
 	Doctest: pyzufall.helfer.lese ... ok
 	Doctest: pyzufall.helfer.str_add ... ok
+	Doctest: pyzufall.helfer.uml ... ok
 	test.test_satz ... ok
 	test.test_satz_frage ... ok
 	test.test_sprichwort ... ok
-	
+
 	----------------------------------------------------------------------
-	Ran 45 tests in 0.907s
-	
+	Ran 50 tests in 0.897s
+
 	OK
 
 Vor dem Release

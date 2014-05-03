@@ -1,7 +1,8 @@
 Installation
 ============
 
-Mit `pip <http://www.pip-installer.org/en/latest/installing.html>`_ kannst du die neuste stabile Version von **PyZufall** ganz einfach auf deinem System installieren::
+Mit der Paketverwaltung `pip <http://www.pip-installer.org/en/latest/>`_ lassen sich Python-Pakete aus dem `Python Package Index <https://pypi.python.org/pypi/vcardgen/>`_ (PyPI) installieren.
+::
 
 	# pip install pyzufall
 
@@ -15,12 +16,12 @@ Pip für **Python 3** wird auf vielen System (z.B OS X oder Ubuntu) wie folgt au
 
 .. note::
 
-	Pip benötigt root-Rechte für die Installation neuer Pakete.
+	Pip benötigt root-Rechte für die Installation neuer Pakete. Wenn du nicht root bist benutze sudo.
 
 Oder du installierst **PyZufall** manuell, indem du die neuste Version von `PyPI <https://pypi.python.org/pypi/pyzufall>`_ runterlädst, diese entpackst und installierst.
 ::
 	
-	# wget https://pypi.python.org/packages/source/P/PyZufall/PyZufall-0.11.tar.gz#md5=dea538382e11cd9b537b3d70f205fdc7
+	# wget https://pypi.python.org/packages/source/P/PyZufall/PyZufall-0.11.tar.gz
 	# tar -xzf PyZufall-0.11.tar.gz
 	# cd PyZufall-0.11/
 	# python3 setup.py install

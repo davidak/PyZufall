@@ -50,6 +50,7 @@ def chance(wahrscheinlichkeit, wert):
 	Der übergebene Wert wird mit der gewählten Wahrscheinlichkeit zurückgegeben.
 
 	.. versionadded:: 0.11
+	
 	:param wahrscheinlichkeit: int zwischen 1 und 100
 	:param wert: string
 	"""
