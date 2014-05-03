@@ -22,7 +22,7 @@ Quellen für Statistiken:
 import random as r
 
 from .helfer import chance, alter
-from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, nickname, homepage, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w
+from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, nickname, email, homepage, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w
 
 # Daten
 from .generator import interessen
@@ -46,12 +46,13 @@ class Person(object):
 		self.nachname = nachname()
 		self.name = self.vorname + " " + self.nachname
 		self.nickname = nickname(self.vorname, self.nachname)
+		self.homepage = homepage(self.vorname, self.nachname, self.nickname)
+		self.email = email(self.vorname, self.nachname, self.nickname, self.homepage)
 		self.geburtsdatum = geburtsdatum()
 		self.geburtsort = stadt()
 		self.alter = alter(self.geburtsdatum)
 		self.wohnort = stadt()
 		self.beruf = Person._gen_beruf(self)
-		self.homepage = homepage(self.vorname, self.nachname, self.nickname)
 		self.interessen = Person._gen_interessen(self)
 		self.lieblingsfarbe = farbe()
 		self.lieblingsessen = essen() + chance(50, " mit " + beilage())
@@ -75,6 +76,7 @@ class Person(object):
 		s += "Geburtsort: " + self.geburtsort + "\n"
 		s += "Wohnort: " + self.wohnort + "\n"
 		s += "Beruf: " + self.beruf + "\n"
+		s += "E-Mail: " + self.email + "\n"
 		s += "Homepage: " + self.homepage + "\n"
 		s += "Interessen: " + self.interessen + "\n"
 		s += "Lieblingsfarbe: " + self.lieblingsfarbe + "\n"

@@ -17,6 +17,7 @@ re_wort = r'^[A-Za-zäÄöÖüÜß-]+$'
 re_worte = r'^[A-Za-zäÄöÖüÜß -]+$'
 re_liste = r'^[A-Za-zäÄöÖüÜß -]+,[A-Za-zäÄöÖüÜß, -]+'
 re_datum = r'^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[0-2]).(19|20)[0-9]{2}$'
+re_email = r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$'
 re_satz = r'^[A-ZÄÖÜ]{1}[a-zA-Z0-9éäÄöÖüÜß ,-/.?"()]+[.!?]{1}$'
 re_frage = r'^[A-ZÄÖÜ]{1}[a-zA-Z0-9éäÄöÖüÜß ,-/"()]+[?]{1}$'
 
@@ -159,6 +160,8 @@ def alter(geburtsdatum):
 		>>> s = alter("27.10.1988")
 
 		>>> assert s > 24
+
+	.. versionadded:: 0.12
 	"""
 	_heute = date.today()
 	_geburtstag = datetime.strptime(geburtsdatum, "%d.%m.%Y").date()
@@ -177,6 +180,8 @@ def uml(s):
 	'Broetchen'
 	>>> uml('Gefühl')
 	'Gefuehl'
+
+	.. versionadded:: 0.13
 	"""
 	s = s.replace('ä', 'ae')
 	s = s.replace('ü', 'ue')

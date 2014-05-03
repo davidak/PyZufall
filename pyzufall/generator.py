@@ -15,7 +15,7 @@ from datetime import timedelta, date
 from .helfer import lese, chance, str_add, uml, aufzaehlung
 
 # Regex Pattern für Doctests
-from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum
+from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum, re_email
 
 # Benutze /dev/urandom oder Windows CryptGenRandom für bessere Entropy
 r = random.SystemRandom()
@@ -37,6 +37,7 @@ berufe = lese('berufe.txt')
 musik = lese('musikgenre.txt')
 stadte = lese('stadt_bundesland.txt')
 interessen = lese('interessen.txt')
+domains = lese('email_domains.txt')
 
 # Wortarten einlesen
 
@@ -144,9 +145,11 @@ def nickname(vorname='', nachname=''):
 	Generiert einen Nickname, Angabe von Vor- und Nachname optional.
 
 	Beispiel: dicker_falke, beate_brutal85, stinkender_panda24
+
+	.. versionadded:: 0.13
 	"""
-	if vorname and nachname and r.randint(1,100) <= 60:
-		x =  5 #r.randint(1, 10)
+	if vorname and nachname and r.randint(1,100) <= 75:
+		x =  r.randint(1, 5)
 		if x == 1:
 			s = vorname[0] + nachname[:2]
 		elif x == 2:
@@ -189,17 +192,19 @@ def homepage(vorname, nachname, nick=''):
 	Gibt die Domain einer persönlichen Homepage zurück.
 
 	Beispiel: lilim.eu, der-klotz.net, damian-schuett.org
+
+	.. versionadded:: 0.13
 	"""
 	x = r.randint(1, 8)
-	if x == 1:
+	if x == 1 or 2:
 		s = vorname + '-' + nachname
-	elif x == 2:
-		s = vorname + '.' + nachname
 	elif x == 3:
-		s = vorname[0] + nachname
+		s = vorname + '.' + nachname
 	elif x == 4:
-		s = vorname + nachname[0]
+		s = vorname[0] + nachname
 	elif x == 5:
+		s = vorname + nachname[0]
+	elif x == 6:
 		s = nachname
 	else:
 		if nick == '':
@@ -215,12 +220,35 @@ def url(domain):
 	"""
 	>>> url('davidak.de')
 	'http://davidak.de/'
+
+	.. versionadded:: 0.13
 	"""
 	return 'http://{}/'.format(domain)
 
 
-def email():
-	pass
+def email(vorname, nachname, nick='', domain=''):
+	"""
+	Generiert eine E-Mail-Adresse.
+
+	Beispiel: ismail@ismail-christ.eu, emelieeiru63@lebanese.cc, nic@copacabana.com
+
+	.. only:: doctest
+
+		>>> s = email('Bernd', 'Lieferts')
+
+		>>> assert re.match(re_email, s)
+
+	.. versionadded:: 0.13
+	"""
+	if nick == '':
+		nick = nickname(vorname, nachname)
+
+	if domain and r.randint(1, 100) < 60:
+		s = r.choice([vorname, nick]) + '@' + domain
+	else:
+		s = r.choice([vorname + '.' + nachname, vorname, nick]) + '@' + r.choice(domains)
+
+	return uml(s.lower())
 
 
 def verbn():
