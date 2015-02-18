@@ -51,6 +51,10 @@ class Person(object):
 		self.geburtsdatum = geburtsdatum()
 		self.geburtsort = stadt()
 		self.alter = alter(self.geburtsdatum)
+		if self.alter > 10 and r.randint(1, 100) < 60:
+			self.geburtsname = nachname()
+		else:
+			self.geburtsname = self.nachname
 		self.wohnort = stadt()
 		self.beruf = Person._gen_beruf(self)
 		self.interessen = Person._gen_interessen(self)
