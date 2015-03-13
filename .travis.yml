@@ -8,5 +8,7 @@ python:
   - "nightly"
 # command to install dependencies
 #install: "pip install -r requirements.txt"
+install: pip install coveralls
 # command to run tests
-script: nosetests
+script: coverage run --source=pyzufall nosetests
+after_success: coveralls
