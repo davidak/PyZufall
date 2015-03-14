@@ -22,7 +22,7 @@ Quellen für Statistiken:
 import random as r
 
 from .helfer import chance, alter
-from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, nickname, email, homepage, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w
+from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname, nickname, email, homepage, url, stadt, farbe, essen, beilage, sprichwort, beruf_m, beruf_w
 
 # Daten
 from .generator import interessen
@@ -39,19 +39,19 @@ class Person(object):
 	def __init__(self):
 		self.geschlecht = geschlecht()
 		if self.geschlecht:
-			self.vorname = vorname_m() #+ e16("-" + vorname_m()) #zu 16% ein Doppelname
+			self.vorname = vorname_m() + chance(10, '-' + vorname_m()) # mit 10%iger Chance ein Doppelname
 		else:
-			self.vorname = vorname_w() #+ e16("-" + vorname_w()) #zu 16% ein Doppelname
+			self.vorname = vorname_w() + chance(10, '-' + vorname_w()) # mit 10%iger Chance ein Doppelname
 
 		self.nachname = nachname()
-		self.name = self.vorname + " " + self.nachname
+		self.name = self.vorname + ' ' + self.nachname
 		self.nickname = nickname(self.vorname, self.nachname)
-		self.homepage = homepage(self.vorname, self.nachname, self.nickname)
+		self.homepage = url(homepage(self.vorname, self.nachname, self.nickname))
 		self.email = email(self.vorname, self.nachname, self.nickname, self.homepage)
 		self.geburtsdatum = geburtsdatum()
 		self.geburtsort = stadt()
 		self.alter = alter(self.geburtsdatum)
-		if self.alter > 10 and r.randint(1, 100) < 60:
+		if self.alter > 22 and r.randint(1, 100) < 60:
 			self.geburtsname = nachname()
 		else:
 			self.geburtsname = self.nachname
@@ -64,6 +64,7 @@ class Person(object):
 
 		Person.anzahl += 1
 		if Person.debug: print("Neue Person generiert: " + self.name)
+
 	def __del__(self):
 		Person.anzahl -= 1
 		if Person.debug: print("Person '" + self.name + "' wurde gelöscht.")
@@ -71,7 +72,8 @@ class Person(object):
 	def __str__(self):
 		s = "*" * 80 + "\n"
 		s += "Name: " + self.name + " (" + self.nickname + ")\n"
-		s += "Geschlecht: "
+		s += "Geburtsname: " + self.geburtsname
+		s += "\nGeschlecht: "
 		if self.geschlecht:
 			s += "männlich"
 		else:
