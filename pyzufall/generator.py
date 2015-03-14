@@ -12,7 +12,7 @@ import re
 import random
 from datetime import timedelta, date
 
-from .helfer import lese, chance, str_add, uml, aufzaehlung
+from .helfer import lese, chance, str_add, uml
 
 # Regex Pattern für Doctests
 from pyzufall.helfer import re_wort, re_worte, re_liste, re_datum, re_email
@@ -222,6 +222,13 @@ def url(domain):
 	'http://davidak.de/'
 
 	.. versionadded:: 0.13
+
+	.. only:: doctest
+
+		>>> s = url('säge.de')
+
+		>>> print(s)
+		http://säge.de/
 	"""
 	return 'http://{}/'.format(domain)
 
