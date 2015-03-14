@@ -25,7 +25,7 @@ Um einen Namen zu generieren wird das Modul :py:mod:`pyzufall.generator` verwend
 Mahlzeit zusammenstellen
 ------------------------
 
-Mit den Funktionen :py:mod:`pyzufall.generator.essen`, :py:mod:`pyzufall.generator.beilage` und :py:mod:`pyzufall.generator.trinken` kannst du eine ganze Mahlzeit generieren.
+Indem du mehrere Funktionen kombinierst, kannst du eine ganze Mahlzeit generieren.
 
 ::
 
@@ -100,21 +100,22 @@ Die Klasse :py:class:`Person <pyzufall.person.Person>` des Moduls :py:mod:`pyzuf
 .. code-block:: none
 
     ********************************************************************************
-    Name: Bernhard Steingass (bernhstein19)
+    Name: Fred Wittke (die_taube)
+    Geburtsname: Dornemann
     Geschlecht: männlich
-    Geburtsdatum: 24.09.1916 (97)
-    Geburtsort: Homberg
-    Wohnort: Döbern
+    Geburtsdatum: 06.01.1912 (103)
+    Geburtsort: Wittlich
+    Wohnort: Kaltenkirchen
     Beruf: Rentner
-    E-Mail: bernhard@mynetaddress.com
-    Homepage: bernhard-steingass.de
-    Interessen: Basteln, Geocaching, Fahrzeugtuning
-    Lieblingsfarbe: Blau
-    Lieblingsessen: Lauch
-    Motto: Ärzte sind des Herrgotts Menschenflicker.
+    E-Mail: fred@die-taube.de
+    Homepage: http://die-taube.de/
+    Interessen: Brieftauben züchten
+    Lieblingsfarbe: Gelb
+    Lieblingsessen: Frischbraten mit Röstzwiebeln
+    Motto: Reden ist Silber, Schweigen ist Gold.
     ********************************************************************************
-
-    Bernhard und Liv sitzen auf einer Bank im Park.
-    Bernhard (97) wohnt in Döbern und isst gerne Lauch.
+    
+    Fred und Franz sitzen auf einer Bank im Park.
+    Fred (103) wohnt in Kaltenkirchen und isst gerne Frischbraten mit Röstzwiebeln.
 
 Ein praktischer Einsatszweck dafür ist der `Random VCard-Generator <https://github.com/davidak/random-vcard-generator>`_.
