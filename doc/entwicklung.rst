@@ -54,7 +54,7 @@ Vor dem Release
 - :doc:`changelog` aktualisieren, Versionsnummer und Datum überprüfen
 - Unittests ausführen::
 
-	$ make test
+	$ nosetests --with-doctest
 
 - RST-Syntax von README etc. prüfen, z.B. durch `<http://rst.ninjs.org/>`_
 
@@ -69,12 +69,10 @@ Vor dem Release
 
 	$ python3 setup.py sdist upload -r https://testpypi.python.org/pypi
 
-  Auf verschiedenen Betriebssystemen testweise installieren:
+  Einmal testweise installieren:
   ::
 
-	$ pip-3.2 install -i https://testpypi.python.org/pypi <package name>
-
-  Getestet werden sollte auf debian stable, Ubuntu LTS, Windows XP / 7, OS X 10.6.8 (ich hab kein neueres) mit aktueller Python 2.x und 3.x Version.
+	$ pip install -i https://testpypi.python.org/pypi <package name>
 
 Release
 -------
