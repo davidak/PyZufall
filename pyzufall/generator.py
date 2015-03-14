@@ -252,7 +252,7 @@ def email(vorname, nachname, nick='', domain=''):
 	if domain and r.randint(1, 100) < 60:
 		s = r.choice([vorname, nick]) + '@' + domain
 	else:
-		s = r.choice([vorname + '.' + nachname, vorname, nick]) + '@' + r.choice(domains)
+		s = r.choice([vorname + '.' + nachname, vorname, nachname, nick]) + '@' + r.choice(domains)
 
 	return uml(s.lower())
 
