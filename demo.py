@@ -29,7 +29,7 @@ print("\n" + str(anzahl) + " zufällige Sätze:\n")
 
 for i in range(1,anzahl+1):
 	print(str(i) + ". " + satz())
-print() # Leerzeile
+print("\n") # Leerzeile
 
 print("Zufällige Personen generieren:\n")
 p1 = Person()
@@ -40,3 +40,9 @@ print(p2)
 print("{} und {} sitzen auf einer Bank im Park.\n".format(p1.vorname, p2.vorname))
 
 del p1, p2
+
+s = "Heute Abend gibt es {} mit {} und dazu ein Glas {}.".format(essen(), beilage(), trinken())
+print(s)
+
+s = "Meine {} heißt '{}' und besteht aus {}, {} und mir.".format(bandart(), band(), vorname(), vorname())
+print(s)
