@@ -8,7 +8,7 @@ pyzufall.helfer
 Stellt diverse Hilfsfunktionen bereit.
 """
 
-import os
+import os, sys
 import random as r
 from datetime import datetime, date
 
@@ -66,16 +66,29 @@ def erste_gross(s):
 
 	Beispiele:
 
-	>>> erste_gross('das ist ein Beispiel?')
-	'Das ist ein Beispiel?'
+	>>> a = erste_gross('das ist ein Beispiel?')
 
-	>>> erste_gross('über Stock und Stein.')
-	'Über Stock und Stein.'
+	>>> print(a)
+	Das ist ein Beispiel?
 
-	>>> erste_gross('älter als das Internet!')
-	'Älter als das Internet!'
+	>>> b = erste_gross('über Stock und Stein.')
+
+	>>> print(b)
+	Über Stock und Stein.
+
+	>>> c = erste_gross('älter als das Internet!')
+
+	>>> print(c)
+	Älter als das Internet!
 	"""
-	return s[0].upper() + s[1:]
+	if sys.version_info < (3, 0):
+		# convert to unicode
+		s = s.decode('utf-8')
+		s = s[0].upper() + s[1:]
+		# convert back
+		return s.encode('utf-8')
+	else:
+		return s[0].upper() + s[1:]
 
 
 def str_add(wort, string):
@@ -84,14 +97,20 @@ def str_add(wort, string):
 
 	Beispiele:
 
-	>>> str_add('feige', 'er')
-	'feiger'
+	>>> a = str_add('feige', 'er')
 
-	>>> str_add('feige', 'e')
-	'feige'
+	>>> print(a)
+	feiger
 
-	>>> str_add('blöd', 'e')
-	'blöde'
+	>>> b = str_add('feige', 'e')
+
+	>>> print(b)
+	feige
+
+	>>> c = str_add('blöd', 'e')
+
+	>>> print(c)
+	blöde
 
 	.. only:: docstest
 
@@ -128,18 +147,24 @@ def aufzaehlung(liste):
 
 	>>> a = ['lesen', 'reiten', 'Freunde treffen']
 
-	>>> aufzaehlung(a)
-	'lesen, reiten und Freunde treffen'
+	>>> s = aufzaehlung(a)
+
+	>>> print(s)
+	lesen, reiten und Freunde treffen
 
 	>>> b = ['Überwachen', 'Strafen']
 
-	>>> aufzaehlung(b)
-	'Überwachen und Strafen'
+	>>> s = aufzaehlung(b)
+
+	>>> print(s)
+	Überwachen und Strafen
 
 	>>> c = ['schlafen']
 
-	>>> aufzaehlung(c)
-	'schlafen'
+	>>> s = aufzaehlung(c)
+
+	>>> print(s)
+	schlafen
 
 	:param liste: Eine Liste von Strings.
 	:type liste: list
