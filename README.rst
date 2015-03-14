@@ -25,8 +25,8 @@ Verwenden
 
 Hier ein einfaches Beispiel, wie du mit **PyZufall** einen zufälligen Namen generieren kannst::
 
-	from pyzufall.generator import vorname_m, nachname
-	name = vorname_m() + ' ' + nachname()
+	from pyzufall.generator import vorname, nachname
+	name = vorname() + ' ' + nachname()
 	print(name)
 
 In der Dokumentation findest du `weitere Beispiele <https://pyzufall.readthedocs.org/en/latest/verwenden.html>`_ und eine `Referenz aller Funktionen <https://pyzufall.readthedocs.org/en/latest/module.html>`_.

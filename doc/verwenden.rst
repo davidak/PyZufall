@@ -10,8 +10,8 @@ Um einen Namen zu generieren wird das Modul :py:mod:`pyzufall.generator` verwend
 
 ::
 
-    from pyzufall.generator import vorname_m, nachname
-    name = vorname_m() + ' ' + nachname()
+    from pyzufall.generator import vorname, nachname
+    name = vorname() + ' ' + nachname()
     print(name)
 
 .. seealso::
