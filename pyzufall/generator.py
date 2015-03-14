@@ -195,7 +195,7 @@ def homepage(vorname, nachname, nick=''):
 
 	.. versionadded:: 0.13
 	"""
-	x = 7#r.randint(1,8)
+	x = r.randint(1,8)
 	if x == 1 or x == 2:
 		s = vorname + '-' + nachname
 	elif x == 3:
