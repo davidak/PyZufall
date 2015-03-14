@@ -5,6 +5,17 @@ Bei der Entwicklung von **PyZufall** wird `git <http://git-scm.com/>`_ für die 
 
 Die Dokumentation wird mit `Sphinx <http://sphinx-doc.org/>`_ erzeugt und die Unittests durch `nose <http://nose.readthedocs.org/>`_ ausgeführt.
 
+Code Status
+-----------
+
+Hier wird das Ergebnis der automatischen Unittests und die `Coverage <http://de.wikipedia.org/wiki/Testabdeckung#Testabdeckung_in_der_Softwaretechnik>`_ des Codes im Repository angezeigt:
+
+.. image:: https://travis-ci.org/davidak/PyZufall.svg?branch=master
+    :target: https://travis-ci.org/davidak/PyZufall
+
+.. image:: https://coveralls.io/repos/davidak/PyZufall/badge.svg?branch=master
+  :target: https://coveralls.io/r/davidak/PyZufall?branch=master
+
 Repository runterladen
 ----------------------
 ::

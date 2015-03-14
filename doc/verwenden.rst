@@ -26,8 +26,8 @@ Das Modul :py:mod:`pyzufall.satz` generiert zufällige Sätze nach diversen Sche
 ::
 
     from pyzufall.satz import satz
-    satz = satz()
-    print(satz)
+    s = satz()
+    print(s)
 
 Person generieren
 -----------------

@@ -15,5 +15,6 @@ Inhalt der Dokumentation
     beitragen
     benutzer
     entwicklung
+    python27
     module
     changelog

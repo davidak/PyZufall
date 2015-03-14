@@ -1,9 +1,3 @@
-.. image:: https://travis-ci.org/davidak/PyZufall.svg?branch=master
-    :target: https://travis-ci.org/davidak/PyZufall
-
-.. image:: https://coveralls.io/repos/davidak/PyZufall/badge.svg?branch=master
-  :target: https://coveralls.io/r/davidak/PyZufall?branch=master
-
 Die Python-Bibliothek **PyZufall** beinhaltet diverse Funktionen für das **Generieren zufälliger Daten**.
 
 Die Entwicklung begann als Satzgenerator für http://satzgenerator.de/ und wird noch in diese Richtung weitergeführt.
@@ -12,14 +6,18 @@ So wird sie schon von `anderen Projekten <https://pyzufall.readthedocs.org/de/la
 
 **PyZufall** ist `freie Software <http://www.gnu.org/philosophy/free-sw.de.html>`_. Der Quellcode ist Open Source und steht unter der `GPL Version 3 <http://www.gnu.org/licenses/gpl-3.0.html>`_.
 
-Als `Repository <https://github.com/davidak/pyzufall>`_ und `Bugtracker <https://github.com/davidak/pyzufall/issues>`_ wird Github benutzt.
+Python 3 wird offiziell unterstützt, Informationen zur `Python 2.7 Kompatibilität <https://pyzufall.readthedocs.org/en/latest/python27.html>`_ gibt es in der Doku.
+
+Den Quelltext findest du im `Repository <https://github.com/davidak/pyzufall>`_ und Fehler sowie Verbesserungsvorschläge werden im `Bugtracker <https://github.com/davidak/pyzufall/issues>`_ gesammelt.
+
+Jeder ist eingeladen zum Projekt beizutragen!
 
 Ausführliche Informationen sind in der `Dokumentation <https://pyzufall.readthedocs.org/>`_ zu finden.
 
 Installation
 ------------
 
-Mit der Paketverwaltung `pip <http://www.pip-installer.org/en/latest/>`_ lässt sich die letzte stabile Version vom `Python Package Index <https://pypi.python.org/pypi/vcardgen/>`_ (PyPI) installieren.
+Mit der Paketverwaltung `pip <http://www.pip-installer.org/en/latest/>`_ lässt sich die neuste stabile Version installieren.
 ::
 
 	# pip install pyzufall
@@ -27,8 +25,10 @@ Mit der Paketverwaltung `pip <http://www.pip-installer.org/en/latest/>`_ lässt 
 Verwenden
 ---------
 
-Hier ein einfaches Beispiel, wie du mit PyZufall einen zufälligen Namen generieren kannst::
+Hier ein einfaches Beispiel, wie du mit **PyZufall** einen zufälligen Namen generieren kannst::
 
 	from pyzufall.generator import vorname_m, nachname
 	name = vorname_m() + ' ' + nachname()
 	print(name)
+
+In der Dokumentation findest du `weitere Beispiele <https://pyzufall.readthedocs.org/en/latest/verwenden.html>`_ und eine `Referenz aller Funktionen <https://pyzufall.readthedocs.org/en/latest/module.html>`_.
