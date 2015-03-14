@@ -1,3 +1,9 @@
+.. image:: https://travis-ci.org/davidak/PyZufall.svg?branch=master
+    :target: https://travis-ci.org/davidak/PyZufall
+
+.. image:: https://coveralls.io/repos/davidak/PyZufall/badge.svg?branch=master
+  :target: https://coveralls.io/r/davidak/PyZufall?branch=master
+
 Die Python-Bibliothek **PyZufall** beinhaltet diverse Funktionen für das **Generieren zufälliger Daten**.
 
 Die Entwicklung begann als Satzgenerator für http://satzgenerator.de/ und wird noch in diese Richtung weitergeführt.
@@ -13,7 +19,7 @@ Ausführliche Informationen sind in der `Dokumentation <https://pyzufall.readthe
 Installation
 ------------
 
-Mit der Paketverwaltung `pip <http://www.pip-installer.org/en/latest/>`_ lassen sich Python-Pakete aus dem `Python Package Index <https://pypi.python.org/pypi/vcardgen/>`_ (PyPI) installieren.
+Mit der Paketverwaltung `pip <http://www.pip-installer.org/en/latest/>`_ lässt sich die letzte stabile Version vom `Python Package Index <https://pypi.python.org/pypi/vcardgen/>`_ (PyPI) installieren.
 ::
 
 	# pip install pyzufall
