@@ -6,9 +6,10 @@ python:
   - "3.3"
   - "3.4"
   - "nightly"
-# command to install dependencies
-#install: "pip install -r requirements.txt"
+sudo: false
 install: pip install coveralls
-# command to run tests
-script: nosetests --with-coverage
+script: nosetests --with-coverage --cover-package=pyzufall
 after_success: coveralls
+notifications:
+  email:
+    - post@davidak.de
