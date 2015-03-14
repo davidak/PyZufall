@@ -42,7 +42,7 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         #'Programming Language :: Python :: Implementation :: IronPython',
         #'Programming Language :: Python :: Implementation :: Jython',
-        #'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python :: Implementation :: PyPy',
         #'Programming Language :: Python :: Implementation :: Stackless',
         'Operating System :: OS Independent',
         'Intended Audience :: Developers',
