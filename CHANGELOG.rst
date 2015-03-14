@@ -3,6 +3,24 @@ Changelog
 
 Hier sind die Änderungen jeder Version dokumentiert.
 
+
+Version 0.13
+------------
+
+Veröffentlicht am 14.03.2015
+
+- Kompatibilität mit Python 2.7
+- automatische Unittests mit `Travis-CI <https://travis-ci.org/davidak/PyZufall>`_ und `Test Coverage <https://coveralls.io/r/davidak/PyZufall?branch=master>`_
+- :py:func:`pyzufall.generator.zeitpunkt` hinzugefügt
+- :py:func:`pyzufall.generator.nickname` hinzugefügt
+- :py:func:`pyzufall.generator.homepage` hinzugefügt
+- :py:func:`pyzufall.helfer.uml` hinzugefügt
+- :py:func:`pyzufall.generator.url` hinzugefügt
+- :py:func:`pyzufall.generator.email` hinzugefügt
+- veraltete Funktionen entfernt
+- Dokumentation überarbeitet
+- Viele Verbesserungen am Code und Fehler behoben
+
 Version 0.12
 ------------
 
