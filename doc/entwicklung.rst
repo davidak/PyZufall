@@ -56,8 +56,6 @@ Vor dem Release
 
 	$ nosetests --with-doctest
 
-- RST-Syntax von README etc. prüfen, z.B. durch `<http://rst.ninjs.org/>`_
-
 - Dokumentation bauen und überprüfen::
 
 	$ make docs
@@ -68,6 +66,8 @@ Vor dem Release
   ::
 
 	$ python3 setup.py sdist upload -r https://testpypi.python.org/pypi
+
+  Prüfen auf Syntax-Fehler in der README: https://testpypi.python.org/pypi/PyZufall
 
   Einmal testweise installieren:
   ::
