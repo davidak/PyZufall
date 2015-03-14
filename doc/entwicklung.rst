@@ -62,8 +62,12 @@ Vor dem Release
 
 - Installation von PyPI mit pip testen: `<https://wiki.python.org/moin/TestPyPI>`_
 
+  Account registrieren: https://testpypi.python.org/pypi?%3Aaction=register_form (wird von Zeit zu Zeit gelöscht)
+
   Paket nach testpypi hochladen:
   ::
+
+  	$ python setup.py register --repository https://testpypi.python.org/pypi
 
 	$ python3 setup.py sdist upload -r https://testpypi.python.org/pypi
 
@@ -72,7 +76,7 @@ Vor dem Release
   Einmal testweise installieren:
   ::
 
-	$ pip install -i https://testpypi.python.org/pypi <package name>
+	$ pip install -i https://testpypi.python.org/pypi pyzufall
 
 Release
 -------
