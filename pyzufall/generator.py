@@ -191,12 +191,12 @@ def homepage(vorname, nachname, nick=''):
 	"""
 	Gibt die Domain einer persönlichen Homepage zurück.
 
-	Beispiel: lilim.eu, der-klotz.net, damian-schuett.org
+	Beispiel: lilim.eu, heruntergekommene-kastanie.net, damian-schuett.org
 
 	.. versionadded:: 0.13
 	"""
-	x = r.randint(1, 8)
-	if x == 1 or 2:
+	x = 7#r.randint(1,8)
+	if x == 1 or x == 2:
 		s = vorname + '-' + nachname
 	elif x == 3:
 		s = vorname + '.' + nachname
@@ -206,12 +206,11 @@ def homepage(vorname, nachname, nick=''):
 		s = vorname + nachname[0]
 	elif x == 6:
 		s = nachname
+	elif nick:
+		s = nick
 	else:
-		if nick == '':
-			s = nickname(vorname, nachname)
-		else:
-			s = nick
-		s = s.replace('_', '-')
+		s = nickname(vorname, nachname)
+	s = s.replace('_', '-')
 
 	return uml(s.lower()) + '.' + r.choice(['de', 'net', 'org', 'eu', 'com', 'me'])
 
