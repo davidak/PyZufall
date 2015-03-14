@@ -46,8 +46,9 @@ class Person(object):
 		self.nachname = nachname()
 		self.name = self.vorname + ' ' + self.nachname
 		self.nickname = nickname(self.vorname, self.nachname)
-		self.homepage = url(homepage(self.vorname, self.nachname, self.nickname))
+		self.homepage = homepage(self.vorname, self.nachname, self.nickname)
 		self.email = email(self.vorname, self.nachname, self.nickname, self.homepage)
+		self.homepage = url(self.homepage) # http:// hinzufügen, nachdem die Domain für die E-Mail genutzt wurde
 		self.geburtsdatum = geburtsdatum()
 		self.geburtsort = stadt()
 		self.alter = alter(self.geburtsdatum)
