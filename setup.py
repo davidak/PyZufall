@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 try:
@@ -21,9 +21,8 @@ setup(
     package_data={'pyzufall': ['data/*.txt']},
     platforms='any',
     description=__doc__,
-    long_description=open('README.rst').read(),
-    install_requires=[
-    ],
+    long_description=open('README.rst', encoding='utf-8').read(),
+    install_requires=[],
     classifiers=[
         #'Development Status :: 1 - Planning',
         #'Development Status :: 2 - Pre-Alpha',
