@@ -10,10 +10,8 @@ python:
 sudo: false
 install: pip install coveralls
 script: nosetests --with-coverage --cover-package=pyzufall --with-doctest
-script: python setup.py install
-script: vcardgen -c 3 test.vcf
-script: cat test.vcf
 after_success: coveralls
+after_script: python setup.py install && vcardgen -c 3 test.vcf && cat test.vcf
 notifications:
   email:
     - post@davidak.de
