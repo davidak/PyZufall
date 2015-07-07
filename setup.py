@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import codecs
 try:
     from setuptools import setup
 except ImportError:
@@ -21,7 +22,7 @@ setup(
     package_data={'pyzufall': ['data/*.txt']},
     platforms='any',
     description=__doc__,
-    long_description=open('README.rst', encoding='utf-8').read(),
+    long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
     install_requires=[],
     classifiers=[
         #'Development Status :: 1 - Planning',
