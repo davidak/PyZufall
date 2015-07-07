@@ -9,6 +9,7 @@ Stellt diverse Hilfsfunktionen bereit.
 """
 
 import os, sys
+import codecs
 import random as r
 from datetime import datetime, date
 
@@ -42,7 +43,7 @@ def lese(dateiname):
 		>>> assert isinstance(liste, list)
 	"""
 	dateipfad = os.path.join(os.path.dirname(__file__), 'data/' + dateiname)
-	return open(dateipfad, 'r').read().splitlines()
+	return codecs.open(dateipfad, 'r', 'utf-8').read().splitlines()
 
 
 def chance(wahrscheinlichkeit, wert):
