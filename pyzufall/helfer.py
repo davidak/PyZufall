@@ -82,14 +82,7 @@ def erste_gross(s):
 	>>> print(c)
 	Älter als das Internet!
 	"""
-	if sys.version_info < (3, 0):
-		# convert to unicode
-		s = s.decode('utf-8')
-		s = s[0].upper() + s[1:]
-		# convert back
-		return s.encode('utf-8')
-	else:
-		return s[0].upper() + s[1:]
+	return s[0].upper() + s[1:]
 
 
 def str_add(wort, string):
