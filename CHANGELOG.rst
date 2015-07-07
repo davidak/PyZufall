@@ -3,6 +3,12 @@ Changelog
 
 Hier sind die Änderungen jeder Version dokumentiert.
 
+Version 0.13.1
+--------------
+
+Veröffentlicht am 08.07.2015
+
+- fix install with python3
 
 Version 0.13
 ------------
