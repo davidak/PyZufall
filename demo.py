@@ -10,7 +10,7 @@ from pyzufall.satz import satz
 from pyzufall.person import Person
 
 titel = "Demoscript für PyZufall " + __version__
-print("\n" + titel + "\n" + '~' * (len(titel) - 1) + "\n")
+print("\n" + titel + "\n" + '~' * len(titel) + "\n")
 print("Person: " + person())
 print("Berufsbezeichnung M: " + beruf_m())
 print("Berufsbezeichnung W: " + beruf_w())
