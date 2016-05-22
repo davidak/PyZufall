@@ -4,13 +4,17 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
+  - "3.5"
   - "nightly"
   - "pypy"
   - "pypy3"
 sudo: false
-install: pip install future coveralls
-script: nosetests --with-coverage --cover-package=pyzufall --with-doctest
-script: python setup.py install
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+script:
+  - nosetests --with-coverage --cover-package=pyzufall --with-doctest
+  - python setup.py install
 after_success: coveralls
 notifications:
   email:
