@@ -11,11 +11,10 @@ python:
 sudo: false
 install:
   - pip install -r requirements.txt
-  - pip install nose-progressive coveralls
+  - pip install coveralls
 script:
-  - nosetests --with-coverage --cover-package=pyzufall --with-doctest --with-progressive
+  - nosetests --with-coverage --cover-package=pyzufall --with-doctest
   - python setup.py install
-  - python demo.py
 after_success: coveralls
 notifications:
   email:

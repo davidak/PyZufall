@@ -18,7 +18,7 @@ Mit der Paketverwaltung `pip <http://www.pip-installer.org/de/latest/>`_ lässt 
 
 	# pip install pyzufall
 
-Es läuft mit Python 2.7 und Python 3.
+Kompatibel mit Python 2.7, Python 3.3+ sowie `PyPy <http://pypy.org/>`_.
 
 Verwenden
 ---------
