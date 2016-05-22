@@ -1,7 +1,8 @@
 language: python
 python:
+  - "2.6"
   - "2.7"
-  - "3.2"
+#  - "3.2"
   - "3.3"
   - "3.4"
   - "3.5"
@@ -11,11 +12,9 @@ python:
 sudo: false
 install:
   - pip install -r requirements.txt
-  # Coveralls 4.0 doesn't support Python 3.2
-  - if [ "$TRAVIS_PYTHON_VERSION" == "3.2" ]; then travis_retry pip install coverage==3.7.1; fi
-  - if [ "$TRAVIS_PYTHON_VERSION" != "3.2" ]; then travis_retry pip install coverage; fi
+  - pip install nose-progressive coveralls
 script:
-  - nosetests --with-coverage --cover-package=pyzufall --with-doctest
+  - nosetests --with-coverage --cover-package=pyzufall --with-doctest --with-progressive
   - python setup.py install
 after_success: coveralls
 notifications:
