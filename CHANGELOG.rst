@@ -3,12 +3,21 @@ Changelog
 
 Hier sind die Änderungen jeder Version dokumentiert.
 
+Version 0.13.2
+--------------
+
+Veröffentlicht am 22.05.2016
+
+- Unicode Fehler behoben, Kompatibilität mit Python 2/3 verbessert
+- Python 3.2 wird nicht mehr unterstützt
+- Viele Verbesserungen am Code und kleinere Fehler behoben
+
 Version 0.13.1
 --------------
 
 Veröffentlicht am 08.07.2015
 
-- fix install with python3
+- Fehler bei Installation mit Python 3 behoben
 
 Version 0.13
 ------------
