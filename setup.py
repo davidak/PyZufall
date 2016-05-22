@@ -24,6 +24,8 @@ setup(
     description=__doc__,
     long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
     install_requires=['future'],
+    tests_require=['nose', 'coverage'],
+    test_suite='nose.collector',
     classifiers=[
         #'Development Status :: 1 - Planning',
         #'Development Status :: 2 - Pre-Alpha',
