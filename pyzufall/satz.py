@@ -10,6 +10,9 @@ Stellt Funktionen bereit, die Sätze nach diversen Satz-Schemata generieren.
 Die Funktion :py:func:`pyzufall.satz.satz()` beinhaltet alle.
 """
 
+from __future__ import (absolute_import, division, print_function, unicode_literals)
+from builtins import *
+
 import re
 import random as r
 

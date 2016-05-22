@@ -8,6 +8,9 @@ pyzufall.helfer
 Stellt diverse Hilfsfunktionen bereit.
 """
 
+from __future__ import (absolute_import, division, print_function, unicode_literals)
+from builtins import *
+
 import os, sys
 import codecs
 import random as r
@@ -108,10 +111,14 @@ def str_add(wort, string):
 
 	.. only:: docstest
 
-		>>> str_add('unflexibel', 'e')
-		'unflexible'
-		>>> str_add('unflexibel', 'er')
-		'unflexibler'
+		>>> a = str_add('unflexibel', 'e')
+
+		>>> print(a)
+		unflexible
+		>>> b = str_add('unflexibel', 'er')
+
+		>>> print(b)
+		unflexibler
 
 	.. versionadded:: 0.11
 	"""
@@ -194,12 +201,18 @@ def uml(s):
 
 	Beispiel:
 
-	>>> uml('Käse')
-	'Kaese'
-	>>> uml('Brötchen')
-	'Broetchen'
-	>>> uml('Gefühl')
-	'Gefuehl'
+	>>> a = uml('Käse')
+
+	>>> print(a)
+	Kaese
+	>>> b = uml('Brötchen')
+
+	>>> print(b)
+	Broetchen
+	>>> c = uml('Gefühl')
+
+	>>> print(c)
+	Gefuehl
 
 	.. versionadded:: 0.13
 	"""

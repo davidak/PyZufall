@@ -19,6 +19,10 @@ Quellen für Statistiken:
 - http://www.statistik2013.de/
 """
 
+from __future__ import (absolute_import, division, print_function, unicode_literals)
+from builtins import *
+from future.utils import python_2_unicode_compatible
+
 import random as r
 
 from .helfer import chance, alter
@@ -27,6 +31,7 @@ from .generator import geschlecht, geburtsdatum, vorname_m, vorname_w, nachname,
 # Daten
 from .generator import interessen
 
+@python_2_unicode_compatible
 class Person(object):
 	"""
 	Generiert Daten einer zufälligen und fiktiven Person.

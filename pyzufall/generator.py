@@ -8,6 +8,9 @@ pyzufall.generator
 Stellt diverse Generator-Funktionen zur Verfügung.
 """
 
+from __future__ import (absolute_import, division, print_function, unicode_literals)
+from builtins import *
+
 import re
 import random
 from datetime import timedelta, date
@@ -217,8 +220,10 @@ def homepage(vorname, nachname, nick=''):
 
 def url(domain):
 	"""
-	>>> url('davidak.de')
-	'http://davidak.de/'
+	>>> s = url('davidak.de')
+
+	>>> print(s)
+	http://davidak.de/
 
 	.. versionadded:: 0.13
 
