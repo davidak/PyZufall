@@ -1,6 +1,5 @@
 language: python
 python:
-  - "2.6"
   - "2.7"
 #  - "3.2"
   - "3.3"
@@ -16,6 +15,7 @@ install:
 script:
   - nosetests --with-coverage --cover-package=pyzufall --with-doctest --with-progressive
   - python setup.py install
+  - python demo.py
 after_success: coveralls
 notifications:
   email:
