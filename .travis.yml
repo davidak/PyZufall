@@ -8,8 +8,9 @@ python:
   - "pypy"
   - "pypy3"
 sudo: false
-install: pip install coveralls
+install: pip install future coveralls
 script: nosetests --with-coverage --cover-package=pyzufall --with-doctest
+script: python setup.py install
 after_success: coveralls
 notifications:
   email:
