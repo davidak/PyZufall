@@ -40,7 +40,7 @@ Unittests ausführen
 
 Um den Code auf deinem System zu testen, führe folgenden Befehl im heruntergeladenen Repository aus::
 
-	imac:PyZufall davidak$ nosetests --with-doctest
+	imac:PyZufall davidak$ python setup.py nosetests
 	..................................................
 	----------------------------------------------------------------------
 	Ran 50 tests in 0.867s
@@ -54,7 +54,7 @@ Vor dem Release
 - :doc:`changelog` aktualisieren, Versionsnummer und Datum überprüfen
 - Unittests ausführen::
 
-	$ nosetests --with-doctest
+	$ python setup.py nosetests
 
 - Dokumentation bauen und überprüfen::
 

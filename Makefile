@@ -8,7 +8,7 @@ all: test
 docs: html pdf
 
 test:
-	@(nosetests)
+	@(python setup.py nosetests)
 
 html:
 	@(cd doc; make html)
