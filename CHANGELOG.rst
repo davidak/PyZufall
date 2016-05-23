@@ -6,7 +6,7 @@ Hier sind die Änderungen jeder Version dokumentiert.
 Version 0.13.2
 --------------
 
-Veröffentlicht am 22.05.2016
+Veröffentlicht am 23.05.2016
 
 - Unicode Fehler behoben, Kompatibilität mit Python 2/3 verbessert
 - Python 3.2 wird nicht mehr unterstützt
