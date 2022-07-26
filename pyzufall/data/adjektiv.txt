@@ -2,7 +2,7 @@ abartig
 abgehoben
 abgewixt
 abschäulich
-abstossend
+abstoßend
 absurd
 affig
 aggressiv
@@ -12,7 +12,7 @@ anarchistisch
 andächtig
 angeberisch
 ansteckend
-anstössig
+anstößig
 asozial
 aufdringlich
 barbarisch
@@ -70,7 +70,7 @@ gigantisch
 glaubhaft
 gnadenlos
 grob
-grosskotzig
+großkotzig
 grotesk
 gruselig
 grässlich
@@ -145,9 +145,9 @@ selbstlos
 selbstsüchtig
 skrupellos
 sozial
-spassig
+spaßig
 speckig
-spiessig
+spießig
 spontan
 stinkend
 teuflisch

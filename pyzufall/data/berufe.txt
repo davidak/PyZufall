@@ -1,8 +1,8 @@
 Abfallberater
 Abteilungsleiter
 Abwassermeister
-Aegyptologe
-Aenderungsschneider
+Ägyptologe
+Änderungsschneider
 Akrobat
 Angestellter
 Anlagenmechaniker
@@ -19,7 +19,7 @@ Aufzugmonteur
 Augenoptiker
 Ausbaufacharbeiter
 Ausbaufachwerker
-Aussenhandelskaufmann
+Außenhandelskaufmann
 Autolackierer
 Autoverkäufer
 Autowäscher
@@ -65,7 +65,7 @@ Chirurgiemechaniker
 Choreograf
 Computergrafiker
 Dachdecker
-Damenmassschneider
+Damenmaßschneider
 Detektiv
 Dekorationsnäher
 Demograf
@@ -78,8 +78,8 @@ Drechsler
 Drucker
 Edelsteingraveur
 Edelsteinschleifer
-Edv-Fachkraft
-Edv-Sachbearbeiter
+EDV-Fachkraft
+EDV-Sachbearbeiter
 Eisenbahner
 Elektriker
 Elektromonteur
@@ -98,7 +98,7 @@ Etagenkellner
 Etagenoberkellner
 Fachassistent
 Fachinformatiker
-Fachkrankenspfleger
+Fachkrankenpfleger
 Fachlehrer
 Fachunteroffizier
 Fachverkäufer
@@ -127,7 +127,7 @@ Fleischhauer
 Flexograf
 Fliesenleger
 Flugbegleiter
-Fluggerätmechaniker
+Fluggerätemechaniker
 Flugzeugmechaniker
 Flugzeugreiniger
 Förster
@@ -161,7 +161,7 @@ Glockengießer
 Goldschmied
 Grafiker
 Graveur
-Grosshandelskaufmann
+Großhandelskaufmann
 Gürtler
 Gummiarbeiter
 Händler
@@ -172,14 +172,14 @@ Hausmeister
 Haustechniker
 Hauswirtschaftsverwalter
 Heilpädagoge
-Herrenmassschneider
+Herrenmaßschneider
 Historiker
 Hochbaufacharbeiter
 Hochbaufachwerker
 Hörfunkmoderator
 Hörgeräteakustiker
 Holzbildhauer
-Holzblasinstrumentenmacher
+Holzblasinstrumentenbauer
 Holzmechaniker
 Holzspielzeugmacher
 Hotelangestellter
@@ -249,7 +249,7 @@ Maschinenglasmacher
 Maschinist
 Maskenbildner
 Masseur
-Massschneider
+Maßschneider
 Matrose
 Maurer
 Mechaniker
@@ -257,7 +257,7 @@ Mechatroniker
 Mediengestalter
 Metallbauer
 Metallbildner
-Metallblasinstrumentenmacher
+Metallblasinstrumentenbauer
 Metallgießer
 Metzger
 Mikrobiologe
@@ -341,7 +341,7 @@ Schriftsetzermeister
 Schuhmacher
 Schuster
 Schweinezüchter
-Schweisser
+Schweißer
 Segelmacher
 Seiler
 Sekretär
@@ -368,10 +368,10 @@ Stempelmacher
 Steuerberater
 Sticker
 Strahlenschutzfachkraft
-Strassenbauer
-Strassenreiniger
+Straßenbauer
+Straßenreiniger
 Stricker
-Stukkateur
+Stuckateur
 Systemelektroniker
 Systeminformatiker
 Tänzer

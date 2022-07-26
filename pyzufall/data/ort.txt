@@ -1,5 +1,5 @@
 am Strand
-am Strassenrand
+am Straßenrand
 am Tatort
 am Unfallort
 an einer Raststätte
@@ -22,14 +22,14 @@ auf dem Rasen
 auf der Arbeit
 auf der Autobahn
 auf der Liegewiese
-auf der Strasse
-auf einem grossen Parkplatz
+auf der Straße
+auf einem großen Parkplatz
 auf einer Bühne vor XXZusch Zuschauern
 in einem Stadion vor XXZusch Zuschauern
 in einer Arena vor XXZusch Zuschauern
 auf einem Festival vor XXZusch Zuschauern
-auf offener Strasse
-aufm Scheisshaus
+auf offener Straße
+aufm Scheißhaus
 aufm Strich
 aus gegebenem Anlass
 bei deiner Mutter

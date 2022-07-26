@@ -83,5 +83,5 @@ das Rind
 die Gans
 der Esel
 der Affe
-der Chimpanse
+der Schimpanse
 der Gorilla

@@ -17,7 +17,7 @@ Computerspiele
 Darts
 Disco
 Entspannen
-Fahrad fahren
+Fahrrad fahren
 Fahrzeugtuning
 Fallschirmspringen
 Fantasy
@@ -28,7 +28,7 @@ Filme sehen
 Fotografie
 Free-Climbing
 Freunde treffen
-Fussball
+Fußball
 Gastronomie
 Gedichte schreiben
 Geocaching
@@ -76,7 +76,7 @@ Schauspielerei
 Schwertkampf
 Science Fiction
 Selbstverteidigung
-Skart
+Skat
 Socken stricken
 Sonnenstudio
 Soziale Netzwerke
@@ -101,16 +101,16 @@ Youtube
 Zauberkunst
 Zirkus
 Zoo
-backen
-bloggen
-gammeln
-kochen
-lesen
-malen
-saufen
-schlafen
-schwimmen
-segeln
-singen
-telefonieren
-zeichnen
+Backen
+Bloggen
+Gammeln
+Kochen
+Lesen
+Malen
+Saufen
+Schlafen
+Schwimmen
+Segeln
+Singen
+Telefonieren
+Zeichnen
