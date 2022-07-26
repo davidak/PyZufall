@@ -1,7 +1,7 @@
-rennt
-stürzt
-beginnt
 ballert
+beginnt
+bepisst sich
+bewegt sich
 bleibt
 bläst
 brennt
@@ -9,10 +9,10 @@ bricht
 chattet
 checkt
 chillt
-ist
 demonstriert
 denkt
 erbricht
+erholt sich
 erschrickt
 explodiert
 fliegt
@@ -33,6 +33,7 @@ hilft
 hängt
 hüpft
 implodiert
+ist
 kackt
 kapituliert
 katalysiert
@@ -53,7 +54,9 @@ lügt
 operiert
 organisiert
 pfeift
+qualmt
 reißt
+rennt
 rennt
 ritzt
 rülpst
@@ -65,8 +68,8 @@ schimpft
 schleicht
 schlingt
 schläft
-schlägt sich
 schlägt ihn
+schlägt sich
 schlägt sie
 schlürft
 schmeißt
@@ -87,7 +90,10 @@ steht
 sticht
 stinkt
 stirbt
+strahlt
 streitet
+strickt
+stürzt
 stürzt
 säuft
 telefoniert
@@ -102,9 +108,3 @@ zieht
 zittert
 überlebt
 überlegt
-strahlt
-qualmt
-strickt
-erholt sich
-bewegt sich
-bepisst sich

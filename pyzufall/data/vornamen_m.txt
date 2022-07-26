@@ -20,12 +20,12 @@ Ali
 Amir
 Andi
 Andre
+Andre
 Andreas
 Andrei
 Andrej
 Andrey
 Andrzej
-Andre
 Andy
 Anthony
 Anton
@@ -256,10 +256,10 @@ Jonah
 Jonas
 Jonathan
 Joschua
+Jose
 Josef
 Joseph
 Joshua
-Jose
 Julian
 Julien
 Julius
