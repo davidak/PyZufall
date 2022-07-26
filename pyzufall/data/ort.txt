@@ -28,7 +28,6 @@ auf dem Weg zur Schule
 auf dem Weihnachtsmarkt
 auf dem elektrischen Stuhl
 auf der Arbeit
-auf der Arbeit
 auf der Autobahn
 auf der Eröffnung einer Ausstellung
 auf der Flucht
@@ -131,7 +130,6 @@ im Urlaub
 im Wald
 im Weltall
 im Wohnzimmer
-im Wohnzimmer
 im Zoo
 im Zug
 im freien Fall
@@ -150,7 +148,6 @@ in der Hölle
 in der Innenstadt
 in der Kaffeepause
 in der Kaserne
-in der Kirche
 in der Kirche
 in der Luft
 in der Psychiatrie

@@ -2,7 +2,6 @@ das Efeu
 das Gebüsch
 der Flieder
 der Holunder
-der Holunder
 der Kaktus
 der Papyrus
 der Ranunkelstrauch
@@ -13,7 +12,6 @@ die Aprikose
 die Berberitze
 die Kamille
 die Orange
-die Rose
 die Rose
 die Sumpfzypresse
 die Tulpe

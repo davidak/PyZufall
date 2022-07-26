@@ -81,12 +81,10 @@ die Gewindestange
 die Gitarre
 die Gurke
 die Heizung
-die Heizung
 die Hose
 die Kamera
 die Kiste
 die Kugel
-die Lampe
 die Lampe
 die Patrone
 die Rassel
@@ -104,5 +102,4 @@ die Thermoskanne
 die Tür
 die Vase
 die Zigarette
-die Zigarre
 die Zigarre

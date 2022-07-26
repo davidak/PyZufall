@@ -57,7 +57,6 @@ pfeift
 qualmt
 reißt
 rennt
-rennt
 ritzt
 rülpst
 saugt
@@ -93,7 +92,6 @@ stirbt
 strahlt
 streitet
 strickt
-stürzt
 stürzt
 säuft
 telefoniert
