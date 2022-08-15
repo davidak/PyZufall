@@ -77,7 +77,7 @@ def geschlecht():
 
 		>>> s = geschlecht()
 
-		>>> assert s is 0 or 1
+		>>> assert s == 0 or 1
 	"""
 	if r.randint(1, 100) <= 51:
 		return 0
