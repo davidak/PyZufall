@@ -7,7 +7,7 @@ pyzufall.person
 
 Stellt die Klasse Person zur Verfügung. Mit ihr kann man ein Objekt erzeugen, dass eine Person mit zufällig generierten Daten darstellt.
 
-Es kann auf jedes Attribut einzeln zugegriffen werden oder mit print(person) alle aufeinmal ausgeben werden.
+Es kann auf jedes Attribut einzeln zugegriffen werden oder mit print(person) alle auf einmal ausgeben werden.
 
 Die generierten Daten basieren teilweise auf statistischen Werten und versuchen möglichst authentisch zu sein.
 
@@ -101,7 +101,7 @@ class Person(object):
 		"""
 		Generiert den Beruf einer Person anhand des Alters und Statistiken.
 
-		Es wird von 10% Arbeitslosigkeit ausgegangen, die ofizielle Statistik ist allerdings 7,10% im Jahr 2013.
+		Es wird von 10% Arbeitslosigkeit ausgegangen, die offizielle Statistik ist allerdings 7,10% im Jahr 2013.
 		Quelle: http://de.statista.com/statistik/daten/studie/1224/umfrage/arbeitslosenquote-in-deutschland-seit-1995/
 
 		Es wird angenommen, dass 30% der zwischen 19 und 29 jährigen studieren:

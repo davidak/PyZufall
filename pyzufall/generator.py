@@ -93,10 +93,10 @@ def vorname_m():
 
 		>>> s = vorname_m()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in vornamen_m
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(vornamen_m)
@@ -110,10 +110,10 @@ def vorname_w():
 
 		>>> s = vorname_w()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in vornamen_w
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(vornamen_w)
@@ -134,10 +134,10 @@ def nachname():
 
 		>>> s = nachname()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in nachnamen
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(nachnamen)
@@ -272,10 +272,10 @@ def verbn():
 
 		>>> s = verbn()
 
-		testst ob ergebnis in liste ist
+		testst ob Ergebnis in Liste ist.
 		>>> assert s in nullwertige_verben
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(nullwertige_verben)
@@ -291,10 +291,10 @@ def verbi():
 
 		>>> s = verbi()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in intransitive_verben
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(intransitive_verben)
@@ -310,7 +310,7 @@ def verbi2():
 
 		>>> s = verbi2()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in intransitive_verben_2
 		
 		>>> assert re.match(re_liste, s)
@@ -328,10 +328,10 @@ def verbt():
 
 		>>> s = verbt()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in transitive_verben
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(transitive_verben)
@@ -347,7 +347,7 @@ def verbt2():
 
 		>>> s = verbt2()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in transitive_verben_2
 		
 		>>> assert re.match(re_liste, s)
@@ -365,10 +365,10 @@ def verbd():
 
 		>>> s = verbd()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in ditransitive_verben
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(ditransitive_verben)
@@ -382,10 +382,10 @@ def adjektiv():
 
 		>>> s = adjektiv()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in adjektive
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(adjektive)
@@ -399,10 +399,10 @@ def gegenstand():
 
 		>>> s = gegenstand()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in gegenstaende
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(gegenstaende)
@@ -416,10 +416,10 @@ def koerperteil():
 
 		>>> s = koerperteil()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in koerperteile
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(koerperteile)
@@ -436,10 +436,10 @@ def interesse():
 
 		>>> s = interesse()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in interessen
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(interessen)
@@ -453,10 +453,10 @@ def tier():
 
 		>>> s = tier()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in tiere
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(tiere)
@@ -470,10 +470,10 @@ def baum():
 
 		>>> s = baum()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in baeume
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(baeume)
@@ -487,10 +487,10 @@ def pflanze():
 
 		>>> s = pflanze()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in pflanzen
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(pflanzen)
@@ -649,10 +649,10 @@ def farbe():
 
 		>>> s = farbe()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in farben
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(farben)
@@ -667,10 +667,10 @@ def color():
 
 		>>> s = color()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in colors
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_wort, s)
 	"""
 	return r.choice(colors)
@@ -748,7 +748,7 @@ def sprichwort():
 
 		>>> s = sprichwort()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in sprichwoerter
 	"""
 	return r.choice(sprichwoerter)
@@ -762,10 +762,10 @@ def beruf_m():
 
 		>>> s = beruf_m()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in berufe
 		
-		testet ob ergebnis aus buchstaben besteht
+		Testet, ob Ergebnis aus Buchstaben besteht.
 		>>> assert re.match(re_worte, s)
 	"""
 	return r.choice(berufe)
@@ -805,7 +805,7 @@ def objekt():
 
 def objekt_m(s):
 	"""
-	Bringt ein Objekt in Berzug zu einer männlichen Person.
+	Bringt ein Objekt in Bezug zu einer männlichen Person.
 
 	Beispiel:
 	'der Bär' wird zu 'den Bären' oder 'seinen Bären'
@@ -907,7 +907,7 @@ def ort():
 
 	.. todo::
 
-		aufteilen in generator und zufällige aus liste
+		Aufteilen in Generator und zufällige aus Liste.
 
 	.. only:: doctest
 
@@ -1010,7 +1010,7 @@ def stadt_bl():
 
 		>>> s = stadt_bl()
 
-		testet ob ergebnis in liste ist
+		Testet, ob Ergebnis in Liste ist.
 		>>> assert s in stadte
 		
 		>>> assert re.match(r'^[A-Za-zäÄöÖüÜß/.() -]+$', s)
