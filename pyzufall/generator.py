@@ -187,8 +187,10 @@ def nickname(vorname='', nachname=''):
 			s = objekt()
 			if s.split(' ', 1)[0] == 'der':
 				s = str_add(adjektiv(), 'er') + '_' + s.split(' ', 1)[1]
-			else:
+			elif s.split(' ', 1)[0] == 'die':
 				s = str_add(adjektiv(), 'e') + '_' + s.split(' ', 1)[1]
+			else:
+				s = str_add(adjektiv(), 'es') + '_' + s.split(' ', 1)[1]
 			s = s.replace('-', '_')
 
 	return s.lower() + chance(20, str(r.randint(1,99)))
