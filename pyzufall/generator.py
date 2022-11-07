@@ -62,6 +62,8 @@ ortsangabe = lese('ort.txt')
 ns = lese('nebensatz.txt')
 sprichwoerter = lese('sprichwoerter.txt')
 
+# Bandnamen-Teile
+gruppe = lese('gruppe.txt')
 
 def geschlecht():
 	"""
@@ -1019,7 +1021,6 @@ def stadt_bl():
 	return r.choice(stadte)
 
 
-gruppe = ['Menschen', 'Personen', 'Kinder', 'Tiere', 'Gedärme', 'Kadaver', 'Nudeln', 'Unterhosen', 'Würstchen', 'Bäume', 'Stühle', 'Schweine', 'Neger', 'Alkoholiker', 'Leichen']
 def band():
 	"""
 	Gibt einen fiktiven Bandnamen zurück.
