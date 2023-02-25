@@ -272,7 +272,7 @@ def verbn():
 	"""
 	Gibt ein nullwertiges Verb zurück.
 
-	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <https://de.wikipedia.org/wiki/Verb#Verbklassen_nach_Zahl_der_Erg%C3%A4nzungen/>`_
 
 	.. only:: doctest
 
@@ -291,7 +291,7 @@ def verbi():
 	"""
 	Gibt ein intransitives Verb zurück.
 
-	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <https://de.wikipedia.org/wiki/Verb#Verbklassen_nach_Zahl_der_Erg%C3%A4nzungen/>`_
 
 	.. only:: doctest
 
@@ -310,7 +310,7 @@ def verbi2():
 	"""
 	Gibt ein intransitives, getrenntes Verb zurück.
 
-	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <https://de.wikipedia.org/wiki/Verb#Verbklassen_nach_Zahl_der_Erg%C3%A4nzungen/>`_
 
 	.. only:: doctest
 
@@ -328,7 +328,7 @@ def verbt():
 	"""
 	Gibt ein transitives Verb zurück.
 
-	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <https://de.wikipedia.org/wiki/Verb#Verbklassen_nach_Zahl_der_Erg%C3%A4nzungen/>`_
 
 	.. only:: doctest
 
@@ -347,7 +347,7 @@ def verbt2():
 	"""
 	Gibt ein intransitives, getrenntes Verb zurück.
 
-	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <https://de.wikipedia.org/wiki/Verb#Verbklassen_nach_Zahl_der_Erg%C3%A4nzungen/>`_
 
 	.. only:: doctest
 
@@ -365,7 +365,7 @@ def verbd():
 	"""
 	Gibt ein ditransitives Verb zurück.
 
-	`Beschreibung auf Wikipedia <http://de.wikipedia.org/wiki/Transitivität_(Grammatik)#Festlegung_der_Transitivit.C3.A4t_eines_Verbs/>`_
+	`Beschreibung auf Wikipedia <https://de.wikipedia.org/wiki/Verb#Verbklassen_nach_Zahl_der_Erg%C3%A4nzungen/>`_
 
 	.. only:: doctest
 
