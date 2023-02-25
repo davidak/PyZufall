@@ -1,8 +1,8 @@
-regnet
-schneit
-stürmt
-gewittert
+bebt
 brennt
 friert
+gewittert
+regnet
+schneit
 stinkt
-bebt
+stürmt

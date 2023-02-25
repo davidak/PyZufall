@@ -2,12 +2,14 @@ Achterbahnen
 Amateurastronomie
 Amateurfunk
 Angeln
+Backen
 Badminton
 Bananenanbau
 Bar
 Basketball
 Basteln
 Billard
+Bloggen
 Bowling
 Briefmarken sammeln
 Brieftauben züchten
@@ -17,7 +19,7 @@ Computerspiele
 Darts
 Disco
 Entspannen
-Fahrad fahren
+Fahrrad fahren
 Fahrzeugtuning
 Fallschirmspringen
 Fantasy
@@ -28,7 +30,8 @@ Filme sehen
 Fotografie
 Free-Climbing
 Freunde treffen
-Fussball
+Fußball
+Gammeln
 Gastronomie
 Gedichte schreiben
 Geocaching
@@ -48,9 +51,12 @@ Kekse backen
 Kettensägen
 Kino
 Kneipe
+Kochen
 LARP
+Lesen
 Literatur
 Lockpicking
+Malen
 Malerei
 Mittelalterszene
 Modellautos
@@ -70,13 +76,18 @@ Raumfahrt
 Rollenspiel
 Rätsel
 Sammeln
+Saufen
 Sauna
 Schach
 Schauspielerei
+Schlafen
 Schwertkampf
+Schwimmen
 Science Fiction
+Segeln
 Selbstverteidigung
-Skart
+Singen
+Skat
 Socken stricken
 Sonnenstudio
 Soziale Netzwerke
@@ -87,6 +98,7 @@ Surfen
 Swinger Club
 Tagebuch schreiben
 Tanzen
+Telefonieren
 Tennis
 Theater
 Tischtennis
@@ -99,18 +111,6 @@ Wolkenkratzer-Klettern
 Würfelspiele
 Youtube
 Zauberkunst
+Zeichnen
 Zirkus
 Zoo
-backen
-bloggen
-gammeln
-kochen
-lesen
-malen
-saufen
-schlafen
-schwimmen
-segeln
-singen
-telefonieren
-zeichnen
